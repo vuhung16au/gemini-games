@@ -18,7 +18,7 @@ test.describe('Unified Gemini Games Hub E2E', () => {
     ).toBeVisible();
 
     const cards = page.locator('.game-tile');
-    await expect(cards).toHaveCount(15);
+    await expect(cards).toHaveCount(16);
 
     // Verify 4 games per row on desktop (>= 1025px)
     const columnCount = await page.locator('.games-grid').evaluate((el) => {
@@ -43,7 +43,7 @@ test.describe('Unified Gemini Games Hub E2E', () => {
 
     // Filter by category and search
     await page.getByRole('tab', { name: 'Puzzle' }).click();
-    await expect(cards).toHaveCount(2);
+    await expect(cards).toHaveCount(3);
     await page.getByRole('tab', { name: 'All' }).click();
     await page.getByLabel('Search games').fill('flappy');
     await expect(cards).toHaveCount(1);
@@ -78,7 +78,19 @@ test.describe('Unified Gemini Games Hub E2E', () => {
 
     // Return to Dashboard
     await page.getByRole('button', { name: /All Games/i }).click();
-    await expect(page.locator('.game-tile')).toHaveCount(15);
+    await expect(page.locator('.game-tile')).toHaveCount(16);
+
+    // Launch Minesweeper inside unified player
+    await page
+      .locator('[data-game-slug="minesweeper"]')
+      .getByRole('button', { name: 'Play' })
+      .click();
+    await expect(page).toHaveURL(/#\/play\/minesweeper$/);
+    const msFrame = page.frameLocator('iframe[title="Minesweeper"]');
+    await expect(msFrame.getByRole('heading', { name: 'Minesweeper' })).toBeVisible();
+
+    // Return to Dashboard
+    await page.getByRole('button', { name: /All Games/i }).click();
 
     // Launch Tá Lả (Phỏm) inside unified player
     await page

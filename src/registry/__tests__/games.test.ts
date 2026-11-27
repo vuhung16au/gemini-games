@@ -8,8 +8,8 @@ import {
 } from '../hubStorage';
 
 describe('game hub registry', () => {
-  it('registers all 15 games with unique slugs and valid relative paths', () => {
-    expect(GAMES.length).toBe(15);
+  it('registers all 16 games with unique slugs and valid relative paths', () => {
+    expect(GAMES.length).toBe(16);
     const slugs = new Set(GAMES.map((g) => g.slug));
     expect(slugs.size).toBe(GAMES.length);
 
@@ -20,6 +20,7 @@ describe('game hub registry', () => {
       'cozy-town-tycoon',
       'dino-run',
       'flappy-bird',
+      'minesweeper',
       'simcity',
       'solitaire',
       'sudoku',
@@ -40,7 +41,7 @@ describe('game hub registry', () => {
 
   it('filters games by category and search query', () => {
     const puzzles = filterGames(GAMES, 'Puzzle', '');
-    expect(puzzles.map((g) => g.slug)).toEqual(['1024', 'sudoku']);
+    expect(puzzles.map((g) => g.slug)).toEqual(['1024', 'minesweeper', 'sudoku']);
 
     const search = filterGames(GAMES, 'All', 'flappy');
     expect(search.map((g) => g.slug)).toEqual(['flappy-bird']);

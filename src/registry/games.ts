@@ -85,6 +85,13 @@ export const GAMES: GameEntry[] = [
     'Space / Up / Tap',
   ),
   makeGame(
+    'minesweeper',
+    'Minesweeper',
+    'Puzzle',
+    'Classic logic mine-clearing puzzle with Easy, Medium, Hard, and Custom board sizes.',
+    'Click / Right-Click Flag / Chord',
+  ),
+  makeGame(
     'simcity',
     'SimCity 3D',
     'Simulation',

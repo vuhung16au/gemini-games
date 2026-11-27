@@ -1,0 +1,329 @@
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+.ms-shell {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  width: 100vw;
+  background: var(--color-softivory);
+  color: var(--color-deepcharcoal);
+  font-family: var(--font-sans);
+  user-select: none;
+  overflow: hidden;
+}
+
+.ms-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  padding: 0.45rem 0.85rem;
+  background: var(--color-bookwhite);
+  border-bottom: 1px solid var(--color-warmstone);
+  flex-wrap: wrap;
+}
+
+.ms-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.ms-emblem {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 1px solid var(--color-warmstone);
+}
+
+.ms-title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--color-bookpurple);
+}
+
+.ms-sub {
+  font-size: 0.74rem;
+  color: var(--color-warmstone);
+  font-weight: 600;
+}
+
+.ms-diff-tabs,
+.ms-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.ms-pill-btn {
+  border: 1px solid var(--color-warmstone);
+  background: var(--color-bookwhite);
+  color: var(--color-deepcharcoal);
+  border-radius: 7px;
+  padding: 0.3rem 0.55rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.ms-pill-btn.active {
+  background: var(--color-bookpurple);
+  color: var(--color-bookwhite);
+  border-color: var(--color-bookpurple);
+}
+
+.ms-toast {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  background: var(--color-bookwhite);
+  border-bottom: 2px solid var(--color-bookpurple);
+  padding: 0.35rem 0.8rem;
+  font-size: 0.82rem;
+}
+
+.ms-toast-badge {
+  background: var(--color-bookpurple);
+  color: var(--color-bookwhite);
+  font-size: 0.7rem;
+  font-weight: 800;
+  padding: 0.14rem 0.45rem;
+  border-radius: 5px;
+}
+
+.ms-board-wrap {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem;
+}
+
+.ms-cabinet {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.55rem;
+  background: var(--color-bookwhite);
+  border: 2px solid var(--color-deepcharcoal);
+  border-radius: 14px;
+  padding: 0.75rem;
+  max-width: 96vw;
+  max-height: calc(100dvh - 105px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+.ms-lcd-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-width: 240px;
+  gap: 1rem;
+  background: var(--color-softivory);
+  border: 1px solid var(--color-warmstone);
+  border-radius: 9px;
+  padding: 0.35rem 0.7rem;
+}
+
+.ms-lcd {
+  font-family: var(--font-mono);
+  font-size: 1.15rem;
+  font-weight: 900;
+  background: #1d1a1f;
+  color: #f87171;
+  padding: 0.2rem 0.55rem;
+  border-radius: 6px;
+  min-width: 48px;
+  text-align: center;
+}
+
+.ms-face-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 9px;
+  border: 2px solid var(--color-deepcharcoal);
+  background: var(--color-bookwhite);
+  font-size: 1.25rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ms-grid-scroll {
+  overflow: auto;
+  max-width: 100%;
+  max-height: calc(100dvh - 230px);
+}
+
+.ms-grid {
+  --cell-size: clamp(22px, 3.4vw, 32px);
+  display: grid;
+  gap: 2px;
+  background: var(--color-warmstone);
+  padding: 3px;
+  border-radius: 6px;
+  touch-action: manipulation;
+}
+
+.ms-cell {
+  width: var(--cell-size);
+  height: var(--cell-size);
+  border: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-weight: 900;
+  font-size: calc(var(--cell-size) * 0.54);
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.ms-cell.hidden {
+  background: #dcd7cf;
+  box-shadow: inset 2px 2px 0 #ffffff, inset -2px -2px 0 #a39c93;
+}
+
+.ms-cell.hidden:hover {
+  background: #e8e3dc;
+}
+
+.ms-cell.revealed {
+  background: var(--color-softivory);
+  box-shadow: inset 1px 1px 0 rgba(145, 139, 131, 0.35);
+}
+
+.ms-cell.exploded {
+  background: var(--color-bookred);
+}
+
+.ms-cell.hinted {
+  outline: 2px solid var(--color-bookpurple);
+  outline-offset: -2px;
+}
+
+.ms-cell.n-1 { color: #1d4ed8; }
+.ms-cell.n-2 { color: #15803d; }
+.ms-cell.n-3 { color: #b91c1c; }
+.ms-cell.n-4 { color: #3c1053; }
+.ms-cell.n-5 { color: #7c2d12; }
+.ms-cell.n-6 { color: #0e7490; }
+.ms-cell.n-7 { color: #111827; }
+.ms-cell.n-8 { color: #4b5563; }
+
+.ms-result-banner {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--color-softivory);
+  border: 2px solid var(--color-bookpurple);
+  border-radius: 10px;
+  padding: 0.4rem 0.85rem;
+  font-size: 0.88rem;
+}
+
+.ms-primary-btn {
+  background: var(--color-bookpurple);
+  color: var(--color-bookwhite);
+  border: none;
+  border-radius: 8px;
+  padding: 0.42rem 0.9rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.ms-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 16, 24, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  z-index: 30;
+}
+
+.ms-modal-card {
+  background: var(--color-bookwhite);
+  border: 2px solid var(--color-bookpurple);
+  border-radius: 14px;
+  width: min(94vw, 480px);
+  max-height: 85dvh;
+  overflow-y: auto;
+  padding: 1rem 1.2rem;
+}
+
+.ms-modal-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(145, 139, 131, 0.35);
+  padding-bottom: 0.45rem;
+  margin-bottom: 0.7rem;
+}
+
+.ms-modal-head h2 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--color-bookpurple);
+}
+
+.ms-close-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.ms-modal-body {
+  font-size: 0.86rem;
+  line-height: 1.45;
+}
+
+.ms-modal-body h3 {
+  margin: 0.55rem 0 0.25rem;
+  font-size: 0.95rem;
+  color: var(--color-bookpurple);
+}
+
+.ms-custom-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.ms-custom-form label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 700;
+}
+
+.ms-custom-form input {
+  width: 96px;
+  padding: 0.3rem 0.45rem;
+  border: 1px solid var(--color-warmstone);
+  border-radius: 6px;
+  font-family: var(--font-mono);
+}
+
+.ms-modal-foot {
+  margin-top: 0.9rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
