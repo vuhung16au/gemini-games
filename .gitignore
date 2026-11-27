@@ -26,3 +26,5 @@ coverage/
 # Cloudflare Wrangler
 .wrangler/
 .dev.vars
+
+TODOs/
