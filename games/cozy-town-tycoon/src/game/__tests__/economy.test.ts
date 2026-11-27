@@ -134,4 +134,70 @@ describe('Cozy Town Tycoon Economy & Progression', () => {
     };
     expect(getNextActionHint(readyToUpgrade)).toContain('Cast-Iron Oven');
   });
+
+  it('covers product unlocking, staff hiring, selling, and insufficient-coin guards', () => {
+    let state = createInitialGameState(1000);
+    // Insufficient coins to unlock, hire, or buy upgrade (returns unchanged state)
+    expect(unlockProduct(state, 'croissant').unlockedProducts).toEqual(['bread']);
+    expect(hireStaff(state, 'baker').staff.baker).toBe(0);
+    expect(buyUpgrade(state, 'tier1_cast_iron_oven').upgrades).toEqual([]);
+
+    // Give coins and unlock croissant + hire cashier + bake & sell
+    state = { ...state, coins: 1000 };
+    state = unlockProduct(state, 'croissant');
+    expect(state.unlockedProducts).toContain('croissant');
+    expect(getProductSellPrice(state, 'croissant')).toBeGreaterThan(0);
+
+    state = hireStaff(state, 'cashier');
+    expect(state.staff.cashier).toBe(1);
+    expect(getStaffCost('cashier', state.staff.cashier)).toBeGreaterThan(0);
+    expect(getBakePower(state)).toBeGreaterThanOrEqual(1);
+    expect(getDisplayCapacity(state)).toBeGreaterThanOrEqual(1);
+
+    state = applyBakeWork(state, 2).nextState;
+    const sold = sellOneItem(state, () => 0.5);
+    expect(sold.soldProduct).not.toBeNull();
+    expect(getNextActionHint({ ...state, coins: 500 }).length).toBeGreaterThan(0);
+    expect(getNextActionHint({ ...state, coins: 0 }).length).toBeGreaterThan(0);
+    const upgraded = buyUpgrade({ ...state, coins: 500 }, 'tier1_cast_iron_oven');
+    expect(upgraded.upgrades).toContain('tier1_cast_iron_oven');
+
+    // Empty stock sell returns null & tart unlock hint branch
+    const emptySell = sellOneItem(createInitialGameState(1000), () => 0.5);
+    expect(emptySell.soldProduct).toBeNull();
+    const tartHint = getNextActionHint({
+      ...upgraded,
+      coins: 150,
+      stock: { bread: 2, croissant: 2, tart: 0 },
+    });
+    expect(tartHint.length).toBeGreaterThan(0);
+
+    // Unlock tart & test max-upgrades hint branch
+    const withTart = unlockProduct({ ...upgraded, coins: 1000 }, 'tart');
+    expect(withTart.unlockedProducts).toContain('tart');
+    const maxHint = getNextActionHint({
+      ...withTart,
+      coins: 5000,
+      stock: { bread: 1, croissant: 1, tart: 1 },
+    });
+    expect(maxHint.length).toBeGreaterThan(0);
+
+    // Partial/invalid save payload sanitization branches in storage.ts
+    const storage = createMemoryStorage();
+    storage.setItem(
+      'cozy_town_tycoon_v1',
+      JSON.stringify({
+        version: 1,
+        lastSavedAt: 8000,
+        coins: -5,
+        upgrades: ['tier1_cast_iron_oven', 'non_existent'],
+        staff: { baker: -1, cashier: 99 },
+        unlockedProducts: ['invalid'],
+        activeProduct: 'invalid',
+        muted: 'yes',
+      }),
+    );
+    const sanitized = loadGame(9000, storage);
+    expect(sanitized.state.activeProduct).toBe('bread');
+  });
 });

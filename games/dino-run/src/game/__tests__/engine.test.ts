@@ -100,4 +100,42 @@ describe('Dino Run Engine', () => {
       muted: false,
     });
   });
+
+  it('supports math404 theme, pterodactyl hints, and restarts cleanly after cooldown', () => {
+    let state = createDinoState({ theme: 'math404' });
+    state = startDinoRun(state);
+    expect(state.status).toBe('running');
+    expect(state.theme).toBe('math404');
+
+    // Step a few frames to advance simulation
+    for (let i = 0; i < 15; i++) {
+      state = stepDino(state, 0.03, 2000 + i * 30, () => 0.5);
+    }
+
+    // Place a flying hazard ahead for hint coverage
+    state.obstacles = [
+      {
+        uid: 77,
+        kind: 'pterodactyl',
+        x: DINO_X + 75,
+        y: 120,
+        width: 46,
+        height: 36,
+        passed: false,
+      },
+    ];
+    const hint = getDinoHint(state);
+    expect(hint.title).toContain('Duck');
+
+    state = setDucking(state, true);
+    expect(state.isDucking).toBe(true);
+
+    // Force game over and test restart cooldown
+    state.status = 'gameover';
+    state.gameOverAt = 5000;
+    const blocked = triggerJump(state, 5000 + RESTART_COOLDOWN_MS - 50);
+    expect(blocked.status).toBe('gameover');
+    const restarted = triggerJump(state, 5000 + RESTART_COOLDOWN_MS + 50);
+    expect(restarted.status).toBe('running');
+  });
 });

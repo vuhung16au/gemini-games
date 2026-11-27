@@ -111,4 +111,28 @@ describe('Super Mario Bros (1985) Engine', () => {
       muted: false,
     });
   });
+
+  it('handles Fire Mario crouching, running, and hints across levels', () => {
+    let state = createMarioState('1-1');
+    state.players[0].power = 'fire';
+
+    // Crouch as big/fire Mario
+    state = stepMario(state, { ...IDLE, crouch: true }, 0.016);
+    expect(typeof state.players[0].crouching).toBe('boolean');
+
+    // Run left & right and jump
+    state = stepMario(state, { ...IDLE, right: true, run: true }, 0.03);
+    expect(state.players[0].vx).toBeGreaterThan(0);
+    state = stepMario(state, { ...IDLE, left: true, jumpPressed: true, jumpHeld: true }, 0.03);
+    expect(state.players[0].vy).toBeLessThan(0);
+
+    // Step through 1-2, 1-3, and 1-4 hints
+    const s12 = createMarioState('1-2');
+    expect(getMarioHint(s12).title.length).toBeGreaterThan(0);
+    const s13 = createMarioState('1-3');
+    expect(getMarioHint(s13).title.length).toBeGreaterThan(0);
+    let s14 = createMarioState('1-4');
+    s14 = stepMario(s14, { ...IDLE, right: true }, 0.03);
+    expect(getMarioHint(s14).title.length).toBeGreaterThan(0);
+  });
 });

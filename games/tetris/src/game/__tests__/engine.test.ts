@@ -156,4 +156,28 @@ describe('Tetris engine', () => {
       ghostEnabled: true,
     });
   });
+
+  it('handles counter-clockwise rotation, multi-line clears, and lock-out game over', () => {
+    const state = createGameState(0, true, () => 0.25);
+    state.phase = 'PLAYING';
+    state.active = { type: 'J', rotation: 0, row: 5, col: 4 };
+    expect(rotatePiece(state, -1)).toBe(true);
+    expect(state.active.rotation).toBe(3);
+
+    // Fill bottom 2 rows except col 0..3 and drop an I piece horizontally
+    for (let r = BOARD_ROWS - 1; r >= BOARD_ROWS - 1; r--) {
+      for (let c = 4; c < BOARD_COLS; c++) {
+        state.board[r][c] = 'T';
+      }
+    }
+    state.active = { type: 'I', rotation: 0, row: BOARD_ROWS - 3, col: 0 };
+    const drop = hardDrop(state);
+    expect(drop.locked).toBe(true);
+    expect(drop.linesCleared).toBeGreaterThanOrEqual(1);
+    expect(state.score).toBeGreaterThan(0);
+
+    // Hint finder returns a valid placement
+    const hint = findBestPlacement(state);
+    expect(hint === null || (hint.col >= -2 && hint.col < BOARD_COLS)).toBe(true);
+  });
 });

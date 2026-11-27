@@ -171,4 +171,26 @@ describe('Battle City (1985) Engine', () => {
       muted: false,
     });
   });
+
+  it('handles player movement, firing cooldown, helmet/clock power-ups, and stage hints', () => {
+    let state = createBattleState('1p', 3);
+    state = stepBattle(
+      state,
+      { p1: { dir: 'up', fire: true }, p2: { dir: null, fire: false } },
+      0.03,
+    );
+    expect(state.bullets.length).toBeGreaterThanOrEqual(1);
+
+    // Collect helmet & clock power-ups
+    state.powerUps.push(
+      { uid: 601, kind: 'helmet', x: state.players[0].x, y: state.players[0].y, timer: 10 },
+      { uid: 602, kind: 'clock', x: state.players[0].x, y: state.players[0].y, timer: 10 },
+      { uid: 603, kind: 'tank', x: state.players[0].x, y: state.players[0].y, timer: 10 },
+    );
+    state = stepBattle(state, IDLE_INPUT, 0.016);
+    expect(state.players[0].shieldTimer).toBeGreaterThan(0);
+    expect(state.freezeTimer).toBeGreaterThan(0);
+    expect(state.players[0].lives).toBeGreaterThanOrEqual(3);
+    expect(getBattleHint(state).message.length).toBeGreaterThan(0);
+  });
 });

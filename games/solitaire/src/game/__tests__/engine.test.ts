@@ -211,4 +211,91 @@ describe('Solitaire Klondike engine', () => {
       muted: false,
     });
   });
+
+  it('supports Turn 3 stock drawing, recycling, waste-to-foundation, and rule checks', () => {
+    let state = createGameState(3, () => 0.55);
+    expect(state.drawMode).toBe(3);
+
+    // Draw all 24 cards in batches of 3, then recycle stock
+    for (let i = 0; i < 8; i++) {
+      state = drawFromStock(state);
+    }
+    expect(state.stock).toHaveLength(0);
+    expect(state.waste).toHaveLength(24);
+    state = drawFromStock(state);
+    expect(state.stock).toHaveLength(24);
+    expect(state.waste).toHaveLength(0);
+
+    expect(canMoveToFoundation(card('hearts', 1), [])).toBe(true);
+    expect(canMoveToFoundation(card('hearts', 2), [card('hearts', 1)])).toBe(true);
+    expect(canMoveToTableau(card('spades', 6), [card('hearts', 7)])).toBe(true);
+    expect(canMoveToTableau(card('spades', 6), [card('clubs', 7)])).toBe(false);
+
+    const hint = findBestHint(state);
+    expect(hint === null || hint.type === 'draw' || hint.type === 'move').toBe(true);
+
+    // Foundation & tableau moves + undo
+    const custom: GameState = {
+      stock: [card('diamonds', 5, false)],
+      waste: [card('spades', 6)],
+      foundations: [[], [], [], []],
+      tableau: [[card('hearts', 7)], [card('hearts', 1)], [], [], [], [], []],
+      drawMode: 1,
+      score: 0,
+      moves: 0,
+      elapsedSeconds: 0,
+      status: 'PLAYING',
+      isTutorial: false,
+      tutorialStep: 0,
+      tutorialCompleted: false,
+      history: [],
+    };
+    const t2f = autoMoveToFoundation(custom, {
+      zone: 'tableau',
+      pileIndex: 1,
+      cardIndex: 0,
+    });
+    expect(t2f.moved).toBe(true);
+    const undone = undoMove(t2f.state);
+    expect(undone.foundations[0]).toHaveLength(0);
+
+    // Waste-to-tableau move (spades-6 onto hearts-7) & tableau-to-tableau
+    const w2t = moveCards(
+      { ...custom, waste: [card('spades', 6)] },
+      { zone: 'waste', cardIndex: 0 },
+      { zone: 'tableau', pileIndex: 0 },
+    );
+    expect(w2t.moved).toBe(true);
+    expect(w2t.state.tableau[0]).toHaveLength(2);
+
+    // Auto-complete guard when face-down cards or stock remain
+    const blockedAuto = stepAutoComplete({
+      ...custom,
+      tableau: [[card('hearts', 7, false)], [], [], [], [], [], []],
+    });
+    expect(blockedAuto.moved).toBe(false);
+    expect(canAutoComplete(custom)).toBe(false);
+    expect(
+      canAutoComplete({ ...custom, stock: [], waste: [] }),
+    ).toBe(true);
+
+    // Hint finder on tableau-to-tableau & stock-empty waste recycle
+    const hintState: GameState = {
+      ...custom,
+      stock: [],
+      waste: [],
+      tableau: [[card('hearts', 7)], [card('spades', 6)], [], [], [], [], []],
+    };
+    const t2tHint = findBestHint(hintState);
+    expect(t2tHint?.type).toBe('move');
+
+    // Step auto-complete moves Ace of Hearts to foundation
+    const autoStep = stepAutoComplete({
+      ...custom,
+      stock: [],
+      waste: [],
+      tableau: [[card('hearts', 1)], [], [], [], [], [], []],
+    });
+    expect(autoStep.moved).toBe(true);
+  });
 });

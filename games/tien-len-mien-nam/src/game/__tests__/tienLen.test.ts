@@ -345,4 +345,54 @@ describe('Tiến Lên Miền Nam Engine', () => {
 
     delete (globalThis as unknown as { window?: unknown }).window;
   });
+
+  it('handles AI turns, invalid plays, pass-and-play turn passing, and corrupted storage', () => {
+    const state = createNewGame({
+      playerCount: 2,
+      mode: 'vs-ai',
+      rng: () => 0.19,
+    });
+    if (state.status === 'PLAYING') {
+      const hint = getSouthernHint(state);
+      expect(hint).not.toBeNull();
+      expect(hint!.cardIds.length).toBeGreaterThan(0);
+
+      // Invalid play on empty selection keeps state & sets bannerMessage
+      const afterInvalid = playCards(state, []);
+      expect(afterInvalid.currentTurn).toBe(state.currentTurn);
+
+      // Play hint cards & test AI response
+      const afterPlay = playCards(state, hint!.cardIds);
+      expect(afterPlay.players[state.currentTurn].hand.length).toBeLessThan(
+        state.players[state.currentTurn].hand.length,
+      );
+      if (afterPlay.status === 'PLAYING' && afterPlay.players[afterPlay.currentTurn].isAI) {
+        const aiPick = chooseAiPlay(afterPlay, afterPlay.currentTurn);
+        expect(aiPick === null || aiPick.cards.length > 0).toBe(true);
+      }
+    }
+
+    // Corrupted storage falls back safely
+    (globalThis as unknown as { window: Record<string, unknown> }).window = {
+      localStorage: {
+        getItem: () => '{bad-json',
+        setItem: () => {
+          throw new Error('quota');
+        },
+      },
+    };
+    expect(loadPersistedData().playerCount).toBe(4);
+    expect(() =>
+      savePersistedData({
+        wins: 0,
+        bestScore: 0,
+        totalScore: 0,
+        gamesPlayed: 0,
+        muted: false,
+        playerCount: 4,
+        mode: 'vs-ai',
+      }),
+    ).not.toThrow();
+    delete (globalThis as unknown as { window?: unknown }).window;
+  });
 });

@@ -16,7 +16,7 @@ endef
 
 .PHONY: help list-games install install-all dev preview \
 	lint lint-all typecheck test test-coverage test-watch test-all \
-	test-e2e test-e2e-all build check-docs verify \
+	test-e2e test-e2e-all build check-docs check-compliance verify \
 	deploy-dry-run deploy clean clean-all _exec
 
 _exec:
@@ -79,23 +79,10 @@ test-e2e-all: ## Run Playwright E2E tests at root and across all games/*
 build: ## Build production bundle into dist/ (root or GAME=<slug>)
 	$(call run_target,npm run build)
 
-check-docs: ## Verify AGENTS.md required docs, multilingual READMEs, icons, and covers
-	@missing=0; \
-	for f in README.md courses/README.md courses/day-*/README.md; do \
-		d=$$(dirname "$$f"); \
-		[ -f "$$d/README.zh.md" ] || { echo "MISSING: $$d/README.zh.md"; missing=1; }; \
-		[ -f "$$d/README.vi.md" ] || { echo "MISSING: $$d/README.vi.md"; missing=1; }; \
-	done; \
-	for g in $(GAMES); do \
-		for doc in README.md README.zh.md README.vi.md QUICKSTART.md architecture.md techstack.md user-guide.md developer-guide.md; do \
-			[ -f "games/$$g/docs/$$doc" ] || { echo "MISSING: games/$$g/docs/$$doc"; missing=1; }; \
-		done; \
-		for asset in manifest.webmanifest icons/favicon.ico icons/icon-32.png icons/apple-touch-icon.png icons/icon-192.png icons/icon-512.png graphics/cover-hd.png graphics/cover-fullhd.png; do \
-			[ -f "games/$$g/public/$$asset" ] || { echo "MISSING: games/$$g/public/$$asset"; missing=1; }; \
-		done; \
-	done; \
-	if [ $$missing -ne 0 ]; then exit 1; fi; \
-	echo "AGENTS.md docs & public assets check passed for all $(words $(GAMES)) games."
+check-docs: ## Verify AGENTS.md docs, i18n, assets, ports, zero external CDNs, and blank CI
+	@node scripts/check-compliance.mjs
+
+check-compliance: check-docs ## Alias for check-docs
 
 verify: lint typecheck test build test-e2e check-docs ## Run full AGENTS.md verification gate
 
@@ -107,7 +94,7 @@ deploy: ## Build and deploy to Cloudflare Workers
 
 clean: ## Remove dist/, coverage/, test-results/, and playwright-report/ artifacts
 	rm -rf dist coverage test-results playwright-report
-	@for g in $(GAMES); do rm -rf "games/$$g/dist" "games/$$g/test-results" "games/$$g/playwright-report"; done
+	@for g in $(GAMES); do rm -rf "games/$$g/dist" "games/$$g/coverage" "games/$$g/test-results" "games/$$g/playwright-report"; done
 	@echo "Cleaned build and test artifacts."
 
 clean-all: clean ## Remove artifacts and all node_modules/ directories

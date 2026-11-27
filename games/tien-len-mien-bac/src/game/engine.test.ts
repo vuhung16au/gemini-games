@@ -195,4 +195,63 @@ describe('Tiến Lên Miền Bắc Engine, Hints, AI, Tutorial & Storage', () =>
     store.set(STORAGE_KEY, '{corrupt');
     expect(loadSaveData().wins).toBe(0);
   });
+
+  it('handles passing tricks, round reset when all pass, and invalid play rejections', () => {
+    const state = createGameState(3, 'ai', 'suit', () => 0.25);
+    expect(classifyNorthernCombo([card('spades', 5), card('clubs', 5)])?.type).toBe('PAIR');
+
+    // Invalid empty play fails
+    const bad = playCards(state, []);
+    expect(bad.played).toBe(false);
+
+    // Play a valid lead and pass around to reset trick
+    const lead = getNorthernHint(state);
+    if (lead && lead.cards.length > 0) {
+      const afterLead = playCards(
+        state,
+        lead.cards.map((c) => c.id),
+      );
+      expect(afterLead.played).toBe(true);
+      let curr = afterLead.state;
+      for (let i = 0; i < 2 && curr.status === 'PLAYING'; i++) {
+        const passed = passTurn(curr);
+        if (passed.passed) curr = passed.state;
+      }
+      expect(curr.players).toHaveLength(3);
+    }
+
+    expect(
+      classifyNorthernCombo([
+        card('spades', 4),
+        card('spades', 5),
+        card('spades', 6),
+      ])?.type,
+    ).toBe('STRAIGHT');
+    expect(
+      classifyNorthernCombo([
+        card('spades', 8),
+        card('clubs', 8),
+        card('diamonds', 8),
+      ])?.type,
+    ).toBe('TRIPLE');
+    expect(
+      classifyNorthernCombo([card('spades', 4), card('hearts', 5)]),
+    ).toBeNull();
+
+    // AI response when beating a pair
+    const pairBeatState = {
+      ...state,
+      handoffRequired: false,
+      isFirstTurnOfMatch: false,
+      mustIncludeCardId: null,
+      tableCombo: classifyNorthernCombo([card('spades', 4), card('clubs', 4)]),
+      currentPlayerIndex: 1,
+      players: state.players.map((p, idx) =>
+        idx === 1
+          ? { ...p, hand: [card('spades', 9), card('clubs', 9), card('hearts', 12)] }
+          : p,
+      ),
+    };
+    expect(chooseAiAction(pairBeatState).action).toBe('play');
+  });
 });

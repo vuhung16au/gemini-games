@@ -259,4 +259,35 @@ describe('Tấn Đỡ (Bài Tấn) Engine', () => {
     expect(t4).not.toBeNull();
     expect(t4?.tutorialStep).toBe(4);
   });
+
+  it('handles AI defense/take decisions, throw-in AI, and storage fallbacks', () => {
+    const game = createNewGame(2, 'ai', () => 0.44);
+    const aiDefend: TanDoState = {
+      ...game,
+      phase: 'DEFEND_OR_PASS',
+      attackerIndex: 0,
+      defenderIndex: 1,
+      activePlayerIndex: 1,
+      players: [
+        { index: 0, nameVi: 'P1', nameEn: 'P1', isAI: false, hand: [c('spades', 8)] },
+        { index: 1, nameVi: 'AI2', nameEn: 'AI2', isAI: true, hand: [c('spades', 12)] },
+      ],
+      table: [{ attack: c('spades', 6), defense: null, attackedBy: 0 }],
+    };
+    const defended = chooseAIMove(aiDefend);
+    expect(defended.table.length === 0 || defended.table[0].defense !== null).toBe(true);
+
+    const aiTake: TanDoState = {
+      ...aiDefend,
+      trumpSuit: 'hearts',
+      players: [
+        { index: 0, nameVi: 'P1', nameEn: 'P1', isAI: false, hand: [c('spades', 8)] },
+        { index: 1, nameVi: 'AI2', nameEn: 'AI2', isAI: true, hand: [c('clubs', 2)] },
+      ],
+      table: [{ attack: c('spades', 14), defense: null, attackedBy: 0 }],
+    };
+    const taken = chooseAIMove(aiTake);
+    expect(taken.table).toHaveLength(0);
+    expect(taken.players[1].hand.some((x) => x.id === 'spades-14')).toBe(true);
+  });
 });

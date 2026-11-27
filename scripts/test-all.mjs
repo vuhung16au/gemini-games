@@ -34,11 +34,22 @@ try {
   for (const [idx, target] of targets.entries()) {
     console.log(`\n=== [${idx + 1}/${targets.length}] ${target.name} ===`);
     const jsonOut = path.join(tmpDir, `result-${idx}.json`);
+    const covDir = path.join(tmpDir, `cov-${idx}`);
     const startedAt = Date.now();
 
     const proc = spawnSync(
       'npx',
-      ['vitest', 'run', '--reporter=default', '--reporter=json', `--outputFile=${jsonOut}`],
+      [
+        'vitest',
+        'run',
+        '--coverage',
+        '--coverage.reporter=text',
+        '--coverage.reporter=json-summary',
+        `--coverage.reportsDirectory=${covDir}`,
+        '--reporter=default',
+        '--reporter=json',
+        `--outputFile=${jsonOut}`,
+      ],
       { cwd: target.cwd, stdio: 'inherit', env: process.env },
     );
 
@@ -48,6 +59,8 @@ try {
     let testsTotal = 0;
     let testsPassed = 0;
     let testsFailed = 0;
+    let stmtsPct = 'n/a';
+    let branchPct = 'n/a';
 
     if (fs.existsSync(jsonOut)) {
       try {
@@ -62,6 +75,22 @@ try {
       }
     }
 
+    const covSummaryPath = path.join(covDir, 'coverage-summary.json');
+    if (fs.existsSync(covSummaryPath)) {
+      try {
+        const cov = JSON.parse(fs.readFileSync(covSummaryPath, 'utf8'));
+        const total = cov.total;
+        if (total?.statements?.pct != null) {
+          stmtsPct = `${total.statements.pct.toFixed(1)}%`;
+        }
+        if (total?.branches?.pct != null) {
+          branchPct = `${total.branches.pct.toFixed(1)}%`;
+        }
+      } catch {
+        // Ignore malformed coverage summary
+      }
+    }
+
     results.push({
       name: target.name,
       ok: proc.status === 0,
@@ -70,6 +99,8 @@ try {
       testsTotal,
       testsPassed,
       testsFailed,
+      stmtsPct,
+      branchPct,
       durationMs,
     });
   }
@@ -89,21 +120,21 @@ const totalDurationSec = (
   results.reduce((sum, r) => sum + r.durationMs, 0) / 1000
 ).toFixed(2);
 
-console.log('\n==================== OVERALL TEST RESULTS ====================');
+console.log('\n========================== OVERALL TEST RESULTS ==========================');
 console.log(
-  `${'Target'.padEnd(26)} ${'Status'.padEnd(8)} ${'Files'.padEnd(10)} ${'Tests'.padEnd(12)} Time`,
+  `${'Target'.padEnd(25)} ${'Status'.padEnd(7)} ${'Files'.padEnd(8)} ${'Tests'.padEnd(10)} ${'Stmts'.padEnd(8)} ${'Branch'.padEnd(8)} Time`,
 );
-console.log('-'.repeat(66));
+console.log('-'.repeat(76));
 for (const r of results) {
   const status = r.ok ? 'PASS' : 'FAIL';
   const files = `${r.filesPassed}/${r.filesTotal}`;
   const tests = `${r.testsPassed}/${r.testsTotal}`;
   const sec = `${(r.durationMs / 1000).toFixed(2)}s`;
   console.log(
-    `${r.name.padEnd(26)} ${status.padEnd(8)} ${files.padEnd(10)} ${tests.padEnd(12)} ${sec}`,
+    `${r.name.padEnd(25)} ${status.padEnd(7)} ${files.padEnd(8)} ${tests.padEnd(10)} ${r.stmtsPct.padEnd(8)} ${r.branchPct.padEnd(8)} ${sec}`,
   );
 }
-console.log('-'.repeat(66));
+console.log('-'.repeat(76));
 console.log(
   `Overall Suites : ${passedSuites}/${totalSuites} passed (${failedSuites} failed)`,
 );
@@ -112,7 +143,7 @@ console.log(
   `Test Cases     : ${passedTests}/${totalTests} passed (${failedTests} failed)`,
 );
 console.log(`Total Duration : ${totalDurationSec}s`);
-console.log('==============================================================');
+console.log('==========================================================================');
 
 if (failedSuites > 0) {
   process.exit(1);
