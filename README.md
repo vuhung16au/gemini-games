@@ -28,6 +28,7 @@ A local-first unified web game hub featuring **15 playable 2D & 3D browser games
 
 ## Key Project Files
 - [QUICKSTART.md](./QUICKSTART.md) — Build, run, test, and deploy commands
+- [courses/README.md](./courses/README.md) — 9-Day Game Development Course (Vibe Coding & AI Agents)
 - [docs/architecture.md](./docs/architecture.md) — Hub, per-game module, and multi-entry build architecture (with Mermaid diagrams)
 - [docs/developer-guide.md](./docs/developer-guide.md) — Developer workflow, `AGENTS.md` checklist, and verification gates
 - [docs/techstack.md](./docs/techstack.md) — Core foundation, 2D/3D rendering layers, testing, and Cloudflare hosting
