@@ -10,6 +10,7 @@
 Today you will explore the **Gemini Games** repository, understand what **vibe coding** with AI agents means in practice, and run the unified 16-game Dashboard on your own machine—without writing a single line of code yourself.
 
 - **Try the Live Demo First:** Play all 16 games online right now at **[https://gemini-games.vuhung16plus.workers.dev/](https://gemini-games.vuhung16plus.workers.dev/)**.
+- **Coding Agent (`agy` Recommended · Free + Google AI Pro):** This course and all 16 games were created with **Google `agy` (Antigravity)**. **`agy` is free**, and **Google AI Pro is recommended** so you can access `agy`'s **`orchestrator`** model for autonomous workflows. The same prompts (including classic `/plan`) also work with **Codex / ChatGPT, Claude Code, GitHub Copilot, and Cursor**.
 - **Vibe Coding vs. Traditional Coding:** In traditional coding, you spend months memorizing syntax and writing code line by line. In **vibe coding**, **your ideas, player experience, and clear intent are what matter most**—you can treat the **source code as an artifact** generated from your prompts and verified with automated checks (`make verify`).
 - **Learn Tools & Tech Stack As You Go:** This course does not teach `git`, `make`, `agy`, TypeScript, or React as dry standalone manuals—you will pick them up naturally by playing, asking `agy`, and building.
 - **100% Offline or Cloud-Ready:** Every game runs **100% offline** in your browser once cloned, and you can publish your customized hub to **Cloudflare Workers** (or alternatively **Vercel**).

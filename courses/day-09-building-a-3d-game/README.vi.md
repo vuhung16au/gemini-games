@@ -98,8 +98,10 @@ Sử dụng các câu lệnh mẫu bên dưới với Google `agy`—không cầ
    Run make test-all, make verify, and make deploy-dry-run, and help me resolve
    any coverage or documentation issues before deploying live.
    ```
-5. **Tạo Game Mới:** Nhờ `agy` xây dựng thêm một game 3D (**Block Stacker 3D**) và hướng dẫn triển khai lên Cloudflare Workers.
+5. **Tạo Game Mới (Thử thách `/goal` 100% Tự động Không cần canh):** Thử thách `agy` chạy **tự động 100% không cần giám sát** để tạo **Block Stacker 3D**, vượt qua `make verify` và chuẩn bị phát hành.
    ```text
-   /plan Create "Block Stacker 3D" using Three.js following AGENTS.md, then run
-   make verify and guide me through make deploy to Cloudflare Workers.
+   /goal Create "Block Stacker 3D" using Three.js following AGENTS.md (custom
+   artwork, How to Play, Tutorial, Hint, multilingual docs, and >=70% test
+   coverage), then run make verify and prepare make deploy-dry-run without
+   stopping until everything passes.
    ```

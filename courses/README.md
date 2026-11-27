@@ -5,6 +5,7 @@
 Welcome to the **Gemini Games 9-Day Game Development Course**! Starting from a **real, working project with 16 playable 2D & 3D web games**, you will learn **vibe coding** hands-on—how to play, understand, control the tools and tech stack, improve existing games, and build brand-new games with **Google `agy` (Antigravity)**.
 
 - **Live Demo:** Play all 16 games online right now at **https://gemini-games.vuhung16plus.workers.dev/**
+- **Coding Agent (`agy` Recommended · Free + Google AI Pro):** This course and all 16 games were created using **Google `agy` (Antigravity)**. **`agy` is free** to start, and **Google AI Pro is recommended** so you can access `agy`'s **`orchestrator`** model for complex end-to-end tasks (`/goal`) and multi-agent teamwork (`/teamwork`). The prompts and workflows also work with other coding agents such as **Codex / ChatGPT, Claude Code, GitHub Copilot, and Cursor**.
 - **100% Offline or Cloud-Ready:** Run everything **100% offline** on your own machine, or deploy statically to **Cloudflare Workers** (default) or alternatively **Vercel**.
 - **Duration:** 9 Days · 1 Module per Day · ~1 Hour per Module
 - **Prerequisites:** Basic computer literacy, Node.js 20+, Git, and a terminal (no prior coding, 3D, or game-engine experience required)
@@ -31,7 +32,7 @@ Welcome to the **Gemini Games 9-Day Game Development Course**! Starting from a *
 
 1. **Play & Explore:** Open a game in the Hub (locally or on the live demo) and experience it as a player.
 2. **Ask `agy` in Plain Language:** Ask high-level questions (*"Summarise the project"*, *"Explain the features in Dino Run"*, *"Introduce the tech stack"*).
-3. **Prompt `agy` to Improve or Build:** Describe what you want in plain words—`agy` finds the right files and generates the code artifact for you.
+3. **Prompt `agy` to Improve or Build:** Describe what you want in plain words—start with **`/plan`** (a classic magic keyword that also works in **GitHub Copilot, Claude, ChatGPT, and Cursor**) to review the plan first, or use **`/goal`** (100% unattended) and **`/teamwork`** (parallel multi-agent) in `agy`.
 4. **Verify Automatically:** Run one `make` command (`make test`, `make verify`) so automated tests confirm everything still works.
 
 ---

@@ -10,6 +10,7 @@
 今天你将探索 **Gemini Games** 项目，了解 **Vibe Coding** 在实践中的工作方式，并在本地启动包含 16 款游戏的统一大厅——全程无需手动编写一行代码。
 
 - **先体验在线演示：** 立即打开 **[https://gemini-games.vuhung16plus.workers.dev/](https://gemini-games.vuhung16plus.workers.dev/)** 试玩全部 16 款游戏。
+- **AI 编程智能体（推荐 `agy` · 免费 + Google AI Pro）：** 本课程与全部 16 款游戏均基于 **Google `agy` (Antigravity)** 打造。**`agy` 本身免费**，但**推荐订阅 Google AI Pro** 以使用 `agy` 的 **`orchestrator` 模型**。同样的提示词（包括经典的 `/plan`）也适用于 **Codex / ChatGPT、Claude Code、GitHub Copilot 与 Cursor**。
 - **Vibe Coding 与传统编程的区别：** 传统编程需要花数月记忆语法、逐行手写代码；而在 **Vibe Coding** 中，**你的创意、玩家体验和清晰意图才是最重要的**——你可以把**源代码视为由提示词生成的产物（Artifact）**，并用自动化命令（`make verify`）验证结果。
 - **边做边学工具与技术栈：** 本课程不会把 `git`、`make`、`agy`、TypeScript 或 React 当作枯燥的独立教材去教——你会在游玩、向 `agy` 提问和改游戏的过程中自然掌握它们。
 - **100% 离线运行或部署上线：** 克隆到本地后，所有游戏均可在浏览器 **100% 离线** 运行；你也可以随时发布到 **Cloudflare Workers**（或备选 **Vercel**）。

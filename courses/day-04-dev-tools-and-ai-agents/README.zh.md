@@ -47,8 +47,11 @@ git checkout -b practice-day-4
 git checkout main
 ```
 
-### 3. 高效配合 Google `agy`
-- **从 `/plan` 开始：** 做新功能或新游戏前加上 `/plan`，让 `agy` 先和你对齐方案。
+### 3. 掌握 Google `agy` 进阶指令（`/plan`、`/goal`、`/teamwork`）
+- **免费使用 + Google AI Pro（`orchestrator` 模型）：** `agy` **本身免费**，但**推荐订阅 Google AI Pro** 以使用 `agy` 的 **`orchestrator` 模型**，它非常适合多步规划、`/goal` 与 `/teamwork` 任务。
+- **`/plan`（经典的通用魔法指令）：** 在做新功能或新游戏前加上 `/plan`，AI 会先思考并展示计划等你确认后再动手。`/plan` 是一个经典的魔法指令，不仅在 **`agy`** 中有效，在 **GitHub Copilot、Claude / Claude Code、ChatGPT / Codex 与 Cursor** 中同样适用。
+- **`/goal`（端到端 100% 自主、100% 无人值守）：** 当你希望 `agy` **端到端、100% 自主且无需人工看守** 地完成整套任务（例如独立做完游戏、美术、测试、文档并反复修复直到 `make verify` 全部通过）时，使用 `/goal`。
+- **`/teamwork`（多智能体并行协作）：** 当你想让 `agy` **同时启动多个智能体** 时使用 `/teamwork`——例如**同时开发多款游戏**（如并行制作 *贪吃蛇* 与 *打砖块*），或由不同智能体分工负责玩法、美术、测试与多语言文档。
 - **描述结果而非代码：** 只告诉 `agy` *玩家应该看到什么体验*，由它负责定位文件与测试。
 
 ---
@@ -61,6 +64,16 @@ from scratch (account, Wrangler login, and dry-run)?
 ```text
 /plan Review Dino Run and suggest 3 fun gameplay improvements we could try
 safely on a new Git branch.
+```
+```text
+/goal Build a complete "Reaction Timer" game following AGENTS.md, including
+custom icons/covers, How to Play, Tutorial, Hint, multilingual docs, and
+automated tests. Do not stop until make verify GAME=reaction-timer passes.
+```
+```text
+/teamwork Create two new puzzle games at the same time in parallel: "Memory
+Match" and "Sliding 15-Puzzle", each following AGENTS.md and passing make
+verify.
 ```
 
 ---

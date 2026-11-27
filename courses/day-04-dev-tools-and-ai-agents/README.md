@@ -47,8 +47,11 @@ git checkout -b practice-day-4
 git checkout main
 ```
 
-### 3. Working Effectively with Google `agy`
-- **Start with `/plan`:** For any new feature or game, start your prompt with `/plan` so `agy` explains its plan first.
+### 3. Mastering Google `agy` Commands (`/plan`, `/goal`, `/teamwork`)
+- **Free + Google AI Pro (`orchestrator` model):** `agy` is **free** to use, and **Google AI Pro is recommended** so you can access `agy`'s **`orchestrator`** model—ideal for multi-step planning, `/goal`, and `/teamwork`.
+- **`/plan` (The Classic Magic Keyword):** Start a prompt with `/plan` whenever you want the AI to think, research, and show you a step-by-step plan for approval before changing any file. `/plan` is a classic magic keyword that works not only in **`agy`**, but also in **GitHub Copilot, Claude / Claude Code, ChatGPT / Codex, and Cursor**.
+- **`/goal` (100% Autonomous, 100% Unattended):** Use `/goal` when you want `agy` to implement an **end-to-end task 100% autonomously and 100% unattended** (for example, building a full game, generating artwork, writing tests and docs, and looping until `make verify` passes).
+- **`/teamwork` (Multi-Agent Parallel Execution):** Use `/teamwork` when you want `agy` to **spawn many agents at once**—for example, creating **more than one game at a time** (like *Snake* and *Breakout* in parallel) or dividing simulation, artwork, tests, and translations across a team.
 - **Describe outcomes, not code:** Tell `agy` *what the player should experience*, and let `agy` handle the files and tests.
 
 ---
@@ -61,6 +64,16 @@ from scratch (account, Wrangler login, and dry-run)?
 ```text
 /plan Review Dino Run and suggest 3 fun gameplay improvements we could try
 safely on a new Git branch.
+```
+```text
+/goal Build a complete "Reaction Timer" game following AGENTS.md, including
+custom icons/covers, How to Play, Tutorial, Hint, multilingual docs, and
+automated tests. Do not stop until make verify GAME=reaction-timer passes.
+```
+```text
+/teamwork Create two new puzzle games at the same time in parallel: "Memory
+Match" and "Sliding 15-Puzzle", each following AGENTS.md and passing make
+verify.
 ```
 
 ---

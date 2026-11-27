@@ -92,9 +92,10 @@ AGENTS.md completely:
    touch/pointer dragging on mobile viewports, and document mobile controls in
    Breakout's user guide.
    ```
-5. **创建新游戏：** 让 `agy` 打造另一款经典 2D 街机游戏 **贪吃蛇 (Classic Snake)**。
+5. **创建新游戏（`/teamwork` 多智能体挑战）：** 让 `agy`（配合 Google AI Pro 的 `orchestrator` 模型）同时启动多个智能体，**并行打造两款 2D 游戏**：**贪吃蛇 (Classic Snake)** 与 **霓虹乒乓 (Neon Pong)**。
    ```text
-   /plan Create "Classic Snake" following AGENTS.md, with wall-wrap toggle, speed
-   levels, food combos, How to Play, Tutorial, Hint, and automated unit + browser
-   tests.
+   /teamwork Create two 2D Canvas arcade games at the same time in parallel:
+   "Classic Snake" and "Neon Pong", each following AGENTS.md (with How to Play,
+   Tutorial, Hint, icons/covers, and automated unit + browser tests) and
+   passing make verify.
    ```

@@ -5,6 +5,7 @@
 Chào mừng đến với **Khóa học Phát triển Game 9 Ngày cùng Gemini Games**! Bắt đầu từ một **dự án hoàn chỉnh đang chạy tốt với 16 trò chơi web 2D & 3D**, bạn sẽ học **vibe coding** qua thực hành trực tiếp—chơi thử, hiểu cấu trúc, làm chủ công cụ và tech stack, cải tiến các game có sẵn và tự tay tạo game mới cùng **Google `agy` (Antigravity)**.
 
 - **Bản Demo Trực tuyến:** Chơi ngay cả 16 game tại **https://gemini-games.vuhung16plus.workers.dev/**
+- **Coding Agent (Khuyến nghị `agy` · Miễn phí + Google AI Pro):** Khóa học này và toàn bộ 16 trò chơi được tạo bằng **Google `agy` (Antigravity)**. **`agy` miễn phí** để bắt đầu, nhưng **khuyến nghị dùng Google AI Pro** để truy cập mô hình **`orchestrator`** trong `agy` cho các tác vụ tự động đầu-cuối (`/goal`) và đa tác tử (`/teamwork`). Các câu lệnh cũng hoạt động tốt với **Codex / ChatGPT, Claude Code, GitHub Copilot và Cursor**.
 - **Chạy 100% Ngoại tuyến hoặc Đưa lên Cloud:** Chạy **100% offline** trên máy của bạn, hoặc triển khai tĩnh lên **Cloudflare Workers** (mặc định) hay **Vercel**.
 - **Thời lượng:** 9 Ngày · 1 Mô-đun mỗi ngày · ~1 Giờ mỗi mô-đun
 - **Yêu cầu đầu vào:** Biết sử dụng máy tính cơ bản, Node.js 20+, Git và terminal (không cần kinh nghiệm lập trình, 3D hay game engine)
@@ -31,7 +32,7 @@ Chào mừng đến với **Khóa học Phát triển Game 9 Ngày cùng Gemini 
 
 1. **Chơi & Khám phá:** Mở một trò chơi trong Hub (trên máy hoặc trên bản demo trực tuyến) và trải nghiệm như người chơi.
 2. **Hỏi `agy` bằng Ngôn ngữ Tự nhiên:** Đặt câu hỏi tổng quan (*"Tóm tắt dự án"*, *"Giải thích các tính năng trong Dino Run"*, *"Giới thiệu tech stack của dự án"*).
-3. **Ra lệnh cho `agy` Cải tiến hoặc Tạo mới:** Mô tả điều bạn muốn bằng lời nói đời thường—`agy` tự tìm đúng tệp và tạo ra mã nguồn cho bạn.
+3. **Ra lệnh cho `agy` Cải tiến hoặc Tạo mới:** Mô tả điều bạn muốn bằng lời nói đời thường—bắt đầu với **`/plan`** (từ khóa kinh điển hoạt động trên cả **GitHub Copilot, Claude, ChatGPT và Cursor**) để duyệt kế hoạch trước, hoặc dùng **`/goal`** (100% tự động không cần canh) và **`/teamwork`** (nhiều agent song song) trong `agy`.
 4. **Xác minh Tự động:** Chạy một lệnh `make` (`make test`, `make verify`) để kiểm thử tự động xác nhận mọi thứ hoạt động tốt.
 
 ---

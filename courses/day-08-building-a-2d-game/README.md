@@ -92,9 +92,10 @@ Use Google `agy` with the sample prompts below—no manual coding required:
    touch/pointer dragging on mobile viewports, and document mobile controls in
    Breakout's user guide.
    ```
-5. **Create a New Game:** Ask `agy` to build another classic 2D Canvas arcade game: **Classic Snake** or **Neon Pong**.
+5. **Create a New Game (Multi-Agent `/teamwork` Challenge):** Ask `agy` (with the `orchestrator` model on Google AI Pro) to spawn parallel agents and build **two 2D games at once**: **Classic Snake** and **Neon Pong**.
    ```text
-   /plan Create "Classic Snake" following AGENTS.md, with wall-wrap toggle, speed
-   levels, food combos, How to Play, Tutorial, Hint, and automated unit + browser
-   tests.
+   /teamwork Create two 2D Canvas arcade games at the same time in parallel:
+   "Classic Snake" and "Neon Pong", each following AGENTS.md (with How to Play,
+   Tutorial, Hint, icons/covers, and automated unit + browser tests) and
+   passing make verify.
    ```

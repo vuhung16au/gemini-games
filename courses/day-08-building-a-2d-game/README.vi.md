@@ -92,9 +92,10 @@ Sử dụng các câu lệnh mẫu bên dưới với Google `agy`—không cầ
    touch/pointer dragging on mobile viewports, and document mobile controls in
    Breakout's user guide.
    ```
-5. **Tạo Game Mới:** Nhờ `agy` xây dựng một game arcade 2D kinh điển tương tự: **Rắn Săn Mồi (Classic Snake)**.
+5. **Tạo Game Mới (Thử thách `/teamwork` Đa tác tử):** Nhờ `agy` (dùng mô hình `orchestrator` trên Google AI Pro) khởi chạy nhiều agent song song để **tạo 2 game 2D cùng lúc**: **Classic Snake** và **Neon Pong**.
    ```text
-   /plan Create "Classic Snake" following AGENTS.md, with wall-wrap toggle, speed
-   levels, food combos, How to Play, Tutorial, Hint, and automated unit + browser
-   tests.
+   /teamwork Create two 2D Canvas arcade games at the same time in parallel:
+   "Classic Snake" and "Neon Pong", each following AGENTS.md (with How to Play,
+   Tutorial, Hint, icons/covers, and automated unit + browser tests) and
+   passing make verify.
    ```

@@ -98,8 +98,10 @@ Three.js following AGENTS.md and SimCity 3D's patterns:
    Run make test-all, make verify, and make deploy-dry-run, and help me resolve
    any coverage or documentation issues before deploying live.
    ```
-5. **创建新游戏：** 让 `agy` 使用 Three.js 再构建一款 3D 游戏（**Block Stacker 3D**）并上线部署。
+5. **创建新游戏（`/goal` 100% 无人值守端到端挑战）：** 挑战让 `agy` **100% 自主、无人值守** 地从零完成 **3D 叠方块 (Block Stacker 3D)**、通过 `make verify` 并完成部署预演。
    ```text
-   /plan Create "Block Stacker 3D" using Three.js following AGENTS.md, then run
-   make verify and guide me through make deploy to Cloudflare Workers.
+   /goal Create "Block Stacker 3D" using Three.js following AGENTS.md (custom
+   artwork, How to Play, Tutorial, Hint, multilingual docs, and >=70% test
+   coverage), then run make verify and prepare make deploy-dry-run without
+   stopping until everything passes.
    ```

@@ -47,8 +47,11 @@ git checkout -b practice-day-4
 git checkout main
 ```
 
-### 3. Làm Việc Hiệu Quả với Google `agy`
-- **Bắt đầu bằng `/plan`:** Với tính năng hoặc game mới, thêm `/plan` ở đầu câu lệnh để `agy` trình bày kế hoạch trước.
+### 3. Làm Chủ Lệnh Nâng Cao của Google `agy` (`/plan`, `/goal`, `/teamwork`)
+- **Miễn phí + Google AI Pro (mô hình `orchestrator`):** `agy` **miễn phí** để sử dụng, nhưng **khuyến nghị Google AI Pro** để mở khóa mô hình **`orchestrator`** trong `agy`—rất phù hợp cho lập kế hoạch phức tạp, `/goal` và `/teamwork`.
+- **`/plan` (Từ khóa Kinh điển Đa nền tảng):** Mở đầu câu lệnh bằng `/plan` khi muốn AI suy nghĩ, phân tích và trình bày kế hoạch để bạn duyệt trước khi sửa tệp. `/plan` là từ khóa kinh điển hoạt động không chỉ trong **`agy`**, mà còn trên **GitHub Copilot, Claude / Claude Code, ChatGPT / Codex và Cursor**.
+- **`/goal` (100% Tự động, 100% Không cần canh):** Dùng `/goal` khi bạn muốn `agy` thực hiện **trọn vẹn từ đầu đến cuối một cách tự động 100%, không cần giám sát** (ví dụ: tự làm game hoàn chỉnh, đồ họa, kiểm thử, tài liệu và tự sửa cho đến khi `make verify` đạt).
+- **`/teamwork` (Đa tác tử Song song):** Dùng `/teamwork` khi bạn muốn `agy` **khởi chạy nhiều agent cùng lúc**—ví dụ: **tạo nhiều hơn một game cùng lúc** (như làm song song *Snake* và *Breakout*), hoặc chia nhóm agent lo logic, đồ họa, kiểm thử và dịch thuật.
 - **Mô tả kết quả, không cần mô tả code:** Chỉ nói cho `agy` *người chơi sẽ trải nghiệm gì*, để `agy` tự lo tệp tin và kiểm thử.
 
 ---
@@ -61,6 +64,16 @@ from scratch (account, Wrangler login, and dry-run)?
 ```text
 /plan Review Dino Run and suggest 3 fun gameplay improvements we could try
 safely on a new Git branch.
+```
+```text
+/goal Build a complete "Reaction Timer" game following AGENTS.md, including
+custom icons/covers, How to Play, Tutorial, Hint, multilingual docs, and
+automated tests. Do not stop until make verify GAME=reaction-timer passes.
+```
+```text
+/teamwork Create two new puzzle games at the same time in parallel: "Memory
+Match" and "Sliding 15-Puzzle", each following AGENTS.md and passing make
+verify.
 ```
 
 ---

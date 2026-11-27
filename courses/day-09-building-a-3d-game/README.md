@@ -98,8 +98,10 @@ Use Google `agy` with the sample prompts below—no manual coding required:
    Run make test-all, make verify, and make deploy-dry-run, and help me resolve
    any coverage or documentation issues before deploying live.
    ```
-5. **Create a New Game:** Ask `agy` to build another 3D game (**Block Stacker 3D**) and deploy your collection live.
+5. **Create a New Game (`/goal` Unattended End-to-End Challenge):** Challenge `agy` to run **100% autonomously and unattended** to build **Block Stacker 3D**, pass `make verify`, and prepare deployment.
    ```text
-   /plan Create "Block Stacker 3D" using Three.js following AGENTS.md, then run
-   make verify and guide me through make deploy to Cloudflare Workers.
+   /goal Create "Block Stacker 3D" using Three.js following AGENTS.md (custom
+   artwork, How to Play, Tutorial, Hint, multilingual docs, and >=70% test
+   coverage), then run make verify and prepare make deploy-dry-run without
+   stopping until everything passes.
    ```

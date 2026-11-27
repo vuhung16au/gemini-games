@@ -10,6 +10,7 @@
 Hôm nay bạn sẽ khám phá dự án **Gemini Games**, hiểu **vibe coding** cùng AI agent hoạt động thế nào trong thực tế, và chạy Bảng điều khiển 16 game ngay trên máy—mà không cần tự viết dòng code nào.
 
 - **Trải nghiệm bản Demo trực tuyến trước:** Chơi thử cả 16 game ngay tại **[https://gemini-games.vuhung16plus.workers.dev/](https://gemini-games.vuhung16plus.workers.dev/)**.
+- **Coding Agent (Khuyến nghị `agy` · Miễn phí + Google AI Pro):** Khóa học và toàn bộ 16 trò chơi được tạo bằng **Google `agy` (Antigravity)**. **`agy` miễn phí**, và **khuyến nghị Google AI Pro** để truy cập mô hình **`orchestrator`** trong `agy`. Các prompt tương tự (bao gồm từ khóa kinh điển `/plan`) cũng dùng được với **Codex / ChatGPT, Claude Code, GitHub Copilot và Cursor**.
 - **Vibe Coding khác Lập trình truyền thống ra sao:** Với lập trình truyền thống, bạn phải mất nhiều tháng học cú pháp và gõ từng dòng code. Với **vibe coding**, **ý tưởng, trải nghiệm người chơi và mục tiêu rõ ràng mới là điều quan trọng nhất**—bạn có thể xem **mã nguồn như một sản phẩm đầu ra (artifact)** được tạo từ prompt và xác minh bằng lệnh tự động (`make verify`).
 - **Học công cụ & tech stack qua thực hành:** Khóa học không dạy `git`, `make`, `agy`, TypeScript hay React như lý thuyết khô khan—bạn sẽ làm quen tự nhiên trong quá trình chơi, hỏi `agy` và chỉnh sửa game.
 - **Chạy 100% Ngoại tuyến hoặc Đưa lên Cloud:** Sau khi clone về máy, toàn bộ game chạy **100% ngoại tuyến** trên trình duyệt; khi muốn chia sẻ, bạn có thể deploy lên **Cloudflare Workers** (hoặc **Vercel**).
