@@ -81,6 +81,27 @@ npm run build && npx wrangler deploy --dry-run
 
 ---
 
-## 练习与挑战
-1. 在 `npm run build` 后运行 `npx wrangler deploy --dry-run`，观察 Wrangler 在 `dist/` 中检测到多少静态文件。
-2. **挑战：** 运行 `git log --oneline -n 5`，观察本仓库的提交信息是如何组织的。
+## 练习与挑战（纯提示词 Vibe Coding）
+
+使用下方示例提示词向 Google `agy` 提问——无需手动编写代码：
+
+1. **深入理解项目：** 让 `agy` 解释 `Makefile` 与 `scripts/check-compliance.mjs` 如何自动落实 `AGENTS.md`。
+   ```text
+   Read Makefile and scripts/check-compliance.mjs, and explain each check that make verify runs before allowing a release.
+   ```
+2. **改进现有功能：** 让 `agy` 将 `make help` 的输出按功能分组展示。
+   ```text
+   In Makefile, group the make help output into Setup, Dev, Quality, and Deploy sections while keeping the awk ## comment format intact. Verify with make help.
+   ```
+3. **实现新功能：** 让 `agy` 在 `Makefile` 中新增 `make status` 目标，显示分支、游戏数与构建状态。
+   ```text
+   Add a "status" target to Makefile (and update TODOs/BACKLOGs/Makefile.md) that prints the current git branch, number of games in games/, and whether dist/ exists. Verify with make status.
+   ```
+4. **完善测试 / 文档：** 让 `agy` 为 `QUICKSTART.md` 补充“常见问题排查”章节。
+   ```text
+   Add a short Troubleshooting section to QUICKSTART.md covering Playwright browser install, port conflicts, and wrangler login.
+   ```
+5. **创建新游戏：** 让 `agy` 在新 Git 分支上使用 `/plan` 创建 **“反应速度测试 (Reaction Timer)”** 游戏。
+   ```text
+   /plan Create a "Reaction Timer" game in games/reaction-timer/ on a new branch following AGENTS.md and .agents/skills/create-game/SKILL.md, measuring millisecond reaction time across 5 rounds with best-average persistence.
+   ```

@@ -74,6 +74,27 @@ In games/dino-run/src/game/constants.ts, increase BASE_SPEED from 290 to 340 and
 
 ---
 
-## Bài tập & Thử thách
-1. Thêm **Nhảy đúp (Double-Jump)** hoặc **Khiên bảo vệ (Shield Power-Up)** cho `Dino Run` trên nhánh `day-06-dino-mod`.
-2. **Thử thách:** Thêm một kiểm tra Playwright mới trong `games/dino-run/e2e/dino.spec.ts` để xác minh tính năng mới trên Chromium, rồi commit trên nhánh local của bạn.
+## Bài tập & Thử thách (Vibe Coding Chỉ Dùng Câu Lệnh)
+
+Sử dụng các câu lệnh mẫu bên dưới với Google `agy`—không cần tự viết code thủ công:
+
+1. **Hiểu Dự án Sâu hơn:** Nhờ `agy` giải thích khoảng cách sinh chướng ngại vật và vùng va chạm trong `Dino Run`.
+   ```text
+   Read games/dino-run/src/game/engine.ts and explain how obstacle spawn gaps scale with speed and how hitbox forgiving margins work.
+   ```
+2. **Cải tiến Tính năng:** Nhờ `agy` thêm hiệu ứng chuyển màu mượt mà khi chuyển Ngày/Đêm trong `Dino Run`.
+   ```text
+   In games/dino-run/src/renderer/canvasRenderer.ts, add a smooth color-lerp transition when switching between Day and Night every 700 points. Verify with make test GAME=dino-run and make build GAME=dino-run.
+   ```
+3. **Triển khai Tính năng Mới:** Nhờ `agy` thêm cơ chế **Nhảy Đúp (Double-Jump)** trên nhánh thực hành.
+   ```text
+   /plan Add an optional Double-Jump mechanic to Classic mode in games/dino-run/ (types.ts, engine.ts) with a subtle jump-charge indicator on the HUD. Verify with make verify GAME=dino-run.
+   ```
+4. **Cải thiện Kiểm thử / Tài liệu:** Nhờ `agy` bổ sung kiểm tra Playwright E2E cho tính năng mới và cập nhật `user-guide.md`.
+   ```text
+   Add a Playwright assertion in games/dino-run/e2e/dino.spec.ts verifying the new feature works in Chromium, and document it in games/dino-run/docs/user-guide.md. Run make test-e2e GAME=dino-run.
+   ```
+5. **Tạo Game Mới:** Nhờ `agy` xây dựng một game chạy vô tận tương tự mang tên **"Space Astro Runner"**.
+   ```text
+   /plan Create a similar endless runner "Space Astro Runner" in games/space-runner/ following AGENTS.md and .agents/skills/create-game/SKILL.md, dodging asteroids and laser drones with gravity flip controls.
+   ```

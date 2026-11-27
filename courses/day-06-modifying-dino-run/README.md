@@ -74,6 +74,27 @@ In games/dino-run/src/game/constants.ts, increase BASE_SPEED from 290 to 340 and
 
 ---
 
-## Exercises & Challenges
-1. Add a **Double-Jump** or **Shield Power-Up** to `Dino Run` on your `day-06-dino-mod` branch.
-2. **Challenge:** Add a new Playwright assertion in `games/dino-run/e2e/dino.spec.ts` that verifies your new feature works in Chromium, then commit your branch locally.
+## Exercises & Challenges (Prompt-Only Vibe Coding)
+
+Use Google `agy` with the sample prompts below—no manual coding required:
+
+1. **Understand the Project:** Ask `agy` to explain `Dino Run`'s obstacle spawning intervals and collision hitboxes.
+   ```text
+   Read games/dino-run/src/game/engine.ts and explain how obstacle spawn gaps scale with speed and how hitbox forgiving margins work.
+   ```
+2. **Improve a Feature:** Ask `agy` to refine the Day/Night transition smoothness in `Dino Run`.
+   ```text
+   In games/dino-run/src/renderer/canvasRenderer.ts, add a smooth color-lerp transition when switching between Day and Night every 700 points. Verify with make test GAME=dino-run and make build GAME=dino-run.
+   ```
+3. **Implement a New Feature:** Ask `agy` to add a **Shield Power-Up** or **Double-Jump** on your branch.
+   ```text
+   /plan Add an optional Double-Jump mechanic to Classic mode in games/dino-run/ (types.ts, engine.ts) with a subtle jump-charge indicator on the HUD. Verify with make verify GAME=dino-run.
+   ```
+4. **Improve Tests / Docs:** Ask `agy` to add a Playwright E2E test for your new feature and update `games/dino-run/docs/user-guide.md`.
+   ```text
+   Add a Playwright assertion in games/dino-run/e2e/dino.spec.ts verifying the new feature works in Chromium, and document it in games/dino-run/docs/user-guide.md. Run make test-e2e GAME=dino-run.
+   ```
+5. **Create a New Game:** Ask `agy` to build a similar side-scrolling **"Space Astro Runner"** Canvas game.
+   ```text
+   /plan Create a similar endless runner "Space Astro Runner" in games/space-runner/ following AGENTS.md and .agents/skills/create-game/SKILL.md, dodging asteroids and laser drones with gravity flip controls.
+   ```

@@ -66,6 +66,27 @@ Explain how collision detection and the restart cooldown work, and suggest 2 ext
 
 ---
 
-## Bài tập & Thử thách
-1. Chạy `npm test` trong `games/1024` và `games/ta-la-phom` để xem cách kiểm thử đơn vị cho game giải đố và game bài.
-2. **Thử thách:** Yêu cầu `agy` giải thích cách xử lý `visibilitychange` trong [`games/dino-run/src/App.tsx`](../../games/dino-run/src/App.tsx) và lý do nó giúp tránh thua oan khi chuyển tab.
+## Bài tập & Thử thách (Vibe Coding Chỉ Dùng Câu Lệnh)
+
+Sử dụng các câu lệnh mẫu bên dưới với Google `agy`—không cần tự viết code thủ công:
+
+1. **Hiểu Dự án Sâu hơn:** Nhờ `agy` giải thích cách `visibilitychange` và giới hạn `dt` ngăn lỗi vật lý.
+   ```text
+   Explain how visibilitychange and dt clamping work in games/dino-run/src/App.tsx and games/flappy-bird/src/App.tsx, and why src/game/ has zero DOM imports.
+   ```
+2. **Cải tiến Tính năng:** Nhờ `agy` làm thông điệp gợi ý suy luận của `Minesweeper` rõ ràng hơn cho người mới.
+   ```text
+   In games/minesweeper/src/game/hints.ts, enrich the hint message so it explains why a cell is guaranteed safe or a mine. Verify with make test GAME=minesweeper.
+   ```
+3. **Triển khai Tính năng Mới:** Nhờ `agy` thêm bộ đếm số nước đi cho `Checkers`.
+   ```text
+   /plan Add a move counter to games/checkers/ (src/game/rules.ts and HUD) that resets on New Game and persists in checkers_v1. Verify with make verify GAME=checkers.
+   ```
+4. **Cải thiện Kiểm thử / Tài liệu:** Nhờ `agy` tăng độ phủ kiểm thử cho `games/1024/src/game/storage.ts`.
+   ```text
+   Run make test GAME=1024, inspect uncovered lines in games/1024/src/game/storage.ts, and add Vitest edge-case tests so storage.ts exceeds 85% coverage.
+   ```
+5. **Tạo Game Mới:** Nhờ `agy` xây dựng game **"Kéo-Búa-Bao (Rock-Paper-Scissors)"** thể thức Best-of-5.
+   ```text
+   /plan Create "Rock-Paper-Scissors" in games/rps/ following AGENTS.md, with pure rules & streak tracking in src/game/, How to Play, Tutorial, Hint, Vitest >=70% coverage, and Playwright E2E.
+   ```

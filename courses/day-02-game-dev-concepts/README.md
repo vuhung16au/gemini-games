@@ -66,6 +66,27 @@ Explain how collision detection and the restart cooldown work, and suggest 2 ext
 
 ---
 
-## Exercises & Challenges
-1. Run `npm test` inside `games/1024` and `games/ta-la-phom` to see how puzzle and card games are unit-tested.
-2. **Challenge:** Ask `agy` to explain how `visibilitychange` is handled in [`games/dino-run/src/App.tsx`](../../games/dino-run/src/App.tsx) and why it prevents unfair crashes when switching tabs.
+## Exercises & Challenges (Prompt-Only Vibe Coding)
+
+Use Google `agy` with the sample prompts below—no manual coding required:
+
+1. **Understand the Project:** Ask `agy` to explain how `visibilitychange` and `dt` clamping prevent physics bugs.
+   ```text
+   Explain how visibilitychange and dt clamping work in games/dino-run/src/App.tsx and games/flappy-bird/src/App.tsx, and why src/game/ has zero DOM imports.
+   ```
+2. **Improve a Feature:** Ask `agy` to make `Minesweeper`'s deduction hint explanation clearer for beginners.
+   ```text
+   In games/minesweeper/src/game/hints.ts, enrich the hint message so it explains why a cell is guaranteed safe or a mine. Verify with make test GAME=minesweeper.
+   ```
+3. **Implement a New Feature:** Ask `agy` to add a per-turn move counter to `Checkers`.
+   ```text
+   /plan Add a move counter to games/checkers/ (src/game/rules.ts and HUD) that resets on New Game and persists in checkers_v1. Verify with make verify GAME=checkers.
+   ```
+4. **Improve Tests / Docs:** Ask `agy` to run `make test-all` and add unit tests for any uncovered branch in `games/1024/src/game/storage.ts`.
+   ```text
+   Run make test GAME=1024, inspect uncovered lines in games/1024/src/game/storage.ts, and add Vitest edge-case tests so storage.ts exceeds 85% coverage.
+   ```
+5. **Create a New Game:** Ask `agy` to build a pure-simulation **"Rock-Paper-Scissors"** game with Best-of-5 rounds.
+   ```text
+   /plan Create "Rock-Paper-Scissors" in games/rps/ following AGENTS.md, with pure rules & streak tracking in src/game/, How to Play, Tutorial, Hint, Vitest >=70% coverage, and Playwright E2E.
+   ```

@@ -65,6 +65,27 @@ cd ../.. && npm test && npm run test:e2e && npx tsc --noEmit && npm run build
 
 ---
 
-## 练习与挑战
-1. 在桌面键盘与移动端触控视口（使用浏览器 DevTools 响应式模式）下分别通关第 1 关与第 2 关。
-2. **挑战：** 让 `agy` 添加一个**Boss 砖块**（需要击中 3 次，每次受击产生裂纹视觉效果），并补充验证 3 次击碎的单元测试。
+## 练习与挑战（纯提示词 Vibe Coding）
+
+使用下方示例提示词向 Google `agy` 提问——无需手动编写代码：
+
+1. **深入理解项目：** 让 `agy` 解释圆与 AABB 碰撞数学以及 `requestAnimationFrame` 状态同步。
+   ```text
+   Read games/breakout/src/game/engine.ts (or games/battle-city/src/game/engine.ts) and explain how collision normals and clamped dt keep 60fps Canvas physics deterministic.
+   ```
+2. **改进现有功能：** 让 `agy` 优化挡板边缘反弹角度并加入连击音高变化。
+   ```text
+   In games/breakout/, refine paddle edge-hit reflection angles so corner hits feel snappier and scale the brick-break Web Audio pitch with the current combo. Verify with make test GAME=breakout.
+   ```
+3. **实现新功能：** 让 `agy` 添加需要击中 3 次并逐级显示裂纹的 **Boss 砖块**。
+   ```text
+   /plan Add a "Boss Brick" (3 HP, renders crack stages on Canvas, awards bonus points) to games/breakout/ and add unit tests for 3-hit destruction. Verify with make verify GAME=breakout.
+   ```
+4. **完善测试 / 文档：** 让 `agy` 补充移动端触控拖拽 Playwright 测试并更新 `user-guide.md`。
+   ```text
+   In games/breakout/e2e/breakout.spec.ts, add a responsive 390x844 touch-drag test and document mobile controls in games/breakout/docs/user-guide.md. Run make test-e2e GAME=breakout.
+   ```
+5. **创建新游戏：** 让 `agy` 构建另一款经典 2D Canvas 街机游戏 **贪吃蛇 (Classic Snake)**。
+   ```text
+   /plan Create "Classic Snake" in games/snake/ following AGENTS.md, .agents/skills/create-game/SKILL.md, and .agents/skills/canvas-and-threejs-patterns/SKILL.md, with grid wrapping toggle, speed levels, How to Play, Tutorial, Hint, and >=70% coverage.
+   ```

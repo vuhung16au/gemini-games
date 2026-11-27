@@ -65,6 +65,27 @@ cd ../.. && npm test && npm run test:e2e && npx tsc --noEmit && npm run build
 
 ---
 
-## Bài tập & Thử thách
-1. Chơi qua Màn 1 và Màn 2 trên cả bàn phím máy tính lẫn khung nhìn cảm ứng di động (dùng chế độ responsive của DevTools).
-2. **Thử thách:** Yêu cầu `agy` thêm **Gạch Trùm (Boss Brick)** (cần 3 lần chạm mới vỡ, nứt dần sau mỗi lần chạm) kèm unit test xác nhận phá hủy sau 3 lần chạm.
+## Bài tập & Thử thách (Vibe Coding Chỉ Dùng Câu Lệnh)
+
+Sử dụng các câu lệnh mẫu bên dưới với Google `agy`—không cần tự viết code thủ công:
+
+1. **Hiểu Dự án Sâu hơn:** Nhờ `agy` giải thích toán va chạm Hình tròn-vs-AABB và đồng bộ `requestAnimationFrame`.
+   ```text
+   Read games/breakout/src/game/engine.ts (or games/battle-city/src/game/engine.ts) and explain how collision normals and clamped dt keep 60fps Canvas physics deterministic.
+   ```
+2. **Cải tiến Tính năng:** Nhờ `agy` tinh chỉnh góc nảy mép thanh đỡ và tăng cao độ âm thanh Web Audio theo combo.
+   ```text
+   In games/breakout/, refine paddle edge-hit reflection angles so corner hits feel snappier and scale the brick-break Web Audio pitch with the current combo. Verify with make test GAME=breakout.
+   ```
+3. **Triển khai Tính năng Mới:** Nhờ `agy` thêm **Gạch Trùm (Boss Brick)** 3 máu có vết nứt sau mỗi lần chạm.
+   ```text
+   /plan Add a "Boss Brick" (3 HP, renders crack stages on Canvas, awards bonus points) to games/breakout/ and add unit tests for 3-hit destruction. Verify with make verify GAME=breakout.
+   ```
+4. **Cải thiện Kiểm thử / Tài liệu:** Nhờ `agy` thêm kiểm thử Playwright kéo cảm ứng trên di động và cập nhật `user-guide.md`.
+   ```text
+   In games/breakout/e2e/breakout.spec.ts, add a responsive 390x844 touch-drag test and document mobile controls in games/breakout/docs/user-guide.md. Run make test-e2e GAME=breakout.
+   ```
+5. **Tạo Game Mới:** Nhờ `agy` xây dựng một game 2D Canvas kinh điển tương tự: **Rắn Săn Mồi (Classic Snake)**.
+   ```text
+   /plan Create "Classic Snake" in games/snake/ following AGENTS.md, .agents/skills/create-game/SKILL.md, and .agents/skills/canvas-and-threejs-patterns/SKILL.md, with grid wrapping toggle, speed levels, How to Play, Tutorial, Hint, and >=70% coverage.
+   ```

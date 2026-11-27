@@ -78,6 +78,27 @@ npm run deploy
 
 ---
 
-## 练习与挑战
-1. 为你的 3D 游戏添加一个**昼夜光照切换**开关（灵感来自 `games/simcity/`）。
-2. **终极毕业挑战：** 将你最满意的第 7、8 或 9 天游戏合并到 `main` 分支，运行 `npm run deploy`，并分享你的线上 `*.workers.dev` 链接！
+## 练习与挑战（纯提示词 Vibe Coding）
+
+使用下方示例提示词向 Google `agy` 提问——无需手动编写代码：
+
+1. **深入理解项目：** 让 `agy` 解释 Three.js `.dispose()` 资源释放与 SwiftShader WebGL 测试参数。
+   ```text
+   Read games/simcity/src/renderer/CityScene.ts and games/simcity/playwright.config.ts, and explain how WebGL fallback, ResizeObserver, .dispose(), and SwiftShader flags work together.
+   ```
+2. **改进现有功能：** 让 `agy` 优化 3D 游戏中的相机阻尼跟随与阴影质感。
+   ```text
+   In games/marble-maze/src/renderer/, add smooth lerp camera follow and tune directional shadow bias so the marble casts a crisp shadow without acne. Verify with make test-e2e GAME=marble-maze.
+   ```
+3. **实现新功能：** 让 `agy` 为你的 3D 游戏添加受 `games/simcity/` 启发的 **昼夜光照切换** 开关。
+   ```text
+   /plan Add a Day / Night lighting toggle to games/marble-maze/ (persisted in marble_maze_v1) that smoothly adjusts ambient and directional light colors. Verify with make verify GAME=marble-maze.
+   ```
+4. **完善测试 / 文档：** 让 `agy` 在部署前运行全仓库质量与合规门槛检查。
+   ```text
+   Run make test-all, make verify, and make deploy-dry-run, and fix any compliance or >=70% coverage gaps reported.
+   ```
+5. **创建新游戏：** 让 `agy` 使用 Three.js 再构建一款 3D 游戏（**3D 叠方块 Block Stacker 3D**）并预演部署。
+   ```text
+   /plan Create "Block Stacker 3D" in games/block-stacker-3d/ using Vanilla Three.js following AGENTS.md and .agents/skills/create-game/SKILL.md, then run make verify and make deploy-dry-run.
+   ```

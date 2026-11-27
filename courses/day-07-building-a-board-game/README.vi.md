@@ -72,6 +72,27 @@ cd ../.. && npm test && npm run test:e2e && npx tsc --noEmit && npm run build
 
 ---
 
-## Bài tập & Thử thách
-1. Chơi một ván đầy đủ với **AI Minimax Bất Bại** và xác nhận AI không bao giờ thua.
-2. **Thử thách:** Mở rộng Tic Tac Toe với **Chế độ Bàn 4×4** hoặc **Bảng điểm Best-of-5** bằng một câu lệnh tiếp theo và thêm unit test cho tính năng đó.
+## Bài tập & Thử thách (Vibe Coding Chỉ Dùng Câu Lệnh)
+
+Sử dụng các câu lệnh mẫu bên dưới với Google `agy`—không cần tự viết code thủ công:
+
+1. **Hiểu Dự án Sâu hơn:** Nhờ `agy` giải thích cách Minimax AI chấm điểm thế cờ trong Tic Tac Toe hoặc Checkers.
+   ```text
+   Read games/tic-tac-toe/src/game/engine.ts (or games/checkers/src/game/ai.ts) and explain how Minimax / Alpha-Beta scores winning, losing, and drawing moves.
+   ```
+2. **Cải tiến Tính năng:** Nhờ `agy` thêm hiệu ứng nét vẽ SVG cho hàng thắng 3 ô và làm nổi bật ô Gợi ý.
+   ```text
+   In games/tic-tac-toe/, highlight the winning line with an animated SVG stroke and pulse the Hint cell cleanly. Verify with make verify GAME=tic-tac-toe.
+   ```
+3. **Triển khai Tính năng Mới:** Nhờ `agy` thêm bảng điểm **Loạt đấu Best-of-5** cho Tic Tac Toe.
+   ```text
+   /plan Add a Best-of-5 Series scoreboard (X wins, O wins, Draws, Match Winner banner) to games/tic-tac-toe/ persisted in tic_tac_toe_v1. Verify with make verify GAME=tic-tac-toe.
+   ```
+4. **Cải thiện Kiểm thử / Tài liệu:** Nhờ `agy` bổ sung unit test chứng minh AI Minimax Bất Bại không bao giờ thua.
+   ```text
+   In games/tic-tac-toe/src/game/__tests__/engine.test.ts, add a unit test that plays all possible human opening moves against Unbeatable Minimax and asserts AI never loses, keeping coverage >=70%.
+   ```
+5. **Tạo Game Mới:** Nhờ `agy` xây dựng game bàn cờ chiến thuật tương tự: **Cờ Nối 4 (Connect Four)**.
+   ```text
+   /plan Create "Connect Four" in games/connect-four/ following AGENTS.md and .agents/skills/create-game/SKILL.md, with 7x6 grid, vs AI + 2P Local, How to Play, Tutorial, Hint, and Vitest >=70% coverage.
+   ```

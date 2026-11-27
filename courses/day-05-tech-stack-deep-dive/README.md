@@ -57,6 +57,27 @@ Compare how games/dino-run/src/renderer/canvasRenderer.ts (Canvas 2D) and games/
 
 ---
 
-## Exercises & Challenges
-1. Read [`docs/techstack.md`](../../docs/techstack.md) and list 3 reasons why this project avoids external runtime CDNs.
-2. **Challenge:** Open [`styles/tokens.css`](../../styles/tokens.css) and [`styles/theme.ts`](../../styles/theme.ts) to see how CSS variables and Canvas/Three.js colors stay synchronized.
+## Exercises & Challenges (Prompt-Only Vibe Coding)
+
+Use Google `agy` with the sample prompts below—no manual coding required:
+
+1. **Understand the Project:** Ask `agy` to compare how CSS variables in `styles/tokens.css` map to Canvas/Three.js colors in `styles/theme.ts`.
+   ```text
+   Read styles/tokens.css, styles/theme.ts, and docs/techstack.md, and explain how Light/Dark themes and Canvas/Three.js colors stay synchronized without external CDNs.
+   ```
+2. **Improve a Feature:** Ask `agy` to improve the visual contrast of `Tetris`'s Ghost piece preview.
+   ```text
+   In games/tetris/src/game/renderer.ts, increase the Ghost piece outline contrast so it remains crisp against both light and dark backgrounds. Verify with make verify GAME=tetris.
+   ```
+3. **Implement a New Feature:** Ask `agy` to add a **"High-Contrast / Colorblind Mode"** toggle to `Sudoku`.
+   ```text
+   /plan Add a High-Contrast toggle to games/sudoku/ (persisted in sudoku_v1) that enhances selected cell and error highlights. Verify with make verify GAME=sudoku.
+   ```
+4. **Improve Tests / Docs:** Ask `agy` to add a mobile viewport (`390×844`) Playwright assertion to `Minesweeper`.
+   ```text
+   In games/minesweeper/e2e/minesweeper.spec.ts, add an E2E test verifying the 9x9 Easy board fits cleanly on a 390x844 mobile viewport without horizontal overflow. Run make test-e2e GAME=minesweeper.
+   ```
+5. **Create a New Game:** Ask `agy` to build a CSS/SVG **"Memory Card Match"** game using `.agents/skills/create-game/SKILL.md`.
+   ```text
+   /plan Create a "Memory Match" card-flipping puzzle game in games/memory-match/ using React + CSS/SVG following AGENTS.md and .agents/skills/create-game/SKILL.md, with 4x4 grid, move counter, How to Play, Tutorial, Hint, and >=70% coverage.
+   ```

@@ -67,7 +67,27 @@ Run npm test at the repository root and explain what each passing test verifies.
 
 ---
 
-## Bài tập & Thử thách
-1. Mở **3 game khác nhau** (một game Canvas 2D, một game Cờ/Bài CSS/SVG và `SimCity 3D`), sau đó mở hộp thoại **? Trợ giúp** và **Hướng dẫn (Tutorial)** của từng game.
-2. Chạy `npm test` tại thư mục gốc và xác nhận mọi bài kiểm thử đều đạt.
-3. **Thử thách:** Mở `games/dino-run/docs/README.vi.md` và đối chiếu xem tài liệu đó tuân thủ `AGENTS.md` như thế nào.
+## Bài tập & Thử thách (Vibe Coding Chỉ Dùng Câu Lệnh)
+
+Sử dụng các câu lệnh mẫu bên dưới với Google `agy`—không cần tự viết code thủ công:
+
+1. **Hiểu Dự án Sâu hơn:** Nhờ `agy` lập bản đồ toàn bộ các game theo danh mục và công nghệ kết xuất.
+   ```text
+   Inspect src/registry/games.ts and games/*/package.json, then summarize all games grouped by category (Puzzle, Board, Arcade, Simulation, Card) and rendering layer.
+   ```
+2. **Cải tiến Tính năng:** Nhờ `agy` làm thông báo khi tìm kiếm không thấy game trở nên hữu ích hơn.
+   ```text
+   In src/components/Dashboard.tsx and src/i18n/translations.ts, improve the empty-filter message so it reminds players they can press "/" to search or click Reset Filters across en, zh, and vi. Verify with make test and make lint.
+   ```
+3. **Triển khai Tính năng Mới:** Nhờ `agy` thêm nút **"🎲 Chơi Ngẫu Nhiên"** trên Dashboard.
+   ```text
+   /plan Add a "Surprise Me" button in src/components/Dashboard.tsx (with en/zh/vi labels in src/i18n/translations.ts) that picks and opens a random game from visibleGames. Add a unit test in Dashboard.test.tsx and verify with make verify.
+   ```
+4. **Cải thiện Kiểm thử / Tài liệu:** Nhờ `agy` đối chiếu danh sách game trong `README` 3 ngôn ngữ và chạy kiểm tra tuân thủ.
+   ```text
+   Verify that README.md, README.zh.md, and README.vi.md list every game in src/registry/games.ts, then run make check-docs.
+   ```
+5. **Tạo Game Mới:** Nhờ `agy` tạo mini-game **"Đoán Số (Guess the Number)"** tuân thủ `AGENTS.md`.
+   ```text
+   /plan Create a simple "Guess the Number" puzzle game in games/guess-number/ following AGENTS.md and .agents/skills/create-game/SKILL.md, with 1-100 range, hints (Higher/Lower), How to Play, Tutorial, Vitest >=70% coverage, and Playwright E2E.
+   ```

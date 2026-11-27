@@ -57,6 +57,27 @@ Compare how games/dino-run/src/renderer/canvasRenderer.ts (Canvas 2D) and games/
 
 ---
 
-## Bài tập & Thử thách
-1. Đọc [`docs/techstack.md`](../../docs/techstack.md) và liệt kê 3 lý do dự án này tránh dùng CDN bên ngoài lúc chạy.
-2. **Thử thách:** Mở [`styles/tokens.css`](../../styles/tokens.css) và [`styles/theme.ts`](../../styles/theme.ts) để xem các biến CSS và màu Canvas/Three.js được đồng bộ như thế nào.
+## Bài tập & Thử thách (Vibe Coding Chỉ Dùng Câu Lệnh)
+
+Sử dụng các câu lệnh mẫu bên dưới với Google `agy`—không cần tự viết code thủ công:
+
+1. **Hiểu Dự án Sâu hơn:** Nhờ `agy` giải thích cách `styles/tokens.css` đồng bộ màu sắc với `styles/theme.ts`.
+   ```text
+   Read styles/tokens.css, styles/theme.ts, and docs/techstack.md, and explain how Light/Dark themes and Canvas/Three.js colors stay synchronized without external CDNs.
+   ```
+2. **Cải tiến Tính năng:** Nhờ `agy` tăng độ tương phản viền của khối bóng mờ (Ghost) trong `Tetris`.
+   ```text
+   In games/tetris/src/game/renderer.ts, increase the Ghost piece outline contrast so it remains crisp against both light and dark backgrounds. Verify with make verify GAME=tetris.
+   ```
+3. **Triển khai Tính năng Mới:** Nhờ `agy` thêm chế độ **"Tương phản cao (High-Contrast)"** cho `Sudoku`.
+   ```text
+   /plan Add a High-Contrast toggle to games/sudoku/ (persisted in sudoku_v1) that enhances selected cell and error highlights. Verify with make verify GAME=sudoku.
+   ```
+4. **Cải thiện Kiểm thử / Tài liệu:** Nhờ `agy` thêm kiểm thử Playwright cho màn hình di động `390×844` ở `Minesweeper`.
+   ```text
+   In games/minesweeper/e2e/minesweeper.spec.ts, add an E2E test verifying the 9x9 Easy board fits cleanly on a 390x844 mobile viewport without horizontal overflow. Run make test-e2e GAME=minesweeper.
+   ```
+5. **Tạo Game Mới:** Nhờ `agy` xây dựng game **"Lật Thẻ Trí Nhớ (Memory Match)"** bằng React + CSS/SVG.
+   ```text
+   /plan Create a "Memory Match" card-flipping puzzle game in games/memory-match/ using React + CSS/SVG following AGENTS.md and .agents/skills/create-game/SKILL.md, with 4x4 grid, move counter, How to Play, Tutorial, Hint, and >=70% coverage.
+   ```

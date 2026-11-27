@@ -78,6 +78,27 @@ npm run deploy
 
 ---
 
-## Bài tập & Thử thách
-1. Thêm nút **Chuyển đổi ánh sáng Ngày / Đêm** cho game 3D của bạn (lấy cảm hứng từ `games/simcity/`).
-2. **Thử thách Tốt nghiệp:** Hợp nhất game Ngày 7, Ngày 8 hoặc Ngày 9 yêu thích của bạn vào `main`, chạy `npm run deploy` và chia sẻ đường dẫn `*.workers.dev` trực tuyến!
+## Bài tập & Thử thách (Vibe Coding Chỉ Dùng Câu Lệnh)
+
+Sử dụng các câu lệnh mẫu bên dưới với Google `agy`—không cần tự viết code thủ công:
+
+1. **Hiểu Dự án Sâu hơn:** Nhờ `agy` giải thích cơ chế dọn dẹp `.dispose()` của Three.js và cờ SwiftShader WebGL trong Playwright.
+   ```text
+   Read games/simcity/src/renderer/CityScene.ts and games/simcity/playwright.config.ts, and explain how WebGL fallback, ResizeObserver, .dispose(), and SwiftShader flags work together.
+   ```
+2. **Cải tiến Tính năng:** Nhờ `agy` làm mượt chuyển động camera theo bóng và tinh chỉnh bóng đổ 3D.
+   ```text
+   In games/marble-maze/src/renderer/, add smooth lerp camera follow and tune directional shadow bias so the marble casts a crisp shadow without acne. Verify with make test-e2e GAME=marble-maze.
+   ```
+3. **Triển khai Tính năng Mới:** Nhờ `agy` thêm nút **Chuyển đổi ánh sáng Ngày / Đêm** lấy cảm hứng từ `games/simcity/`.
+   ```text
+   /plan Add a Day / Night lighting toggle to games/marble-maze/ (persisted in marble_maze_v1) that smoothly adjusts ambient and directional light colors. Verify with make verify GAME=marble-maze.
+   ```
+4. **Cải thiện Kiểm thử / Tài liệu:** Nhờ `agy` chạy toàn bộ cổng chất lượng & tuân thủ trước khi triển khai.
+   ```text
+   Run make test-all, make verify, and make deploy-dry-run, and fix any compliance or >=70% coverage gaps reported.
+   ```
+5. **Tạo Game Mới:** Nhờ `agy` xây dựng một game Three.js 3D khác (**Block Stacker 3D**) và kiểm tra đóng gói triển khai.
+   ```text
+   /plan Create "Block Stacker 3D" in games/block-stacker-3d/ using Vanilla Three.js following AGENTS.md and .agents/skills/create-game/SKILL.md, then run make verify and make deploy-dry-run.
+   ```

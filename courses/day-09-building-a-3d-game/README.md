@@ -78,6 +78,27 @@ npm run deploy
 
 ---
 
-## Exercises & Challenges
-1. Add a **Day / Night lighting toggle** to your 3D game (inspired by `games/simcity/`).
-2. **Final Capstone Challenge:** Merge your favorite Day 7, Day 8, or Day 9 game into `main`, run `npm run deploy`, and share your live `*.workers.dev` URL!
+## Exercises & Challenges (Prompt-Only Vibe Coding)
+
+Use Google `agy` with the sample prompts below—no manual coding required:
+
+1. **Understand the Project:** Ask `agy` to explain Three.js `.dispose()` cleanup and SwiftShader WebGL Playwright flags.
+   ```text
+   Read games/simcity/src/renderer/CityScene.ts and games/simcity/playwright.config.ts, and explain how WebGL fallback, ResizeObserver, .dispose(), and SwiftShader flags work together.
+   ```
+2. **Improve a Feature:** Ask `agy` to smooth camera damping and shadow quality in your 3D game.
+   ```text
+   In games/marble-maze/src/renderer/, add smooth lerp camera follow and tune directional shadow bias so the marble casts a crisp shadow without acne. Verify with make test-e2e GAME=marble-maze.
+   ```
+3. **Implement a New Feature:** Ask `agy` to add a **Day / Night lighting toggle** inspired by `games/simcity/`.
+   ```text
+   /plan Add a Day / Night lighting toggle to games/marble-maze/ (persisted in marble_maze_v1) that smoothly adjusts ambient and directional light colors. Verify with make verify GAME=marble-maze.
+   ```
+4. **Improve Tests / Docs:** Ask `agy` to run the full monorepo quality & compliance gates before deploying.
+   ```text
+   Run make test-all, make verify, and make deploy-dry-run, and fix any compliance or >=70% coverage gaps reported.
+   ```
+5. **Create a New Game:** Ask `agy` to build another Three.js 3D game (**3D Block Stacker**) and deploy live.
+   ```text
+   /plan Create "Block Stacker 3D" in games/block-stacker-3d/ using Vanilla Three.js following AGENTS.md and .agents/skills/create-game/SKILL.md, then run make verify and make deploy-dry-run.
+   ```

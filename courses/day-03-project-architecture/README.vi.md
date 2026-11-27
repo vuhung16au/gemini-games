@@ -65,6 +65,27 @@ Trace what happens step-by-step when the player presses Space in games/dino-run/
 
 ---
 
-## Bài tập & Thử thách
-1. Tìm khóa `localStorage` được dùng bởi `games/dino-run`, `games/tetris` và `games/simcity`.
-2. **Thử thách:** Chạy `npm run build` ở thư mục gốc và kiểm tra thư mục `dist/games/dino-run/` để xem `gamePublicAssetsPlugin` đã sao chép icon và ảnh bìa như thế nào.
+## Bài tập & Thử thách (Vibe Coding Chỉ Dùng Câu Lệnh)
+
+Sử dụng các câu lệnh mẫu bên dưới với Google `agy`—không cần tự viết code thủ công:
+
+1. **Hiểu Dự án Sâu hơn:** Nhờ `agy` giải thích cách `vite.config.ts` đóng gói Hub cùng toàn bộ game.
+   ```text
+   Trace how vite.config.ts discovers games/*/index.html, serves public/ assets in dev via gamePublicAssetsPlugin, and copies them into dist/games/<slug>/ during npm run build.
+   ```
+2. **Cải tiến Tính năng:** Nhờ `agy` thêm gợi ý chú thích đa ngôn ngữ cho thanh công cụ `GamePlayer`.
+   ```text
+   In src/components/GamePlayer.tsx and src/i18n/translations.ts, add a subtle tooltip on the Fullscreen and Reload buttons across en, zh, and vi. Verify with make test and make lint.
+   ```
+3. **Triển khai Tính năng Mới:** Nhờ `agy` thêm bộ đếm **"Số lượt đã chơi"** vào `Dino Run`.
+   ```text
+   /plan Add a gamesPlayed counter to games/dino-run/src/game/storage.ts (under dino_run_v1) and display it in the Game Over overlay. Verify with make verify GAME=dino-run.
+   ```
+4. **Cải thiện Kiểm thử / Tài liệu:** Nhờ `agy` thống kê toàn bộ khóa `localStorage` trong kho mã nguồn vào tài liệu kiến trúc.
+   ```text
+   Scan games/*/src/game/storage.ts and src/registry/hubStorage.ts for all localStorage keys, then add a "Storage Keys" reference table to docs/architecture.md.
+   ```
+5. **Tạo Game Mới:** Nhờ `agy` tạo mini-game **"Tung Đồng Xu (Coin Flipper)"** và đăng ký vào Hub.
+   ```text
+   /plan Build a "Coin Flipper" game in games/coin-flipper/ following AGENTS.md and .agents/skills/create-game/SKILL.md, with streak tracking, SVG coin flip, How to Play, Tutorial, Hint, and Vitest >=70% coverage.
+   ```

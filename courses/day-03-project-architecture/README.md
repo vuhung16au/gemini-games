@@ -65,6 +65,27 @@ Trace what happens step-by-step when the player presses Space in games/dino-run/
 
 ---
 
-## Exercises & Challenges
-1. Find the `localStorage` key used by `games/dino-run`, `games/tetris`, and `games/simcity`.
-2. **Challenge:** Run `npm run build` at the repository root and inspect the generated `dist/games/dino-run/` directory to see how `gamePublicAssetsPlugin` copied the icons and covers.
+## Exercises & Challenges (Prompt-Only Vibe Coding)
+
+Use Google `agy` with the sample prompts below—no manual coding required:
+
+1. **Understand the Project:** Ask `agy` to explain how `vite.config.ts` bundles the Hub and all games together.
+   ```text
+   Trace how vite.config.ts discovers games/*/index.html, serves public/ assets in dev via gamePublicAssetsPlugin, and copies them into dist/games/<slug>/ during npm run build.
+   ```
+2. **Improve a Feature:** Ask `agy` to enhance the `GamePlayer` top bar with a keyboard shortcut hint (`Esc` / `F11`).
+   ```text
+   In src/components/GamePlayer.tsx and src/i18n/translations.ts, add a subtle tooltip on the Fullscreen and Reload buttons across en, zh, and vi. Verify with make test and make lint.
+   ```
+3. **Implement a New Feature:** Ask `agy` to add a **"Games Played" counter** to `Dino Run` persistence.
+   ```text
+   /plan Add a gamesPlayed counter to games/dino-run/src/game/storage.ts (under dino_run_v1) and display it in the Game Over overlay. Verify with make verify GAME=dino-run.
+   ```
+4. **Improve Tests / Docs:** Ask `agy` to document all `localStorage` keys used across the repository.
+   ```text
+   Scan games/*/src/game/storage.ts and src/registry/hubStorage.ts for all localStorage keys, then add a "Storage Keys" reference table to docs/architecture.md.
+   ```
+5. **Create a New Game:** Ask `agy` to build a lightweight **"Coin Flipper"** luck/streak mini-game registered in the Hub.
+   ```text
+   /plan Build a "Coin Flipper" game in games/coin-flipper/ following AGENTS.md and .agents/skills/create-game/SKILL.md, with streak tracking, SVG coin flip, How to Play, Tutorial, Hint, and Vitest >=70% coverage.
+   ```

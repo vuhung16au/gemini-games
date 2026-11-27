@@ -74,6 +74,27 @@ In games/dino-run/src/game/constants.ts, increase BASE_SPEED from 290 to 340 and
 
 ---
 
-## 练习与挑战
-1. 在你的 `day-06-dino-mod` 分支上为 `Dino Run` 添加**二段跳**或**护盾道具**。
-2. **挑战：** 在 `games/dino-run/e2e/dino.spec.ts` 中新增一条 Playwright 断言，在 Chromium 中验证你的新功能，并在本地分支提交代码。
+## 练习与挑战（纯提示词 Vibe Coding）
+
+使用下方示例提示词向 Google `agy` 提问——无需手动编写代码：
+
+1. **深入理解项目：** 让 `agy` 解释 `Dino Run` 的障碍物生成间距与碰撞判定盒。
+   ```text
+   Read games/dino-run/src/game/engine.ts and explain how obstacle spawn gaps scale with speed and how hitbox forgiving margins work.
+   ```
+2. **改进现有功能：** 让 `agy` 为 `Dino Run` 的昼夜切换增加平滑渐变过渡。
+   ```text
+   In games/dino-run/src/renderer/canvasRenderer.ts, add a smooth color-lerp transition when switching between Day and Night every 700 points. Verify with make test GAME=dino-run and make build GAME=dino-run.
+   ```
+3. **实现新功能：** 让 `agy` 在分支上为 `Dino Run` 添加 **二段跳 (Double-Jump)** 机制。
+   ```text
+   /plan Add an optional Double-Jump mechanic to Classic mode in games/dino-run/ (types.ts, engine.ts) with a subtle jump-charge indicator on the HUD. Verify with make verify GAME=dino-run.
+   ```
+4. **完善测试 / 文档：** 让 `agy` 为新功能补充 Playwright E2E 断言并更新 `user-guide.md`。
+   ```text
+   Add a Playwright assertion in games/dino-run/e2e/dino.spec.ts verifying the new feature works in Chromium, and document it in games/dino-run/docs/user-guide.md. Run make test-e2e GAME=dino-run.
+   ```
+5. **创建新游戏：** 让 `agy` 打造一款类似的横版跑酷游戏 **“太空宇航员跑酷 (Space Astro Runner)”**。
+   ```text
+   /plan Create a similar endless runner "Space Astro Runner" in games/space-runner/ following AGENTS.md and .agents/skills/create-game/SKILL.md, dodging asteroids and laser drones with gravity flip controls.
+   ```

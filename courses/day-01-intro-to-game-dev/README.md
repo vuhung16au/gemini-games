@@ -67,7 +67,27 @@ Run npm test at the repository root and explain what each passing test verifies.
 
 ---
 
-## Exercises & Challenges
-1. Launch **3 different games** (one Canvas 2D, one CSS/SVG Card/Board, and `SimCity 3D`) and open each game's **? Help** modal and **Tutorial**.
-2. Run `npm test` at the repository root and confirm all tests pass.
-3. **Challenge:** Open `games/dino-run/docs/README.md` and note how its documentation matches `AGENTS.md`.
+## Exercises & Challenges (Prompt-Only Vibe Coding)
+
+Use Google `agy` with the sample prompts below—no manual coding required:
+
+1. **Understand the Project:** Ask `agy` to map all games by category and rendering engine.
+   ```text
+   Inspect src/registry/games.ts and games/*/package.json, then summarize all games grouped by category (Puzzle, Board, Arcade, Simulation, Card) and rendering layer.
+   ```
+2. **Improve a Feature:** Ask `agy` to make the Hub's empty-search message more helpful.
+   ```text
+   In src/components/Dashboard.tsx and src/i18n/translations.ts, improve the empty-filter message so it reminds players they can press "/" to search or click Reset Filters across en, zh, and vi. Verify with make test and make lint.
+   ```
+3. **Implement a New Feature:** Ask `agy` to add a **"🎲 Surprise Me"** button that launches a random game.
+   ```text
+   /plan Add a "Surprise Me" button in src/components/Dashboard.tsx (with en/zh/vi labels in src/i18n/translations.ts) that picks and opens a random game from visibleGames. Add a unit test in Dashboard.test.tsx and verify with make verify.
+   ```
+4. **Improve Tests / Docs:** Ask `agy` to check and update the root `README.md` game count if needed and verify all docs links.
+   ```text
+   Verify that README.md, README.zh.md, and README.vi.md list every game in src/registry/games.ts, then run make check-docs.
+   ```
+5. **Create a New Game:** Ask `agy` to scaffold a minimal **"Guess the Number"** mini-game.
+   ```text
+   /plan Create a simple "Guess the Number" puzzle game in games/guess-number/ following AGENTS.md and .agents/skills/create-game/SKILL.md, with 1-100 range, hints (Higher/Lower), How to Play, Tutorial, Vitest >=70% coverage, and Playwright E2E.
+   ```

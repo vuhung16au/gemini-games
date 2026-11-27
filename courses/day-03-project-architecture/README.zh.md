@@ -65,6 +65,27 @@ Trace what happens step-by-step when the player presses Space in games/dino-run/
 
 ---
 
-## 练习与挑战
-1. 分别找出 `games/dino-run`、`games/tetris` 与 `games/simcity` 使用的 `localStorage` 键名。
-2. **挑战：** 在仓库根目录运行 `npm run build`，查看生成的 `dist/games/dino-run/` 目录，观察 `gamePublicAssetsPlugin` 如何复制图标和封面图。
+## 练习与挑战（纯提示词 Vibe Coding）
+
+使用下方示例提示词向 Google `agy` 提问——无需手动编写代码：
+
+1. **深入理解项目：** 让 `agy` 解释 `vite.config.ts` 如何将大厅与全部游戏打包到一起。
+   ```text
+   Trace how vite.config.ts discovers games/*/index.html, serves public/ assets in dev via gamePublicAssetsPlugin, and copies them into dist/games/<slug>/ during npm run build.
+   ```
+2. **改进现有功能：** 让 `agy` 为 `GamePlayer` 顶部栏按钮添加多语言提示信息。
+   ```text
+   In src/components/GamePlayer.tsx and src/i18n/translations.ts, add a subtle tooltip on the Fullscreen and Reload buttons across en, zh, and vi. Verify with make test and make lint.
+   ```
+3. **实现新功能：** 让 `agy` 为 `Dino Run` 添加“累计游玩局数”统计与持久化。
+   ```text
+   /plan Add a gamesPlayed counter to games/dino-run/src/game/storage.ts (under dino_run_v1) and display it in the Game Over overlay. Verify with make verify GAME=dino-run.
+   ```
+4. **完善测试 / 文档：** 让 `agy` 汇总仓库中所有游戏使用的 `localStorage` 键名并写入架构文档。
+   ```text
+   Scan games/*/src/game/storage.ts and src/registry/hubStorage.ts for all localStorage keys, then add a "Storage Keys" reference table to docs/architecture.md.
+   ```
+5. **创建新游戏：** 让 `agy` 创建一个轻量级的 **“抛硬币连胜 (Coin Flipper)”** 小游戏并注册到大厅。
+   ```text
+   /plan Build a "Coin Flipper" game in games/coin-flipper/ following AGENTS.md and .agents/skills/create-game/SKILL.md, with streak tracking, SVG coin flip, How to Play, Tutorial, Hint, and Vitest >=70% coverage.
+   ```

@@ -81,6 +81,27 @@ npm run build && npx wrangler deploy --dry-run
 
 ---
 
-## Bài tập & Thử thách
-1. Chạy `npx wrangler deploy --dry-run` sau `npm run build` và quan sát số lượng tệp tĩnh Wrangler phát hiện trong `dist/`.
-2. **Thử thách:** Chạy `git log --oneline -n 5` để xem cách các commit trong kho mã nguồn này được tổ chức.
+## Bài tập & Thử thách (Vibe Coding Chỉ Dùng Câu Lệnh)
+
+Sử dụng các câu lệnh mẫu bên dưới với Google `agy`—không cần tự viết code thủ công:
+
+1. **Hiểu Dự án Sâu hơn:** Nhờ `agy` giải thích cách `Makefile` và `scripts/check-compliance.mjs` thực thi `AGENTS.md`.
+   ```text
+   Read Makefile and scripts/check-compliance.mjs, and explain each check that make verify runs before allowing a release.
+   ```
+2. **Cải tiến Tính năng:** Nhờ `agy` nhóm kết quả `make help` theo từng nhóm lệnh rõ ràng.
+   ```text
+   In Makefile, group the make help output into Setup, Dev, Quality, and Deploy sections while keeping the awk ## comment format intact. Verify with make help.
+   ```
+3. **Triển khai Tính năng Mới:** Nhờ `agy` thêm mục tiêu `make status` hiển thị nhánh git, số game và trạng thái `dist/`.
+   ```text
+   Add a "status" target to Makefile (and update TODOs/BACKLOGs/Makefile.md) that prints the current git branch, number of games in games/, and whether dist/ exists. Verify with make status.
+   ```
+4. **Cải thiện Kiểm thử / Tài liệu:** Nhờ `agy` bổ sung mục "Xử lý Sự cố Thường gặp" vào `QUICKSTART.md`.
+   ```text
+   Add a short Troubleshooting section to QUICKSTART.md covering Playwright browser install, port conflicts, and wrangler login.
+   ```
+5. **Tạo Game Mới:** Nhờ `agy` dùng `/plan` để xây dựng game **"Đo Phản Xạ (Reaction Timer)"** trên một nhánh git mới.
+   ```text
+   /plan Create a "Reaction Timer" game in games/reaction-timer/ on a new branch following AGENTS.md and .agents/skills/create-game/SKILL.md, measuring millisecond reaction time across 5 rounds with best-average persistence.
+   ```

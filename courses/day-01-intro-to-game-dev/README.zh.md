@@ -67,7 +67,27 @@ Run npm test at the repository root and explain what each passing test verifies.
 
 ---
 
-## 练习与挑战
-1. 分别启动 **3 款不同技术栈的游戏**（1 款 Canvas 2D、1 款 CSS/SVG 棋牌/益智、1 款 `SimCity 3D`），并打开每款游戏的 **? 帮助** 弹窗与 **教学模式**。
-2. 在仓库根目录运行 `npm test`，确认所有单元测试通过。
-3. **挑战：** 打开 `games/dino-run/docs/README.zh.md`，对照检查其文档结构是否符合 `AGENTS.md`。
+## 练习与挑战（纯提示词 Vibe Coding）
+
+使用下方示例提示词向 Google `agy` 提问——无需手动编写代码：
+
+1. **深入理解项目：** 让 `agy` 按分类与渲染引擎梳理所有游戏。
+   ```text
+   Inspect src/registry/games.ts and games/*/package.json, then summarize all games grouped by category (Puzzle, Board, Arcade, Simulation, Card) and rendering layer.
+   ```
+2. **改进现有功能：** 让 `agy` 优化游戏大厅空搜索结果的提示文案。
+   ```text
+   In src/components/Dashboard.tsx and src/i18n/translations.ts, improve the empty-filter message so it reminds players they can press "/" to search or click Reset Filters across en, zh, and vi. Verify with make test and make lint.
+   ```
+3. **实现新功能：** 让 `agy` 在大厅添加一个 **“🎲 随机畅玩”** 按钮。
+   ```text
+   /plan Add a "Surprise Me" button in src/components/Dashboard.tsx (with en/zh/vi labels in src/i18n/translations.ts) that picks and opens a random game from visibleGames. Add a unit test in Dashboard.test.tsx and verify with make verify.
+   ```
+4. **完善测试 / 文档：** 让 `agy` 核对根目录三语 `README` 的游戏列表并运行合规检查。
+   ```text
+   Verify that README.md, README.zh.md, and README.vi.md list every game in src/registry/games.ts, then run make check-docs.
+   ```
+5. **创建新游戏：** 让 `agy` 从零搭建一个极简的 **“猜数字 (Guess the Number)”** 益智小游戏。
+   ```text
+   /plan Create a simple "Guess the Number" puzzle game in games/guess-number/ following AGENTS.md and .agents/skills/create-game/SKILL.md, with 1-100 range, hints (Higher/Lower), How to Play, Tutorial, Vitest >=70% coverage, and Playwright E2E.
+   ```

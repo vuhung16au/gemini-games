@@ -72,6 +72,27 @@ cd ../.. && npm test && npm run test:e2e && npx tsc --noEmit && npm run build
 
 ---
 
-## Exercises & Challenges
-1. Play a full match against **Unbeatable Minimax AI** and verify it never loses.
-2. **Challenge:** Extend Tic Tac Toe with a **4×4 Grid Mode** or **Best-of-5 Series Scoreboard** using a follow-up prompt and add a unit test for it.
+## Exercises & Challenges (Prompt-Only Vibe Coding)
+
+Use Google `agy` with the sample prompts below—no manual coding required:
+
+1. **Understand the Project:** Ask `agy` to explain how Minimax AI evaluates board positions in your Tic Tac Toe engine.
+   ```text
+   Read games/tic-tac-toe/src/game/engine.ts (or games/checkers/src/game/ai.ts) and explain how Minimax / Alpha-Beta scores winning, losing, and drawing moves.
+   ```
+2. **Improve a Feature:** Ask `agy` to animate the winning 3-in-a-row line and highlight the smart Hint cell.
+   ```text
+   In games/tic-tac-toe/, highlight the winning line with an animated SVG stroke and pulse the Hint cell cleanly. Verify with make verify GAME=tic-tac-toe.
+   ```
+3. **Implement a New Feature:** Ask `agy` to add a **Best-of-5 Series Scoreboard** or **4×4 Grid Mode**.
+   ```text
+   /plan Add a Best-of-5 Series scoreboard (X wins, O wins, Draws, Match Winner banner) to games/tic-tac-toe/ persisted in tic_tac_toe_v1. Verify with make verify GAME=tic-tac-toe.
+   ```
+4. **Improve Tests / Docs:** Ask `agy` to add exhaustive Vitest tests proving Unbeatable Minimax never loses.
+   ```text
+   In games/tic-tac-toe/src/game/__tests__/engine.test.ts, add a unit test that plays all possible human opening moves against Unbeatable Minimax and asserts AI never loses, keeping coverage >=70%.
+   ```
+5. **Create a New Game:** Ask `agy` to build a similar strategy board game: **Connect Four (`4-in-a-Row`)**.
+   ```text
+   /plan Create "Connect Four" in games/connect-four/ following AGENTS.md and .agents/skills/create-game/SKILL.md, with 7x6 grid, vs AI + 2P Local, How to Play, Tutorial, Hint, and Vitest >=70% coverage.
+   ```

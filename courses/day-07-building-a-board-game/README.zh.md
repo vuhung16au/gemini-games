@@ -72,6 +72,27 @@ cd ../.. && npm test && npm run test:e2e && npx tsc --noEmit && npm run build
 
 ---
 
-## 练习与挑战
-1. 与 **无敌 Minimax AI** 完整对弈一局，验证它永不落败。
-2. **挑战：** 通过后续提示词为井字棋扩展 **4×4 棋盘模式** 或 **五局三胜记分牌**，并补充单元测试。
+## 练习与挑战（纯提示词 Vibe Coding）
+
+使用下方示例提示词向 Google `agy` 提问——无需手动编写代码：
+
+1. **深入理解项目：** 让 `agy` 解释井字棋或国际跳棋中的 Minimax AI 如何评估棋盘局面。
+   ```text
+   Read games/tic-tac-toe/src/game/engine.ts (or games/checkers/src/game/ai.ts) and explain how Minimax / Alpha-Beta scores winning, losing, and drawing moves.
+   ```
+2. **改进现有功能：** 让 `agy` 为三连胜线添加平滑 SVG 动画与提示高亮。
+   ```text
+   In games/tic-tac-toe/, highlight the winning line with an animated SVG stroke and pulse the Hint cell cleanly. Verify with make verify GAME=tic-tac-toe.
+   ```
+3. **实现新功能：** 让 `agy` 为井字棋增加 **五局三胜 (Best-of-5)** 记分牌。
+   ```text
+   /plan Add a Best-of-5 Series scoreboard (X wins, O wins, Draws, Match Winner banner) to games/tic-tac-toe/ persisted in tic_tac_toe_v1. Verify with make verify GAME=tic-tac-toe.
+   ```
+4. **完善测试 / 文档：** 让 `agy` 补充穷举单元测试，验证无敌 Minimax AI 永不落败。
+   ```text
+   In games/tic-tac-toe/src/game/__tests__/engine.test.ts, add a unit test that plays all possible human opening moves against Unbeatable Minimax and asserts AI never loses, keeping coverage >=70%.
+   ```
+5. **创建新游戏：** 让 `agy` 创建一款类似的策略棋盘游戏 **四子棋 (Connect Four)**。
+   ```text
+   /plan Create "Connect Four" in games/connect-four/ following AGENTS.md and .agents/skills/create-game/SKILL.md, with 7x6 grid, vs AI + 2P Local, How to Play, Tutorial, Hint, and Vitest >=70% coverage.
+   ```

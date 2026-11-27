@@ -65,6 +65,27 @@ cd ../.. && npm test && npm run test:e2e && npx tsc --noEmit && npm run build
 
 ---
 
-## Exercises & Challenges
-1. Play through Level 1 and Level 2 on both desktop keyboard and mobile touch viewport (using browser DevTools responsive mode).
-2. **Challenge:** Ask `agy` to add a **Boss Brick** (requires 3 hits, cracks visually after each hit) plus a unit test verifying 3-hit destruction.
+## Exercises & Challenges (Prompt-Only Vibe Coding)
+
+Use Google `agy` with the sample prompts below—no manual coding required:
+
+1. **Understand the Project:** Ask `agy` to explain Circle-vs-AABB collision math and `requestAnimationFrame` state syncing.
+   ```text
+   Read games/breakout/src/game/engine.ts (or games/battle-city/src/game/engine.ts) and explain how collision normals and clamped dt keep 60fps Canvas physics deterministic.
+   ```
+2. **Improve a Feature:** Ask `agy` to tune paddle bounce angles and add distinct Web Audio combo pitches.
+   ```text
+   In games/breakout/, refine paddle edge-hit reflection angles so corner hits feel snappier and scale the brick-break Web Audio pitch with the current combo. Verify with make test GAME=breakout.
+   ```
+3. **Implement a New Feature:** Ask `agy` to add a **3-Hit Boss Brick** with crack visuals after each hit.
+   ```text
+   /plan Add a "Boss Brick" (3 HP, renders crack stages on Canvas, awards bonus points) to games/breakout/ and add unit tests for 3-hit destruction. Verify with make verify GAME=breakout.
+   ```
+4. **Improve Tests / Docs:** Ask `agy` to add mobile touch-drag Playwright coverage and update `docs/user-guide.md`.
+   ```text
+   In games/breakout/e2e/breakout.spec.ts, add a responsive 390x844 touch-drag test and document mobile controls in games/breakout/docs/user-guide.md. Run make test-e2e GAME=breakout.
+   ```
+5. **Create a New Game:** Ask `agy` to build a similar 2D Canvas arcade classic: **2D Snake** or **Neon Pong**.
+   ```text
+   /plan Create "Classic Snake" in games/snake/ following AGENTS.md, .agents/skills/create-game/SKILL.md, and .agents/skills/canvas-and-threejs-patterns/SKILL.md, with grid wrapping toggle, speed levels, How to Play, Tutorial, Hint, and >=70% coverage.
+   ```

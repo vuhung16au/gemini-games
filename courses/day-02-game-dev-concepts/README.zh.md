@@ -66,6 +66,27 @@ Explain how collision detection and the restart cooldown work, and suggest 2 ext
 
 ---
 
-## 练习与挑战
-1. 在 `games/1024` 与 `games/ta-la-phom` 中运行 `npm test`，观察益智与卡牌游戏如何进行单元测试。
-2. **挑战：** 让 `agy` 解释 [`games/dino-run/src/App.tsx`](../../games/dino-run/src/App.tsx) 如何处理 `visibilitychange`，以及它为何能防止切标签页导致的误死。
+## 练习与挑战（纯提示词 Vibe Coding）
+
+使用下方示例提示词向 Google `agy` 提问——无需手动编写代码：
+
+1. **深入理解项目：** 让 `agy` 解释 `visibilitychange` 与 `dt` 限幅如何防止物理异常。
+   ```text
+   Explain how visibilitychange and dt clamping work in games/dino-run/src/App.tsx and games/flappy-bird/src/App.tsx, and why src/game/ has zero DOM imports.
+   ```
+2. **改进现有功能：** 让 `agy` 优化 `Minesweeper` 推理提示的可读性。
+   ```text
+   In games/minesweeper/src/game/hints.ts, enrich the hint message so it explains why a cell is guaranteed safe or a mine. Verify with make test GAME=minesweeper.
+   ```
+3. **实现新功能：** 让 `agy` 为 `Checkers` 添加回合步数计数器。
+   ```text
+   /plan Add a move counter to games/checkers/ (src/game/rules.ts and HUD) that resets on New Game and persists in checkers_v1. Verify with make verify GAME=checkers.
+   ```
+4. **完善测试 / 文档：** 让 `agy` 提升 `games/1024/src/game/storage.ts` 的单元测试覆盖率。
+   ```text
+   Run make test GAME=1024, inspect uncovered lines in games/1024/src/game/storage.ts, and add Vitest edge-case tests so storage.ts exceeds 85% coverage.
+   ```
+5. **创建新游戏：** 让 `agy` 从零构建一款五局三胜制的 **“石头剪刀布 (Rock-Paper-Scissors)”**。
+   ```text
+   /plan Create "Rock-Paper-Scissors" in games/rps/ following AGENTS.md, with pure rules & streak tracking in src/game/, How to Play, Tutorial, Hint, Vitest >=70% coverage, and Playwright E2E.
+   ```

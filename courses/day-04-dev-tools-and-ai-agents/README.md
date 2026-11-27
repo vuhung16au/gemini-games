@@ -81,6 +81,27 @@ npm run build && npx wrangler deploy --dry-run
 
 ---
 
-## Exercises & Challenges
-1. Run `npx wrangler deploy --dry-run` after `npm run build` and observe how many static files Wrangler detects in `dist/`.
-2. **Challenge:** Inspect `git log --oneline -n 5` to see how commits in this repository are structured.
+## Exercises & Challenges (Prompt-Only Vibe Coding)
+
+Use Google `agy` with the sample prompts below—no manual coding required:
+
+1. **Understand the Project:** Ask `agy` to explain how `Makefile` and `scripts/check-compliance.mjs` enforce `AGENTS.md`.
+   ```text
+   Read Makefile and scripts/check-compliance.mjs, and explain each check that make verify runs before allowing a release.
+   ```
+2. **Improve a Feature:** Ask `agy` to enrich `make help` with grouped sections and example `GAME=<slug>` commands.
+   ```text
+   In Makefile, group the make help output into Setup, Dev, Quality, and Deploy sections while keeping the awk ## comment format intact. Verify with make help.
+   ```
+3. **Implement a New Feature:** Ask `agy` to add a `make status` target showing git branch, game count, and `dist/` build status.
+   ```text
+   Add a "status" target to Makefile (and update TODOs/BACKLOGs/Makefile.md) that prints the current git branch, number of games in games/, and whether dist/ exists. Verify with make status.
+   ```
+4. **Improve Tests / Docs:** Ask `agy` to add a "Common Troubleshooting" section to `QUICKSTART.md`.
+   ```text
+   Add a short Troubleshooting section to QUICKSTART.md covering Playwright browser install, port conflicts, and wrangler login.
+   ```
+5. **Create a New Game:** Ask `agy` to `/plan` and build a **"Reaction Timer"** game on a new git branch.
+   ```text
+   /plan Create a "Reaction Timer" game in games/reaction-timer/ on a new branch following AGENTS.md and .agents/skills/create-game/SKILL.md, measuring millisecond reaction time across 5 rounds with best-average persistence.
+   ```

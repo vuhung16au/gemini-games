@@ -57,6 +57,27 @@ Compare how games/dino-run/src/renderer/canvasRenderer.ts (Canvas 2D) and games/
 
 ---
 
-## 练习与挑战
-1. 阅读 [`docs/techstack.md`](../../docs/techstack.md)，列出本项目避免外部运行时 CDN 的 3 个原因。
-2. **挑战：** 打开 [`styles/tokens.css`](../../styles/tokens.css) 与 [`styles/theme.ts`](../../styles/theme.ts)，观察 CSS 变量与 Canvas/Three.js 颜色如何保持同步。
+## 练习与挑战（纯提示词 Vibe Coding）
+
+使用下方示例提示词向 Google `agy` 提问——无需手动编写代码：
+
+1. **深入理解项目：** 让 `agy` 对比 `styles/tokens.css` 与 `styles/theme.ts` 如何同步配色。
+   ```text
+   Read styles/tokens.css, styles/theme.ts, and docs/techstack.md, and explain how Light/Dark themes and Canvas/Three.js colors stay synchronized without external CDNs.
+   ```
+2. **改进现有功能：** 让 `agy` 提升 `Tetris` 幽灵落点预览块的轮廓对比度。
+   ```text
+   In games/tetris/src/game/renderer.ts, increase the Ghost piece outline contrast so it remains crisp against both light and dark backgrounds. Verify with make verify GAME=tetris.
+   ```
+3. **实现新功能：** 让 `agy` 为 `Sudoku` 添加 **“高对比度 / 色盲友好模式”** 开关。
+   ```text
+   /plan Add a High-Contrast toggle to games/sudoku/ (persisted in sudoku_v1) that enhances selected cell and error highlights. Verify with make verify GAME=sudoku.
+   ```
+4. **完善测试 / 文档：** 让 `agy` 为 `Minesweeper` 补充移动端视口（`390×844`）Playwright 测试。
+   ```text
+   In games/minesweeper/e2e/minesweeper.spec.ts, add an E2E test verifying the 9x9 Easy board fits cleanly on a 390x844 mobile viewport without horizontal overflow. Run make test-e2e GAME=minesweeper.
+   ```
+5. **创建新游戏：** 让 `agy` 使用 CSS/SVG 从零构建一款 **“记忆翻牌配对 (Memory Match)”** 游戏。
+   ```text
+   /plan Create a "Memory Match" card-flipping puzzle game in games/memory-match/ using React + CSS/SVG following AGENTS.md and .agents/skills/create-game/SKILL.md, with 4x4 grid, move counter, How to Play, Tutorial, Hint, and >=70% coverage.
+   ```
