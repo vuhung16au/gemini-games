@@ -1,0 +1,135 @@
+/* ==========================================================================
+   Shared Base & Game UI Primitives for gemini-games
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100dvh;
+  background: var(--bg-page);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+.game-surface {
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Shared Buttons */
+.game-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: 2px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  padding: 9px 16px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.2;
+  cursor: pointer;
+  transition:
+    transform var(--transition-fast),
+    background-color var(--transition-base),
+    opacity var(--transition-base);
+}
+
+.game-btn:focus-visible {
+  outline: 3px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+.game-btn:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.game-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.game-btn-primary {
+  background: var(--accent-primary);
+  color: var(--text-on-dark);
+  border-color: var(--accent-primary);
+}
+
+.game-btn-primary:hover:not(:disabled) {
+  background: var(--accent-primary-hover);
+  border-color: var(--accent-primary-hover);
+}
+
+.game-btn-secondary {
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  border-color: var(--border-subtle);
+}
+
+.game-btn-secondary:hover:not(:disabled) {
+  background: var(--bg-surface-muted);
+}
+
+.game-btn-danger {
+  background: var(--accent-secondary);
+  color: var(--text-on-dark);
+  border-color: var(--accent-secondary);
+}
+
+/* Shared Card & Badge */
+.game-card {
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  border: 2px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+}
+
+.game-badge {
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  background: var(--accent-danger);
+  color: var(--text-on-dark);
+}
+
+/* Shared Overlay Backdrop */
+.game-overlay-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  text-align: center;
+  background: rgba(242, 239, 235, 0.86);
+  backdrop-filter: blur(3px);
+  animation: game-overlay-fade 180ms ease-out;
+}
+
+@keyframes game-overlay-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,71 @@
+/* ==========================================================================
+   Shared Design Tokens for gemini-games
+   Color palette sourced from HSC-QuestionBanks/frontend/src/app/globals.css
+   ========================================================================== */
+
+:root {
+  /* Core Brand & Editorial Palette */
+  --color-bookpurple: rgb(60, 16, 83);      /* #3c1053 - Primary brand & CTA */
+  --color-bookpurple-hover: rgb(78, 24, 106);
+  --color-bookred: rgb(242, 18, 12);        /* #f2120c - Alert / NEW badge / critical */
+  --color-lawpurple: rgb(181, 24, 37);      /* #b51825 - Secondary ruby accent */
+  --color-warmstone: rgb(145, 139, 131);    /* #918b83 - Muted borders & secondary chrome */
+  --color-deepcharcoal: rgb(48, 44, 42);    /* #302c2a - Primary text & strong outlines */
+  --color-softivory: rgb(242, 239, 235);    /* #f2efeb - Warm page & card surface */
+  --color-bookwhite: rgb(255, 255, 255);    /* #ffffff - Elevated card surface */
+  --color-bookblack: rgb(0, 0, 0);          /* #000000 */
+
+  /* Semantic Surface & Text Tokens */
+  --bg-page: var(--color-softivory);
+  --bg-surface: var(--color-bookwhite);
+  --bg-surface-muted: #e6e1da;
+  --bg-frame: var(--color-warmstone);
+  --text-primary: var(--color-deepcharcoal);
+  --text-muted: #6e6862;
+  --text-on-dark: var(--color-bookwhite);
+
+  --accent-primary: var(--color-bookpurple);
+  --accent-primary-hover: var(--color-bookpurple-hover);
+  --accent-secondary: var(--color-lawpurple);
+  --accent-danger: var(--color-bookred);
+
+  --border-subtle: rgba(145, 139, 131, 0.45);
+  --border-strong: var(--color-deepcharcoal);
+
+  /* Typography (Zero external font requests) */
+  --font-sans:
+    system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial,
+    Helvetica, sans-serif;
+  --font-mono:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Radii */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-pill: 999px;
+
+  /* Elevation & Borders */
+  --shadow-card: 0 6px 20px rgba(48, 44, 42, 0.12);
+  --shadow-elevated: 0 18px 42px rgba(48, 44, 42, 0.22);
+  --shadow-btn: 0 3px 0 var(--color-deepcharcoal);
+
+  /* Motion */
+  --transition-fast: 90ms ease;
+  --transition-base: 160ms ease;
+}
+
+:root[data-theme='dark'] {
+  --bg-page: #1c1917;
+  --bg-surface: #292524;
+  --bg-surface-muted: #38332f;
+  --bg-frame: #44403c;
+  --text-primary: #f2efeb;
+  --text-muted: #c4bbb2;
+  --accent-primary: #8b4ab8;
+  --accent-primary-hover: #a15ed1;
+  --border-subtle: rgba(242, 239, 235, 0.22);
+  --border-strong: #918b83;
+  --shadow-card: 0 6px 20px rgba(0, 0, 0, 0.42);
+  --shadow-elevated: 0 18px 42px rgba(0, 0, 0, 0.6);
+}

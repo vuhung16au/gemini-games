@@ -1,0 +1,288 @@
+.tetris-page {
+  min-height: 100dvh;
+  padding: 12px 16px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.tetris-shell {
+  width: min(680px, 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Header */
+.tetris-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.brand-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.title-emblem {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-sm);
+  border: 2px solid var(--color-deepcharcoal);
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.tetris-title {
+  margin: 0;
+  font-size: clamp(24px, 5vw, 32px);
+  font-weight: 900;
+  color: var(--color-bookpurple);
+  letter-spacing: -0.4px;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.action-btn {
+  padding: 6px 10px;
+  font-size: 12px;
+}
+
+.icon-btn {
+  padding: 6px 10px;
+}
+
+/* Guidance Banner */
+.guidance-banner {
+  background: var(--color-bookwhite);
+  border: 2px solid var(--color-bookpurple);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-bookpurple);
+  box-shadow: var(--shadow-card);
+}
+
+.tutorial-done {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.banner-btn {
+  padding: 5px 12px;
+  font-size: 12px;
+}
+
+/* Main Play Layout */
+.tetris-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 170px;
+  gap: 14px;
+  align-items: start;
+}
+
+.board-container {
+  position: relative;
+  width: min(100%, 340px);
+  aspect-ratio: 1 / 2;
+  justify-self: center;
+  border: 3px solid var(--color-deepcharcoal);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  background: var(--color-softivory);
+}
+
+.tetris-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Side Panel */
+.side-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.panel-card {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.panel-card.is-locked {
+  opacity: 0.65;
+}
+
+.panel-label {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  color: var(--text-muted);
+}
+
+.preview-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.next-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.stats-card {
+  align-items: stretch;
+  gap: 6px;
+}
+
+.stat-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.stat-val {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--color-deepcharcoal);
+  font-family: var(--font-mono);
+}
+
+.ghost-toggle {
+  width: 100%;
+}
+
+/* Touch Controls */
+.touch-controls {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 6px;
+}
+
+.pad-btn {
+  padding: 10px 4px;
+  font-size: 13px;
+}
+
+@media (max-width: 560px) {
+  .tetris-layout {
+    grid-template-columns: 1fr;
+  }
+  .side-panel {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .next-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .touch-controls {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Modals */
+.tetris-modal {
+  width: min(300px, 90%);
+  padding: 20px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.howto-modal {
+  width: min(440px, 94%);
+  align-items: stretch;
+  text-align: left;
+}
+
+.howto-body {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-primary);
+}
+
+.howto-body ul {
+  margin: 8px 0 0;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.howto-body code {
+  background: var(--bg-surface-muted);
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.modal-title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--color-bookpurple);
+}
+
+.modal-title.is-over {
+  color: var(--color-lawpurple);
+}
+
+.modal-subtitle {
+  margin: 0;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.modal-stats {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  padding: 10px 0;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  text-align: center;
+}
+
+.modal-stat-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.modal-stat-value {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--color-deepcharcoal);
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+}

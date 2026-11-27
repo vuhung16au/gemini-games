@@ -1,0 +1,21 @@
+{
+  "name": "1024 — Sliding Number Puzzle",
+  "short_name": "1024",
+  "description": "Slide and merge numbered tiles from 1 to reach the 1024 tile.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f2efeb",
+  "theme_color": "#3c1053",
+  "icons": [
+    {
+      "src": "./icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

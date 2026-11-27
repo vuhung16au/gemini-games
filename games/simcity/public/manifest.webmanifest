@@ -1,0 +1,21 @@
+{
+  "name": "SimCity 3D — Gemini Games",
+  "short_name": "SimCity 3D",
+  "description": "Low-poly 3D browser city builder with RCI zoning, utilities, traffic, and day/night lighting.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f2efeb",
+  "theme_color": "#3c1053",
+  "icons": [
+    {
+      "src": "./icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

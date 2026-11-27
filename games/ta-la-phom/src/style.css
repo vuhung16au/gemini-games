@@ -1,0 +1,817 @@
+/* Tá Lả (Phỏm) — 100dvh Zero-Scrollbar Responsive Table Layout */
+
+html,
+body,
+#root {
+  height: 100dvh;
+  max-height: 100dvh;
+  overflow: hidden;
+}
+
+.tala-app {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  max-height: 100dvh;
+  width: 100%;
+  overflow: hidden;
+  background: var(--bg-page);
+  color: var(--text-primary);
+}
+
+/* Header */
+.tala-header {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 6px 12px;
+  background: var(--bg-surface);
+  border-bottom: 2px solid var(--border-strong);
+  z-index: 10;
+  flex-wrap: wrap;
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header-emblem {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  border: 1.5px solid var(--border-strong);
+  object-fit: cover;
+}
+
+.header-titles h1 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--accent-primary);
+}
+
+.header-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.segmented-group {
+  display: inline-flex;
+  border: 1.5px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: var(--bg-surface-muted);
+}
+
+.seg-btn {
+  border: none;
+  background: transparent;
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 5px 8px;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.seg-btn + .seg-btn {
+  border-left: 1px solid var(--border-subtle);
+}
+
+.seg-btn.is-active {
+  background: var(--accent-primary);
+  color: var(--text-on-dark);
+}
+
+.btn-compact {
+  padding: 5px 9px;
+  font-size: 12px;
+}
+
+/* Main Table */
+.tala-main {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  overflow: hidden;
+  padding: 8px 12px;
+}
+
+.tala-table {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 6px;
+  padding: 10px 12px;
+  border-radius: var(--radius-lg);
+  border: 3px solid var(--border-strong);
+  background:
+    radial-gradient(ellipse at center, #255d3f 0%, #17402a 75%, #113020 100%);
+  box-shadow: inset 0 0 28px rgba(0, 0, 0, 0.35), var(--shadow-card);
+  overflow: hidden;
+}
+
+/* Opponents */
+.opponents-layer {
+  display: grid;
+  gap: 8px;
+  align-items: start;
+}
+
+.tala-table.players-2 .opponents-layer {
+  grid-template-columns: minmax(220px, 420px);
+  justify-content: center;
+}
+
+.tala-table.players-3 .opponents-layer {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.tala-table.players-4 .opponents-layer {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.opponent-seat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 6px 8px;
+  border-radius: var(--radius-md);
+  background: rgba(242, 239, 235, 0.12);
+  border: 1.5px solid rgba(255, 255, 255, 0.22);
+  color: var(--text-on-dark);
+  min-width: 0;
+}
+
+.opponent-seat.is-turn {
+  background: rgba(60, 16, 83, 0.55);
+  border-color: #f4d35e;
+  box-shadow: 0 0 0 2px rgba(244, 211, 94, 0.35);
+}
+
+.seat-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.seat-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.seat-count {
+  margin-left: auto;
+  padding: 1px 6px;
+  border-radius: var(--radius-pill);
+  background: rgba(0, 0, 0, 0.35);
+  font-size: 10px;
+}
+
+.turn-pill {
+  padding: 1px 6px;
+  border-radius: var(--radius-pill);
+  background: #f4d35e;
+  color: var(--color-deepcharcoal);
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.seat-cards-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  min-height: 44px;
+}
+
+.opp-hand-fan {
+  display: flex;
+  align-items: center;
+}
+
+.opp-hand-fan > * + * {
+  margin-left: -14px;
+}
+
+.extra-count {
+  margin-left: 4px;
+  font-size: 10px;
+  font-weight: 800;
+  color: #f2efeb;
+}
+
+.opp-discards {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex-wrap: nowrap;
+  overflow: hidden;
+}
+
+.seat-melds {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.meld-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 2px 4px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.meld-group.can-layoff {
+  cursor: pointer;
+  border-color: #f4d35e;
+  box-shadow: 0 0 0 2px rgba(244, 211, 94, 0.55);
+}
+
+/* Center Felt */
+.table-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 0;
+}
+
+.center-piles {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+}
+
+.pile-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.pile-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-softivory);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.noc-button {
+  position: relative;
+  border: none;
+  padding: 0;
+  background: transparent;
+  cursor: default;
+  border-radius: 8px;
+}
+
+.noc-button.is-ready {
+  cursor: pointer;
+}
+
+.noc-button.is-ready:hover {
+  transform: translateY(-2px);
+}
+
+.noc-count-badge {
+  position: absolute;
+  bottom: -6px;
+  right: -6px;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 5px;
+  border-radius: var(--radius-pill);
+  background: var(--accent-primary);
+  color: var(--text-on-dark);
+  border: 2px solid var(--color-bookwhite);
+  font-size: 11px;
+  font-weight: 800;
+  display: grid;
+  place-items: center;
+}
+
+.eat-slot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+
+.eat-slot.can-eat {
+  box-shadow: 0 0 0 3px #f4d35e;
+  border-radius: 8px;
+}
+
+.empty-card-slot {
+  width: 62px;
+  height: 88px;
+  border-radius: 8px;
+  border: 2px dashed rgba(242, 239, 235, 0.35);
+  color: rgba(242, 239, 235, 0.65);
+  font-size: 11px;
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+}
+
+.is-hint-ring {
+  box-shadow: 0 0 0 3px #f4d35e, 0 0 14px rgba(244, 211, 94, 0.85);
+}
+
+.viewer-table-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 4px 10px;
+  border-radius: var(--radius-md);
+  background: rgba(0, 0, 0, 0.22);
+}
+
+.viewer-melds,
+.viewer-discards {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.strip-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-softivory);
+  margin-right: 2px;
+}
+
+.guidance-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  max-width: 780px;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  background: rgba(242, 239, 235, 0.94);
+  color: var(--color-deepcharcoal);
+  border: 2px solid var(--border-strong);
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+  box-shadow: var(--shadow-card);
+}
+
+.guidance-banner.is-tutorial {
+  border-color: var(--accent-primary);
+  background: #fdf9ff;
+}
+
+.guidance-banner.is-hint {
+  border-color: #d97706;
+  background: #fffbeb;
+}
+
+/* Bottom Player Dock */
+.player-dock {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px 10px;
+  border-radius: var(--radius-md);
+  background: rgba(242, 239, 235, 0.93);
+  border: 2px solid var(--border-strong);
+}
+
+.player-status-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-size: 12px;
+}
+
+.player-identity {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.status-chip {
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  background: var(--bg-surface-muted);
+  border: 1px solid var(--border-subtle);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.phase-indicator {
+  font-weight: 800;
+  color: var(--accent-primary);
+  font-size: 12px;
+}
+
+.player-hand-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-height: 102px;
+  padding: 6px 4px 2px;
+}
+
+.action-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.is-hint-btn {
+  box-shadow: 0 0 0 3px #f4d35e;
+}
+
+/* Crisp CSS/SVG Playing Cards */
+.tala-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 4px;
+  border-radius: 7px;
+  background: var(--color-bookwhite);
+  border: 1.5px solid var(--color-deepcharcoal);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.22);
+  font-family: var(--font-sans);
+  flex: 0 0 auto;
+  transition:
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.tala-card.is-interactive {
+  cursor: pointer;
+}
+
+.tala-card.is-interactive:hover:not(:disabled) {
+  transform: translateY(-4px);
+}
+
+.tala-card.is-selected {
+  transform: translateY(-10px);
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 2.5px var(--accent-primary), 0 8px 14px rgba(60, 16, 83, 0.28);
+}
+
+.tala-card.is-in-phom {
+  border-color: #0d9488;
+  background: #f0fdfa;
+}
+
+.tala-card.is-eaten {
+  border-color: var(--accent-secondary);
+}
+
+.tala-card.is-hinted {
+  box-shadow: 0 0 0 3px #f59e0b, 0 0 12px rgba(245, 158, 11, 0.7);
+}
+
+.tala-card.is-disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.tala-card.is-red {
+  color: var(--color-lawpurple);
+}
+
+.tala-card.is-black {
+  color: var(--color-deepcharcoal);
+}
+
+.tala-card-lg {
+  width: 66px;
+  height: 94px;
+}
+
+.tala-card-md {
+  width: 62px;
+  height: 88px;
+}
+
+.tala-card-sm {
+  width: 44px;
+  height: 62px;
+}
+
+.tala-card-xs {
+  width: 30px;
+  height: 42px;
+  padding: 2px;
+  border-radius: 4px;
+}
+
+.tala-card-back {
+  padding: 0;
+  overflow: hidden;
+}
+
+.card-back-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.tala-card-corner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1;
+  width: 16px;
+}
+
+.tala-card-corner.bottom-right {
+  align-self: flex-end;
+  transform: rotate(180deg);
+}
+
+.tala-card-xs .tala-card-corner.bottom-right {
+  display: none;
+}
+
+.tala-card-rank {
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.tala-card-xs .tala-card-rank {
+  font-size: 10px;
+}
+
+.tala-card-suit-sm {
+  width: 10px;
+  height: 10px;
+}
+
+.tala-card-xs .tala-card-suit-sm {
+  width: 8px;
+  height: 8px;
+}
+
+.tala-card-center {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.tala-card-suit-lg {
+  width: 24px;
+  height: 24px;
+}
+
+.tala-card-xs .tala-card-suit-lg {
+  width: 13px;
+  height: 13px;
+}
+
+.tala-card-tag {
+  position: absolute;
+  bottom: 3px;
+  left: 3px;
+  padding: 1px 4px;
+  border-radius: 3px;
+  font-size: 8px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--text-on-dark);
+}
+
+.tag-phom {
+  background: #0f766e;
+}
+
+.tag-eaten {
+  background: var(--accent-secondary);
+}
+
+/* Overlays & Modals */
+.privacy-card,
+.howto-modal,
+.result-modal {
+  width: min(560px, 94vw);
+  max-height: 88dvh;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: left;
+}
+
+.privacy-card {
+  text-align: center;
+  align-items: center;
+}
+
+.privacy-card h2 {
+  margin: 0;
+  font-size: 20px;
+  color: var(--accent-primary);
+}
+
+.subtitle-en {
+  display: block;
+  margin-top: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.privacy-desc {
+  margin: 0;
+  font-size: 13px;
+  color: var(--text-primary);
+}
+
+.howto-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.howto-header h2,
+.result-header h2 {
+  margin: 0;
+  font-size: 18px;
+  color: var(--accent-primary);
+}
+
+.howto-body {
+  overflow-y: auto;
+  font-size: 13px;
+  line-height: 1.45;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-right: 4px;
+}
+
+.howto-body h3 {
+  margin: 0 0 4px;
+  font-size: 14px;
+  color: var(--color-deepcharcoal);
+}
+
+.howto-body p,
+.howto-body ul {
+  margin: 0;
+}
+
+.howto-body ul {
+  padding-left: 18px;
+}
+
+.howto-footer,
+.result-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.result-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow-y: auto;
+}
+
+.result-row {
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--border-subtle);
+  background: var(--bg-page);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.result-row.is-winner {
+  border-color: var(--accent-primary);
+  background: #f8f2fc;
+}
+
+.result-row-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.result-rank {
+  color: var(--accent-primary);
+}
+
+.result-pts {
+  margin-left: auto;
+  font-size: 12px;
+}
+
+.result-pill {
+  padding: 1px 6px;
+  border-radius: var(--radius-pill);
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--text-on-dark);
+}
+
+.pill-u {
+  background: #0f766e;
+}
+
+.pill-mom {
+  background: var(--accent-secondary);
+}
+
+.result-cards-strip {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.result-meld-group,
+.result-deadwood-group {
+  display: inline-flex;
+  gap: 2px;
+}
+
+/* Compact responsiveness for smaller screens */
+@media (max-width: 780px) {
+  .tala-header {
+    padding: 5px 8px;
+  }
+
+  .tala-main {
+    padding: 4px 6px;
+  }
+
+  .tala-table {
+    padding: 6px 8px;
+  }
+
+  .tala-card-lg {
+    width: 48px;
+    height: 70px;
+  }
+
+  .tala-card-md {
+    width: 48px;
+    height: 70px;
+  }
+
+  .tala-card-rank {
+    font-size: 11px;
+  }
+
+  .tala-card-suit-lg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .player-hand-row {
+    min-height: 78px;
+    gap: 2px;
+  }
+}
