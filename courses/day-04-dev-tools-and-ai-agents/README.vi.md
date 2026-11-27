@@ -40,6 +40,8 @@ make deploy-dry-run   # Đóng gói thử bản tĩnh dist/ cho Cloudflare (ho�
 ```
 
 ### 2. Thử Nghiệm An Toàn với Nhánh Git
+Trong vibe coding, việc dùng `git` được **khuyến nghị mạnh mẽ**: commit thường xuyên giúp lưu giữ lịch sử dự án để bạn luôn quay lại được một điểm mốc (checkpoint) an toàn, đồng thời giúp AI agent dễ dàng kiểm tra thay đổi và quản lý dự án tốt hơn.
+
 Trước khi thử ý tưởng lớn cùng `agy`, hãy tạo nhánh thực hành:
 ```bash
 git checkout -b practice-day-4

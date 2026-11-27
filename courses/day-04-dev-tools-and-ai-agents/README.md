@@ -40,6 +40,8 @@ make deploy-dry-run   # Test-package static dist/ for Cloudflare (or Vercel) wit
 ```
 
 ### 2. Safe Experimenting with Git Branches
+Using `git` is **strongly recommended** in vibe coding: committing regularly preserves your project history so you can always return to a safe checkpoint, and it helps AI agents better inspect, diff, and manage changes across your project.
+
 Before trying a big new idea with `agy`, create a safe practice branch:
 ```bash
 git checkout -b practice-day-4

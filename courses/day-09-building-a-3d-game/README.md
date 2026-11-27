@@ -105,3 +105,15 @@ Use Google `agy` with the sample prompts below—no manual coding required:
    coverage), then run make verify and prepare make deploy-dry-run without
    stopping until everything passes.
    ```
+
+
+---
+
+## Course Wrap-Up & Closing Note
+
+Thank you for learning with me, and I hope you enjoyed the course! You now have a practical understanding of **AI coding agents**, **prompting** (`/plan`, `/goal`, `/teamwork`), and **hands-on game development**.
+
+As you move on to your next projects, remember:
+- **Games & Webapps Are Just One Example:** `"Game"`, `"webapp"`, `"TypeScript"`, `"React"`, and `"Three.js"` here are simply one example of a problem and a tech stack. Once you master how to prompt clearly and work with AI agents, you can comfortably explore **any tech stack and any problem**.
+- **Why the SDLC Looks Heavy:** The SDLC, `git` checkpoints, automated tests, and `make verify` introduced in this project may look heavy at first—but those guardrails **keep you safe so you don't shoot yourself in the foot**.
+- **Make the Process Your Own:** Once you are confident, **feel free to tailor and lighten the process** to match your own workflow!

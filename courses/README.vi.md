@@ -49,6 +49,8 @@ make dev
 ```
 
 > **Mẹo:** Nếu bạn đã clone trực tiếp repo gốc, bạn vẫn chơi và chỉnh sửa **100% ngoại tuyến** bình thường—khi muốn đẩy lên GitHub riêng, chỉ cần nói với `agy`: *"Tạo kho GitHub riêng cho dự án này và push các thay đổi của tôi lên đó."*
+>
+> **Vì sao Rất Khuyến nghị Dùng `git`:** Dùng `git` để lưu lịch sử giúp bạn luôn có thể quay lại một điểm mốc (checkpoint) an toàn khi cần—đồng thời giúp các AI agent (như `agy`) theo dõi, đối chiếu và quản lý thay đổi trong dự án chính xác hơn.
 
 ---
 
@@ -89,3 +91,15 @@ flowchart LR
 - [AGENTS.md](../AGENTS.md) — Tiêu chuẩn game bắt buộc (tài liệu, icon/cover, kiểm thử, đa ngôn ngữ, đăng ký hub)
 - [Kiến trúc](../docs/architecture.md) · [Tech Stack](../docs/techstack.md) · [Hướng dẫn Lập trình viên](../docs/developer-guide.md)
 - [Hướng dẫn Giao diện Dùng chung](../styles/STYLE_GUIDE.md)
+
+
+---
+
+## Lời Kết: Vượt Ra Ngoài Phạm Vi Làm Game
+
+Cảm ơn bạn đã đồng hành học tập cùng tôi, và hy vọng bạn đã có những giờ phút thú vị với khóa học 9 ngày này! Khi hoàn thành các mô-đun trên, bạn đã nắm được nền tảng thực hành về **AI coding agent**, **cách viết prompt hiệu quả** (`/plan`, `/goal`, `/teamwork`), và **tự tay phát triển trò chơi**.
+
+Hãy luôn nhớ:
+- **Game & Tech Stack Này Chỉ Là Một Ví Dụ:** `"Game"`, `"webapp"`, `"TypeScript"`, `"React"`, hay `"Three.js"` ở đây chỉ là một ví dụ về bài toán và bộ công nghệ. Khi đã làm chủ cách viết prompt rõ ràng và phối hợp với AI, bạn có thể tự tin khám phá **bất kỳ tech stack và bài toán nào khác** (tự động hóa, dashboard dữ liệu, ứng dụng di động, API, công cụ sáng tạo, v.v.).
+- **Quy Trình Nghiêm Ngặt Giúp Bạn An Toàn:** Quy trình SDLC, các điểm lưu `git`, kiểm thử tự động và `make verify` trong dự án này thoạt nhìn có thể hơi nặng nề—nhưng chúng là **hàng rào bảo vệ giúp bạn không tự bắn vào chân mình** khi AI tạo mã nguồn với tốc độ cao.
+- **Tùy Biến Nhẹ Nhàng Khi Đã Tự Tin:** Khi đã vững tay và hiểu rõ rủi ro, **bạn hoàn toàn có thể tinh giản quy trình này cho nhẹ nhàng hơn** để phù hợp với tốc độ và phong cách của riêng mình.

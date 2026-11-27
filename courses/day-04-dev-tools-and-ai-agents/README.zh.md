@@ -40,6 +40,8 @@ make deploy-dry-run   # 预演打包静态 dist/（可用于 Cloudflare 或 Verc
 ```
 
 ### 2. 用 Git 分支安全实验
+在 Vibe Coding 中**强烈建议使用 `git`**：定期提交可以保存完整的项目历史，让你随时回到安全的检查点，也能帮助 AI 智能体更准确地查看差异并管理项目改动。
+
 在让 `agy` 尝试新创意前，先建一个练习分支：
 ```bash
 git checkout -b practice-day-4

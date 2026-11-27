@@ -49,6 +49,8 @@ make dev
 ```
 
 > **Tip:** If you cloned the original repo directly, you can still play and edit 100% offline—and whenever you want to push to GitHub, just ask `agy`: *"Create my own GitHub repository for this project and push my changes there."*
+>
+> **Why `git` Is Strongly Recommended:** Using `git` to commit your progress maintains a clean history so you can always roll back to a safe checkpoint—and it also helps AI agents (`agy` and others) understand, review, and manage changes across your project reliably.
 
 ---
 
@@ -89,3 +91,15 @@ flowchart LR
 - [AGENTS.md](../AGENTS.md) — Mandatory game standards (docs, icons/covers, tests, multilingual support, hub registration)
 - [Architecture](../docs/architecture.md) · [Tech Stack](../docs/techstack.md) · [Developer Guide](../docs/developer-guide.md)
 - [Shared Style Guide](../styles/STYLE_GUIDE.md)
+
+
+---
+
+## Closing Note: Beyond Games
+
+Thank you for learning with me, and I hope you enjoyed this 9-day course! By finishing these modules, you have built a solid foundation in **AI coding agents**, **structured prompting** (`/plan`, `/goal`, `/teamwork`), and **hands-on game development**.
+
+Keep in mind:
+- **Games & This Tech Stack Are Just One Example:** `"Game"`, `"webapp"`, `"TypeScript"`, `"React"`, and `"Three.js"` here are simply one example of a problem and a tech stack. Once you master how to prompt clearly and collaborate with AI agents, you can comfortably explore **any tech stack and any problem** (automation, dashboards, mobile apps, APIs, creative tools, and more).
+- **Guardrails Keep You Safe:** The SDLC, `git` checkpoints, automated tests, and `make verify` introduced in this project may look heavy at first—but they exist to **keep you safe so you don't shoot yourself in the foot** when AI generates code fast.
+- **Tailor It As You Grow:** Once you feel confident and understand what can go wrong, **you can tailor this process and make it lighter** to fit your own speed and style.

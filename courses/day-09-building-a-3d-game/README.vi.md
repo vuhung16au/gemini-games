@@ -105,3 +105,15 @@ Sử dụng các câu lệnh mẫu bên dưới với Google `agy`—không cầ
    coverage), then run make verify and prepare make deploy-dry-run without
    stopping until everything passes.
    ```
+
+
+---
+
+## Tổng Kết Khóa Học & Lời Kết
+
+Cảm ơn bạn đã học tập cùng tôi, và hy vọng bạn yêu thích khóa học này! Giờ đây bạn đã có nền tảng thực tế về **AI coding agent**, **kỹ năng viết prompt** (`/plan`, `/goal`, `/teamwork`) và **tự tay phát triển game**.
+
+Khi bước sang những dự án tiếp theo, hãy nhớ:
+- **Game & Webapp Chỉ Là Một Ví Dụ:** `"Game"`, `"webapp"`, `"TypeScript"`, v.v. trong khóa học này chỉ là một ví dụ về bài toán và tech stack. Khi đã thành thạo cách đặt prompt và làm việc với AI, bạn hoàn toàn có thể tự tin khám phá **bất kỳ tech stack và bài toán nào khác**.
+- **Vì Sao Quy Trình Trông Hơi Nặng:** Quy trình SDLC, lưu mốc `git`, kiểm thử tự động và `make verify` trong dự án này thoạt đầu có thể hơi cồng kềnh—nhưng chúng **giữ an toàn cho bạn, giúp bạn không tự bắn vào chân mình**.
+- **Tùy Chỉnh Cho Riêng Bạn:** Khi đã tự tin, **bạn hãy thoải mái tinh giản quy trình này nhẹ nhàng hơn** cho hợp với mình!

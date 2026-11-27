@@ -105,3 +105,15 @@ Three.js following AGENTS.md and SimCity 3D's patterns:
    coverage), then run make verify and prepare make deploy-dry-run without
    stopping until everything passes.
    ```
+
+
+---
+
+## 课程总结与结语
+
+感谢你与我一起学习，希望你喜欢这门课程！现在你已经掌握了 **AI 编程智能体**、**提示词技巧**（`/plan`、`/goal`、`/teamwork`）以及**动手开发游戏**的实践基础。
+
+在开启下一个项目时，请记住：
+- **游戏与网页应用只是一个例子：** 这里的 `"Game"`、`"webapp"`、`"TypeScript"` 等只是一种问题与一种技术栈的示例。只要掌握了如何向 AI 清晰提问与协作，你就可以自信地探索**任何技术栈与任何新问题**。
+- **为什么流程看起来很重：** 本项目介绍的 SDLC、`git` 检查点、自动化测试与 `make verify` 起初可能显得比较繁重——但它们能**保护你的安全，避免在快速开发时“搬起石头砸自己的脚”**。
+- **自信后按需简化：** 当你熟练之后，**完全可以根据需要裁剪、简化这套流程**，让它更轻便顺手！
