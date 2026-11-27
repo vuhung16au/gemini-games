@@ -1,3 +1,5 @@
+**English** | [中文](./README.zh.md) | [Tiếng Việt](./README.vi.md)
+
 # Flappy Bird — Web Arcade Edition
 
 A frame-rate-independent **Flappy Bird** arcade web game built with **React 18 + TypeScript + Vite + HTML5 Canvas 2D**, shared `styles/` tokens, **Practice Tutorial** mode, **Flight-Corridor Hint**, and procedural Web Audio API sound effects.

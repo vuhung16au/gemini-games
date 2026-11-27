@@ -1,5 +1,14 @@
 import { describe, expect, it } from 'vitest';
-import { GAMES, filterGames, findGameBySlug } from '../games';
+import {
+  GAMES,
+  filterGames,
+  findGameBySlug,
+  getLocalizedGame,
+} from '../games';
+import {
+  HUB_TRANSLATIONS,
+  SUPPORTED_LOCALES,
+} from '../../i18n/translations';
 import {
   loadHubData,
   recordRecentGame,
@@ -79,11 +88,15 @@ describe('game hub registry', () => {
       },
     } as Storage;
 
-    saveHubData({ favorites: favs, recentSlugs: recents, theme: 'dark' }, mockStorage);
+    saveHubData(
+      { favorites: favs, recentSlugs: recents, theme: 'dark', locale: 'vi' },
+      mockStorage,
+    );
     expect(loadHubData(mockStorage)).toEqual({
       favorites: ['sudoku'],
       recentSlugs: ['tetris', 'solitaire', 'checkers', 'sudoku'],
       theme: 'dark',
+      locale: 'vi',
     });
 
     const broken = {
@@ -98,6 +111,27 @@ describe('game hub registry', () => {
       favorites: [],
       recentSlugs: [],
       theme: 'light',
+      locale: 'en',
     });
+  });
+
+  it('supports English, Chinese, and Vietnamese localizations for all games and hub UI', () => {
+    expect(SUPPORTED_LOCALES).toEqual(['en', 'zh', 'vi']);
+    for (const locale of SUPPORTED_LOCALES) {
+      expect(HUB_TRANSLATIONS[locale].appTitle).toBeTruthy();
+      for (const game of GAMES) {
+        const localized = getLocalizedGame(game, locale);
+        expect(localized.title.length).toBeGreaterThan(0);
+        expect(localized.description.length).toBeGreaterThan(0);
+        expect(localized.controls.length).toBeGreaterThan(0);
+      }
+    }
+
+    expect(filterGames(GAMES, 'All', '扫雷', 'zh').map((g) => g.slug)).toEqual([
+      'minesweeper',
+    ]);
+    expect(filterGames(GAMES, 'All', 'Dò Mìn', 'vi').map((g) => g.slug)).toEqual([
+      'minesweeper',
+    ]);
   });
 });

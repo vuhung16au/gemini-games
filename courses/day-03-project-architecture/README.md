@@ -1,3 +1,5 @@
+**English** | [中文](./README.zh.md) | [Tiếng Việt](./README.vi.md)
+
 # Day 3 — Understanding This Project's Architecture
 
 **Estimated Time:** 1 Hour · **Previous:** [Day 2](../day-02-game-dev-concepts/README.md) · **Next:** [Day 4](../day-04-dev-tools-and-ai-agents/README.md)

@@ -1,3 +1,5 @@
+**English** | [中文](./README.zh.md) | [Tiếng Việt](./README.vi.md)
+
 # Day 5 — Tech Stack Deep Dive
 
 **Estimated Time:** 1 Hour · **Previous:** [Day 4](../day-04-dev-tools-and-ai-agents/README.md) · **Next:** [Day 6](../day-06-modifying-dino-run/README.md)

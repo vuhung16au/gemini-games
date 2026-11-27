@@ -1,3 +1,5 @@
+**English** | [中文](./README.zh.md) | [Tiếng Việt](./README.vi.md)
+
 # Tá Lả (Phỏm) — Vietnamese Classic Card Game
 
 An authentic, offline-ready web implementation of **Tá Lả (Phỏm)** built with TypeScript, React 18, and Vite 5.

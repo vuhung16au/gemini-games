@@ -1,12 +1,20 @@
 import React, { useRef, useState } from 'react';
-import type { GameEntry } from '../registry/games';
+import { HUB_TRANSLATIONS, type Locale } from '../i18n/translations';
+import { getLocalizedGame, type GameEntry } from '../registry/games';
 
 interface GamePlayerProps {
   game: GameEntry;
+  locale: Locale;
   onBack: () => void;
 }
 
-export const GamePlayer: React.FC<GamePlayerProps> = ({ game, onBack }) => {
+export const GamePlayer: React.FC<GamePlayerProps> = ({
+  game,
+  locale,
+  onBack,
+}) => {
+  const t = HUB_TRANSLATIONS[locale];
+  const localized = getLocalizedGame(game, locale);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const iframeRef = useRef<HTMLIFrameElement | null>(null);
   const [reloadKey, setReloadKey] = useState(0);
@@ -34,19 +42,19 @@ export const GamePlayer: React.FC<GamePlayerProps> = ({ game, onBack }) => {
             className="game-btn game-btn-secondary player-btn"
             onClick={onBack}
           >
-            ← All Games
+            {t.allGamesBack}
           </button>
 
           <div className="player-game-info">
             <img
               src={game.iconPath}
-              alt={`${game.title} icon`}
+              alt={`${localized.title} icon`}
               className="player-icon"
               width={28}
               height={28}
             />
-            <span className="player-title">{game.title}</span>
-            <span className="player-controls-hint">{game.controls}</span>
+            <span className="player-title">{localized.title}</span>
+            <span className="player-controls-hint">{localized.controls}</span>
           </div>
         </div>
 
@@ -56,14 +64,14 @@ export const GamePlayer: React.FC<GamePlayerProps> = ({ game, onBack }) => {
             className="game-btn game-btn-secondary player-btn"
             onClick={() => setReloadKey((k) => k + 1)}
           >
-            ↻ Reload
+            {t.reloadGame}
           </button>
           <button
             type="button"
             className="game-btn game-btn-primary player-btn"
             onClick={handleFullscreen}
           >
-            ⛶ Fullscreen
+            {t.fullscreen}
           </button>
         </div>
       </header>
@@ -72,7 +80,7 @@ export const GamePlayer: React.FC<GamePlayerProps> = ({ game, onBack }) => {
         key={`${game.slug}-${reloadKey}`}
         ref={iframeRef}
         src={game.entryPath}
-        title={game.title}
+        title={localized.title}
         className="player-iframe"
         onLoad={() => {
           iframeRef.current?.contentWindow?.focus();

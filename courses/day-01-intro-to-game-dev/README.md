@@ -1,3 +1,5 @@
+**English** | [中文](./README.zh.md) | [Tiếng Việt](./README.vi.md)
+
 # Day 1 — Introduction to Game Development & Vibe Coding
 
 **Estimated Time:** 1 Hour · **Previous:** [Course Index](../README.md) · **Next:** [Day 2](../day-02-game-dev-concepts/README.md)

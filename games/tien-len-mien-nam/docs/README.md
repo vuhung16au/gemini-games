@@ -1,3 +1,5 @@
+**English** | [中文](./README.zh.md) | [Tiếng Việt](./README.vi.md)
+
 # Tiến Lên Miền Nam — Southern Thirteen Card Game
 
 **Tiến Lên Miền Nam** is an authentic Southern Vietnamese 52-card shedding game built with TypeScript, React 18, and Vite. Play solo against smart AI opponents or pass a single device locally in **Pass & Play** mode with **2, 3, or 4 players**.

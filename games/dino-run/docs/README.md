@@ -1,3 +1,5 @@
+**English** | [中文](./README.zh.md) | [Tiếng Việt](./README.vi.md)
+
 # Dino Run — 404 Runner
 
 An endless T-Rex runner inspired by Chrome's offline 404 dinosaur game and the HSC QuestionBanks 404 Proof Runner (`DinoGame.tsx`).

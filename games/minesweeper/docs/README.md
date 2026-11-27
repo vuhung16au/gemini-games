@@ -1,3 +1,5 @@
+**English** | [中文](./README.zh.md) | [Tiếng Việt](./README.vi.md)
+
 # Minesweeper
 
 A classic logic puzzle game with **Easy (`9×9`, 10 mines — default)**, **Medium (`16×16`, 40 mines)**, **Hard (`30×16`, 99 mines)**, and **Custom** board sizes.

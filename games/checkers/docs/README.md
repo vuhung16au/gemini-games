@@ -1,3 +1,5 @@
+**English** | [中文](./README.zh.md) | [Tiếng Việt](./README.vi.md)
+
 # Checkers — Classic Board Game
 
 A responsive **8×8 American Checkers** web game modeled on `247checkers.com`, built with **React 18 + TypeScript + Vite**, shared `styles/` tokens, an alpha-beta AI opponent, and procedural Web Audio API sound effects.

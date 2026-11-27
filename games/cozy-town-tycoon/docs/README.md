@@ -1,3 +1,5 @@
+**English** | [中文](./README.zh.md) | [Tiếng Việt](./README.vi.md)
+
 # Cozy Town Tycoon — Pixel Bakery
 
 A cozy 16-bit pixel-art bakery idle/tycoon web game built with **React 18 + TypeScript + Vite + HTML5 Canvas 2D**, featuring animated customers, 3 pastries, 5 equipment tiers, staff automation, 8-hour offline earnings, **How to Play**, **Tutorial**, and **Next-Action Hints**.

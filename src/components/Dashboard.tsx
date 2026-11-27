@@ -1,17 +1,21 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import {
+  HUB_TRANSLATIONS,
+  LOCALE_OPTIONS,
+  type HubTabFilter,
+  type Locale,
+} from '../i18n/translations';
+import {
   GAME_CATEGORIES,
   GAMES,
   filterGames,
   findGameBySlug,
-  type CategoryFilter,
+  getLocalizedGame,
   type GameEntry,
 } from '../registry/games';
 import type { ThemeMode } from '../registry/hubStorage';
 
-type HubFilter = CategoryFilter | 'Favorites';
-
-const FILTER_TABS: readonly HubFilter[] = [
+const FILTER_TABS: readonly HubTabFilter[] = [
   'All',
   'Favorites',
   ...GAME_CATEGORIES.slice(1),
@@ -21,8 +25,10 @@ interface DashboardProps {
   favorites: string[];
   recentSlugs: string[];
   theme: ThemeMode;
+  locale: Locale;
   onToggleFavorite: (slug: string) => void;
   onToggleTheme: () => void;
+  onChangeLocale: (locale: Locale) => void;
   onSelectGame: (game: GameEntry) => void;
 }
 
@@ -30,11 +36,14 @@ export const Dashboard: React.FC<DashboardProps> = ({
   favorites,
   recentSlugs,
   theme,
+  locale,
   onToggleFavorite,
   onToggleTheme,
+  onChangeLocale,
   onSelectGame,
 }) => {
-  const [filter, setFilter] = useState<HubFilter>('All');
+  const t = HUB_TRANSLATIONS[locale];
+  const [filter, setFilter] = useState<HubTabFilter>('All');
   const [query, setQuery] = useState('');
   const [focusedIndex, setFocusedIndex] = useState<number>(-1);
   const searchRef = useRef<HTMLInputElement | null>(null);
@@ -44,9 +53,9 @@ export const Dashboard: React.FC<DashboardProps> = ({
     const base =
       filter === 'Favorites'
         ? GAMES.filter((g) => favorites.includes(g.slug))
-        : filterGames(GAMES, filter, '');
-    return filterGames(base, 'All', query);
-  }, [favorites, filter, query]);
+        : filterGames(GAMES, filter, '', locale);
+    return filterGames(base, 'All', query, locale);
+  }, [favorites, filter, locale, query]);
 
   const recentGames = useMemo(
     () =>
@@ -139,32 +148,58 @@ export const Dashboard: React.FC<DashboardProps> = ({
         <div className="hub-top-row">
           <div className="hub-brand">
             <div className="hub-title-row">
-              <h1 className="hub-title">Gemini Games</h1>
-              <span className="hub-count-badge">{GAMES.length} Games</span>
+              <h1 className="hub-title">{t.appTitle}</h1>
+              <span className="hub-count-badge">{t.gamesCount(GAMES.length)}</span>
             </div>
             <p className="hub-subtitle">
-              Play all arcade, puzzle, board, card, and tycoon games in one
-              unified hub. Press <strong>/</strong> to search or{' '}
-              <strong>Arrow keys</strong> + <strong>Enter</strong> to launch.
+              {t.subtitlePrefix}
+              <strong>{t.subtitleSearchKey}</strong>
+              {t.subtitleMiddle}
+              <strong>{t.subtitleArrowKeys}</strong>
+              {t.subtitlePlus}
+              <strong>{t.subtitleEnterKey}</strong>
+              {t.subtitleSuffix}
             </p>
           </div>
 
-          <button
-            type="button"
-            className="game-btn game-btn-secondary theme-toggle-btn"
-            data-testid="theme-toggle"
-            aria-pressed={theme === 'dark'}
-            onClick={onToggleTheme}
-          >
-            {theme === 'dark' ? '☀ Light' : '🌙 Dark'}
-          </button>
+          <div className="hub-top-actions">
+            <div
+              className="lang-switcher"
+              role="group"
+              aria-label={t.languageAriaLabel}
+            >
+              {LOCALE_OPTIONS.map((opt) => (
+                <button
+                  key={opt.code}
+                  type="button"
+                  className={`lang-btn ${locale === opt.code ? 'is-active' : ''}`}
+                  data-testid={`lang-${opt.code}`}
+                  aria-label={opt.nativeName}
+                  aria-pressed={locale === opt.code}
+                  onClick={() => onChangeLocale(opt.code)}
+                >
+                  {opt.shortLabel}
+                </button>
+              ))}
+            </div>
+
+            <button
+              type="button"
+              className="game-btn game-btn-secondary theme-toggle-btn"
+              data-testid="theme-toggle"
+              aria-pressed={theme === 'dark'}
+              onClick={onToggleTheme}
+            >
+              {theme === 'dark' ? t.lightMode : t.darkMode}
+            </button>
+          </div>
         </div>
 
         <div className="hub-controls">
           <div
             className="category-pills"
             role="tablist"
-            aria-label="Game categories"
+            aria-label={t.categoriesAriaLabel}
           >
             {FILTER_TABS.map((cat) => (
               <button
@@ -175,7 +210,9 @@ export const Dashboard: React.FC<DashboardProps> = ({
                 className={`category-pill ${filter === cat ? 'is-active' : ''}`}
                 onClick={() => setFilter(cat)}
               >
-                {cat === 'Favorites' ? `★ Favorites (${favorites.length})` : cat}
+                {cat === 'Favorites'
+                  ? `★ ${t.categories.Favorites} (${favorites.length})`
+                  : t.categories[cat]}
               </button>
             ))}
           </div>
@@ -184,8 +221,8 @@ export const Dashboard: React.FC<DashboardProps> = ({
             ref={searchRef}
             type="search"
             className="hub-search"
-            placeholder="Search games… (/)"
-            aria-label="Search games"
+            placeholder={t.searchPlaceholder}
+            aria-label={t.searchAriaLabel}
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
@@ -196,38 +233,37 @@ export const Dashboard: React.FC<DashboardProps> = ({
         <section
           className="recent-strip"
           data-testid="recently-played"
-          aria-label="Recently Played"
+          aria-label={t.recentlyPlayed}
         >
-          <span className="recent-label">RECENTLY PLAYED</span>
+          <span className="recent-label">{t.recentlyPlayed}</span>
           <div className="recent-pills">
-            {recentGames.map((game) => (
-              <button
-                key={game.slug}
-                type="button"
-                className="recent-pill"
-                onClick={() => onSelectGame(game)}
-              >
-                <img
-                  src={game.iconPath}
-                  alt=""
-                  width={22}
-                  height={22}
-                  className="recent-icon"
-                />
-                <span>{game.title}</span>
-              </button>
-            ))}
+            {recentGames.map((game) => {
+              const localized = getLocalizedGame(game, locale);
+              return (
+                <button
+                  key={game.slug}
+                  type="button"
+                  className="recent-pill"
+                  onClick={() => onSelectGame(game)}
+                >
+                  <img
+                    src={game.iconPath}
+                    alt=""
+                    width={22}
+                    height={22}
+                    className="recent-icon"
+                  />
+                  <span>{localized.title}</span>
+                </button>
+              );
+            })}
           </div>
         </section>
       )}
 
       {visibleGames.length === 0 ? (
         <div className="hub-empty game-card">
-          <p>
-            {filter === 'Favorites'
-              ? 'No favorite games yet. Click the ★ on any game card to pin it here!'
-              : 'No games match your current filter.'}
-          </p>
+          <p>{filter === 'Favorites' ? t.emptyFavorites : t.emptyFilter}</p>
           <button
             type="button"
             className="game-btn game-btn-secondary"
@@ -236,14 +272,19 @@ export const Dashboard: React.FC<DashboardProps> = ({
               setQuery('');
             }}
           >
-            Reset Filters
+            {t.resetFilters}
           </button>
         </div>
       ) : (
-        <section ref={gridRef} className="games-grid" aria-label="Games grid">
+        <section
+          ref={gridRef}
+          className="games-grid"
+          aria-label={t.gamesGridAriaLabel}
+        >
           {visibleGames.map((game, idx) => {
             const isFav = favorites.includes(game.slug);
             const isFocused = idx === focusedIndex;
+            const localized = getLocalizedGame(game, locale);
 
             return (
               <article
@@ -256,15 +297,17 @@ export const Dashboard: React.FC<DashboardProps> = ({
                     type="button"
                     className="tile-cover-btn"
                     onClick={() => onSelectGame(game)}
-                    aria-label={`Open ${game.title}`}
+                    aria-label={t.openGameAria(localized.title)}
                   >
                     <img
                       src={game.coverPath}
-                      alt={`${game.title} cover artwork`}
+                      alt={`${localized.title} cover artwork`}
                       className="tile-cover"
                       loading="lazy"
                     />
-                    <span className="tile-category">{game.category}</span>
+                    <span className="tile-category">
+                      {t.categories[game.category]}
+                    </span>
                   </button>
 
                   <button
@@ -273,8 +316,8 @@ export const Dashboard: React.FC<DashboardProps> = ({
                     data-testid={`fav-${game.slug}`}
                     aria-label={
                       isFav
-                        ? `Remove ${game.title} from favorites`
-                        : `Add ${game.title} to favorites`
+                        ? t.removeFavoriteAria(localized.title)
+                        : t.addFavoriteAria(localized.title)
                     }
                     aria-pressed={isFav}
                     onClick={(e) => {
@@ -290,24 +333,24 @@ export const Dashboard: React.FC<DashboardProps> = ({
                   <div className="tile-heading">
                     <img
                       src={game.iconPath}
-                      alt={`${game.title} icon`}
+                      alt={`${localized.title} icon`}
                       className="tile-icon"
                       width={36}
                       height={36}
                     />
-                    <h2 className="tile-title">{game.title}</h2>
+                    <h2 className="tile-title">{localized.title}</h2>
                   </div>
 
-                  <p className="tile-desc">{game.description}</p>
+                  <p className="tile-desc">{localized.description}</p>
 
                   <div className="tile-footer">
-                    <span className="tile-controls">{game.controls}</span>
+                    <span className="tile-controls">{localized.controls}</span>
                     <button
                       type="button"
                       className="game-btn game-btn-primary tile-play-btn"
                       onClick={() => onSelectGame(game)}
                     >
-                      Play
+                      {t.playButton}
                     </button>
                   </div>
                 </div>

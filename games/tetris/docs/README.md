@@ -1,3 +1,5 @@
+**English** | [中文](./README.zh.md) | [Tiếng Việt](./README.vi.md)
+
 # Tetris — Classic Falling Blocks Arcade
 
 A Guideline-accurate **Tetris** web game modeled on `freetetris.org`, built with **React 18 + TypeScript + Vite + HTML5 Canvas 2D**, shared `styles/` tokens, **SRS rotation with wall kicks**, **7-bag randomizer**, **Hold**, **Ghost piece**, **Smart Hints**, **Tutorial** mode, and procedural Web Audio API sound effects.

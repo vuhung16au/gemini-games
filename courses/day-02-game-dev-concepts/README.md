@@ -1,3 +1,5 @@
+**English** | [中文](./README.zh.md) | [Tiếng Việt](./README.vi.md)
+
 # Day 2 — Understanding Game Development Concepts & TDD
 
 **Estimated Time:** 1 Hour · **Previous:** [Day 1](../day-01-intro-to-game-dev/README.md) · **Next:** [Day 3](../day-03-project-architecture/README.md)

@@ -1,3 +1,5 @@
+**English** | [中文](./README.zh.md) | [Tiếng Việt](./README.vi.md)
+
 # 1024 — Sliding Number Puzzle
 
 A responsive **1024** puzzle web game modeled on `1024game.org`, built with **React 18 + TypeScript + Vite**, shared `styles/` tokens, **Smart Hints**, **Tutorial** mode, **Undo**, and procedural Web Audio API sound effects.

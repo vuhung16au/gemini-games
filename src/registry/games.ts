@@ -1,3 +1,9 @@
+import {
+  GAME_LOCALIZATIONS,
+  type Locale,
+  type LocalizedGameText,
+} from '../i18n/translations';
+
 export type GameCategory = 'Puzzle' | 'Board' | 'Arcade' | 'Simulation' | 'Card';
 
 export const GAME_CATEGORIES = [
@@ -160,10 +166,23 @@ export function findGameBySlug(slug: string): GameEntry | undefined {
   return GAMES.find((game) => game.slug === slug);
 }
 
+export function getLocalizedGame(
+  game: GameEntry,
+  locale: Locale,
+): LocalizedGameText {
+  const override = locale === 'en' ? undefined : GAME_LOCALIZATIONS[game.slug]?.[locale];
+  return {
+    title: override?.title ?? game.title,
+    description: override?.description ?? game.description,
+    controls: override?.controls ?? game.controls,
+  };
+}
+
 export function filterGames(
   games: GameEntry[],
   category: CategoryFilter,
   query: string,
+  locale: Locale = 'en',
 ): GameEntry[] {
   const normalizedQuery = query.trim().toLowerCase();
   return games.filter((game) => {
@@ -171,10 +190,13 @@ export function filterGames(
       return false;
     }
     if (!normalizedQuery) return true;
+    const localized = getLocalizedGame(game, locale);
     return (
       game.title.toLowerCase().includes(normalizedQuery) ||
       game.description.toLowerCase().includes(normalizedQuery) ||
-      game.category.toLowerCase().includes(normalizedQuery)
+      game.category.toLowerCase().includes(normalizedQuery) ||
+      localized.title.toLowerCase().includes(normalizedQuery) ||
+      localized.description.toLowerCase().includes(normalizedQuery)
     );
   });
 }

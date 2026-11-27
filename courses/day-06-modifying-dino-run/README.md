@@ -1,3 +1,5 @@
+**English** | [中文](./README.zh.md) | [Tiếng Việt](./README.vi.md)
+
 # Day 6 — Modifying Your First Game (`Dino Run`)
 
 **Estimated Time:** 1 Hour · **Previous:** [Day 5](../day-05-tech-stack-deep-dive/README.md) · **Next:** [Day 7](../day-07-building-a-board-game/README.md)

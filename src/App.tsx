@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Dashboard } from './components/Dashboard';
 import { GamePlayer } from './components/GamePlayer';
+import type { Locale } from './i18n/translations';
 import { findGameBySlug, type GameEntry } from './registry/games';
 import {
   loadHubData,
@@ -24,6 +25,10 @@ export const App: React.FC = () => {
   useEffect(() => {
     document.documentElement.dataset.theme = hubData.theme;
   }, [hubData.theme]);
+
+  useEffect(() => {
+    document.documentElement.lang = hubData.locale;
+  }, [hubData.locale]);
 
   useEffect(() => {
     const onHashChange = () => {
@@ -69,6 +74,16 @@ export const App: React.FC = () => {
     }));
   }, [updateHubData]);
 
+  const handleChangeLocale = useCallback(
+    (locale: Locale) => {
+      updateHubData((prev) => ({
+        ...prev,
+        locale,
+      }));
+    },
+    [updateHubData],
+  );
+
   const handleBack = useCallback(() => {
     window.location.hash = '#/';
   }, []);
@@ -76,7 +91,13 @@ export const App: React.FC = () => {
   const activeGame = activeSlug ? findGameBySlug(activeSlug) : undefined;
 
   if (activeGame) {
-    return <GamePlayer game={activeGame} onBack={handleBack} />;
+    return (
+      <GamePlayer
+        game={activeGame}
+        locale={hubData.locale}
+        onBack={handleBack}
+      />
+    );
   }
 
   return (
@@ -84,8 +105,10 @@ export const App: React.FC = () => {
       favorites={hubData.favorites}
       recentSlugs={hubData.recentSlugs}
       theme={hubData.theme}
+      locale={hubData.locale}
       onToggleFavorite={handleToggleFavorite}
       onToggleTheme={handleToggleTheme}
+      onChangeLocale={handleChangeLocale}
       onSelectGame={handleSelectGame}
     />
   );

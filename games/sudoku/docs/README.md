@@ -1,3 +1,5 @@
+**English** | [中文](./README.zh.md) | [Tiếng Việt](./README.vi.md)
+
 # Sudoku — Classic Number Puzzle
 
 A clean, responsive **9×9 Sudoku** web game modeled on `sudoku.com`, built with **React 18 + TypeScript + Vite**, shared `styles/` tokens, and procedural Web Audio API sound effects.

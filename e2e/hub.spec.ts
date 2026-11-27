@@ -237,4 +237,47 @@ test.describe('Unified Gemini Games Hub E2E', () => {
 
     expect(errors).toEqual([]);
   });
+
+  test('switches between English, Chinese, and Vietnamese and persists locale', async ({
+    page,
+  }) => {
+    const errors: string[] = [];
+    page.on('console', (msg) => {
+      if (msg.type() === 'error') errors.push(msg.text());
+    });
+    page.on('pageerror', (err) => errors.push(err.message));
+
+    await page.goto('/');
+    await expect(page.locator('html')).toHaveAttribute('lang', 'en');
+
+    // Switch to Chinese
+    await page.getByTestId('lang-zh').click();
+    await expect(page.locator('html')).toHaveAttribute('lang', 'zh');
+    await expect(
+      page.getByRole('heading', { name: 'Gemini 游戏中心' }),
+    ).toBeVisible();
+    await expect(page.locator('[data-game-slug="minesweeper"]')).toContainText(
+      '扫雷',
+    );
+
+    // Switch to Vietnamese and verify persistence across reload
+    await page.getByTestId('lang-vi').click();
+    await expect(page.locator('html')).toHaveAttribute('lang', 'vi');
+    await expect(page.locator('[data-game-slug="minesweeper"]')).toContainText(
+      'Dò Mìn (Minesweeper)',
+    );
+    await expect(page.getByRole('tab', { name: 'Giải đố' })).toBeVisible();
+
+    await page.reload();
+    await expect(page.locator('html')).toHaveAttribute('lang', 'vi');
+    await expect(page.locator('[data-game-slug="minesweeper"]')).toContainText(
+      'Dò Mìn (Minesweeper)',
+    );
+
+    // Switch back to English
+    await page.getByTestId('lang-en').click();
+    await expect(page.locator('html')).toHaveAttribute('lang', 'en');
+
+    expect(errors).toEqual([]);
+  });
 });

@@ -1,3 +1,5 @@
+**English** | [中文](./README.zh.md) | [Tiếng Việt](./README.vi.md)
+
 # Super Mario Bros. (1985) — NES
 
 A browser recreation of Nintendo's 1985 side-scrolling platformer **Super Mario Bros.**, featuring **World 1 (`1-1`, `1-2`, `1-3`, `1-4`)** in Single-Player mode.

@@ -1,3 +1,5 @@
+**English** | [中文](./README.zh.md) | [Tiếng Việt](./README.vi.md)
+
 # Tấn Đỡ (Bài Tấn) — Vietnamese Trump Attack & Defend Card Game
 
 **Tấn Đỡ (Bài Tấn)** is a classic Vietnamese 52-card attack-and-defend game built with TypeScript, React 18, and Vite 5. Play against smart AI opponents or pass a single device locally with friends across 2, 3, or 4 seats.

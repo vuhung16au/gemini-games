@@ -1,3 +1,5 @@
+**English** | [中文](./README.zh.md) | [Tiếng Việt](./README.vi.md)
+
 # Battle City (1985) — Famicom / NES
 
 A faithful browser recreation of Namco's 1985 arcade/Famicom classic **Battle City**, featuring **1-Player** and **2-Player Local Co-op** modes.

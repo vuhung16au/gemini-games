@@ -1,10 +1,12 @@
+**English** | [中文](./README.zh.md) | [Tiếng Việt](./README.vi.md)
+
 # Gemini Games
 
-A local-first unified web game hub featuring **15 playable 2D & 3D browser games** built with **TypeScript, Vite, React, HTML5 Canvas 2D, and Three.js**, deployed statically on **Cloudflare Workers Static Assets** (`https://gemini-games.vuhung16plus.workers.dev`).
+A local-first unified web game hub featuring **16 playable 2D & 3D browser games** built with **TypeScript, Vite, React, HTML5 Canvas 2D, and Three.js**, deployed statically on **Cloudflare Workers Static Assets** (`https://gemini-games.vuhung16plus.workers.dev`).
 
 ## Highlights
-- **Unified 4-Column Dashboard:** Category filtering (`All`, `Puzzle`, `Board`, `Arcade`, `Simulation`, `Card`), live search (`/`), **Favorites**, **Recently Played**, **Light/Dark themes**, and full keyboard navigation (`Arrow*`, `Enter`, `Esc`).
-- **15 Self-Contained Games:** Zero external runtime CDNs, procedural Web Audio SFX with Mute persistence, in-game **How to Play**, **Tutorial**, and **Hints**, plus Vitest unit tests and Playwright E2E suites.
+- **Unified 4-Column Dashboard:** Category filtering (`All`, `Puzzle`, `Board`, `Arcade`, `Simulation`, `Card`), live search (`/`), **Favorites**, **Recently Played**, **Light/Dark themes**, **Multilingual UI (`English`, `中文`, `Tiếng Việt`)**, and full keyboard navigation (`Arrow*`, `Enter`, `Esc`).
+- **16 Self-Contained Games:** Zero external runtime CDNs, procedural Web Audio SFX with Mute persistence, in-game **How to Play**, **Tutorial**, and **Hints**, plus Vitest unit tests and Playwright E2E suites.
 
 ## Games Collection
 
@@ -16,6 +18,7 @@ A local-first unified web game hub featuring **15 playable 2D & 3D browser games
 | **Cozy Town Tycoon** | Simulation | [`games/cozy-town-tycoon/`](./games/cozy-town-tycoon/docs/README.md) |
 | **Dino Run** | Arcade | [`games/dino-run/`](./games/dino-run/docs/README.md) |
 | **Flappy Bird** | Arcade | [`games/flappy-bird/`](./games/flappy-bird/docs/README.md) |
+| **Minesweeper** | Puzzle | [`games/minesweeper/`](./games/minesweeper/docs/README.md) |
 | **SimCity 3D** | Simulation | [`games/simcity/`](./games/simcity/docs/README.md) |
 | **Solitaire** | Card | [`games/solitaire/`](./games/solitaire/docs/README.md) |
 | **Sudoku** | Puzzle | [`games/sudoku/`](./games/sudoku/docs/README.md) |
@@ -32,7 +35,7 @@ A local-first unified web game hub featuring **15 playable 2D & 3D browser games
 - [docs/architecture.md](./docs/architecture.md) — Hub, per-game module, and multi-entry build architecture (with Mermaid diagrams)
 - [docs/developer-guide.md](./docs/developer-guide.md) — Developer workflow, `AGENTS.md` checklist, and verification gates
 - [docs/techstack.md](./docs/techstack.md) — Core foundation, 2D/3D rendering layers, testing, and Cloudflare hosting
-- [AGENTS.md](./AGENTS.md) — Mandatory per-game structure, assets, docs, and verification standards
+- [AGENTS.md](./AGENTS.md) — Mandatory per-game structure, assets, docs, multilingual support, and verification standards
 - [techstacks/techstack.md](./techstacks/techstack.md) — 2D & 3D web game tech stack guidelines
 - [styles/STYLE_GUIDE.md](./styles/STYLE_GUIDE.md) — Shared palette, viewport, input, and persistence rules
 - [styles/tokens.css](./styles/tokens.css) & [styles/theme.ts](./styles/theme.ts) — Light/Dark CSS tokens and Canvas/Three.js colors

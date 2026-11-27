@@ -1,3 +1,5 @@
+**English** | [中文](./README.zh.md) | [Tiếng Việt](./README.vi.md)
+
 # Day 8 — Building Your First 2D Canvas Game from Scratch
 
 **Estimated Time:** 1 Hour · **Previous:** [Day 7](../day-07-building-a-board-game/README.md) · **Next:** [Day 9](../day-09-building-a-3d-game/README.md)

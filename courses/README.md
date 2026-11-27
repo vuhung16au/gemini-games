@@ -1,6 +1,8 @@
+**English** | [中文](./README.zh.md) | [Tiếng Việt](./README.vi.md)
+
 # Game Development with Vibe Coding & AI Agents (9-Day Course)
 
-Welcome to the **Gemini Games 9-Day Game Development Course**! Using this repository's 15 playable 2D & 3D web games as your live classroom, you will learn how to design, build, test, and deploy modern browser games with **vibe coding** and **Google `agy` (Antigravity)**.
+Welcome to the **Gemini Games 9-Day Game Development Course**! Using this repository's 16 playable 2D & 3D web games as your live classroom, you will learn how to design, build, test, and deploy modern browser games with **vibe coding** and **Google `agy` (Antigravity)**.
 
 - **Duration:** 9 Days · 1 Module per Day · ~1 Hour per Module
 - **Audience:** Beginners learning game dev with AI agents & intermediate devs sharpening modern TypeScript/Canvas/Three.js + TDD workflows
@@ -42,6 +44,6 @@ flowchart LR
 
 ## Reference Docs in This Repository
 - [Repository Overview](../README.md) & [Quickstart](../QUICKSTART.md)
-- [AGENTS.md](../AGENTS.md) — Mandatory game standards (docs, icons/covers, tests, hub registration)
+- [AGENTS.md](../AGENTS.md) — Mandatory game standards (docs, icons/covers, tests, multilingual support, hub registration)
 - [Architecture](../docs/architecture.md) · [Tech Stack](../docs/techstack.md) · [Developer Guide](../docs/developer-guide.md)
 - [Shared Style Guide](../styles/STYLE_GUIDE.md)

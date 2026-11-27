@@ -1,3 +1,5 @@
+**English** | [中文](./README.zh.md) | [Tiếng Việt](./README.vi.md)
+
 # Solitaire — Classic Klondike Card Game
 
 A clean, responsive **Klondike Solitaire** web game modeled on `solitaired.com`, built with **React 18 + TypeScript + Vite**, custom crisp **SVG playing cards**, shared `styles/` tokens, **Smart Hints**, **Tutorial** mode, **Auto-Complete**, and procedural Web Audio API sound effects.

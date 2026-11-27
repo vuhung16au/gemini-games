@@ -1,9 +1,12 @@
+import { SUPPORTED_LOCALES, type Locale } from '../i18n/translations';
+
 export type ThemeMode = 'light' | 'dark';
 
 export interface HubData {
   favorites: string[];
   recentSlugs: string[];
   theme: ThemeMode;
+  locale: Locale;
 }
 
 export const HUB_STORAGE_KEY = 'gemini_games_hub_v1';
@@ -13,7 +16,15 @@ const DEFAULT_HUB_DATA: HubData = {
   favorites: [],
   recentSlugs: [],
   theme: 'light',
+  locale: 'en',
 };
+
+function isSupportedLocale(value: unknown): value is Locale {
+  return (
+    typeof value === 'string' &&
+    (SUPPORTED_LOCALES as readonly string[]).includes(value)
+  );
+}
 
 function getDefaultStorage(): Storage | null {
   try {
@@ -61,6 +72,7 @@ export function loadHubData(
             .slice(0, MAX_RECENT_GAMES)
         : [],
       theme: parsed.theme === 'dark' ? 'dark' : 'light',
+      locale: isSupportedLocale(parsed.locale) ? parsed.locale : 'en',
     };
   } catch {
     return { ...DEFAULT_HUB_DATA, favorites: [], recentSlugs: [] };

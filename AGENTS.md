@@ -49,6 +49,11 @@ Follow [STYLE_GUIDE.md](file:///Users/vuhung/Desktop/gemini-games/styles/STYLE_G
 - **In-Game "How to Play", Tutorial Mode & Hints:**
   - Every game must provide an in-game **"How to Play"** modal/panel so players can read the rules, controls, and scoring directly inside the UI.
   - Each game should also include a **"Tutorial"** mode (guided walkthrough or practice step) and **"Hints"** (suggested move/action or contextual tip) whenever feasible for the game's mechanics.
+- **Multilingual Support (`en`, `zh`, `vi`):**
+  - This project supports **English (`en`)**, **Chinese (`zh`)**, and **Vietnamese (`vi`)**.
+  - **All `README.md` files** (the root `README.md`, `courses/README.md`, `courses/day-*/README.md`, and every `games/<game-name>/docs/README.md`) must support all 3 languages via `README.md` (English), `README.zh.md` (中文), and `README.vi.md` (Tiếng Việt), with a language switcher at the top of each file.
+  - **Webapp Interface:** The Gemini Games Hub (`src/`) and game interfaces must support switching between English (`en`), Chinese (`zh`), and Vietnamese (`vi`) with `localStorage` persistence.
+  - **Courses (`courses/`):** All course index and daily lesson folders (`courses/README.md` and `courses/day-*/`) must support all 3 languages (`README.md`, `README.zh.md`, `README.vi.md`).
 
 ---
 
@@ -90,5 +95,5 @@ Before considering any game implementation or update complete, run and pass:
 2. `npm run test:e2e` (Playwright E2E tests)
 3. `npx tsc --noEmit` (strict TypeScript compilation)
 4. `npm run build` (clean Vite production build)
-5. Verify `games/<game-name>/docs/` contains all 6 required files (`README.md`, `QUICKSTART.md`, `architecture.md`, `techstack.md`, `user-guide.md`, `developer-guide.md`).
+5. Verify `games/<game-name>/docs/` contains all 6 required files (`README.md`, `QUICKSTART.md`, `architecture.md`, `techstack.md`, `user-guide.md`, `developer-guide.md`) plus multilingual READMEs (`README.zh.md`, `README.vi.md`).
 6. Verify `games/<game-name>/public/` contains `manifest.webmanifest`, `icons/*` (`favicon.ico`, `icon-32.png`, `apple-touch-icon.png`, `icon-192.png`, `icon-512.png`), and `graphics/*` (`cover-hd.png`, `cover-fullhd.png`), all wired into `index.html`.
