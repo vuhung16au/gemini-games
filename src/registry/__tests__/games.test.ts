@@ -10,13 +10,14 @@ import {
   SUPPORTED_LOCALES,
 } from '../../i18n/translations';
 import {
+  HUB_STORAGE_KEY,
   loadHubData,
   recordRecentGame,
   saveHubData,
   toggleFavorite,
 } from '../hubStorage';
 
-describe('game hub registry', () => {
+describe('game hub registry & storage', () => {
   it('registers all 16 games with unique slugs and valid relative paths', () => {
     expect(GAMES.length).toBe(16);
     const slugs = new Set(GAMES.map((g) => g.slug));
@@ -46,22 +47,34 @@ describe('game hub registry', () => {
       expect(game?.iconPath).toBe(`./games/${slug}/icons/icon-192.png`);
       expect(game?.coverPath).toBe(`./games/${slug}/graphics/cover-hd.png`);
     }
+
+    expect(findGameBySlug('non-existent-slug')).toBeUndefined();
   });
 
-  it('filters games by category and search query', () => {
+  it('filters games by category, English query, description, and localized queries', () => {
     const puzzles = filterGames(GAMES, 'Puzzle', '');
     expect(puzzles.map((g) => g.slug)).toEqual(['1024', 'minesweeper', 'sudoku']);
 
-    const search = filterGames(GAMES, 'All', 'flappy');
+    const search = filterGames(GAMES, 'All', '  FLAPPY  ');
     expect(search.map((g) => g.slug)).toEqual(['flappy-bird']);
 
-    const combined = filterGames(GAMES, 'Board', 'check');
-    expect(combined.map((g) => g.slug)).toEqual(['checkers']);
+    const descMatch = filterGames(GAMES, 'Simulation', 'low-poly');
+    expect(descMatch.map((g) => g.slug)).toEqual(['simcity']);
+
+    const catMatch = filterGames(GAMES, 'All', 'board');
+    expect(catMatch.map((g) => g.slug)).toEqual(['checkers', 'minesweeper']);
 
     expect(filterGames(GAMES, 'Arcade', 'sudoku')).toEqual([]);
+
+    expect(filterGames(GAMES, 'All', '扫雷', 'zh').map((g) => g.slug)).toEqual([
+      'minesweeper',
+    ]);
+    expect(filterGames(GAMES, 'All', 'Dò Mìn', 'vi').map((g) => g.slug)).toEqual([
+      'minesweeper',
+    ]);
   });
 
-  it('manages favorites, recently played order, and theme persistence safely', () => {
+  it('manages favorites, recently played order, limit clamping, and storage edge cases', () => {
     let favs = toggleFavorite([], 'tetris');
     expect(favs).toEqual(['tetris']);
     favs = toggleFavorite(favs, 'sudoku');
@@ -80,6 +93,9 @@ describe('game hub registry', () => {
     recents = recordRecentGame(recents, 'tetris');
     expect(recents).toEqual(['tetris', 'solitaire', 'checkers', 'sudoku']);
 
+    // Limit < 1 clamps to 1
+    expect(recordRecentGame(['a', 'b'], 'c', 0)).toEqual(['c']);
+
     const store = new Map<string, string>();
     const mockStorage = {
       getItem: (k: string) => store.get(k) ?? null,
@@ -88,6 +104,27 @@ describe('game hub registry', () => {
       },
     } as Storage;
 
+    // Empty storage returns defaults
+    expect(loadHubData(mockStorage)).toEqual({
+      favorites: [],
+      recentSlugs: [],
+      theme: 'light',
+      locale: 'en',
+    });
+
+    // Null storage returns defaults & saveHubData is a no-op
+    expect(loadHubData(null)).toEqual({
+      favorites: [],
+      recentSlugs: [],
+      theme: 'light',
+      locale: 'en',
+    });
+    saveHubData(
+      { favorites: ['a'], recentSlugs: ['a'], theme: 'dark', locale: 'zh' },
+      null,
+    );
+
+    // Valid persistence
     saveHubData(
       { favorites: favs, recentSlugs: recents, theme: 'dark', locale: 'vi' },
       mockStorage,
@@ -97,6 +134,31 @@ describe('game hub registry', () => {
       recentSlugs: ['tetris', 'solitaire', 'checkers', 'sudoku'],
       theme: 'dark',
       locale: 'vi',
+    });
+
+    // Malformed / partial JSON payloads sanitize safely
+    store.set(HUB_STORAGE_KEY, '{not-valid-json');
+    expect(loadHubData(mockStorage)).toEqual({
+      favorites: [],
+      recentSlugs: [],
+      theme: 'light',
+      locale: 'en',
+    });
+
+    store.set(
+      HUB_STORAGE_KEY,
+      JSON.stringify({
+        favorites: ['tetris', 123, null],
+        recentSlugs: 'not-an-array',
+        theme: 'neon',
+        locale: 'fr',
+      }),
+    );
+    expect(loadHubData(mockStorage)).toEqual({
+      favorites: ['tetris'],
+      recentSlugs: [],
+      theme: 'light',
+      locale: 'en',
     });
 
     const broken = {
@@ -113,6 +175,12 @@ describe('game hub registry', () => {
       theme: 'light',
       locale: 'en',
     });
+    expect(() =>
+      saveHubData(
+        { favorites: [], recentSlugs: [], theme: 'light', locale: 'en' },
+        broken,
+      ),
+    ).not.toThrow();
   });
 
   it('supports English, Chinese, and Vietnamese localizations for all games and hub UI', () => {
@@ -126,12 +194,5 @@ describe('game hub registry', () => {
         expect(localized.controls.length).toBeGreaterThan(0);
       }
     }
-
-    expect(filterGames(GAMES, 'All', '扫雷', 'zh').map((g) => g.slug)).toEqual([
-      'minesweeper',
-    ]);
-    expect(filterGames(GAMES, 'All', 'Dò Mìn', 'vi').map((g) => g.slug)).toEqual([
-      'minesweeper',
-    ]);
   });
 });

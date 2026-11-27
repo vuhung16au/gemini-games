@@ -6,6 +6,7 @@ export default tseslint.config(
   {
     ignores: [
       '**/dist/**',
+      '**/coverage/**',
       '**/node_modules/**',
       '**/playwright-report/**',
       '**/test-results/**',
@@ -14,6 +15,15 @@ export default tseslint.config(
   },
   js.configs.recommended,
   ...tseslint.configs.recommended,
+  {
+    files: ['scripts/**/*.mjs'],
+    languageOptions: {
+      globals: {
+        console: 'readonly',
+        process: 'readonly',
+      },
+    },
+  },
   {
     files: ['**/*.{ts,tsx}'],
     plugins: {

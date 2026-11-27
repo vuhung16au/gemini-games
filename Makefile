@@ -15,7 +15,7 @@ define run_target
 endef
 
 .PHONY: help list-games install install-all dev preview \
-	lint lint-all typecheck test test-watch test-all \
+	lint lint-all typecheck test test-coverage test-watch test-all \
 	test-e2e test-e2e-all build check-docs verify \
 	deploy-dry-run deploy clean clean-all _exec
 
@@ -57,15 +57,17 @@ lint-all: ## Run ESLint at root and across all games/*
 typecheck: ## Run strict TypeScript check (tsc --noEmit)
 	$(call run_target,npx tsc --noEmit)
 
-test: ## Run Vitest unit tests (root or GAME=<slug>)
+test: ## Run Vitest unit tests with coverage (root or GAME=<slug>)
 	$(call run_target,npm test)
+
+test-coverage: ## Run Vitest with >=70% coverage report at root
+	npx vitest run --coverage
 
 test-watch: ## Run Vitest in watch mode (root or GAME=<slug>)
 	$(call run_target,npm run test:watch)
 
-test-all: ## Run Vitest unit tests at root and across all games/*
-	npm test
-	@for g in $(GAMES); do echo "=== test: $$g ===" && (cd "games/$$g" && npm test) || exit 1; done
+test-all: ## Run Vitest unit tests at root and across all games/* with overall summary
+	@node scripts/test-all.mjs
 
 test-e2e: ## Run Playwright E2E tests (root or GAME=<slug>)
 	$(call run_target,npm run test:e2e)
@@ -103,8 +105,8 @@ deploy-dry-run: ## Build and run Wrangler deploy dry-run
 deploy: ## Build and deploy to Cloudflare Workers
 	npm run deploy
 
-clean: ## Remove dist/, test-results/, and playwright-report/ artifacts
-	rm -rf dist test-results playwright-report
+clean: ## Remove dist/, coverage/, test-results/, and playwright-report/ artifacts
+	rm -rf dist coverage test-results playwright-report
 	@for g in $(GAMES); do rm -rf "games/$$g/dist" "games/$$g/test-results" "games/$$g/playwright-report"; done
 	@echo "Cleaned build and test artifacts."
 

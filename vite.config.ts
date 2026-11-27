@@ -98,6 +98,18 @@ export default defineConfig({
   test: {
     environment: 'node',
     globals: true,
-    include: ['src/**/*.test.ts'],
+    include: ['src/**/*.test.{ts,tsx}'],
+    coverage: {
+      provider: 'v8',
+      reporter: ['text', 'html'],
+      include: ['src/**/*.{ts,tsx}'],
+      exclude: ['src/main.tsx', 'src/**/*.test.{ts,tsx}'],
+      thresholds: {
+        lines: 70,
+        statements: 70,
+        functions: 70,
+        branches: 70,
+      },
+    },
   },
 });

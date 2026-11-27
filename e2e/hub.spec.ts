@@ -280,4 +280,67 @@ test.describe('Unified Gemini Games Hub E2E', () => {
 
     expect(errors).toEqual([]);
   });
+
+  test('supports responsive breakpoints, search shortcuts, empty states, reload, and invalid hash fallback', async ({
+    page,
+  }) => {
+    const errors: string[] = [];
+    page.on('console', (msg) => {
+      if (msg.type() === 'error') errors.push(msg.text());
+    });
+    page.on('pageerror', (err) => errors.push(err.message));
+
+    await page.setViewportSize({ width: 800, height: 800 });
+    await page.goto('/');
+    const tabletCols = await page.locator('.games-grid').evaluate((el) =>
+      getComputedStyle(el).gridTemplateColumns.trim().split(/\s+/).length,
+    );
+    expect(tabletCols).toBe(2);
+
+    await page.setViewportSize({ width: 480, height: 800 });
+    const mobileCols = await page.locator('.games-grid').evaluate((el) =>
+      getComputedStyle(el).gridTemplateColumns.trim().split(/\s+/).length,
+    );
+    expect(mobileCols).toBe(1);
+
+    await page.setViewportSize({ width: 1280, height: 800 });
+
+    // '/' focuses search, unmatched query shows empty state + Reset Filters
+    await page.keyboard.press('/');
+    const search = page.getByLabel('Search games');
+    await expect(search).toBeFocused();
+    await search.fill('zzz-unmatched-game');
+    await expect(page.locator('.game-tile')).toHaveCount(0);
+    await expect(page.getByText(/No games match your current filter/i)).toBeVisible();
+    await page.getByRole('button', { name: 'Reset Filters' }).click();
+    await expect(page.locator('.game-tile')).toHaveCount(16);
+
+    // Empty Favorites state
+    await page.getByRole('tab', { name: /Favorites/i }).click();
+    await expect(page.getByText(/No favorite games yet/i)).toBeVisible();
+    await page.getByRole('button', { name: 'Reset Filters' }).click();
+
+    // Localized search in Chinese
+    await page.getByTestId('lang-zh').click();
+    await page.getByLabel('搜索游戏').fill('扫雷');
+    await expect(page.locator('.game-tile')).toHaveCount(1);
+    await page.keyboard.press('Escape');
+    await expect(page.locator('.game-tile')).toHaveCount(16);
+    await page.getByTestId('lang-en').click();
+
+    // Launch 1024, click Reload, and verify invalid hash fallback
+    await page
+      .locator('[data-game-slug="1024"]')
+      .getByRole('button', { name: 'Play' })
+      .click();
+    await expect(page).toHaveURL(/#\/play\/1024$/);
+    await page.getByRole('button', { name: /Reload/i }).click();
+    await expect(page.locator('iframe[title="1024"]')).toBeVisible();
+
+    await page.goto('/#/play/does-not-exist');
+    await expect(page.getByRole('heading', { name: 'Gemini Games' })).toBeVisible();
+    await expect(page.locator('.game-tile')).toHaveCount(16);
+
+    expect(errors).toEqual([]);
+  });
 });
