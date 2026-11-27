@@ -6,7 +6,18 @@ Welcome to the **Gemini Games 9-Day Game Development Course**! Using this reposi
 
 - **Duration:** 9 Days · 1 Module per Day · ~1 Hour per Module
 - **Audience:** Beginners learning game dev with AI agents & intermediate devs sharpening modern TypeScript/Canvas/Three.js + TDD workflows
-- **Prerequisites:** Basic computer literacy, Node.js 20+, Git, and a terminal (no prior 3D or game-engine experience required)
+- **Prerequisites:** Basic computer literacy, Node.js 20+, Git, and a terminal (no prior 3D, coding, or game-engine experience required)
+
+---
+
+## How This Course Is Delivered (Vibe Coding Loop)
+
+This course is designed for **non-IT, non-tech learners**: you will **never** be asked to write or read low-level TypeScript code manually. Instead, every lesson follows a 4-step **vibe coding** loop with Google `agy`:
+
+1. **Play & Explore:** Open the game in your browser and see how it feels as a player.
+2. **Ask `agy` in Plain Language:** Ask high-level questions (*"Summarise the project"*, *"Explain the features in Dino Run"*, *"Introduce the tech stack"*).
+3. **Prompt `agy` to Improve or Build:** Describe what you want in plain words—`agy` finds the right files and writes the code for you.
+4. **Verify Automatically:** Run one `make` command (`make test`, `make verify`) so automated checks confirm everything still works.
 
 ---
 

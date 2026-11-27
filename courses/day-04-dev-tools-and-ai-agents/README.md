@@ -7,77 +7,64 @@
 ---
 
 ## Overview & Key Concepts
-Modern vibe-coding game development combines four essential tools: **Node.js & npm**, **Git & GitHub (`gh`)**, **Cloudflare Workers (`wrangler`)**, and **AI coding agents (Google `agy`)**.
+Modern vibe-coding game development uses four simple tools working together: **Node.js & `make`** (running & checking), **Git & GitHub** (saving versions safely), **Cloudflare Workers** (publishing online), and **Google `agy`** (your AI builder).
 
 ```mermaid
 flowchart LR
-  Dev["You + Google agy (/plan -> Implement -> Verify)"] --> Local["Node.js & npm (dev, test, build)"]
-  Local --> Git["Git & GitHub CLI (git + gh)"]
-  Local --> CF["Cloudflare Workers (wrangler deploy)"]
+  Dev["You + Google agy (/plan -> Build -> Verify)"] --> Local["Node.js & make (dev, test, build)"]
+  Local --> Git["Git & GitHub (Safe Backups & Branches)"]
+  Local --> CF["Cloudflare Workers (Publish Live Online)"]
 ```
 
 ---
 
 ## Learning Objectives & Outcomes
 By the end of Day 4, you will be able to:
-1. Run project lifecycle scripts with `npm` (`dev`, `test`, `test:e2e`, `build`, `deploy`).
-2. Create feature branches, commit, and manage repositories using `git` and `gh`.
-3. Understand how [`wrangler.jsonc`](../../wrangler.jsonc) deploys `dist/` to Cloudflare Workers Static Assets.
-4. Use Google `agy` effectively with `/plan`, `AGENTS.md`, and verification gates.
+1. Run everyday project shortcuts with `make` (`make dev`, `make test`, `make verify`, `make deploy-dry-run`).
+2. Use Git branches to test new ideas safely without breaking your main version.
+3. Ask `agy` how to set up Cloudflare and deploy your games online step by step.
+4. Use `/plan` with `agy` so the AI aligns with you before making big changes.
 
 ---
 
 ## Step-by-Step Guide
 
-### 1. Node.js & npm Scripts
-Inspect [`package.json`](../../package.json):
+### 1. Everyday `make` Shortcuts
 ```bash
-npm run dev        # Start local Vite dev server
-npm test           # Run Vitest unit tests
-npm run test:e2e   # Run Playwright Chromium tests
-npm run build      # Type-check (tsc) + build static dist/
-npm run deploy     # Build dist/ + deploy via wrangler
+make help             # List every shortcut
+make dev              # Start the local game hub
+make test             # Run unit tests + coverage check
+make verify           # Run all quality & compliance checks
+make deploy-dry-run   # Test-package for Cloudflare without publishing
 ```
 
-### 2. Git & GitHub CLI (`git` + `gh`)
-Always isolate experiments on a branch before asking an AI agent to make large edits:
+### 2. Safe Experimenting with Git Branches
+Before trying a big new idea with `agy`, create a safe practice branch:
 ```bash
-git status
 git checkout -b practice-day-4
-# ...make changes, test, then switch back:
+# ...experiment freely, then switch back anytime:
 git checkout main
-git branch -d practice-day-4
-```
-Check GitHub CLI auth:
-```bash
-gh auth status
 ```
 
-### 3. Cloudflare Workers (`wrangler`)
-Open [`wrangler.jsonc`](../../wrangler.jsonc) and note how static hosting requires zero server code:
-- `"assets": { "directory": "./dist", "not_found_handling": "single-page-application" }`
-- Validate a deployment safely without publishing:
-```bash
-npm run build && npx wrangler deploy --dry-run
-```
-
-### 4. Working Effectively with Google `agy`
-- **Start with `/plan`:** For any non-trivial feature or new game, prefix your prompt with `/plan` so `agy` researches first and aligns on design decisions before editing files.
-- **Anchor on `AGENTS.md`:** Mention `AGENTS.md` compliance so `agy` remembers docs, icons/covers, How to Play, Tutorial, Hints, and tests.
-- **Demand verification:** Always ask `agy` to run `npm test && npm run test:e2e && npx tsc --noEmit && npm run build`.
+### 3. Working Effectively with Google `agy`
+- **Start with `/plan`:** For any new feature or game, start your prompt with `/plan` so `agy` explains its plan first.
+- **Describe outcomes, not code:** Tell `agy` *what the player should experience*, and let `agy` handle the files and tests.
 
 ---
 
 ## Sample `agy` Prompts
 ```text
-/plan Review games/dino-run/ and propose 3 small gameplay improvements we could implement safely on a new git branch.
+How can I deploy this project to Cloudflare, and how do I set up Cloudflare from scratch (account, Wrangler login, and dry-run)?
+```
+```text
+/plan Review Dino Run and suggest 3 fun gameplay improvements we could try safely on a new Git branch.
 ```
 
 ---
 
 ## Key Takeaways
-- Use `git` branches for safe experimentation and `wrangler deploy --dry-run` to validate builds before publishing.
-- `/plan` + `AGENTS.md` + automated tests turn AI agents into reliable engineering partners.
+- `make verify` is your one-command safety check before saving or publishing.
+- `/plan` + plain-language prompts let non-IT creators steer AI agents with confidence.
 
 ---
 
@@ -85,23 +72,23 @@ npm run build && npx wrangler deploy --dry-run
 
 Use Google `agy` with the sample prompts below—no manual coding required:
 
-1. **Understand the Project:** Ask `agy` to explain how `Makefile` and `scripts/check-compliance.mjs` enforce `AGENTS.md`.
+1. **Understand the Project:** Ask `agy` to explain what `make verify` checks and why GitHub Actions is kept blank.
    ```text
-   Read Makefile and scripts/check-compliance.mjs, and explain each check that make verify runs before allowing a release.
+   Explain in plain English what each step in make verify checks, and why this project keeps GitHub Actions blank and runs checks locally instead.
    ```
-2. **Improve a Feature:** Ask `agy` to enrich `make help` with grouped sections and example `GAME=<slug>` commands.
+2. **Improve a Feature:** Ask `agy` to group `make help` output into neat categories (`Dev`, `Test`, `Deploy`, `Clean`).
    ```text
-   In Makefile, group the make help output into Setup, Dev, Quality, and Deploy sections while keeping the awk ## comment format intact. Verify with make help.
+   Improve the make help command output so targets are grouped under Dev, Testing, Verification, and Deployment headings. Verify with make help.
    ```
-3. **Implement a New Feature:** Ask `agy` to add a `make status` target showing git branch, game count, and `dist/` build status.
+3. **Implement a New Feature:** Ask `agy` to add a `make status` command showing the current Git branch, total games, and whether a build exists.
    ```text
-   Add a "status" target to Makefile (and update TODOs/BACKLOGs/Makefile.md) that prints the current git branch, number of games in games/, and whether dist/ exists. Verify with make status.
+   /plan Add a "make status" shortcut that prints the current Git branch, total number of games, and whether the production build folder is ready. Verify with make status.
    ```
-4. **Improve Tests / Docs:** Ask `agy` to add a "Common Troubleshooting" section to `QUICKSTART.md`.
+4. **Improve Tests / Docs:** Ask `agy` to add a beginner-friendly "Cloudflare Setup & Troubleshooting" section to `QUICKSTART.md`.
    ```text
-   Add a short Troubleshooting section to QUICKSTART.md covering Playwright browser install, port conflicts, and wrangler login.
+   Add a short, beginner-friendly Cloudflare setup and troubleshooting section to QUICKSTART.md covering Wrangler login, dry-run, and port conflicts.
    ```
-5. **Create a New Game:** Ask `agy` to `/plan` and build a **"Reaction Timer"** game on a new git branch.
+5. **Create a New Game:** Ask `agy` to `/plan` and build a **"Reaction Timer"** game on a new Git branch.
    ```text
-   /plan Create a "Reaction Timer" game in games/reaction-timer/ on a new branch following AGENTS.md and .agents/skills/create-game/SKILL.md, measuring millisecond reaction time across 5 rounds with best-average persistence.
+   /plan Create a "Reaction Timer" game on a new Git branch following AGENTS.md, measuring millisecond reaction time across 5 rounds with best-average saving, How to Play, Tutorial, and automated tests.
    ```

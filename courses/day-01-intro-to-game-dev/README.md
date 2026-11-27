@@ -7,18 +7,18 @@
 ---
 
 ## Overview & Key Concepts
-Today you will explore the **Gemini Games** repository, understand what **vibe coding** with AI agents means in practice, and run the unified 15-game Dashboard on your own machine.
+Today you will explore the **Gemini Games** repository, understand what **vibe coding** with AI agents means in practice, and run the unified 16-game Dashboard on your own machine—without writing a single line of code yourself.
 
-- **Vibe Coding (Structured):** Describing *what* you want to build in clear natural language, letting an AI coding agent (`agy`) plan and generate code/assets, and **verifying every change with automated tests**.
-- **Local-First Web Games:** Every game in this repo runs offline in a browser with zero external CDNs, then compiles into a static `dist/` folder for Cloudflare Workers.
+- **Vibe Coding (Structured):** You describe *what* you want to build or learn in plain everyday language, let Google `agy` plan and generate the app/assets, and **verify every change with simple automated commands**.
+- **Local-First Web Games:** Every game in this repo runs offline in your browser with zero external servers, and can later be published as a fast static website on Cloudflare Workers.
 
 ---
 
 ## Learning Objectives & Outcomes
 By the end of Day 1, you will be able to:
-1. Explain how AI coding agents accelerate planning, coding, asset creation, and testing.
-2. Run the unified Gemini Games Dashboard locally with `npm run dev`.
-3. Inspect the 15 existing games and open any game's `docs/` folder.
+1. Explain how AI coding agents accelerate planning, building, artwork, and testing for non-technical creators.
+2. Launch the unified Gemini Games Dashboard locally with `npm run dev`.
+3. Ask `agy` in plain English to summarize the project, introduce the tech stack, and explain game features.
 
 ---
 
@@ -40,30 +40,27 @@ npm run dev
 Open the local URL printed by Vite (e.g., `http://localhost:5173`). Try:
 - Filtering by category (`Puzzle`, `Board`, `Arcade`, `Simulation`, `Card`).
 - Pressing `/` to search, `Arrow` keys to move across cards, and `Enter` to launch **Dino Run** or **SimCity 3D**.
-- Toggling Dark/Light theme and starring a favorite game.
+- Switching between `EN`, `中文`, and `VI`, toggling Dark/Light mode, and starring a favorite game.
 
-### 3. Tour the Key Reference Files
-Read these three files to see how the project stays consistent:
-- [`README.md`](../../README.md) — Project overview and all 15 games
-- [`QUICKSTART.md`](../../QUICKSTART.md) — Everyday commands
-- [`AGENTS.md`](../../AGENTS.md) — The "contract" every AI agent follows when building games here
+### 3. Explore the Project with Plain-Language Prompts
+You don't need to read code files—just ask `agy` to explain the big picture using the prompts below.
 
 ---
 
 ## Sample `agy` Prompts
 Try asking your AI agent:
 ```text
-Explain the folder structure of this repository and list all 15 games grouped by rendering technology (Canvas 2D, Three.js, CSS/SVG).
+Summarise this project in plain English for a non-technical learner, including what all 16 games are and how the Hub brings them together.
 ```
 ```text
-Run npm test at the repository root and explain what each passing test verifies.
+Introduce the tech stack used in this project and explain what each tool does in simple, everyday language.
 ```
 
 ---
 
 ## Key Takeaways
-- Vibe coding works best when paired with a clear rulebook ([`AGENTS.md`](../../AGENTS.md)) and automated tests.
-- One `npm run dev` command serves both the root Dashboard and all 15 standalone games.
+- Vibe coding lets non-IT creators build real browser games by describing outcomes in plain language.
+- One `npm run dev` command serves both the root Dashboard and all 16 standalone games.
 
 ---
 
@@ -71,23 +68,23 @@ Run npm test at the repository root and explain what each passing test verifies.
 
 Use Google `agy` with the sample prompts below—no manual coding required:
 
-1. **Understand the Project:** Ask `agy` to map all games by category and rendering engine.
+1. **Understand the Project:** Ask `agy` to summarize all 16 games grouped by genre and visual style.
    ```text
-   Inspect src/registry/games.ts and games/*/package.json, then summarize all games grouped by category (Puzzle, Board, Arcade, Simulation, Card) and rendering layer.
+   Summarise the project and group all 16 games by category (Puzzle, Board, Arcade, Simulation, Card) and visual style (2D, 3D, or Board/Card).
    ```
-2. **Improve a Feature:** Ask `agy` to make the Hub's empty-search message more helpful.
+2. **Improve a Feature:** Ask `agy` to make the Hub's empty-search message friendlier across all 3 languages.
    ```text
-   In src/components/Dashboard.tsx and src/i18n/translations.ts, improve the empty-filter message so it reminds players they can press "/" to search or click Reset Filters across en, zh, and vi. Verify with make test and make lint.
+   Improve the Hub's empty-search message so it gently reminds players they can press "/" to search or click Reset Filters, in English, Chinese, and Vietnamese. Verify everything passes.
    ```
 3. **Implement a New Feature:** Ask `agy` to add a **"🎲 Surprise Me"** button that launches a random game.
    ```text
-   /plan Add a "Surprise Me" button in src/components/Dashboard.tsx (with en/zh/vi labels in src/i18n/translations.ts) that picks and opens a random game from visibleGames. Add a unit test in Dashboard.test.tsx and verify with make verify.
+   /plan Add a "Surprise Me" button to the Hub header (with English, Chinese, and Vietnamese labels) that picks and opens a random game from the visible list, and verify with automated tests.
    ```
-4. **Improve Tests / Docs:** Ask `agy` to check and update the root `README.md` game count if needed and verify all docs links.
+4. **Improve Tests / Docs:** Ask `agy` to verify that the root `README` game list is complete in all 3 languages.
    ```text
-   Verify that README.md, README.zh.md, and README.vi.md list every game in src/registry/games.ts, then run make check-docs.
+   Check that the root README files in English, Chinese, and Vietnamese list all 16 games accurately, and run the project's documentation compliance check.
    ```
-5. **Create a New Game:** Ask `agy` to scaffold a minimal **"Guess the Number"** mini-game.
+5. **Create a New Game:** Ask `agy` to build a simple **"Guess the Number"** mini-game.
    ```text
-   /plan Create a simple "Guess the Number" puzzle game in games/guess-number/ following AGENTS.md and .agents/skills/create-game/SKILL.md, with 1-100 range, hints (Higher/Lower), How to Play, Tutorial, Vitest >=70% coverage, and Playwright E2E.
+   /plan Create a simple "Guess the Number" puzzle game following the project's AGENTS.md rules, with a 1-100 range, Higher/Lower hints, How to Play, Tutorial, and automated tests.
    ```

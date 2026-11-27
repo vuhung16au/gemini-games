@@ -6,7 +6,18 @@ Chào mừng đến với **Khóa học Phát triển Game 9 Ngày cùng Gemini 
 
 - **Thời lượng:** 9 Ngày · 1 Mô-đun mỗi ngày · ~1 Giờ mỗi mô-đun
 - **Đối tượng:** Người mới học làm game cùng AI agents & lập trình viên muốn nâng cao quy trình TypeScript/Canvas/Three.js + TDD
-- **Yêu cầu đầu vào:** Biết sử dụng máy tính cơ bản, Node.js 20+, Git và terminal (không cần kinh nghiệm 3D hay game engine trước đó)
+- **Yêu cầu đầu vào:** Biết sử dụng máy tính cơ bản, Node.js 20+, Git và terminal (không cần kinh nghiệm lập trình, 3D hay game engine)
+
+---
+
+## Cách Triển Khai Khóa Học (Vòng Lặp Vibe Coding)
+
+Khóa học này được thiết kế cho **người học không chuyên CNTT (non-IT, non-tech)**: bạn sẽ **không bao giờ** phải tự viết hay đọc mã TypeScript cấp thấp. Mỗi bài học đều đi theo quy trình **vibe coding** 4 bước cùng Google `agy`:
+
+1. **Chơi & Khám phá:** Mở trò chơi trên trình duyệt và trải nghiệm ở góc nhìn người chơi.
+2. **Hỏi `agy` bằng Ngôn ngữ Tự nhiên:** Đặt câu hỏi tổng quan (*"Tóm tắt dự án"*, *"Giải thích các tính năng trong Dino Run"*, *"Giới thiệu tech stack của dự án"*).
+3. **Ra lệnh cho `agy` Cải tiến hoặc Tạo mới:** Chỉ cần mô tả kết quả bạn muốn—`agy` sẽ tự tìm đúng tệp và viết mã thay bạn.
+4. **Xác minh Tự động:** Chạy một lệnh `make` (`make test`, `make verify`) để các kiểm tra tự động xác nhận mọi thứ hoạt động chuẩn xác.
 
 ---
 

@@ -1,67 +1,58 @@
 [English](./README.md) | [中文](./README.zh.md) | **Tiếng Việt**
 
-# Ngày 3 — Hiểu Kiến trúc Dự án
+# Ngày 3 — Cách Dự Án Kết Nối Với Nhau (Kiến Trúc Tổng Quan)
 
 **Thời lượng ước tính:** 1 Giờ · **Trước:** [Ngày 2](../day-02-game-dev-concepts/README.vi.md) · **Tiếp theo:** [Ngày 4](../day-04-dev-tools-and-ai-agents/README.vi.md)
 
 ---
 
 ## Tổng quan & Khái niệm chính
-Hôm nay bạn sẽ tìm hiểu cách monorepo **Gemini Games** kết nối Dashboard gốc với toàn bộ các game, đồng thời phân tích kiến trúc đầy đủ của **Dino Run** (`games/dino-run/`).
+Hôm nay bạn sẽ hiểu ở mức tổng quan cách **Gemini Games Hub** kết nối cả **16 trò chơi** dưới cùng một mái nhà, và cách mỗi trò chơi (như **Dino Run**) được tổ chức thành các khối rõ ràng để `agy` có thể chỉnh sửa an toàn.
 
 ```mermaid
 flowchart TD
-  Root["vite.config.ts (Multi-Entry + gamePublicAssetsPlugin)"]
-  Root --> Hub["Hub Gốc (src/App.tsx + Dashboard.tsx)"]
-  Hub --> Reg["src/registry/games.ts (Danh mục Game)"]
-  Hub -->|iframe #/play/dino-run| Dino["games/dino-run/index.html"]
-  Dino --> Sim["src/game/* (types, constants, engine, hints, tutorial, storage)"]
-  Dino --> Render["src/renderer/canvasRenderer.ts"]
-  Dino --> SFX["src/audio/sfx.ts"]
-  Dino --> UI["src/App.tsx + HowToPlayModal.tsx"]
+  Hub["Hub Hợp Nhất (Tìm kiếm, Danh mục, Đa ngôn ngữ)"] --> Reg["Danh mục 16 Trò chơi"]
+  Hub -->|Mở trong trình phát| Dino["Trò chơi Độc lập (vd. Dino Run)"]
+  Dino --> Sim["Luật Chơi & Lưu Tiến Độ"]
+  Dino --> Render["Hình ảnh 2D / 3D"]
+  Dino --> SFX["Âm thanh Web Audio Tích hợp"]
+  Dino --> UI["Menu, Hướng dẫn, Tutorial & Gợi ý"]
 ```
 
 ---
 
 ## Mục tiêu & Kết quả học tập
 Sau Ngày 3, bạn sẽ có thể:
-1. Điều hướng cấu trúc monorepo gốc (`src/`, `styles/`, `games/`, `docs/`, `e2e/`).
-2. Giải thích cách [`vite.config.ts`](../../vite.config.ts) tự động khám phá, đóng gói mọi `games/*/index.html` và sao chép tài nguyên `public/`.
-3. Truy vết luồng dữ liệu hoàn chỉnh của `games/dino-run/` từ sự kiện bàn phím đến khung hình Canvas.
+1. Hiểu bức tranh tổng thể cách Hub gốc và từng thư mục game phối hợp với nhau.
+2. Giải thích vì sao mọi game đều chạy được cả **độc lập** lẫn **bên trong Hub hợp nhất**.
+3. Mô tả 4 khối cấu thành của mỗi game: **Luật chơi**, **Hình ảnh**, **Âm thanh**, và **Giao diện / Trợ giúp**.
 
 ---
 
 ## Hướng dẫn từng bước
 
-### 1. Đọc tài liệu Kiến trúc Gốc
-Mở [`docs/architecture.md`](../../docs/architecture.md) và xem 3 sơ đồ kiến trúc.
+### 1. Xem Tài liệu Kiến trúc Trực quan
+Mở [`docs/architecture.md`](../../docs/architecture.md) để xem các sơ đồ tổng quan.
 
-### 2. Theo dõi cách một Game xuất hiện trên Dashboard
-1. Mở [`src/registry/games.ts`](../../src/registry/games.ts) và tìm mục `'dino-run'`.
-2. Mở [`vite.config.ts`](../../vite.config.ts) để xem `discoverGameSlugs()` và `gamePublicAssetsPlugin()`.
-3. Chú ý lý do mọi game dùng đường dẫn tương đối (`base: './'` và `./icons/icon-192.png`): nhờ vậy game chạy được cả khi độc lập (`cd games/dino-run && npm run dev`) lẫn khi nhúng trong hub hợp nhất!
-
-### 3. Giải phẫu một Game (`games/dino-run/`)
-Xem các tệp bên trong [`games/dino-run/`](../../games/dino-run/docs/architecture.md):
-- `src/game/constants.ts` — Tham số vật lý (`GRAVITY`, `JUMP_VELOCITY`, `BASE_SPEED`)
-- `src/game/engine.ts` — Chuyển đổi trạng thái (`triggerJump`, `setDucking`, `stepDino`)
-- `src/game/storage.ts` — Lưu trữ `localStorage` an toàn với `try/catch` dưới khóa `dino_run_v1`
-- `src/renderer/canvasRenderer.ts` — Khủng long pixel, xương rồng, thằn lằn bay, chu kỳ Ngày/Đêm
-- `src/audio/sfx.ts` — Âm thanh Web Audio tạo bằng mã (không cần tệp `.mp3`!)
-- `src/main.tsx` — Import giao diện dùng chung `../../../styles/tokens.css` và `../../../styles/game-ui.css`
+### 2. Hiểu Vì Sao Mỗi Game Đều Độc Lập
+- Mỗi game nằm trong thư mục riêng dưới `games/` với luật chơi, biểu tượng, ảnh bìa, tài liệu và kiểm thử riêng.
+- Khi bạn chạy build (`npm run build`), công cụ đóng gói tự động gom Hub **cùng** cả 16 game vào một thư mục tĩnh `dist/` sẵn sàng chạy local hoặc đẩy lên Cloudflare.
 
 ---
 
 ## Câu lệnh mẫu cho `agy`
 ```text
-Trace what happens step-by-step when the player presses Space in games/dino-run/src/App.tsx, from the keydown listener to the pixel-art T-Rex jumping on the canvas.
+Summarise how this project is organized in plain English (or Vietnamese). How does the main Hub know about all 16 games, and why can each game run both standalone and inside the Hub?
+```
+```text
+Explain the building blocks of "Dino Run" (rules, visuals, sound effects, help modal, and saving high scores) without showing raw code.
 ```
 
 ---
 
 ## Điểm cốt lõi
-- Mỗi game hoàn toàn độc lập nhưng tự động tích hợp vào bản build gốc qua `vite.config.ts` và `src/registry/games.ts`.
-- Giao diện dùng chung nằm tại `styles/tokens.css`, `styles/game-ui.css` và `styles/theme.ts`.
+- Mỗi game hoàn toàn độc lập nhưng tự động tích hợp vào Hub hợp nhất.
+- Bảng màu và phong cách UI dùng chung giúp cả 16 game trông như một bộ sưu tập đồng nhất.
 
 ---
 
@@ -69,23 +60,23 @@ Trace what happens step-by-step when the player presses Space in games/dino-run/
 
 Sử dụng các câu lệnh mẫu bên dưới với Google `agy`—không cần tự viết code thủ công:
 
-1. **Hiểu Dự án Sâu hơn:** Nhờ `agy` giải thích cách `vite.config.ts` đóng gói Hub cùng toàn bộ game.
+1. **Hiểu Dự án Sâu hơn:** Nhờ `agy` giải thích cách Hub quản lý giao diện Sáng/Tối và 3 ngôn ngữ.
    ```text
-   Trace how vite.config.ts discovers games/*/index.html, serves public/ assets in dev via gamePublicAssetsPlugin, and copies them into dist/games/<slug>/ during npm run build.
+   Explain in simple terms how Light/Dark themes, purple/ivory colors, and English/Chinese/Vietnamese translations work across the Gemini Games Hub.
    ```
-2. **Cải tiến Tính năng:** Nhờ `agy` thêm gợi ý chú thích đa ngôn ngữ cho thanh công cụ `GamePlayer`.
+2. **Cải tiến Tính năng:** Nhờ `agy` thêm chú thích phím tắt thân thiện cho thanh điều khiển trình phát game.
    ```text
-   In src/components/GamePlayer.tsx and src/i18n/translations.ts, add a subtle tooltip on the Fullscreen and Reload buttons across en, zh, and vi. Verify with make test and make lint.
+   Improve the Hub's game-player top bar by adding clear tooltips on the Reload and Fullscreen buttons in English, Chinese, and Vietnamese. Verify with make test and make lint.
    ```
-3. **Triển khai Tính năng Mới:** Nhờ `agy` thêm bộ đếm **"Số lượt đã chơi"** vào `Dino Run`.
+3. **Triển khai Tính năng Mới:** Nhờ `agy` thêm bộ đếm **"Số lượt đã chơi"** vào màn hình kết thúc của `Dino Run`.
    ```text
-   /plan Add a gamesPlayed counter to games/dino-run/src/game/storage.ts (under dino_run_v1) and display it in the Game Over overlay. Verify with make verify GAME=dino-run.
+   /plan Add a "Games Played" counter to Dino Run that saves automatically in the browser and shows on the Game Over screen. Verify with make verify GAME=dino-run.
    ```
-4. **Cải thiện Kiểm thử / Tài liệu:** Nhờ `agy` thống kê toàn bộ khóa `localStorage` trong kho mã nguồn vào tài liệu kiến trúc.
+4. **Cải thiện Kiểm thử / Tài liệu:** Nhờ `agy` tóm tắt cách các game lưu điểm cao và cài đặt âm thanh ngay trên trình duyệt.
    ```text
-   Scan games/*/src/game/storage.ts and src/registry/hubStorage.ts for all localStorage keys, then add a "Storage Keys" reference table to docs/architecture.md.
+   Summarise how all 16 games save high scores and mute settings locally in the browser (without any backend server), and add a short note about this to the project architecture docs.
    ```
-5. **Tạo Game Mới:** Nhờ `agy` tạo mini-game **"Tung Đồng Xu (Coin Flipper)"** và đăng ký vào Hub.
+5. **Tạo Game Mới:** Nhờ `agy` xây dựng mini-game **"Tung Đồng Xu (Coin Flipper)"** và đăng ký vào Hub.
    ```text
-   /plan Build a "Coin Flipper" game in games/coin-flipper/ following AGENTS.md and .agents/skills/create-game/SKILL.md, with streak tracking, SVG coin flip, How to Play, Tutorial, Hint, and Vitest >=70% coverage.
+   /plan Build a "Coin Flipper" game following AGENTS.md, with streak tracking, crisp SVG coin flip animation, How to Play, Tutorial, Hint, and automated tests.
    ```

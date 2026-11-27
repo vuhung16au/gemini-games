@@ -7,18 +7,18 @@
 ---
 
 ## Tổng quan & Khái niệm chính
-Hôm nay bạn sẽ khám phá kho mã nguồn **Gemini Games**, hiểu ý nghĩa thực tế của **vibe coding** cùng AI agents, và khởi chạy Bảng điều khiển hợp nhất trên máy của mình.
+Hôm nay bạn sẽ khám phá dự án **Gemini Games**, hiểu **vibe coding** cùng AI agent hoạt động thế nào trong thực tế, và chạy Bảng điều khiển 16 game ngay trên máy—mà không cần tự viết dòng code nào.
 
-- **Vibe Coding (Có cấu trúc):** Mô tả *những gì* bạn muốn xây dựng bằng ngôn ngữ tự nhiên rõ ràng, để AI coding agent (`agy`) lập kế hoạch và tạo mã nguồn/tài nguyên, rồi **xác minh mọi thay đổi bằng kiểm thử tự động**.
-- **Game Web Local-First:** Mọi game trong kho mã nguồn đều chạy ngoại tuyến trên trình duyệt không cần CDN bên ngoài, sau đó biên dịch thành thư mục tĩnh `dist/` cho Cloudflare Workers.
+- **Vibe Coding (Có cấu trúc):** Bạn mô tả *những gì* mình muốn xây dựng hoặc tìm hiểu bằng ngôn ngữ đời thường, để Google `agy` lên kế hoạch và tạo trò chơi/hình ảnh, rồi **xác minh mọi thay đổi bằng các lệnh tự động đơn giản**.
+- **Game Web Local-First:** Mọi game trong dự án đều chạy ngoại tuyến ngay trên trình duyệt, không cần máy chủ phức tạp.
 
 ---
 
 ## Mục tiêu & Kết quả học tập
 Sau Ngày 1, bạn sẽ có thể:
-1. Giải thích cách AI coding agents tăng tốc quá trình lập kế hoạch, viết mã, tạo đồ họa và kiểm thử.
+1. Giải thích cách AI coding agent hỗ trợ người không chuyên CNTT lập kế hoạch, tạo game, vẽ đồ họa và kiểm thử.
 2. Khởi chạy Gemini Games Dashboard tại máy bằng `npm run dev`.
-3. Khám phá các game hiện có và mở thư mục `docs/` của từng game.
+3. Hỏi `agy` bằng ngôn ngữ tự nhiên để tóm tắt dự án, giới thiệu tech stack và giải thích tính năng game.
 
 ---
 
@@ -40,30 +40,27 @@ npm run dev
 Mở URL local mà Vite hiển thị (ví dụ `http://localhost:5173`) và thử:
 - Lọc theo danh mục (`Giải đố`, `Cờ`, `Arcade`, `Mô phỏng`, `Đánh bài`).
 - Nhấn `/` để tìm kiếm, dùng phím `Mũi tên` để di chuyển qua các thẻ và nhấn `Enter` để mở **Dino Run** hoặc **SimCity 3D**.
-- Chuyển đổi giao diện Sáng/Tối, đổi ngôn ngữ (`EN` / `中文` / `VI`) và gắn sao yêu thích một trò chơi.
+- Chuyển ngôn ngữ `EN` / `中文` / `VI`, đổi giao diện Sáng/Tối và gắn sao yêu thích một trò chơi.
 
-### 3. Tham quan các tệp tài liệu chính
-Đọc 3 tệp sau để thấy cách dự án duy trì tính nhất quán:
-- [`README.vi.md`](../../README.vi.md) — Tổng quan dự án và toàn bộ danh sách game
-- [`QUICKSTART.md`](../../QUICKSTART.md) — Các lệnh thường dùng hằng ngày
-- [`AGENTS.md`](../../AGENTS.md) — "Bản hợp đồng" mà mọi AI agent tuân thủ khi xây dựng game tại đây
+### 3. Khám phá Dự án bằng Câu lệnh Đời thường
+Bạn không cần đọc tệp mã nguồn—chỉ cần hỏi `agy` bằng các câu lệnh mẫu dưới đây.
 
 ---
 
 ## Câu lệnh mẫu cho `agy`
 Thử hỏi AI agent của bạn:
 ```text
-Explain the folder structure of this repository and list all games grouped by rendering technology (Canvas 2D, Three.js, CSS/SVG).
+Summarise this project in plain English (or Vietnamese) for a non-technical learner, including what all 16 games are and how the Hub brings them together.
 ```
 ```text
-Run npm test at the repository root and explain what each passing test verifies.
+Introduce the tech stack used in this project and explain what each tool does in simple, everyday language.
 ```
 
 ---
 
 ## Điểm cốt lõi
-- Vibe coding hiệu quả nhất khi đi kèm bộ quy tắc rõ ràng ([`AGENTS.md`](../../AGENTS.md)) và kiểm thử tự động.
-- Một lệnh `npm run dev` duy nhất phục vụ cả Dashboard gốc lẫn toàn bộ các game độc lập.
+- Vibe coding giúp người không chuyên IT tạo ra game trình duyệt hoàn chỉnh chỉ bằng cách mô tả kết quả mong muốn.
+- Một lệnh `npm run dev` duy nhất phục vụ cả Dashboard gốc lẫn toàn bộ 16 trò chơi.
 
 ---
 
@@ -71,23 +68,23 @@ Run npm test at the repository root and explain what each passing test verifies.
 
 Sử dụng các câu lệnh mẫu bên dưới với Google `agy`—không cần tự viết code thủ công:
 
-1. **Hiểu Dự án Sâu hơn:** Nhờ `agy` lập bản đồ toàn bộ các game theo danh mục và công nghệ kết xuất.
+1. **Hiểu Dự án Sâu hơn:** Nhờ `agy` tóm tắt toàn bộ 16 game theo thể loại và phong cách đồ họa.
    ```text
-   Inspect src/registry/games.ts and games/*/package.json, then summarize all games grouped by category (Puzzle, Board, Arcade, Simulation, Card) and rendering layer.
+   Summarise the project and group all 16 games by category (Puzzle, Board, Arcade, Simulation, Card) and visual style (2D, 3D, or Board/Card).
    ```
-2. **Cải tiến Tính năng:** Nhờ `agy` làm thông báo khi tìm kiếm không thấy game trở nên hữu ích hơn.
+2. **Cải tiến Tính năng:** Nhờ `agy` làm thông báo khi tìm kiếm không thấy game trở nên thân thiện hơn trên cả 3 ngôn ngữ.
    ```text
-   In src/components/Dashboard.tsx and src/i18n/translations.ts, improve the empty-filter message so it reminds players they can press "/" to search or click Reset Filters across en, zh, and vi. Verify with make test and make lint.
+   Improve the Hub's empty-search message so it gently reminds players they can press "/" to search or click Reset Filters, in English, Chinese, and Vietnamese. Verify everything passes.
    ```
 3. **Triển khai Tính năng Mới:** Nhờ `agy` thêm nút **"🎲 Chơi Ngẫu Nhiên"** trên Dashboard.
    ```text
-   /plan Add a "Surprise Me" button in src/components/Dashboard.tsx (with en/zh/vi labels in src/i18n/translations.ts) that picks and opens a random game from visibleGames. Add a unit test in Dashboard.test.tsx and verify with make verify.
+   /plan Add a "Surprise Me" button to the Hub header (with English, Chinese, and Vietnamese labels) that picks and opens a random game from the visible list, and verify with automated tests.
    ```
-4. **Cải thiện Kiểm thử / Tài liệu:** Nhờ `agy` đối chiếu danh sách game trong `README` 3 ngôn ngữ và chạy kiểm tra tuân thủ.
+4. **Cải thiện Kiểm thử / Tài liệu:** Nhờ `agy` đối chiếu danh sách 16 game trong `README` 3 ngôn ngữ.
    ```text
-   Verify that README.md, README.zh.md, and README.vi.md list every game in src/registry/games.ts, then run make check-docs.
+   Check that the root README files in English, Chinese, and Vietnamese list all 16 games accurately, and run the project's documentation compliance check.
    ```
 5. **Tạo Game Mới:** Nhờ `agy` tạo mini-game **"Đoán Số (Guess the Number)"** tuân thủ `AGENTS.md`.
    ```text
-   /plan Create a simple "Guess the Number" puzzle game in games/guess-number/ following AGENTS.md and .agents/skills/create-game/SKILL.md, with 1-100 range, hints (Higher/Lower), How to Play, Tutorial, Vitest >=70% coverage, and Playwright E2E.
+   /plan Create a simple "Guess the Number" puzzle game following the project's AGENTS.md rules, with a 1-100 range, Higher/Lower hints, How to Play, Tutorial, and automated tests.
    ```

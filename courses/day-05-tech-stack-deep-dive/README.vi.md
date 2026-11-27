@@ -1,59 +1,54 @@
 [English](./README.md) | [中文](./README.zh.md) | **Tiếng Việt**
 
-# Ngày 5 — Tìm hiểu Chuyên sâu về Tech Stack
+# Ngày 5 — Hiểu Tech Stack Đằng Sau Vibe Coding
 
 **Thời lượng ước tính:** 1 Giờ · **Trước:** [Ngày 4](../day-04-dev-tools-and-ai-agents/README.vi.md) · **Tiếp theo:** [Ngày 6](../day-06-modifying-dino-run/README.vi.md)
 
 ---
 
 ## Tổng quan & Khái niệm chính
-Hôm nay bạn sẽ hiểu *lý do* kho mã nguồn này lựa chọn từng công nghệ trong [`docs/techstack.md`](../../docs/techstack.md) và [`techstacks/techstack.md`](../../techstacks/techstack.md), cũng như khi nào nên chọn **CSS/SVG**, **HTML5 Canvas 2D**, hoặc **Three.js**.
+Ngay cả khi `agy` viết code thay bạn, việc hiểu **từng công nghệ trong tech stack làm nhiệm vụ gì** giúp bạn mô tả đúng loại game mình muốn! Hôm nay bạn sẽ hiểu vì sao dự án dùng **TypeScript, Vite, React** cùng 3 lớp hình ảnh: **CSS/SVG**, **HTML5 Canvas 2D** và **Three.js**.
 
-| Lớp kết xuất (Rendering) | Phù hợp nhất cho | Ví dụ trong Repo |
+| Công nghệ Hình ảnh | Phù hợp nhất cho | Ví dụ trong Repo |
 | :--- | :--- | :--- |
 | **CSS Grid + SVG + React** | Game bàn cờ, giải đố và đánh bài | `1024`, `checkers`, `sudoku`, `minesweeper`, `solitaire`, `ta-la-phom` |
 | **HTML5 Canvas 2D** | Game arcade 60fps, đi cảnh, pixel art | `dino-run`, `flappy-bird`, `tetris`, `battle-city`, `super-mario-bros` |
-| **Vanilla Three.js (WebGL)** | Thế giới 3D, camera, ánh sáng, raycasting | `simcity` |
+| **Three.js (3D WebGL)** | Thế giới 3D, camera, ánh sáng, bóng đổ | `simcity` |
 
 ---
 
 ## Mục tiêu & Kết quả học tập
 Sau Ngày 5, bạn sẽ có thể:
-1. Chọn đúng lớp kết xuất (CSS/SVG vs. Canvas 2D vs. Three.js) cho bất kỳ ý tưởng game mới nào.
-2. Giải thích vai trò của **TypeScript**, **Vite**, **React**, **Web Audio API**, **Vitest** và **Playwright**.
-3. Đọc hiểu vòng lặp vẽ Canvas 2D cơ bản và cách thiết lập cảnh Three.js.
+1. Chọn đúng phong cách hiển thị (**Bàn cờ/Bài**, **Canvas 2D**, hay **3D Three.js**) khi mô tả game mới cho `agy`.
+2. Giải thích dễ hiểu vai trò của **TypeScript**, **Vite**, **React**, **Web Audio**, **Vitest** và **Playwright**.
+3. Hiểu vì sao dự án tránh dùng CDN bên ngoài để game chạy ngoại tuyến và tải siêu nhanh.
 
 ---
 
 ## Hướng dẫn từng bước
 
-### 1. Nền tảng Cốt lõi
-- **TypeScript (`strict: true`):** Phát hiện trạng thái sai, tọa độ lỗi và trường bị thiếu ngay lúc biên dịch (`npx tsc --noEmit`).
-- **Vite (`base: './'`):** Tải lại nóng tức thì khi `npm run dev` và tạo gói tĩnh `dist/` gọn nhẹ.
-- **React 18:** Kết xuất HUD dễ tiếp cận, hộp thoại (`HowToPlayModal`), nút bấm và lớp phủ phía trên canvas game.
-
-### 2. So sánh 3 Trình kết xuất Thực tế trong Repo
-Mở một tệp đại diện từ mỗi tầng kết xuất:
-1. **CSS/SVG:** [`games/checkers/src/components/CheckersBoard.tsx`](../../games/checkers/src/components/CheckersBoard.tsx)
-2. **HTML5 Canvas 2D:** [`games/battle-city/src/renderer/canvasRenderer.ts`](../../games/battle-city/src/renderer/canvasRenderer.ts)
-3. **Three.js 3D:** [`games/simcity/src/renderer/CityScene.ts`](../../games/simcity/src/renderer/CityScene.ts)
-
-### 3. Ngăn xếp Kiểm thử
-- **Vitest:** Chạy unit test TypeScript thuần trong Node (`src/**/*.test.ts`).
-- **Playwright:** Khởi chạy Chromium thật, nhấp nút, nhấn phím, kiểm tra không lỗi console và xác minh lưu trữ `localStorage` (`e2e/*.spec.ts`).
+### 1. 6 Thành Phần Cốt Lõi (Ngôn Ngữ Đời Thường)
+- **TypeScript:** Kiểm tra lỗi đánh máy hoặc dữ liệu thiếu trước khi người chơi gặp sự cố.
+- **Vite:** Hiển thị thay đổi tức thì khi phát triển (`make dev`) và đóng gói gọn nhẹ khi xuất bản (`make build`).
+- **React:** Tạo menu, nút bấm, bảng điểm, hộp thoại **Hướng dẫn chơi** và **Tutorial**.
+- **Web Audio API:** Tạo hiệu ứng âm thanh retro bằng toán học—không cần tải tệp `.mp3`!
+- **Vitest & Playwright:** Tự động kiểm tra luật chơi và thao tác chuột/phím thật trên trình duyệt.
 
 ---
 
 ## Câu lệnh mẫu cho `agy`
 ```text
-Compare how games/dino-run/src/renderer/canvasRenderer.ts (Canvas 2D) and games/simcity/src/renderer/CityScene.ts (Three.js) handle the animation loop, resizing, and cleanup on unmount.
+Introduce the tech stack used in this project in plain English (or Vietnamese), and explain when I should ask for CSS/SVG vs. Canvas 2D vs. Three.js when creating a new game.
+```
+```text
+Explain why Gemini Games keeps zero external CDN links and generates sound effects mathematically instead of downloading MP3 files.
 ```
 
 ---
 
 ## Điểm cốt lõi
-- Chọn công cụ kết xuất đơn giản nhất phù hợp cơ chế game: CSS/SVG cho bàn cờ/bài, Canvas 2D cho hành động 2D, Three.js cho thế giới 3D.
-- Luôn dùng React cho HUD/menu và Web Audio API tạo âm thanh bằng mã để không cần tệp âm thanh rời.
+- Biết lớp hình ảnh nào hợp với ý tưởng giúp câu lệnh của bạn rõ ràng gấp 10 lần.
+- TypeScript + Vite + React + Vitest + Playwright là bộ khung vững chắc phía sau mỗi game.
 
 ---
 
@@ -61,23 +56,23 @@ Compare how games/dino-run/src/renderer/canvasRenderer.ts (Canvas 2D) and games/
 
 Sử dụng các câu lệnh mẫu bên dưới với Google `agy`—không cần tự viết code thủ công:
 
-1. **Hiểu Dự án Sâu hơn:** Nhờ `agy` giải thích cách `styles/tokens.css` đồng bộ màu sắc với `styles/theme.ts`.
+1. **Hiểu Dự án Sâu hơn:** Nhờ `agy` giải thích cách bộ quy chuẩn giao diện giữ màu sắc và nút bấm đồng nhất trên cả 16 game.
    ```text
-   Read styles/tokens.css, styles/theme.ts, and docs/techstack.md, and explain how Light/Dark themes and Canvas/Three.js colors stay synchronized without external CDNs.
+   Explain in plain English how the shared style guide keeps colors, buttons, and Light/Dark themes consistent across the Hub and all 16 games.
    ```
 2. **Cải tiến Tính năng:** Nhờ `agy` tăng độ tương phản viền của khối bóng mờ (Ghost) trong `Tetris`.
    ```text
-   In games/tetris/src/game/renderer.ts, increase the Ghost piece outline contrast so it remains crisp against both light and dark backgrounds. Verify with make verify GAME=tetris.
+   Improve the contrast of Tetris's Ghost piece outline so players can clearly see where the block will land, and verify with make verify GAME=tetris.
    ```
-3. **Triển khai Tính năng Mới:** Nhờ `agy` thêm chế độ **"Tương phản cao (High-Contrast)"** cho `Sudoku`.
+3. **Triển khai Tính năng Mới:** Nhờ `agy` thêm nút **"Chế độ Tương phản cao"** cho `Sudoku`.
    ```text
-   /plan Add a High-Contrast toggle to games/sudoku/ (persisted in sudoku_v1) that enhances selected cell and error highlights. Verify with make verify GAME=sudoku.
+   /plan Add a High-Contrast Mode toggle to Sudoku (saved with player settings) that makes selected cells and mistake highlights extra clear. Verify with make verify GAME=sudoku.
    ```
-4. **Cải thiện Kiểm thử / Tài liệu:** Nhờ `agy` thêm kiểm thử Playwright cho màn hình di động `390×844` ở `Minesweeper`.
+4. **Cải thiện Kiểm thử / Tài liệu:** Nhờ `agy` thêm kiểm thử trình duyệt trên màn hình điện thoại cho `Minesweeper`.
    ```text
-   In games/minesweeper/e2e/minesweeper.spec.ts, add an E2E test verifying the 9x9 Easy board fits cleanly on a 390x844 mobile viewport without horizontal overflow. Run make test-e2e GAME=minesweeper.
+   Add a Playwright browser test for Minesweeper confirming the Easy 9x9 board fits cleanly on a mobile phone screen (390x844) with no horizontal scrolling. Run make test-e2e GAME=minesweeper.
    ```
-5. **Tạo Game Mới:** Nhờ `agy` xây dựng game **"Lật Thẻ Trí Nhớ (Memory Match)"** bằng React + CSS/SVG.
+5. **Tạo Game Mới:** Nhờ `agy` xây dựng game **"Lật Thẻ Trí Nhớ (Memory Match)"** với biểu tượng SVG sắc nét.
    ```text
-   /plan Create a "Memory Match" card-flipping puzzle game in games/memory-match/ using React + CSS/SVG following AGENTS.md and .agents/skills/create-game/SKILL.md, with 4x4 grid, move counter, How to Play, Tutorial, Hint, and >=70% coverage.
+   /plan Create a "Memory Match" card-flipping puzzle game following AGENTS.md, with a 4x4 grid, custom SVG card icons, move counter, How to Play, Tutorial, Hint, and automated tests.
    ```

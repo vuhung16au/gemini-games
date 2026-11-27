@@ -7,16 +7,15 @@
 ---
 
 ## 概览与核心概念
-在从零构建游戏之前，建立直觉最快的方式是用 AI 提示词**改造一款已可运行的游戏**。今天你将定制 [`games/dino-run/`](../../games/dino-run/docs/README.zh.md)：修改配色、调整物理速度，并添加全新障碍物——且全部通过 Vitest 与 Playwright 验证！
+在从零制作游戏前，建立 Vibe Coding 直觉最快的方式是用自然语言提示词**改造一款已可运行的游戏**。今天你将定制 **恐龙快跑 (Dino Run)**：更换天空配色、调整跑酷速度并添加全新障碍物——全程用 `make` 自动验证！
 
 ---
 
 ## 学习目标与成果
 完成第 6 天后，你将能够：
-1. 为改造现有游戏创建安全的 Git 特性分支。
-2. 提示 Google `agy` 干净地修改渲染颜色与模拟常量。
-3. 跨越 `types.ts`、`engine.ts`、`canvasRenderer.ts` 与 `engine.test.ts` 添加新的障碍物类型。
-4. 使用 `npm test`、`npm run test:e2e`、`tsc --noEmit` 与 `npm run build` 验证改动。
+1. 在修改游戏前创建安全的 Git 练习分支。
+2. 用通俗提示词让 Google `agy` 修改画面配色、游戏节奏与障碍物——无需自己改代码。
+3. 使用 `make dev GAME=dino-run` 与 `make verify GAME=dino-run` 验证每次改动。
 
 ---
 
@@ -27,24 +26,15 @@
 git checkout -b day-06-dino-mod
 ```
 
-### 2. 查看即将修改的文件
-- [`games/dino-run/src/game/constants.ts`](../../games/dino-run/src/game/constants.ts) — 速度常量（`BASE_SPEED`、`MAX_SPEED`、`SPEED_INCREMENT`）
-- [`games/dino-run/src/game/types.ts`](../../games/dino-run/src/game/types.ts) & [`engine.ts`](../../games/dino-run/src/game/engine.ts) — 障碍物生成与碰撞检测
-- [`games/dino-run/src/renderer/canvasRenderer.ts`](../../games/dino-run/src/renderer/canvasRenderer.ts) — 天空背景色与障碍物绘制
-
-### 3. 提示 `agy` 定制配色与速度
-逐条使用下方的示例提示词，然后运行预览：
+### 2. 实时预览 `Dino Run`
 ```bash
-cd games/dino-run && npm run dev
+make dev GAME=dino-run
 ```
 
-### 4. 提示 `agy` 添加新障碍物与单元测试
-让 `agy` 添加一种新障碍物（例如滚动的**沙漠巨石**或**陨石**），在 `canvasRenderer.ts` 中绘制它，并在 `src/game/__tests__/engine.test.ts` 中补全 Vitest 单元测试。
-
-### 5. 运行完整验证门槛
+### 3. 提示 `agy` 定制配色、速度与障碍物
+逐条使用下方示例提示词，观察实时预览变化，并运行自动检查：
 ```bash
-cd games/dino-run
-npm test && npm run test:e2e && npx tsc --noEmit && npm run build
+make verify GAME=dino-run
 ```
 
 ---
@@ -53,24 +43,24 @@ npm test && npm run test:e2e && npx tsc --noEmit && npm run build
 
 **提示词 1 — 修改背景色：**
 ```text
-In games/dino-run/src/renderer/canvasRenderer.ts, change the Classic Desert daytime background to a warm sunset peach (#fce7d6) while keeping high contrast for the deep-purple T-Rex and score text. Verify with npm test and npm run build.
+Change Dino Run's Classic Desert daytime sky to a warm sunset peach (#fce7d6) while keeping strong contrast for the dinosaur and score text. Verify that tests and build pass.
 ```
 
-**提示词 2 — 调整速度：**
+**提示词 2 — 提升游戏节奏：**
 ```text
-In games/dino-run/src/game/constants.ts, increase BASE_SPEED from 290 to 340 and SPEED_INCREMENT from 5.8 to 7.5 so the game feels snappier. Run npm test in games/dino-run to confirm all unit tests still pass.
+Make Dino Run start slightly faster and speed up a bit quicker so the action feels snappier, then run Dino Run's unit tests to confirm everything passes.
 ```
 
 **提示词 3 — 添加新障碍物：**
 ```text
-/plan Add a new "boulder" obstacle to Classic mode in games/dino-run/ (types.ts, engine.ts, canvasRenderer.ts) that rolls along the ground slightly faster than cacti, and add a Vitest test for boulder collision in src/game/__tests__/engine.test.ts.
+/plan Add a new rolling "desert boulder" obstacle to Classic mode in Dino Run that rolls slightly faster than cacti, and add automated unit tests for boulder collisions.
 ```
 
 ---
 
 ## 核心要点
-- 小步聚焦的提示词 + 即时验证（`npm test`、`npm run dev`）让 Vibe Coding 快速且可控。
-- 新增游戏实体时务必同步更新单元测试。
+- 小步聚焦的自然语言提示词 + 即时 `make verify GAME=dino-run` 检查，让 Vibe Coding 快速又稳妥。
+- 你完全不需要知道速度或颜色写在哪个代码文件里——只需描述你想要的效果！
 
 ---
 
@@ -78,23 +68,23 @@ In games/dino-run/src/game/constants.ts, increase BASE_SPEED from 290 to 340 and
 
 使用下方示例提示词向 Google `agy` 提问——无需手动编写代码：
 
-1. **深入理解项目：** 让 `agy` 解释 `Dino Run` 的障碍物生成间距与碰撞判定盒。
+1. **深入理解项目：** 让 `agy` 用大白话讲解 `Dino Run` 的所有玩法特性与难度节奏。
    ```text
-   Read games/dino-run/src/game/engine.ts and explain how obstacle spawn gaps scale with speed and how hitbox forgiving margins work.
+   Explain the features in the game "Dino Run", including how the game gets harder over time, how Day/Night cycles work, and what the Tutorial and Hint markers do.
    ```
-2. **改进现有功能：** 让 `agy` 为 `Dino Run` 的昼夜切换增加平滑渐变过渡。
+2. **改进现有功能：** 让 `agy` 把昼夜切换改为平滑渐变过渡。
    ```text
-   In games/dino-run/src/renderer/canvasRenderer.ts, add a smooth color-lerp transition when switching between Day and Night every 700 points. Verify with make test GAME=dino-run and make build GAME=dino-run.
+   Improve Dino Run's Classic mode so the sky smoothly blends between Day and Night every 700 points instead of switching abruptly. Verify with make verify GAME=dino-run.
    ```
 3. **实现新功能：** 让 `agy` 在分支上为 `Dino Run` 添加 **二段跳 (Double-Jump)** 机制。
    ```text
-   /plan Add an optional Double-Jump mechanic to Classic mode in games/dino-run/ (types.ts, engine.ts) with a subtle jump-charge indicator on the HUD. Verify with make verify GAME=dino-run.
+   /plan Add an optional Double-Jump mechanic to Dino Run Classic mode with a small jump-charge indicator on the screen. Verify with make verify GAME=dino-run.
    ```
-4. **完善测试 / 文档：** 让 `agy` 为新功能补充 Playwright E2E 断言并更新 `user-guide.md`。
+4. **完善测试 / 文档：** 让 `agy` 为新功能补充浏览器测试并更新 `Dino Run` 的用户指南。
    ```text
-   Add a Playwright assertion in games/dino-run/e2e/dino.spec.ts verifying the new feature works in Chromium, and document it in games/dino-run/docs/user-guide.md. Run make test-e2e GAME=dino-run.
+   Add a Playwright browser test confirming the new Double-Jump feature works in Dino Run, and document it in Dino Run's user guide.
    ```
 5. **创建新游戏：** 让 `agy` 打造一款类似的横版跑酷游戏 **“太空宇航员跑酷 (Space Astro Runner)”**。
    ```text
-   /plan Create a similar endless runner "Space Astro Runner" in games/space-runner/ following AGENTS.md and .agents/skills/create-game/SKILL.md, dodging asteroids and laser drones with gravity flip controls.
+   /plan Create a similar endless runner "Space Astro Runner" following AGENTS.md, where an astronaut dodges asteroids and laser drones with gravity-flip controls, How to Play, Tutorial, Hint, and automated tests.
    ```

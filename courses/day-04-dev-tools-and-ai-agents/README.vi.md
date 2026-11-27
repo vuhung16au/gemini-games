@@ -1,83 +1,70 @@
 [English](./README.md) | [中文](./README.zh.md) | **Tiếng Việt**
 
-# Ngày 4 — Công cụ Lập trình & AI Coding Agents
+# Ngày 4 — Công Cụ Lập Trình & AI Coding Agents
 
 **Thời lượng ước tính:** 1 Giờ · **Trước:** [Ngày 3](../day-03-project-architecture/README.vi.md) · **Tiếp theo:** [Ngày 5](../day-05-tech-stack-deep-dive/README.vi.md)
 
 ---
 
 ## Tổng quan & Khái niệm chính
-Quy trình phát triển game vibe-coding hiện đại kết hợp 4 công cụ thiết yếu: **Node.js & npm**, **Git & GitHub (`gh`)**, **Cloudflare Workers (`wrangler`)** và **AI coding agents (Google `agy`)**.
+Quy trình làm game vibe coding hiện đại kết hợp 4 công cụ đơn giản: **Node.js & `make`** (chạy & kiểm tra), **Git & GitHub** (lưu phiên bản an toàn), **Cloudflare Workers** (xuất bản trực tuyến) và **Google `agy`** (trợ lý AI của bạn).
 
 ```mermaid
 flowchart LR
-  Dev["Bạn + Google agy (/plan -> Triển khai -> Xác minh)"] --> Local["Node.js & npm (dev, test, build)"]
-  Local --> Git["Git & GitHub CLI (git + gh)"]
-  Local --> CF["Cloudflare Workers (wrangler deploy)"]
+  Dev["Bạn + Google agy (/plan -> Xây dựng -> Xác minh)"] --> Local["Node.js & make (chạy, kiểm thử, đóng gói)"]
+  Local --> Git["Git & GitHub (Sao lưu & Nhánh an toàn)"]
+  Local --> CF["Cloudflare Workers (Đưa game lên mạng)"]
 ```
 
 ---
 
 ## Mục tiêu & Kết quả học tập
 Sau Ngày 4, bạn sẽ có thể:
-1. Chạy các script vòng đời dự án với `npm` (`dev`, `test`, `test:e2e`, `build`, `deploy`).
-2. Tạo nhánh tính năng, commit và quản lý kho mã nguồn bằng `git` và `gh`.
-3. Hiểu cách [`wrangler.jsonc`](../../wrangler.jsonc) triển khai `dist/` lên Cloudflare Workers Static Assets.
-4. Sử dụng Google `agy` hiệu quả với `/plan`, `AGENTS.md` và các cổng xác minh.
+1. Dùng các lệnh tắt `make` hằng ngày (`make dev`, `make test`, `make verify`, `make deploy-dry-run`).
+2. Dùng nhánh Git để thử ý tưởng mới an toàn mà không ảnh hưởng bản chính.
+3. Hỏi `agy` cách thiết lập Cloudflare và triển khai game lên mạng từng bước.
+4. Dùng `/plan` với `agy` để thống nhất kế hoạch trước khi thay đổi lớn.
 
 ---
 
 ## Hướng dẫn từng bước
 
-### 1. Node.js & npm Scripts
-Xem [`package.json`](../../package.json):
+### 1. Các Lệnh Tắt `make` Hằng Ngày
 ```bash
-npm run dev        # Khởi động máy chủ Vite local
-npm test           # Chạy kiểm thử đơn vị Vitest
-npm run test:e2e   # Chạy kiểm thử Playwright Chromium
-npm run build      # Kiểm tra kiểu (tsc) + build thư mục tĩnh dist/
-npm run deploy     # Build dist/ + triển khai qua wrangler
+make help             # Xem toàn bộ lệnh tắt
+make dev              # Chạy hub trò chơi tại máy
+make test             # Chạy unit test + kiểm tra độ phủ
+make verify           # Chạy toàn bộ cổng chất lượng & tuân thủ
+make deploy-dry-run   # Kiểm tra đóng gói Cloudflare (chưa xuất bản)
 ```
 
-### 2. Git & GitHub CLI (`git` + `gh`)
-Luôn tách thử nghiệm sang một nhánh riêng trước khi yêu cầu AI agent chỉnh sửa lớn:
+### 2. Thử Nghiệm An Toàn với Nhánh Git
+Trước khi thử ý tưởng lớn cùng `agy`, hãy tạo nhánh thực hành:
 ```bash
-git status
 git checkout -b practice-day-4
-# ...thực hiện thay đổi, kiểm thử, sau đó quay lại:
+# ...thử nghiệm thoải mái, quay lại bất cứ lúc nào:
 git checkout main
-git branch -d practice-day-4
-```
-Kiểm tra đăng nhập GitHub CLI:
-```bash
-gh auth status
 ```
 
-### 3. Cloudflare Workers (`wrangler`)
-Mở [`wrangler.jsonc`](../../wrangler.jsonc) và lưu ý việc lưu trữ tĩnh không cần mã máy chủ:
-- `"assets": { "directory": "./dist", "not_found_handling": "single-page-application" }`
-- Chạy thử quy trình triển khai mà không xuất bản:
-```bash
-npm run build && npx wrangler deploy --dry-run
-```
-
-### 4. Làm việc hiệu quả với Google `agy`
-- **Bắt đầu với `/plan`:** Với tính năng hoặc game mới không tầm thường, hãy thêm `/plan` ở đầu câu lệnh để `agy` khảo sát và thống nhất thiết kế trước khi sửa tệp.
-- **Bám sát `AGENTS.md`:** Nhắc tuân thủ `AGENTS.md` để `agy` luôn tạo đủ tài liệu, icon/cover, Hướng dẫn chơi, Tutorial, Gợi ý và kiểm thử.
-- **Yêu cầu xác minh:** Luôn yêu cầu `agy` chạy `npm test && npm run test:e2e && npx tsc --noEmit && npm run build`.
+### 3. Làm Việc Hiệu Quả với Google `agy`
+- **Bắt đầu bằng `/plan`:** Với tính năng hoặc game mới, thêm `/plan` ở đầu câu lệnh để `agy` trình bày kế hoạch trước.
+- **Mô tả kết quả, không cần mô tả code:** Chỉ nói cho `agy` *người chơi sẽ trải nghiệm gì*, để `agy` tự lo tệp tin và kiểm thử.
 
 ---
 
 ## Câu lệnh mẫu cho `agy`
 ```text
-/plan Review games/dino-run/ and propose 3 small gameplay improvements we could implement safely on a new git branch.
+How can I deploy this project to Cloudflare, and how do I set up Cloudflare from scratch (account, Wrangler login, and dry-run)?
+```
+```text
+/plan Review Dino Run and suggest 3 fun gameplay improvements we could try safely on a new Git branch.
 ```
 
 ---
 
 ## Điểm cốt lõi
-- Dùng nhánh `git` để thử nghiệm an toàn và `wrangler deploy --dry-run` để kiểm tra bản build trước khi phát hành.
-- `/plan` + `AGENTS.md` + kiểm thử tự động biến AI agent thành cộng sự kỹ thuật đáng tin cậy.
+- `make verify` là nút kiểm tra an toàn một chạm trước khi lưu hoặc phát hành.
+- `/plan` + câu lệnh ngôn ngữ tự nhiên giúp người không chuyên IT điều phối AI tự tin.
 
 ---
 
@@ -85,23 +72,23 @@ npm run build && npx wrangler deploy --dry-run
 
 Sử dụng các câu lệnh mẫu bên dưới với Google `agy`—không cần tự viết code thủ công:
 
-1. **Hiểu Dự án Sâu hơn:** Nhờ `agy` giải thích cách `Makefile` và `scripts/check-compliance.mjs` thực thi `AGENTS.md`.
+1. **Hiểu Dự án Sâu hơn:** Nhờ `agy` giải thích `make verify` kiểm tra những gì và vì sao tắt GitHub Actions.
    ```text
-   Read Makefile and scripts/check-compliance.mjs, and explain each check that make verify runs before allowing a release.
+   Explain in plain English what each step in make verify checks, and why this project keeps GitHub Actions blank and runs checks locally instead.
    ```
-2. **Cải tiến Tính năng:** Nhờ `agy` nhóm kết quả `make help` theo từng nhóm lệnh rõ ràng.
+2. **Cải tiến Tính năng:** Nhờ `agy` sắp xếp kết quả `make help` theo nhóm (`Dev`, `Testing`, `Verification`, `Deployment`).
    ```text
-   In Makefile, group the make help output into Setup, Dev, Quality, and Deploy sections while keeping the awk ## comment format intact. Verify with make help.
+   Improve the make help command output so targets are grouped under Dev, Testing, Verification, and Deployment headings. Verify with make help.
    ```
-3. **Triển khai Tính năng Mới:** Nhờ `agy` thêm mục tiêu `make status` hiển thị nhánh git, số game và trạng thái `dist/`.
+3. **Triển khai Tính năng Mới:** Nhờ `agy` thêm lệnh `make status` hiển thị nhánh Git, số lượng game và trạng thái build.
    ```text
-   Add a "status" target to Makefile (and update TODOs/BACKLOGs/Makefile.md) that prints the current git branch, number of games in games/, and whether dist/ exists. Verify with make status.
+   /plan Add a "make status" shortcut that prints the current Git branch, total number of games, and whether the production build folder is ready. Verify with make status.
    ```
-4. **Cải thiện Kiểm thử / Tài liệu:** Nhờ `agy` bổ sung mục "Xử lý Sự cố Thường gặp" vào `QUICKSTART.md`.
+4. **Cải thiện Kiểm thử / Tài liệu:** Nhờ `agy` thêm mục "Cài đặt Cloudflare & Xử lý sự cố" thân thiện vào `QUICKSTART.md`.
    ```text
-   Add a short Troubleshooting section to QUICKSTART.md covering Playwright browser install, port conflicts, and wrangler login.
+   Add a short, beginner-friendly Cloudflare setup and troubleshooting section to QUICKSTART.md covering Wrangler login, dry-run, and port conflicts.
    ```
-5. **Tạo Game Mới:** Nhờ `agy` dùng `/plan` để xây dựng game **"Đo Phản Xạ (Reaction Timer)"** trên một nhánh git mới.
+5. **Tạo Game Mới:** Nhờ `agy` dùng `/plan` xây dựng game **"Đo Phản Xạ (Reaction Timer)"** trên một nhánh Git mới.
    ```text
-   /plan Create a "Reaction Timer" game in games/reaction-timer/ on a new branch following AGENTS.md and .agents/skills/create-game/SKILL.md, measuring millisecond reaction time across 5 rounds with best-average persistence.
+   /plan Create a "Reaction Timer" game on a new Git branch following AGENTS.md, measuring millisecond reaction time across 5 rounds with best-average saving, How to Play, Tutorial, and automated tests.
    ```

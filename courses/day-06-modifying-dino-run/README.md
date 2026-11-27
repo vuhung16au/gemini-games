@@ -7,16 +7,15 @@
 ---
 
 ## Overview & Key Concepts
-Before building a game from scratch, the fastest way to build intuition is **modifying a working game** using AI prompts. Today you will customize [`games/dino-run/`](../../games/dino-run/docs/README.md): changing its visual palette, tuning its physics speed, and adding a brand-new obstacle—all verified by Vitest and Playwright!
+Before building a game from scratch, the fastest way to learn vibe coding is **customizing a working game** with plain-language prompts. Today you will customize **Dino Run**: changing its visual palette, tuning its speed, and adding a brand-new obstacle—all verified automatically with `make`!
 
 ---
 
 ## Learning Objectives & Outcomes
 By the end of Day 6, you will be able to:
-1. Create a safe Git feature branch for experimenting on an existing game.
-2. Prompt Google `agy` to modify rendering colors and simulation constants cleanly.
-3. Add a new obstacle type across `types.ts`, `engine.ts`, `canvasRenderer.ts`, and `engine.test.ts`.
-4. Verify your changes with `npm test`, `npm run test:e2e`, `tsc --noEmit`, and `npm run build`.
+1. Create a safe Git feature branch before customizing a game.
+2. Prompt Google `agy` in plain English to change colors, speed, and obstacles—without touching code yourself.
+3. Verify every change with `make dev GAME=dino-run` and `make verify GAME=dino-run`.
 
 ---
 
@@ -27,24 +26,15 @@ By the end of Day 6, you will be able to:
 git checkout -b day-06-dino-mod
 ```
 
-### 2. Inspect the Files You Will Modify
-- [`games/dino-run/src/game/constants.ts`](../../games/dino-run/src/game/constants.ts) — Speed (`BASE_SPEED`, `MAX_SPEED`, `SPEED_INCREMENT`)
-- [`games/dino-run/src/game/types.ts`](../../games/dino-run/src/game/types.ts) & [`engine.ts`](../../games/dino-run/src/game/engine.ts) — Obstacle spawning & collision
-- [`games/dino-run/src/renderer/canvasRenderer.ts`](../../games/dino-run/src/renderer/canvasRenderer.ts) — Sky background color & obstacle drawing
-
-### 3. Prompt `agy` to Customize Colors & Speed
-Use the sample prompts below one at a time, then preview live with:
+### 2. Preview `Dino Run` Live
 ```bash
-cd games/dino-run && npm run dev
+make dev GAME=dino-run
 ```
 
-### 4. Prompt `agy` to Add a New Obstacle + Unit Test
-Ask `agy` to add a new obstacle (e.g., a rolling **Desert Boulder** or **Meteor**), draw it in `canvasRenderer.ts`, and add a Vitest unit test in `src/game/__tests__/engine.test.ts`.
-
-### 5. Run the Full Verification Gate
+### 3. Prompt `agy` to Customize Colors, Speed & Obstacles
+Use the sample prompts below one at a time, watch the live preview update, and run the automated check:
 ```bash
-cd games/dino-run
-npm test && npm run test:e2e && npx tsc --noEmit && npm run build
+make verify GAME=dino-run
 ```
 
 ---
@@ -53,24 +43,24 @@ npm test && npm run test:e2e && npx tsc --noEmit && npm run build
 
 **Prompt 1 — Change Background Color:**
 ```text
-In games/dino-run/src/renderer/canvasRenderer.ts, change the Classic Desert daytime background to a warm sunset peach (#fce7d6) while keeping high contrast for the deep-purple T-Rex and score text. Verify with npm test and npm run build.
+Change Dino Run's Classic Desert daytime sky to a warm sunset peach (#fce7d6) while keeping strong contrast for the dinosaur and score text. Verify that tests and build pass.
 ```
 
-**Prompt 2 — Change Speed:**
+**Prompt 2 — Make the Game Snappier:**
 ```text
-In games/dino-run/src/game/constants.ts, increase BASE_SPEED from 290 to 340 and SPEED_INCREMENT from 5.8 to 7.5 so the game feels snappier. Run npm test in games/dino-run to confirm all unit tests still pass.
+Make Dino Run start slightly faster and speed up a bit quicker so the action feels snappier, then run Dino Run's unit tests to confirm everything passes.
 ```
 
 **Prompt 3 — Add a New Obstacle:**
 ```text
-/plan Add a new "boulder" obstacle to Classic mode in games/dino-run/ (types.ts, engine.ts, canvasRenderer.ts) that rolls along the ground slightly faster than cacti, and add a Vitest test for boulder collision in src/game/__tests__/engine.test.ts.
+/plan Add a new rolling "desert boulder" obstacle to Classic mode in Dino Run that rolls slightly faster than cacti, and add automated unit tests for boulder collisions.
 ```
 
 ---
 
 ## Key Takeaways
-- Small, focused prompts + immediate verification (`npm test`, `npm run dev`) make vibe coding fast and predictable.
-- Always update unit tests when adding new gameplay entities.
+- Small, plain-language prompts + immediate `make verify GAME=dino-run` checks make vibe coding fast and predictable.
+- You never need to know which internal file holds speed or colors—just describe what you want!
 
 ---
 
@@ -78,23 +68,23 @@ In games/dino-run/src/game/constants.ts, increase BASE_SPEED from 290 to 340 and
 
 Use Google `agy` with the sample prompts below—no manual coding required:
 
-1. **Understand the Project:** Ask `agy` to explain `Dino Run`'s obstacle spawning intervals and collision hitboxes.
+1. **Understand the Project:** Ask `agy` to explain `Dino Run`'s features and difficulty progression in plain English.
    ```text
-   Read games/dino-run/src/game/engine.ts and explain how obstacle spawn gaps scale with speed and how hitbox forgiving margins work.
+   Explain the features in the game "Dino Run", including how the game gets harder over time, how Day/Night cycles work, and what the Tutorial and Hint markers do.
    ```
-2. **Improve a Feature:** Ask `agy` to refine the Day/Night transition smoothness in `Dino Run`.
+2. **Improve a Feature:** Ask `agy` to make the Day/Night sky transition smoothly instead of snapping instantly.
    ```text
-   In games/dino-run/src/renderer/canvasRenderer.ts, add a smooth color-lerp transition when switching between Day and Night every 700 points. Verify with make test GAME=dino-run and make build GAME=dino-run.
+   Improve Dino Run's Classic mode so the sky smoothly blends between Day and Night every 700 points instead of switching abruptly. Verify with make verify GAME=dino-run.
    ```
-3. **Implement a New Feature:** Ask `agy` to add a **Shield Power-Up** or **Double-Jump** on your branch.
+3. **Implement a New Feature:** Ask `agy` to add a **Double-Jump** or **Shield Power-Up** on your branch.
    ```text
-   /plan Add an optional Double-Jump mechanic to Classic mode in games/dino-run/ (types.ts, engine.ts) with a subtle jump-charge indicator on the HUD. Verify with make verify GAME=dino-run.
+   /plan Add an optional Double-Jump mechanic to Dino Run Classic mode with a small jump-charge indicator on the screen. Verify with make verify GAME=dino-run.
    ```
-4. **Improve Tests / Docs:** Ask `agy` to add a Playwright E2E test for your new feature and update `games/dino-run/docs/user-guide.md`.
+4. **Improve Tests / Docs:** Ask `agy` to add a browser test for your new feature and update `Dino Run`'s user guide.
    ```text
-   Add a Playwright assertion in games/dino-run/e2e/dino.spec.ts verifying the new feature works in Chromium, and document it in games/dino-run/docs/user-guide.md. Run make test-e2e GAME=dino-run.
+   Add a Playwright browser test confirming the new Double-Jump feature works in Dino Run, and document it in Dino Run's user guide.
    ```
-5. **Create a New Game:** Ask `agy` to build a similar side-scrolling **"Space Astro Runner"** Canvas game.
+5. **Create a New Game:** Ask `agy` to build a similar endless runner: **"Space Astro Runner"**.
    ```text
-   /plan Create a similar endless runner "Space Astro Runner" in games/space-runner/ following AGENTS.md and .agents/skills/create-game/SKILL.md, dodging asteroids and laser drones with gravity flip controls.
+   /plan Create a similar endless runner "Space Astro Runner" following AGENTS.md, where an astronaut dodges asteroids and laser drones with gravity-flip controls, How to Play, Tutorial, Hint, and automated tests.
    ```

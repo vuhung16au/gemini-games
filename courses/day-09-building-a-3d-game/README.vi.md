@@ -1,29 +1,29 @@
 [English](./README.md) | [中文](./README.zh.md) | **Tiếng Việt**
 
-# Ngày 9 — Xây dựng Game 3D từ Con số 0 & Triển khai lên Cloudflare
+# Ngày 9 — Xây Dựng Game 3D & Triển Khai Lên Cloudflare
 
 **Thời lượng ước tính:** 1 Giờ · **Trước:** [Ngày 8](../day-08-building-a-2d-game/README.vi.md) · **Mục lục Khóa học:** [Courses README](../README.vi.md)
 
 ---
 
 ## Tổng quan & Khái niệm chính
-Trong ngày tổng kết, bạn sẽ xây dựng một **game WebGL 3D** từ đầu bằng **Vanilla Three.js + TypeScript + React HUD** (theo đúng kiến trúc của [`games/simcity/`](../../games/simcity/docs/architecture.md)) và triển khai bộ sưu tập Gemini Games hoàn chỉnh lên **Cloudflare Workers Static Assets**!
+Trong ngày tổng kết, bạn sẽ hướng dẫn `agy` xây dựng một **game WebGL 3D** từ đầu (dùng **Three.js**, giống như **SimCity 3D**) và triển khai toàn bộ bộ sưu tập Gemini Games lên **Cloudflare Workers**!
 
 ```mermaid
 flowchart LR
-  Sim["Logic 3D Thuần (src/game/)"] --> Scene["Cảnh Three.js (src/renderer/)"]
-  Scene --> WebGL["WebGLRenderer + Ánh sáng + Camera + Bóng đổ"]
-  WebGL --> E2E["Playwright Chromium (cờ SwiftShader WebGL, cổng 4191)"]
-  E2E --> Deploy["npm run deploy -> Cloudflare Workers"]
+  Idea["1. Mô tả Ý tưởng Game 3D"] --> Sim["2. Luật 3D + Cảnh Low-Poly & Ánh sáng"]
+  Sim --> Verify["3. make test-all + make verify"]
+  Verify --> DryRun["4. make deploy-dry-run"]
+  DryRun --> Deploy["5. make deploy -> URL *.workers.dev Trực tuyến"]
 ```
 
 ---
 
 ## Mục tiêu & Kết quả học tập
 Sau Ngày 9, bạn sẽ có thể:
-1. Xây dựng game 3D Vanilla Three.js với khối hình low-poly tạo bằng mã, ánh sáng, điều khiển camera và dọn dẹp GPU `.dispose()` sạch sẽ.
-2. Cấu hình Playwright với cờ SwiftShader WebGL để kiểm thử E2E `<canvas>` 3D chạy ổn định trên Chromium không giao diện.
-3. Build và triển khai toàn bộ hub đa game lên **Cloudflare Workers** bằng `npm run deploy`.
+1. Hướng dẫn `agy` tạo game 3D low-poly có ánh sáng, bóng đổ, camera mượt và kiểm thử trình duyệt 3D tự động.
+2. Chạy toàn bộ cổng chất lượng của monorepo (`make test-all`, `make verify`).
+3. Thiết lập Cloudflare Wrangler, chạy thử đóng gói và xuất bản trực tuyến bằng `make deploy`.
 
 ---
 
@@ -34,25 +34,16 @@ Sau Ngày 9, bạn sẽ có thể:
 git checkout -b day-09-3d-game
 ```
 
-### 2. Tham khảo `games/simcity/` làm mẫu 3D
-Mở và xem:
-- [`games/simcity/src/renderer/CityScene.ts`](../../games/simcity/src/renderer/CityScene.ts) — Lưu ý `WebGLRenderer`, `ResizeObserver`, `PCFSoftShadowMap`, xử lý dự phòng WebGL `try/catch` và `.dispose()`.
-- [`games/simcity/playwright.config.ts`](../../games/simcity/playwright.config.ts) — Lưu ý các tham số khởi chạy Chromium (`--use-gl=angle`, `--use-angle=swiftshader`, `--enable-webgl`, `--ignore-gpu-blocklist`).
+### 2. Dùng `/plan` với `agy` để xây dựng Game 3D
+Dùng câu lệnh mẫu bên dưới để làm **Marble Maze 3D** (hoặc **Block Stacker 3D**). `agy` sẽ tự áp dụng các mẫu Three.js và kiểm thử WebGL của `SimCity 3D`.
 
-### 3. Dùng `/plan` với `agy` để xây dựng Game 3D của bạn
-Chọn một ý tưởng arcade 3D gọn gàng (ví dụ **3D Marble Maze**, **3D Endless Runner** hoặc **3D Block Stacker**) trên cổng Playwright riêng **`4191`**.
-
-### 4. Xác minh & Triển khai Trực tiếp lên Cloudflare Workers
+### 3. Xác minh & Triển khai Trực tiếp lên Cloudflare
 ```bash
-# Xác minh game 3D mới của bạn
-cd games/marble-maze && npm test && npm run test:e2e && npx tsc --noEmit && npm run build
-
-# Xác minh hub hợp nhất (tất cả game cùng lúc)
-cd ../.. && npm test && npm run test:e2e && npx tsc --noEmit && npm run build
-
-# Chạy thử & triển khai lên Cloudflare Workers Static Assets
-npx wrangler deploy --dry-run
-npm run deploy
+make verify GAME=marble-maze
+make test-all
+make verify
+make deploy-dry-run
+make deploy
 ```
 
 ---
@@ -60,21 +51,17 @@ npm run deploy
 ## Câu lệnh mẫu cho `agy`
 
 ```text
-/plan Build a new 3D game "Marble Maze 3D" in games/marble-maze/ using Vanilla Three.js + TypeScript + React HUD following AGENTS.md and games/simcity/ patterns:
-- Pure simulation in src/game/ (3D board tilt physics, wall collisions, goal hole, hazards, 5 levels, timer, localStorage marble_maze_v1)
-- Vanilla Three.js renderer in src/renderer/ (procedural low-poly wooden maze, metallic marble, directional shadows, smooth camera, ResizeObserver, full .dispose())
-- Web Audio roll/bump/win SFX + Mute, How to Play modal, 3-step Tutorial, live Hint
-- Original icons & HD/Full-HD covers in public/, all 6 docs in docs/ (plus README.zh.md and README.vi.md)
-- Vitest unit tests + Playwright WebGL E2E tests on dedicated port 4191 (with SwiftShader flags)
-- Register in src/registry/games.ts (category: Puzzle) and update root tests
+/plan Build a new 3D game "Marble Maze 3D" in games/marble-maze/ using Three.js following AGENTS.md and SimCity 3D's patterns:
+- 3D wooden maze with tilting physics, wall bumps, hazards, goal hole, 5 levels, timer, and saved best times
+- Low-poly 3D visuals with shadows, smooth camera follow, and WebGL browser tests
+- Sound effects + Mute, How to Play modal, 3-step Tutorial, live Hint, original icons/covers, and multilingual docs
 ```
 
 ---
 
 ## Điểm cốt lõi
-- Tách `src/game/` khỏi Three.js giúp bạn chạy unit test logic gameplay 3D ở tốc độ tối đa trong Node.
-- Luôn `.dispose()` geometry, material và renderer của Three.js khi unmount để tránh rò rỉ bộ nhớ GPU.
-- Một lệnh `npm run deploy` duy nhất biên dịch và xuất bản mọi game trong kho mã nguồn lên mạng biên toàn cầu của Cloudflare.
+- Ngay cả game 3D Three.js cũng tuân theo đúng quy trình vibe coding: **Mô tả -> `/plan` -> `make verify` -> `make deploy`**.
+- Một lệnh `make deploy` duy nhất xuất bản cả Hub lẫn mọi game của bạn lên mạng biên toàn cầu Cloudflare.
 
 ---
 
@@ -82,23 +69,23 @@ npm run deploy
 
 Sử dụng các câu lệnh mẫu bên dưới với Google `agy`—không cần tự viết code thủ công:
 
-1. **Hiểu Dự án Sâu hơn:** Nhờ `agy` giải thích cơ chế dọn dẹp `.dispose()` của Three.js và cờ SwiftShader WebGL trong Playwright.
+1. **Hiểu Dự án Sâu hơn:** Nhờ `agy` giải thích cách `SimCity 3D` dựng thế giới 3D trên trình duyệt và cách kiểm thử 3D tự động không cần GPU rời.
    ```text
-   Read games/simcity/src/renderer/CityScene.ts and games/simcity/playwright.config.ts, and explain how WebGL fallback, ResizeObserver, .dispose(), and SwiftShader flags work together.
+   Explain in plain English how SimCity 3D creates 3D buildings, day/night lighting, and shadows in the browser, and how Playwright tests 3D graphics automatically.
    ```
-2. **Cải tiến Tính năng:** Nhờ `agy` làm mượt chuyển động camera theo bóng và tinh chỉnh bóng đổ 3D.
+2. **Cải tiến Tính năng:** Nhờ `agy` làm mượt camera theo bóng và làm rõ bóng đổ trong game 3D.
    ```text
-   In games/marble-maze/src/renderer/, add smooth lerp camera follow and tune directional shadow bias so the marble casts a crisp shadow without acne. Verify with make test-e2e GAME=marble-maze.
+   Improve Marble Maze 3D so the camera follows the rolling marble smoothly and the marble casts a crisp shadow on the wooden board. Verify with make verify GAME=marble-maze.
    ```
-3. **Triển khai Tính năng Mới:** Nhờ `agy` thêm nút **Chuyển đổi ánh sáng Ngày / Đêm** lấy cảm hứng từ `games/simcity/`.
+3. **Triển khai Tính năng Mới:** Nhờ `agy` thêm nút **Chuyển đổi ánh sáng Ngày / Đêm** lấy cảm hứng từ `SimCity 3D`.
    ```text
-   /plan Add a Day / Night lighting toggle to games/marble-maze/ (persisted in marble_maze_v1) that smoothly adjusts ambient and directional light colors. Verify with make verify GAME=marble-maze.
+   /plan Add a Day / Night lighting toggle to Marble Maze 3D (saved with player settings) that smoothly shifts the scene lighting. Verify with make verify GAME=marble-maze.
    ```
-4. **Cải thiện Kiểm thử / Tài liệu:** Nhờ `agy` chạy toàn bộ cổng chất lượng & tuân thủ trước khi triển khai.
+4. **Cải thiện Kiểm thử / Tài liệu:** Nhờ `agy` chạy toàn bộ cổng chất lượng & tuân thủ trước khi triển khai lên mạng.
    ```text
-   Run make test-all, make verify, and make deploy-dry-run, and fix any compliance or >=70% coverage gaps reported.
+   Run make test-all, make verify, and make deploy-dry-run, and help me resolve any coverage or documentation issues before deploying live.
    ```
-5. **Tạo Game Mới:** Nhờ `agy` xây dựng một game Three.js 3D khác (**Block Stacker 3D**) và kiểm tra đóng gói triển khai.
+5. **Tạo Game Mới:** Nhờ `agy` xây dựng thêm một game 3D (**Block Stacker 3D**) và hướng dẫn triển khai lên Cloudflare Workers.
    ```text
-   /plan Create "Block Stacker 3D" in games/block-stacker-3d/ using Vanilla Three.js following AGENTS.md and .agents/skills/create-game/SKILL.md, then run make verify and make deploy-dry-run.
+   /plan Create "Block Stacker 3D" using Three.js following AGENTS.md, then run make verify and guide me through make deploy to Cloudflare Workers.
    ```

@@ -7,23 +7,23 @@
 ---
 
 ## 概览与核心概念
-在毕业实战日，你将使用 **Vanilla Three.js + TypeScript + React HUD**（完全遵循 [`games/simcity/`](../../games/simcity/docs/architecture.md) 的架构模式）从零构建一款 **3D WebGL 游戏**，并将整套 Gemini Games 作品集上线部署到 **Cloudflare Workers Static Assets**！
+在毕业实战日，你将引导 `agy` 从零打造一款 **3D WebGL 游戏**（使用 **Three.js**，就像 **SimCity 3D** 一样），并将整个 Gemini Games 作品集上线部署到 **Cloudflare Workers**！
 
 ```mermaid
 flowchart LR
-  Sim["纯 3D 逻辑 (src/game/)"] --> Scene["Three.js 场景 (src/renderer/)"]
-  Scene --> WebGL["WebGLRenderer + 光照 + 相机 + 阴影"]
-  WebGL --> E2E["Playwright Chromium (SwiftShader WebGL 参数, 端口 4191)"]
-  E2E --> Deploy["npm run deploy -> Cloudflare Workers"]
+  Idea["1. 描述 3D 游戏创意"] --> Sim["2. 3D 规则 + 低多边形场景与光照"]
+  Sim --> Verify["3. make test-all + make verify"]
+  Verify --> DryRun["4. make deploy-dry-run 预演"]
+  DryRun --> Deploy["5. make deploy -> 线上 *.workers.dev 网址"]
 ```
 
 ---
 
 ## 学习目标与成果
 完成第 9 天后，你将能够：
-1. 构建包含程序化低多边形网格、光照、相机控制与完整 GPU `.dispose()` 释放的 Vanilla Three.js 3D 游戏。
-2. 为 Playwright 配置 SwiftShader WebGL 启动参数，使 3D `<canvas>` E2E 测试在无头 Chromium 中稳定通过。
-3. 使用 `npm run deploy` 将整个多游戏大厅构建并部署到 **Cloudflare Workers**。
+1. 引导 `agy` 打造带有光照、阴影、平滑视角和自动化 3D 浏览器测试的低多边形 3D 游戏。
+2. 运行全仓库质量与覆盖率门槛（`make test-all`、`make verify`）。
+3. 配置 Cloudflare Wrangler，完成预演并用 `make deploy` 一键上线。
 
 ---
 
@@ -34,25 +34,16 @@ flowchart LR
 git checkout -b day-09-3d-game
 ```
 
-### 2. 以 `games/simcity/` 作为 3D 参考模板
-打开以下文件学习：
-- [`games/simcity/src/renderer/CityScene.ts`](../../games/simcity/src/renderer/CityScene.ts) — 关注 `WebGLRenderer`、`ResizeObserver`、`PCFSoftShadowMap`、`try/catch` WebGL 降级处理以及 `.dispose()`。
-- [`games/simcity/playwright.config.ts`](../../games/simcity/playwright.config.ts) — 关注 Chromium 启动参数（`--use-gl=angle`、`--use-angle=swiftshader`、`--enable-webgl`、`--ignore-gpu-blocklist`）。
+### 2. 使用 `/plan` 提示 `agy` 构建 3D 游戏
+使用下方示例提示词构建 **3D 弹珠迷宫 (Marble Maze 3D)**（或 **3D 叠方块**）。`agy` 会自动沿用 `SimCity 3D` 的 Three.js 与测试模式。
 
-### 3. 使用 `/plan` 提示 `agy` 构建你的 3D 游戏
-选择一个精炼的 3D 街机概念（例如 **3D 弹珠迷宫**、**3D 无尽跑酷** 或 **3D 方块堆叠**），分配专用 Playwright 端口 **`4191`**。
-
-### 4. 验证并上线部署至 Cloudflare Workers
+### 3. 验证并上线部署至 Cloudflare
 ```bash
-# 验证你的新 3D 游戏
-cd games/marble-maze && npm test && npm run test:e2e && npx tsc --noEmit && npm run build
-
-# 验证统一大厅（全部游戏联调）
-cd ../.. && npm test && npm run test:e2e && npx tsc --noEmit && npm run build
-
-# 预演并部署至 Cloudflare Workers Static Assets
-npx wrangler deploy --dry-run
-npm run deploy
+make verify GAME=marble-maze
+make test-all
+make verify
+make deploy-dry-run
+make deploy
 ```
 
 ---
@@ -60,21 +51,17 @@ npm run deploy
 ## 示例 `agy` 提示词
 
 ```text
-/plan Build a new 3D game "Marble Maze 3D" in games/marble-maze/ using Vanilla Three.js + TypeScript + React HUD following AGENTS.md and games/simcity/ patterns:
-- Pure simulation in src/game/ (3D board tilt physics, wall collisions, goal hole, hazards, 5 levels, timer, localStorage marble_maze_v1)
-- Vanilla Three.js renderer in src/renderer/ (procedural low-poly wooden maze, metallic marble, directional shadows, smooth camera, ResizeObserver, full .dispose())
-- Web Audio roll/bump/win SFX + Mute, How to Play modal, 3-step Tutorial, live Hint
-- Original icons & HD/Full-HD covers in public/, all 6 docs in docs/ (plus README.zh.md and README.vi.md)
-- Vitest unit tests + Playwright WebGL E2E tests on dedicated port 4191 (with SwiftShader flags)
-- Register in src/registry/games.ts (category: Puzzle) and update root tests
+/plan Build a new 3D game "Marble Maze 3D" in games/marble-maze/ using Three.js following AGENTS.md and SimCity 3D's patterns:
+- 3D wooden maze with tilting physics, wall bumps, hazards, goal hole, 5 levels, timer, and saved best times
+- Low-poly 3D visuals with shadows, smooth camera follow, and WebGL browser tests
+- Sound effects + Mute, How to Play modal, 3-step Tutorial, live Hint, original icons/covers, and multilingual docs
 ```
 
 ---
 
 ## 核心要点
-- 将 `src/game/` 与 Three.js 解耦，让你能在 Node 中全速单元测试 3D 游戏逻辑。
-- 组件卸载时务必释放 Three.js 的几何体、材质与渲染器，防止 GPU 内存泄漏。
-- 一条 `npm run deploy` 即可编译并发布仓库中的所有游戏到 Cloudflare 全球边缘网络。
+- 即使是 3D Three.js 游戏，也遵循完全相同的 Vibe Coding 流程：**描述需求 -> `/plan` -> `make verify` -> `make deploy`**。
+- 一条 `make deploy` 命令即可把游戏大厅与全部游戏发布到 Cloudflare 全球边缘网络。
 
 ---
 
@@ -82,23 +69,23 @@ npm run deploy
 
 使用下方示例提示词向 Google `agy` 提问——无需手动编写代码：
 
-1. **深入理解项目：** 让 `agy` 解释 Three.js `.dispose()` 资源释放与 SwiftShader WebGL 测试参数。
+1. **深入理解项目：** 让 `agy` 用大白话讲解 `SimCity 3D` 如何在浏览器里绘制 3D 世界，以及如何在没有独立显卡时自动测试 3D 画面。
    ```text
-   Read games/simcity/src/renderer/CityScene.ts and games/simcity/playwright.config.ts, and explain how WebGL fallback, ResizeObserver, .dispose(), and SwiftShader flags work together.
+   Explain in plain English how SimCity 3D creates 3D buildings, day/night lighting, and shadows in the browser, and how Playwright tests 3D graphics automatically.
    ```
-2. **改进现有功能：** 让 `agy` 优化 3D 游戏中的相机阻尼跟随与阴影质感。
+2. **改进现有功能：** 让 `agy` 优化 3D 游戏中的相机跟随平滑度与阴影清晰度。
    ```text
-   In games/marble-maze/src/renderer/, add smooth lerp camera follow and tune directional shadow bias so the marble casts a crisp shadow without acne. Verify with make test-e2e GAME=marble-maze.
+   Improve Marble Maze 3D so the camera follows the rolling marble smoothly and the marble casts a crisp shadow on the wooden board. Verify with make verify GAME=marble-maze.
    ```
-3. **实现新功能：** 让 `agy` 为你的 3D 游戏添加受 `games/simcity/` 启发的 **昼夜光照切换** 开关。
+3. **实现新功能：** 让 `agy` 为 3D 游戏添加受 `SimCity 3D` 启发的 **昼夜光照切换** 开关。
    ```text
-   /plan Add a Day / Night lighting toggle to games/marble-maze/ (persisted in marble_maze_v1) that smoothly adjusts ambient and directional light colors. Verify with make verify GAME=marble-maze.
+   /plan Add a Day / Night lighting toggle to Marble Maze 3D (saved with player settings) that smoothly shifts the scene lighting. Verify with make verify GAME=marble-maze.
    ```
-4. **完善测试 / 文档：** 让 `agy` 在部署前运行全仓库质量与合规门槛检查。
+4. **完善测试 / 文档：** 让 `agy` 在上线前运行全仓库质量与合规检查，并修复所有发现的问题。
    ```text
-   Run make test-all, make verify, and make deploy-dry-run, and fix any compliance or >=70% coverage gaps reported.
+   Run make test-all, make verify, and make deploy-dry-run, and help me resolve any coverage or documentation issues before deploying live.
    ```
-5. **创建新游戏：** 让 `agy` 使用 Three.js 再构建一款 3D 游戏（**3D 叠方块 Block Stacker 3D**）并预演部署。
+5. **创建新游戏：** 让 `agy` 使用 Three.js 再构建一款 3D 游戏（**Block Stacker 3D**）并上线部署。
    ```text
-   /plan Create "Block Stacker 3D" in games/block-stacker-3d/ using Vanilla Three.js following AGENTS.md and .agents/skills/create-game/SKILL.md, then run make verify and make deploy-dry-run.
+   /plan Create "Block Stacker 3D" using Three.js following AGENTS.md, then run make verify and guide me through make deploy to Cloudflare Workers.
    ```

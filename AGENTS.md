@@ -53,7 +53,12 @@ Follow [STYLE_GUIDE.md](file:///Users/vuhung/Desktop/gemini-games/styles/STYLE_G
   - This project supports **English (`en`)**, **Chinese (`zh`)**, and **Vietnamese (`vi`)**.
   - **All `README.md` files** (the root `README.md`, `courses/README.md`, `courses/day-*/README.md`, and every `games/<game-name>/docs/README.md`) must support all 3 languages via `README.md` (English), `README.zh.md` (中文), and `README.vi.md` (Tiếng Việt), with a language switcher at the top of each file.
   - **Webapp Interface:** The Gemini Games Hub (`src/`) and game interfaces must support switching between English (`en`), Chinese (`zh`), and Vietnamese (`vi`) with `localStorage` persistence.
-  - **Courses (`courses/`):** All course index and daily lesson folders (`courses/README.md` and `courses/day-*/`) must support all 3 languages (`README.md`, `README.zh.md`, `README.vi.md`).
+  - **Courses (`courses/`):**
+    - All course index and daily lesson folders (`courses/README.md` and `courses/day-*/`) must support all 3 languages (`README.md`, `README.zh.md`, `README.vi.md`).
+    - **Course Philosophy & Audience:** Our `courses/` curriculum is **hands-on focused**, **vibe coding (prompt-driven)**—never asking students to write code manually—and **tailored for non-IT, non-tech learners** who want to understand the **tech stack behind vibe coding** in plain, practical language.
+    - **Plain-Language, High-Level Prompts Only:** Never ask learners to read, trace, or explain low-level code files (e.g., never write *"Read `games/dino-run/src/game/engine.ts`..."*). Keep every sample prompt, walkthrough, and exercise in high-level, everyday English/Chinese/Vietnamese focused on features, user experience, testing concepts, Cloudflare setup/deployment, and the overall tech stack (letting `agy` locate internal files automatically).
+    - **Course Delivery Loop:** Every lesson follows a simple 4-step vibe-coding flow: **Play / Explore -> Ask `agy` in plain language -> Prompt `agy` to improve or build -> Verify with `make`**.
+    - **Daily Exercises & Challenges:** Each daily lesson must include **exactly 5** prompt-only exercises (with sample prompts) covering: understanding the project, improving a feature, implementing a new feature, improving tests/docs, and creating a new/similar game.
 
 ---
 

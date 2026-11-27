@@ -1,67 +1,58 @@
 **English** | [中文](./README.zh.md) | [Tiếng Việt](./README.vi.md)
 
-# Day 3 — Understanding This Project's Architecture
+# Day 3 — How the Project Fits Together (Architecture)
 
 **Estimated Time:** 1 Hour · **Previous:** [Day 2](../day-02-game-dev-concepts/README.md) · **Next:** [Day 4](../day-04-dev-tools-and-ai-agents/README.md)
 
 ---
 
 ## Overview & Key Concepts
-Today you will learn how the **Gemini Games** monorepo connects the root Dashboard to all 15 games, and dissect the full architecture of **Dino Run** (`games/dino-run/`).
+Today you will learn at a high level how the **Gemini Games Hub** connects all **16 games** under one roof, and how a single game (like **Dino Run**) is organized into clean building blocks so `agy` can update any part safely.
 
 ```mermaid
 flowchart TD
-  Root["vite.config.ts (Multi-Entry + gamePublicAssetsPlugin)"]
-  Root --> Hub["Root Hub (src/App.tsx + Dashboard.tsx)"]
-  Hub --> Reg["src/registry/games.ts (15 Games)"]
-  Hub -->|iframe #/play/dino-run| Dino["games/dino-run/index.html"]
-  Dino --> Sim["src/game/* (types, constants, engine, hints, tutorial, storage)"]
-  Dino --> Render["src/renderer/canvasRenderer.ts"]
-  Dino --> SFX["src/audio/sfx.ts"]
-  Dino --> UI["src/App.tsx + HowToPlayModal.tsx"]
+  Hub["Unified Hub Dashboard (Search, Categories, Languages)"] --> Reg["Game Catalog (16 Games)"]
+  Hub -->|Opens inside player| Dino["Standalone Game (e.g. Dino Run)"]
+  Dino --> Sim["Game Rules & Progress Saving"]
+  Dino --> Render["2D / 3D Visuals"]
+  Dino --> SFX["Built-in Web Audio Sound"]
+  Dino --> UI["Menus, How to Play, Tutorial & Hints"]
 ```
 
 ---
 
 ## Learning Objectives & Outcomes
 By the end of Day 3, you will be able to:
-1. Navigate the root monorepo layout (`src/`, `styles/`, `games/`, `docs/`, `e2e/`).
-2. Explain how [`vite.config.ts`](../../vite.config.ts) discovers and bundles every `games/*/index.html` and copies `public/` assets.
-3. Trace the complete data flow of `games/dino-run/` from keyboard event to Canvas frame.
+1. Understand the big picture of how the root Hub and individual game folders work together.
+2. Explain why every game works both **on its own** and **inside the unified Hub**.
+3. Describe the 4 building blocks inside every game: **Rules**, **Visuals**, **Sound**, and **UI / Help**.
 
 ---
 
 ## Step-by-Step Guide
 
-### 1. Read the Root Architecture Guide
-Open [`docs/architecture.md`](../../docs/architecture.md) and review the three diagrams.
+### 1. View the Visual Architecture Guide
+Open [`docs/architecture.md`](../../docs/architecture.md) to see the high-level system diagrams.
 
-### 2. Trace How a Game Appears on the Dashboard
-1. Open [`src/registry/games.ts`](../../src/registry/games.ts) and find the `'dino-run'` entry.
-2. Open [`vite.config.ts`](../../vite.config.ts) and inspect `discoverGameSlugs()` and `gamePublicAssetsPlugin()`.
-3. Notice why every game uses relative paths (`base: './'` and `./icons/icon-192.png`): it works both standalone (`cd games/dino-run && npm run dev`) and inside the unified hub!
-
-### 3. Anatomy of a Game (`games/dino-run/`)
-Inspect the files inside [`games/dino-run/`](../../games/dino-run/docs/architecture.md):
-- `src/game/constants.ts` — Tunable physics (`GRAVITY`, `JUMP_VELOCITY`, `BASE_SPEED`)
-- `src/game/engine.ts` — State transitions (`triggerJump`, `setDucking`, `stepDino`)
-- `src/game/storage.ts` — Safe `try/catch` `localStorage` under `dino_run_v1`
-- `src/renderer/canvasRenderer.ts` — Pixel-art T-Rex, cacti, pterodactyls, Day/Night cycle
-- `src/audio/sfx.ts` — Procedural Web Audio tones (zero `.mp3` files!)
-- `src/main.tsx` — Imports shared `../../../styles/tokens.css` and `../../../styles/game-ui.css`
+### 2. Understand Why Every Game Is Self-Contained
+- Each game lives in its own folder under `games/` with its own rules, icons, cover artwork, docs, and tests.
+- When you build the project (`npm run build`), the bundler automatically packages the Hub **plus** all 16 games into one static `dist/` folder ready for local preview or Cloudflare.
 
 ---
 
 ## Sample `agy` Prompts
 ```text
-Trace what happens step-by-step when the player presses Space in games/dino-run/src/App.tsx, from the keydown listener to the pixel-art T-Rex jumping on the canvas.
+Summarise how this project is organized in plain English. How does the main Hub know about all 16 games, and why can each game run both standalone and inside the Hub?
+```
+```text
+Explain the building blocks of "Dino Run" (rules, visuals, sound effects, help modal, and saving high scores) without showing raw code.
 ```
 
 ---
 
 ## Key Takeaways
-- Every game is self-contained yet plugs automatically into the root build via `vite.config.ts` and `src/registry/games.ts`.
-- Shared styling lives in `styles/tokens.css`, `styles/game-ui.css`, and `styles/theme.ts`.
+- Every game is self-contained yet plugs automatically into the unified Hub.
+- Shared theme colors and UI styles keep all 16 games feeling like one cohesive collection.
 
 ---
 
@@ -69,23 +60,23 @@ Trace what happens step-by-step when the player presses Space in games/dino-run/
 
 Use Google `agy` with the sample prompts below—no manual coding required:
 
-1. **Understand the Project:** Ask `agy` to explain how `vite.config.ts` bundles the Hub and all games together.
+1. **Understand the Project:** Ask `agy` to explain how the Hub shares styles, themes, and languages across the project.
    ```text
-   Trace how vite.config.ts discovers games/*/index.html, serves public/ assets in dev via gamePublicAssetsPlugin, and copies them into dist/games/<slug>/ during npm run build.
+   Explain in simple terms how Light/Dark themes, purple/ivory colors, and English/Chinese/Vietnamese translations work across the Gemini Games Hub.
    ```
-2. **Improve a Feature:** Ask `agy` to enhance the `GamePlayer` top bar with a keyboard shortcut hint (`Esc` / `F11`).
+2. **Improve a Feature:** Ask `agy` to add helpful keyboard shortcut tooltips to the Hub's game player bar.
    ```text
-   In src/components/GamePlayer.tsx and src/i18n/translations.ts, add a subtle tooltip on the Fullscreen and Reload buttons across en, zh, and vi. Verify with make test and make lint.
+   Improve the Hub's game-player top bar by adding clear tooltips on the Reload and Fullscreen buttons in English, Chinese, and Vietnamese. Verify with make test and make lint.
    ```
-3. **Implement a New Feature:** Ask `agy` to add a **"Games Played" counter** to `Dino Run` persistence.
+3. **Implement a New Feature:** Ask `agy` to add a **"Games Played"** counter to `Dino Run`'s Game Over screen.
    ```text
-   /plan Add a gamesPlayed counter to games/dino-run/src/game/storage.ts (under dino_run_v1) and display it in the Game Over overlay. Verify with make verify GAME=dino-run.
+   /plan Add a "Games Played" counter to Dino Run that saves automatically in the browser and shows on the Game Over screen. Verify with make verify GAME=dino-run.
    ```
-4. **Improve Tests / Docs:** Ask `agy` to document all `localStorage` keys used across the repository.
+4. **Improve Tests / Docs:** Ask `agy` to add a plain-English summary of how high scores are saved locally.
    ```text
-   Scan games/*/src/game/storage.ts and src/registry/hubStorage.ts for all localStorage keys, then add a "Storage Keys" reference table to docs/architecture.md.
+   Summarise how all 16 games save high scores and mute settings locally in the browser (without any backend server), and add a short note about this to the project architecture docs.
    ```
-5. **Create a New Game:** Ask `agy` to build a lightweight **"Coin Flipper"** luck/streak mini-game registered in the Hub.
+5. **Create a New Game:** Ask `agy` to build a lightweight **"Coin Flipper"** game and register it in the Hub.
    ```text
-   /plan Build a "Coin Flipper" game in games/coin-flipper/ following AGENTS.md and .agents/skills/create-game/SKILL.md, with streak tracking, SVG coin flip, How to Play, Tutorial, Hint, and Vitest >=70% coverage.
+   /plan Build a "Coin Flipper" game following AGENTS.md, with streak tracking, crisp SVG coin flip animation, How to Play, Tutorial, Hint, and automated tests.
    ```

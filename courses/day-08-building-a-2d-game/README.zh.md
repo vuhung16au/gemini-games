@@ -1,26 +1,25 @@
 [English](./README.md) | **中文** | [Tiếng Việt](./README.vi.md)
 
-# 第 8 天 — 从零构建你的第一款 2D Canvas 游戏
+# 第 8 天 — 从零构建你的第一款 2D 街机游戏
 
 **预计用时：** 1 小时 · **上一篇：** [第 7 天](../day-07-building-a-board-game/README.zh.md) · **下一篇：** [第 9 天](../day-09-building-a-3d-game/README.zh.md)
 
 ---
 
 ## 概览与核心概念
-今天你将从回合制棋盘进阶到从零构建 **60fps 实时 HTML5 Canvas 2D 游戏**（例如在 `games/breakout/` 中实现 **打砖块 (Breakout)** 或 **贪吃蛇 (Snake)**，Playwright 端口 **`4190`**）。
+今天你将从回合制棋盘进阶到从零打造 **60fps 实时 2D 街机游戏**（例如 **打砖块 (Breakout)** 或 **贪吃蛇 (Snake)**）。
 
-你将应用的核心 2D 实时开发模式：
-- **限幅 `dt` 游戏循环：** `const dt = Math.min(0.05, (now - last) / 1000)` + `visibilitychange` 自动暂停。
-- **碰撞数学：** 在纯 TypeScript `src/game/engine.ts` 中实现圆与 AABB 矩形碰撞反弹（打砖块）或网格占用检测（贪吃蛇）。
-- **响应式输入：** 键盘（`方向键` / `WASD`、`空格`、`preventDefault()`）+ 指针/触控操作（`touch-action: none`）。
+你会让 `agy` 自动处理的 2D 核心体验：
+- **流畅运动与自动暂停：** 游戏以每秒 60 帧流畅运行，切换浏览器标签页时自动暂停。
+- **真实反弹与碰撞：** 球体根据撞击挡板的位置与砖块角度自然反弹。
+- **桌面 + 触控双支持：** 同时支持键盘（`方向键`/`WASD`/`空格`）与鼠标/触屏拖拽。
 
 ---
 
 ## 学习目标与成果
 完成第 8 天后，你将能够：
-1. 设计解耦 `src/game/` 模拟层与 `src/renderer/canvasRenderer.ts` 渲染层的实时 2D Canvas 游戏架构。
-2. 添加程序化 Web Audio API 音效（反弹、碎砖、连击提示音、游戏结束）。
-3. 使用 Vitest 确定性测试实时 Canvas 逻辑，并用 Playwright 在 Chromium 中进行真实交互测试。
+1. 用自然语言向 `agy` 描述一款实时 2D 街机游戏（关卡、道具、操作、音效）。
+2. 使用 `make test GAME=breakout` 与 `make test-e2e GAME=breakout` 验证物理规则与真实浏览器游玩。
 
 ---
 
@@ -31,16 +30,13 @@
 git checkout -b day-08-2d-breakout
 ```
 
-### 2. 参考仓库中的现有 2D Canvas 游戏
-浏览 [`games/battle-city/docs/architecture.md`](../../games/battle-city/docs/architecture.md) 或 [`games/tetris/docs/architecture.md`](../../games/tetris/docs/architecture.md)，观察 `requestAnimationFrame`、输入 `ref` 与 React HUD 覆盖层如何协作，避免 60fps React 重渲染卡顿。
+### 2. 使用 `/plan` 提示 `agy` 构建 2D 街机游戏
+粘贴下方示例提示词，审阅计划并批准执行。
 
-### 3. 使用 `/plan` 提示 `agy` 构建你的 2D 游戏
-使用下方示例提示词，审阅计划（碰撞数学、关卡、端口 `4190`）并批准执行。
-
-### 4. 验证独立运行与统一大厅
+### 3. 验证独立游戏与统一大厅
 ```bash
-cd games/breakout && npm test && npm run test:e2e && npx tsc --noEmit && npm run build
-cd ../.. && npm test && npm run test:e2e && npx tsc --noEmit && npm run build
+make verify GAME=breakout
+make verify
 ```
 
 ---
@@ -48,20 +44,18 @@ cd ../.. && npm test && npm run test:e2e && npx tsc --noEmit && npm run build
 ## 示例 `agy` 提示词
 
 ```text
-/plan Build a new 2D HTML5 Canvas game "Breakout" in games/breakout/ following AGENTS.md completely:
-- Pure simulation in src/game/ (paddle movement, circle-vs-AABB brick & paddle angle bounce, 5 brick layouts, power-ups: Wide Paddle & Multi-Ball, lives, combo scoring, localStorage breakout_v1)
-- Crisp Canvas 2D renderer using styles/theme.ts colors, procedural Web Audio SFX + Mute
-- Keyboard (Arrows/A-D/Space) + pointer/touch drag controls, visibilitychange auto-pause
-- How to Play modal, 3-step Tutorial, live Hint tip, original icons & covers in public/, all 6 docs in docs/ (plus README.zh.md and README.vi.md)
-- Vitest unit tests + Playwright E2E tests on dedicated port 4190
-- Register in src/registry/games.ts (category: Arcade) and update root tests
+/plan Build a new 2D arcade game "Breakout" in games/breakout/ following AGENTS.md completely:
+- Smooth paddle & bouncing ball physics, 5 brick layouts, power-ups (Wide Paddle & Multi-Ball), lives, and combo scoring
+- Crisp 2D Canvas graphics matching the Gemini Games theme, plus retro Web Audio SFX & Mute toggle
+- Works with Keyboard (Arrows/A-D/Space) and mouse/touch drag, and auto-pauses when switching tabs
+- How to Play modal, 3-step Tutorial, live Hint tip, original icons & covers, multilingual READMEs, and >=70% test coverage
 ```
 
 ---
 
 ## 核心要点
-- 将每帧物理状态保存在 `useRef` + `requestAnimationFrame` 中，仅把 HUD 计数器（分数、生命、关卡）同步到 React state。
-- `src/game/` 中的纯碰撞函数让 Vitest 无需打开浏览器就能验证复杂的反弹角度。
+- 你只需描述*街机手感*（连击、道具、触控与键盘），`agy` 会自动套用仓库成熟的 2D Canvas 模式。
+- `make verify GAME=<slug>` 确保物理逻辑、UI、文档与浏览器测试全部通过。
 
 ---
 
@@ -69,23 +63,23 @@ cd ../.. && npm test && npm run test:e2e && npx tsc --noEmit && npm run build
 
 使用下方示例提示词向 Google `agy` 提问——无需手动编写代码：
 
-1. **深入理解项目：** 让 `agy` 解释圆与 AABB 碰撞数学以及 `requestAnimationFrame` 状态同步。
+1. **深入理解项目：** 让 `agy` 用大白话解释像 `Battle City` 或 `Breakout` 这类 2D 游戏是如何保持 60fps 流畅的。
    ```text
-   Read games/breakout/src/game/engine.ts (or games/battle-city/src/game/engine.ts) and explain how collision normals and clamped dt keep 60fps Canvas physics deterministic.
+   Explain in plain English how 2D Canvas games in this project keep movement smooth at 60fps and handle keyboard + touch controls without scrolling the page.
    ```
-2. **改进现有功能：** 让 `agy` 优化挡板边缘反弹角度并加入连击音高变化。
+2. **改进现有功能：** 让 `agy` 优化挡板边缘反弹角度并让连击音效随连击数升高音调。
    ```text
-   In games/breakout/, refine paddle edge-hit reflection angles so corner hits feel snappier and scale the brick-break Web Audio pitch with the current combo. Verify with make test GAME=breakout.
+   In Breakout, refine paddle edge-hit bounce angles so corner shots feel snappier, and raise the Web Audio chime pitch as the player's brick-break combo grows. Verify with make verify GAME=breakout.
    ```
-3. **实现新功能：** 让 `agy` 添加需要击中 3 次并逐级显示裂纹的 **Boss 砖块**。
+3. **实现新功能：** 让 `agy` 添加一个需要击中 3 次且逐级裂开的 **Boss 砖块**。
    ```text
-   /plan Add a "Boss Brick" (3 HP, renders crack stages on Canvas, awards bonus points) to games/breakout/ and add unit tests for 3-hit destruction. Verify with make verify GAME=breakout.
+   /plan Add a "Boss Brick" (takes 3 hits, shows visual cracks after each hit, awards bonus points) to Breakout with automated unit tests. Verify with make verify GAME=breakout.
    ```
-4. **完善测试 / 文档：** 让 `agy` 补充移动端触控拖拽 Playwright 测试并更新 `user-guide.md`。
+4. **完善测试 / 文档：** 让 `agy` 补充移动端触控拖拽浏览器测试并更新用户指南。
    ```text
-   In games/breakout/e2e/breakout.spec.ts, add a responsive 390x844 touch-drag test and document mobile controls in games/breakout/docs/user-guide.md. Run make test-e2e GAME=breakout.
+   Add a Playwright browser test confirming Breakout's paddle responds to touch/pointer dragging on mobile viewports, and document mobile controls in Breakout's user guide.
    ```
-5. **创建新游戏：** 让 `agy` 构建另一款经典 2D Canvas 街机游戏 **贪吃蛇 (Classic Snake)**。
+5. **创建新游戏：** 让 `agy` 打造另一款经典 2D 街机游戏 **贪吃蛇 (Classic Snake)**。
    ```text
-   /plan Create "Classic Snake" in games/snake/ following AGENTS.md, .agents/skills/create-game/SKILL.md, and .agents/skills/canvas-and-threejs-patterns/SKILL.md, with grid wrapping toggle, speed levels, How to Play, Tutorial, Hint, and >=70% coverage.
+   /plan Create "Classic Snake" following AGENTS.md, with wall-wrap toggle, speed levels, food combos, How to Play, Tutorial, Hint, and automated unit + browser tests.
    ```
