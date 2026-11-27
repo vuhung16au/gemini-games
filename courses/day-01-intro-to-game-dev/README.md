@@ -9,33 +9,42 @@
 ## Overview & Key Concepts
 Today you will explore the **Gemini Games** repository, understand what **vibe coding** with AI agents means in practice, and run the unified 16-game Dashboard on your own machine—without writing a single line of code yourself.
 
-- **Vibe Coding (Structured):** You describe *what* you want to build or learn in plain everyday language, let Google `agy` plan and generate the app/assets, and **verify every change with simple automated commands**.
-- **Local-First Web Games:** Every game in this repo runs offline in your browser with zero external servers, and can later be published as a fast static website on Cloudflare Workers.
+- **Try the Live Demo First:** Play all 16 games online right now at **[https://gemini-games.vuhung16plus.workers.dev/](https://gemini-games.vuhung16plus.workers.dev/)**.
+- **Vibe Coding vs. Traditional Coding:** In traditional coding, you spend months memorizing syntax and writing code line by line. In **vibe coding**, **your ideas, player experience, and clear intent are what matter most**—you can treat the **source code as an artifact** generated from your prompts and verified with automated checks (`make verify`).
+- **Learn Tools & Tech Stack As You Go:** This course does not teach `git`, `make`, `agy`, TypeScript, or React as dry standalone manuals—you will pick them up naturally by playing, asking `agy`, and building.
+- **100% Offline or Cloud-Ready:** Every game runs **100% offline** in your browser once cloned, and you can publish your customized hub to **Cloudflare Workers** (or alternatively **Vercel**).
 
 ---
 
 ## Learning Objectives & Outcomes
 By the end of Day 1, you will be able to:
-1. Explain how AI coding agents accelerate planning, building, artwork, and testing for non-technical creators.
-2. Launch the unified Gemini Games Dashboard locally with `npm run dev`.
+1. Explain why ideas and clear intent matter more than manual syntax in vibe coding (treating source code as an artifact).
+2. Clone the repository and launch the unified Gemini Games Dashboard locally (`100%` offline) with `make dev`.
 3. Ask `agy` in plain English to summarize the project, introduce the tech stack, and explain game features.
 
 ---
 
 ## Step-by-Step Guide
 
-### 1. Check Your Environment
+### 1. Try the Live Demo & Check Your Environment
+First, open **[https://gemini-games.vuhung16plus.workers.dev/](https://gemini-games.vuhung16plus.workers.dev/)** to see what you are about to run and customize. Then check your local tools:
 ```bash
 node -v   # Node.js 20+ recommended
 npm -v
 git --version
 ```
 
-### 2. Install Dependencies & Launch the Hub
+### 2. Clone the Repository
+```bash
+git clone https://github.com/vuhung16au/gemini-games.git
+cd gemini-games
+```
+
+### 3. Install Dependencies & Launch the Hub (100% Offline)
 From the repository root:
 ```bash
 npm install
-npm run dev
+make dev
 ```
 Open the local URL printed by Vite (e.g., `http://localhost:5173`). Try:
 - Filtering by category (`Puzzle`, `Board`, `Arcade`, `Simulation`, `Card`).

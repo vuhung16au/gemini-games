@@ -2,11 +2,18 @@
 
 # Gemini Games
 
-Trung tâm trò chơi web thống nhất theo hướng local-first gồm **16 trò chơi 2D & 3D chơi trực tiếp trên trình duyệt**, được xây dựng bằng **TypeScript, Vite, React, HTML5 Canvas 2D và Three.js**, triển khai tĩnh trên **Cloudflare Workers Static Assets** (`https://gemini-games.vuhung16plus.workers.dev`).
+Trung tâm trò chơi web thống nhất có thể chạy **100% ngoại tuyến** theo hướng local-first, gồm **16 trò chơi 2D & 3D chơi trực tiếp trên trình duyệt**, được xây dựng bằng **TypeScript, Vite, React, HTML5 Canvas 2D và Three.js**, triển khai tĩnh trên **Cloudflare Workers Static Assets** (hoặc **Vercel**).
+
+- **Bản Demo trực tuyến:** **[https://gemini-games.vuhung16plus.workers.dev/](https://gemini-games.vuhung16plus.workers.dev/)**
+- **Hướng dẫn nhanh:** [QUICKSTART.vi.md](./QUICKSTART.vi.md) (`git clone`, `make dev`, `make verify`, `make deploy`)
+- **Khóa học & Hướng dẫn Vibe Coding 9 Ngày:** [courses/](./courses/README.vi.md) — Khóa học thực hành bằng prompt dành cho người không chuyên CNTT để hiểu tech stack, tùy chỉnh game có sẵn và tự tạo game 2D/3D mới cùng AI agent.
+
+[![Demo trực tuyến Gemini Games](./docs/demo-screenshot.png)](https://gemini-games.vuhung16plus.workers.dev/)
 
 ## Điểm nổi bật
 - **Bảng điều khiển 4 cột thống nhất:** Lọc theo danh mục (`Tất cả`, `Giải đố`, `Cờ`, `Arcade`, `Mô phỏng`, `Đánh bài`), tìm kiếm trực tiếp (`/`), **Yêu thích**, **Chơi gần đây**, **Giao diện Sáng/Tối**, **Hỗ trợ đa ngôn ngữ (`English`, `中文`, `Tiếng Việt`)** và điều hướng bàn phím đầy đủ (`Phím mũi tên`, `Enter`, `Esc`).
 - **16 trò chơi độc lập:** Không phụ thuộc CDN bên ngoài khi chạy, âm thanh Web Audio tạo tự động kèm nút Tắt tiếng được lưu trạng thái, tích hợp **Hướng dẫn chơi**, **Chế độ hướng dẫn** và **Gợi ý**, cùng bộ kiểm thử đơn vị Vitest và kiểm thử E2E Playwright.
+- **Tích hợp sẵn lộ trình học Vibe Coding (`courses/`):** Thực hành tư duy vibe coding—xem mã nguồn như một sản phẩm đầu ra (artifact) được tạo từ ý tưởng rõ ràng và xác minh bằng `make verify`.
 
 ## Bộ sưu tập trò chơi
 
@@ -30,7 +37,7 @@ Trung tâm trò chơi web thống nhất theo hướng local-first gồm **16 tr
 | **Tiến Lên Miền Nam** | Đánh bài | [`games/tien-len-mien-nam/`](./games/tien-len-mien-nam/docs/README.vi.md) |
 
 ## Các tệp quan trọng trong dự án
-- [QUICKSTART.md](./QUICKSTART.md) — Lệnh build, chạy, kiểm thử và triển khai
+- [QUICKSTART.vi.md](./QUICKSTART.vi.md) — Lệnh build, chạy, kiểm thử và triển khai
 - [courses/README.vi.md](./courses/README.vi.md) — Khóa học Phát triển Game 9 Ngày (Vibe Coding & AI Agents)
 - [docs/architecture.md](./docs/architecture.md) — Kiến trúc Hub, mô-đun từng game và multi-entry build (kèm sơ đồ Mermaid)
 - [docs/developer-guide.md](./docs/developer-guide.md) — Quy trình phát triển, danh sách kiểm tra `AGENTS.md` và cổng xác minh

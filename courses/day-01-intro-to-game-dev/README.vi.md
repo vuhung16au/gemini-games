@@ -9,33 +9,42 @@
 ## Tổng quan & Khái niệm chính
 Hôm nay bạn sẽ khám phá dự án **Gemini Games**, hiểu **vibe coding** cùng AI agent hoạt động thế nào trong thực tế, và chạy Bảng điều khiển 16 game ngay trên máy—mà không cần tự viết dòng code nào.
 
-- **Vibe Coding (Có cấu trúc):** Bạn mô tả *những gì* mình muốn xây dựng hoặc tìm hiểu bằng ngôn ngữ đời thường, để Google `agy` lên kế hoạch và tạo trò chơi/hình ảnh, rồi **xác minh mọi thay đổi bằng các lệnh tự động đơn giản**.
-- **Game Web Local-First:** Mọi game trong dự án đều chạy ngoại tuyến ngay trên trình duyệt, không cần máy chủ phức tạp.
+- **Trải nghiệm bản Demo trực tuyến trước:** Chơi thử cả 16 game ngay tại **[https://gemini-games.vuhung16plus.workers.dev/](https://gemini-games.vuhung16plus.workers.dev/)**.
+- **Vibe Coding khác Lập trình truyền thống ra sao:** Với lập trình truyền thống, bạn phải mất nhiều tháng học cú pháp và gõ từng dòng code. Với **vibe coding**, **ý tưởng, trải nghiệm người chơi và mục tiêu rõ ràng mới là điều quan trọng nhất**—bạn có thể xem **mã nguồn như một sản phẩm đầu ra (artifact)** được tạo từ prompt và xác minh bằng lệnh tự động (`make verify`).
+- **Học công cụ & tech stack qua thực hành:** Khóa học không dạy `git`, `make`, `agy`, TypeScript hay React như lý thuyết khô khan—bạn sẽ làm quen tự nhiên trong quá trình chơi, hỏi `agy` và chỉnh sửa game.
+- **Chạy 100% Ngoại tuyến hoặc Đưa lên Cloud:** Sau khi clone về máy, toàn bộ game chạy **100% ngoại tuyến** trên trình duyệt; khi muốn chia sẻ, bạn có thể deploy lên **Cloudflare Workers** (hoặc **Vercel**).
 
 ---
 
 ## Mục tiêu & Kết quả học tập
 Sau Ngày 1, bạn sẽ có thể:
-1. Giải thích cách AI coding agent hỗ trợ người không chuyên CNTT lập kế hoạch, tạo game, vẽ đồ họa và kiểm thử.
-2. Khởi chạy Gemini Games Dashboard tại máy bằng `npm run dev`.
+1. Giải thích vì sao ý tưởng và mục tiêu rõ ràng quan trọng hơn cú pháp thủ công trong vibe coding (xem mã nguồn như một artifact).
+2. Clone kho mã nguồn và khởi chạy Gemini Games Dashboard tại máy (**100% ngoại tuyến**) bằng `make dev`.
 3. Hỏi `agy` bằng ngôn ngữ tự nhiên để tóm tắt dự án, giới thiệu tech stack và giải thích tính năng game.
 
 ---
 
 ## Hướng dẫn từng bước
 
-### 1. Kiểm tra môi trường
+### 1. Chơi thử Demo & Kiểm tra môi trường
+Trước hết, hãy mở **[https://gemini-games.vuhung16plus.workers.dev/](https://gemini-games.vuhung16plus.workers.dev/)** để xem sản phẩm thực tế, sau đó kiểm tra công cụ trên máy:
 ```bash
 node -v   # Khuyến nghị Node.js 20+
 npm -v
 git --version
 ```
 
-### 2. Cài đặt thư viện & Khởi chạy Hub
+### 2. Clone kho mã nguồn
+```bash
+git clone https://github.com/vuhung16au/gemini-games.git
+cd gemini-games
+```
+
+### 3. Cài đặt thư viện & Khởi chạy Hub (100% ngoại tuyến)
 Từ thư mục gốc của kho mã nguồn:
 ```bash
 npm install
-npm run dev
+make dev
 ```
 Mở URL local mà Vite hiển thị (ví dụ `http://localhost:5173`) và thử:
 - Lọc theo danh mục (`Giải đố`, `Cờ`, `Arcade`, `Mô phỏng`, `Đánh bài`).

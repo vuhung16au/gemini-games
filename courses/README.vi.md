@@ -2,22 +2,48 @@
 
 # Phát Triển Game với Vibe Coding & AI Agents (Khóa Học 9 Ngày)
 
-Chào mừng đến với **Khóa học Phát triển Game 9 Ngày cùng Gemini Games**! Sử dụng 16 trò chơi web 2D & 3D trong kho mã nguồn này làm lớp học thực tế, bạn sẽ học cách thiết kế, xây dựng, kiểm thử và triển khai game trình duyệt hiện đại với **vibe coding** và **Google `agy` (Antigravity)**.
+Chào mừng đến với **Khóa học Phát triển Game 9 Ngày cùng Gemini Games**! Bắt đầu từ một **dự án hoàn chỉnh đang chạy tốt với 16 trò chơi web 2D & 3D**, bạn sẽ học **vibe coding** qua thực hành trực tiếp—chơi thử, hiểu cấu trúc, làm chủ công cụ và tech stack, cải tiến các game có sẵn và tự tay tạo game mới cùng **Google `agy` (Antigravity)**.
 
+- **Bản Demo Trực tuyến:** Chơi ngay cả 16 game tại **https://gemini-games.vuhung16plus.workers.dev/**
+- **Chạy 100% Ngoại tuyến hoặc Đưa lên Cloud:** Chạy **100% offline** trên máy của bạn, hoặc triển khai tĩnh lên **Cloudflare Workers** (mặc định) hay **Vercel**.
 - **Thời lượng:** 9 Ngày · 1 Mô-đun mỗi ngày · ~1 Giờ mỗi mô-đun
-- **Đối tượng:** Người mới học làm game cùng AI agents & lập trình viên muốn nâng cao quy trình TypeScript/Canvas/Three.js + TDD
 - **Yêu cầu đầu vào:** Biết sử dụng máy tính cơ bản, Node.js 20+, Git và terminal (không cần kinh nghiệm lập trình, 3D hay game engine)
 
 ---
 
-## Cách Triển Khai Khóa Học (Vòng Lặp Vibe Coding)
+## Khóa Học Này Dành Cho Ai (Và Không Dạy Gì)
 
-Khóa học này được thiết kế cho **người học không chuyên CNTT (non-IT, non-tech)**: bạn sẽ **không bao giờ** phải tự viết hay đọc mã TypeScript cấp thấp. Mỗi bài học đều đi theo quy trình **vibe coding** 4 bước cùng Google `agy`:
+- **Dành cho:** **Người học không chuyên CNTT (non-IT, non-tech)**, người sáng tạo nội dung, giáo viên và người mới tò mò muốn tự tạo, tùy biến và xuất bản game web thật bằng **vibe coding**, đồng thời hiểu bức tranh tech stack phía sau.
+- **Khóa học KHÔNG phải là:**
+  - **Không** phải lớp dạy lập trình truyền thống—chúng tôi **không** dạy cú pháp cơ bản như HTML, CSS, TypeScript hay React từ đầu.
+  - **Không** phải giáo trình dạy công cụ khô khan—chúng tôi **không** dạy riêng lẻ `git`, `gh`, `make` hay `agy`. Thay vào đó, **bạn sẽ học công cụ và tech stack một cách tự nhiên ngay trong quá trình làm game!**
 
-1. **Chơi & Khám phá:** Mở trò chơi trên trình duyệt và trải nghiệm ở góc nhìn người chơi.
+---
+
+## Triết Lý Giảng Dạy: Vibe Coding vs. Lập Trình Truyền Thống
+
+- **Bắt đầu từ Dự án Đang Chạy:** Thay vì nhìn vào màn hình trắng, bạn bắt đầu với một Hub 16 game hoàn chỉnh—chơi thử, hiểu cách vận hành, làm chủ công cụ & tech stack, nâng cấp game cũ và tạo game mới.
+- **Ý tưởng & Mục tiêu > Tự viết Code:** Lập trình truyền thống tập trung vào việc gõ từng dòng cú pháp. Trong **vibe coding**, **ý tưởng, trải nghiệm người chơi và mục tiêu rõ ràng của bạn** mới là quan trọng nhất—**mã nguồn chỉ là sản phẩm phụ (artifact) được tạo ra từ câu lệnh (prompt)**, và các bài kiểm tra tự động (`make verify`) giúp bạn đảm bảo sản phẩm chạy chuẩn xác.
+
+---
+
+## Cách Triển Khai Khóa Học (Vòng Lặp Vibe Coding 4 Bước)
+
+1. **Chơi & Khám phá:** Mở một trò chơi trong Hub (trên máy hoặc trên bản demo trực tuyến) và trải nghiệm như người chơi.
 2. **Hỏi `agy` bằng Ngôn ngữ Tự nhiên:** Đặt câu hỏi tổng quan (*"Tóm tắt dự án"*, *"Giải thích các tính năng trong Dino Run"*, *"Giới thiệu tech stack của dự án"*).
-3. **Ra lệnh cho `agy` Cải tiến hoặc Tạo mới:** Chỉ cần mô tả kết quả bạn muốn—`agy` sẽ tự tìm đúng tệp và viết mã thay bạn.
-4. **Xác minh Tự động:** Chạy một lệnh `make` (`make test`, `make verify`) để các kiểm tra tự động xác nhận mọi thứ hoạt động chuẩn xác.
+3. **Ra lệnh cho `agy` Cải tiến hoặc Tạo mới:** Mô tả điều bạn muốn bằng lời nói đời thường—`agy` tự tìm đúng tệp và tạo ra mã nguồn cho bạn.
+4. **Xác minh Tự động:** Chạy một lệnh `make` (`make test`, `make verify`) để kiểm thử tự động xác nhận mọi thứ hoạt động tốt.
+
+---
+
+## Trước Khi Bắt Đầu: Clone Kho Mã Nguồn
+
+```bash
+git clone https://github.com/vuhung16au/gemini-games.git
+cd gemini-games
+npm install
+make dev
+```
 
 ---
 
@@ -25,7 +51,7 @@ Khóa học này được thiết kế cho **người học không chuyên CNTT 
 
 ```mermaid
 flowchart LR
-  D1["Ngày 1: Nhập môn & Cài đặt"] --> D2["Ngày 2: Khái niệm & TDD"]
+  D1["Ngày 1: Nhập môn & Cài đặt"] --> D2["Ngày 2: Khái niệm & Kiểm thử"]
   D2 --> D3["Ngày 3: Kiến trúc dự án"]
   D3 --> D4["Ngày 4: Công cụ & Google agy"]
   D4 --> D5["Ngày 5: Tech Stack chuyên sâu"]
@@ -41,15 +67,15 @@ flowchart LR
 
 | Ngày | Mô-đun | Trọng tâm | Hướng dẫn |
 | :--- | :--- | :--- | :--- |
-| **Ngày 1** | Nhập môn Phát triển Game | Vibe coding, AI agents, khám phá repo, chạy local | [Hướng dẫn Ngày 1](./day-01-intro-to-game-dev/README.vi.md) |
-| **Ngày 2** | Khái niệm Phát triển Game | Nguyên lý phần mềm, mô phỏng thuần vs. UI, TDD | [Hướng dẫn Ngày 2](./day-02-game-dev-concepts/README.vi.md) |
-| **Ngày 3** | Kiến trúc Dự án | Cấu trúc monorepo, hub registry, bên trong `Dino Run` | [Hướng dẫn Ngày 3](./day-03-project-architecture/README.vi.md) |
-| **Ngày 4** | Công cụ Lập trình & AI Agents | Node/npm, Git/`gh`, Wrangler, Google `agy` | [Hướng dẫn Ngày 4](./day-04-dev-tools-and-ai-agents/README.vi.md) |
-| **Ngày 5** | Tech Stack Chuyên sâu | TS, Vite, React, Canvas 2D, Three.js, Vitest, Playwright | [Hướng dẫn Ngày 5](./day-05-tech-stack-deep-dive/README.vi.md) |
-| **Ngày 6** | Chỉnh sửa Game Đầu tiên | Tùy biến màu sắc, tốc độ & chướng ngại vật `Dino Run` | [Hướng dẫn Ngày 6](./day-06-modifying-dino-run/README.vi.md) |
+| **Ngày 1** | Nhập môn Phát triển Game | Vibe coding vs truyền thống, demo trực tuyến, `git clone`, chạy offline | [Hướng dẫn Ngày 1](./day-01-intro-to-game-dev/README.vi.md) |
+| **Ngày 2** | Khái niệm Phát triển Game | Luật chơi vs hiển thị, kiểm thử đơn vị & trình duyệt tự động | [Hướng dẫn Ngày 2](./day-02-game-dev-concepts/README.vi.md) |
+| **Ngày 3** | Kiến trúc Dự án | Cách Hub & 16 game độc lập kết nối với nhau | [Hướng dẫn Ngày 3](./day-03-project-architecture/README.vi.md) |
+| **Ngày 4** | Công cụ & AI Agents | Học `make`, `git`, `agy` & Cloudflare / Vercel ngay khi thực hành | [Hướng dẫn Ngày 4](./day-04-dev-tools-and-ai-agents/README.vi.md) |
+| **Ngày 5** | Tech Stack Chuyên sâu | Khi nào dùng CSS/SVG, Canvas 2D hay Three.js + TS/Vite/React | [Hướng dẫn Ngày 5](./day-05-tech-stack-deep-dive/README.vi.md) |
+| **Ngày 6** | Chỉnh sửa Game Đầu tiên | Tùy biến màu sắc, tốc độ & chướng ngại vật `Dino Run` bằng prompt | [Hướng dẫn Ngày 6](./day-06-modifying-dino-run/README.vi.md) |
 | **Ngày 7** | Xây dựng Game Bàn cờ | Làm Tic Tac Toe từ đầu + chuẩn `AGENTS.md` | [Hướng dẫn Ngày 7](./day-07-building-a-board-game/README.vi.md) |
 | **Ngày 8** | Xây dựng Game 2D | Làm game arcade 2D Canvas từ đầu | [Hướng dẫn Ngày 8](./day-08-building-a-2d-game/README.vi.md) |
-| **Ngày 9** | Xây dựng Game 3D & Deploy | Làm game 3D Three.js & deploy lên Cloudflare | [Hướng dẫn Ngày 9](./day-09-building-a-3d-game/README.vi.md) |
+| **Ngày 9** | Xây dựng Game 3D & Deploy | Làm game 3D Three.js & deploy lên Cloudflare / Vercel | [Hướng dẫn Ngày 9](./day-09-building-a-3d-game/README.vi.md) |
 
 ---
 

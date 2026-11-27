@@ -2,11 +2,18 @@
 
 # Gemini Games
 
-A local-first unified web game hub featuring **16 playable 2D & 3D browser games** built with **TypeScript, Vite, React, HTML5 Canvas 2D, and Three.js**, deployed statically on **Cloudflare Workers Static Assets** (`https://gemini-games.vuhung16plus.workers.dev`).
+A **100% offline-capable**, local-first unified web game hub featuring **16 playable 2D & 3D browser games** built with **TypeScript, Vite, React, HTML5 Canvas 2D, and Three.js**, deployed statically on **Cloudflare Workers Static Assets** (or optionally **Vercel**).
+
+- **Live Demo:** **[https://gemini-games.vuhung16plus.workers.dev/](https://gemini-games.vuhung16plus.workers.dev/)**
+- **Quickstart:** [QUICKSTART.md](./QUICKSTART.md) (`git clone`, `make dev`, `make verify`, `make deploy`)
+- **9-Day Vibe Coding Course & Tutorial:** [courses/](./courses/README.md) — A hands-on, prompt-driven course tailored for non-IT learners to understand the tech stack, customize existing games, and build new 2D/3D games with AI agents.
+
+[![Gemini Games Live Demo](./docs/demo-screenshot.png)](https://gemini-games.vuhung16plus.workers.dev/)
 
 ## Highlights
 - **Unified 4-Column Dashboard:** Category filtering (`All`, `Puzzle`, `Board`, `Arcade`, `Simulation`, `Card`), live search (`/`), **Favorites**, **Recently Played**, **Light/Dark themes**, **Multilingual UI (`English`, `中文`, `Tiếng Việt`)**, and full keyboard navigation (`Arrow*`, `Enter`, `Esc`).
 - **16 Self-Contained Games:** Zero external runtime CDNs, procedural Web Audio SFX with Mute persistence, in-game **How to Play**, **Tutorial**, and **Hints**, plus Vitest unit tests and Playwright E2E suites.
+- **Built-In Vibe Coding Curriculum (`courses/`):** Learn how vibe coding works in practice—treating source code as an artifact generated from clear intent and verified with `make verify`.
 
 ## Games Collection
 

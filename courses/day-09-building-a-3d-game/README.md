@@ -37,13 +37,15 @@ git checkout -b day-09-3d-game
 ### 2. Prompt `agy` with `/plan` to Build Your 3D Game
 Use the sample prompt below to build **Marble Maze 3D** (or another 3D concept like **3D Block Stacker**). `agy` will automatically follow `SimCity 3D`'s Three.js & WebGL testing patterns.
 
-### 3. Verify & Deploy Live to Cloudflare
+### 3. Verify & Deploy Live (Cloudflare Workers or Vercel)
+You can keep your customized hub **100% offline** on your machine, or publish the static `dist/` build to **Cloudflare Workers** (like the live demo at **[https://gemini-games.vuhung16plus.workers.dev/](https://gemini-games.vuhung16plus.workers.dev/)**) or alternatively **Vercel**:
 ```bash
 make verify GAME=marble-maze
 make test-all
 make verify
 make deploy-dry-run
-make deploy
+make deploy           # Deploy to Cloudflare Workers (default)
+# Or deploy static dist/ to Vercel: npx vercel --prod dist
 ```
 
 ---

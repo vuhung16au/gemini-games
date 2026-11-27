@@ -29,13 +29,14 @@ Sau Ngày 4, bạn sẽ có thể:
 
 ## Hướng dẫn từng bước
 
-### 1. Các Lệnh Tắt `make` Hằng Ngày
+### 1. Các Lệnh Tắt `make` Hằng Ngày (Học qua thực hành)
+Bạn không cần học thuộc lòng tài liệu `make`, `git` hay `agy` từ đầu—chỉ cần dùng các lệnh tắt này khi cần:
 ```bash
 make help             # Xem toàn bộ lệnh tắt
-make dev              # Chạy hub trò chơi tại máy
+make dev              # Chạy hub trò chơi 100% ngoại tuyến tại máy
 make test             # Chạy unit test + kiểm tra độ phủ
 make verify           # Chạy toàn bộ cổng chất lượng & tuân thủ
-make deploy-dry-run   # Kiểm tra đóng gói Cloudflare (chưa xuất bản)
+make deploy-dry-run   # Đóng gói thử bản tĩnh dist/ cho Cloudflare (hoặc Vercel), chưa xuất bản
 ```
 
 ### 2. Thử Nghiệm An Toàn với Nhánh Git

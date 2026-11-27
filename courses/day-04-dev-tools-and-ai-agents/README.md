@@ -29,13 +29,14 @@ By the end of Day 4, you will be able to:
 
 ## Step-by-Step Guide
 
-### 1. Everyday `make` Shortcuts
+### 1. Everyday `make` Shortcuts (Learn As You Go)
+You don't need to memorize `make`, `git`, or `agy` manuals up front—just run these shortcuts when needed:
 ```bash
 make help             # List every shortcut
-make dev              # Start the local game hub
+make dev              # Start the 100% offline local game hub
 make test             # Run unit tests + coverage check
 make verify           # Run all quality & compliance checks
-make deploy-dry-run   # Test-package for Cloudflare without publishing
+make deploy-dry-run   # Test-package static dist/ for Cloudflare (or Vercel) without publishing
 ```
 
 ### 2. Safe Experimenting with Git Branches

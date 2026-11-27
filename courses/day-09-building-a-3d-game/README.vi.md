@@ -37,13 +37,15 @@ git checkout -b day-09-3d-game
 ### 2. Dùng `/plan` với `agy` để xây dựng Game 3D
 Dùng câu lệnh mẫu bên dưới để làm **Marble Maze 3D** (hoặc **Block Stacker 3D**). `agy` sẽ tự áp dụng các mẫu Three.js và kiểm thử WebGL của `SimCity 3D`.
 
-### 3. Xác minh & Triển khai Trực tiếp lên Cloudflare
+### 3. Xác minh & Triển khai Trực tiếp (Cloudflare Workers hoặc Vercel)
+Bạn có thể giữ game hub chạy **100% ngoại tuyến** trên máy, hoặc phát hành bản build tĩnh `dist/` lên **Cloudflare Workers** (như bản demo tại **[https://gemini-games.vuhung16plus.workers.dev/](https://gemini-games.vuhung16plus.workers.dev/)**) hoặc **Vercel**:
 ```bash
 make verify GAME=marble-maze
 make test-all
 make verify
 make deploy-dry-run
-make deploy
+make deploy           # Triển khai lên Cloudflare Workers (mặc định)
+# Hoặc triển khai bản tĩnh dist/ lên Vercel: npx vercel --prod dist
 ```
 
 ---

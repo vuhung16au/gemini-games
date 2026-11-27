@@ -9,33 +9,42 @@
 ## 概览与核心概念
 今天你将探索 **Gemini Games** 项目，了解 **Vibe Coding** 在实践中的工作方式，并在本地启动包含 16 款游戏的统一大厅——全程无需手动编写一行代码。
 
-- **结构化 Vibe Coding：** 你只需用通俗的自然语言描述*想要实现的效果或想了解的内容*，由 Google `agy` 自动规划并生成代码与资源，然后**用一条简单的自动化命令验证结果**。
-- **本地优先的网页游戏：** 本项目中的每款游戏都可直接在浏览器离线运行，并可一键打包部署为静态网站。
+- **先体验在线演示：** 立即打开 **[https://gemini-games.vuhung16plus.workers.dev/](https://gemini-games.vuhung16plus.workers.dev/)** 试玩全部 16 款游戏。
+- **Vibe Coding 与传统编程的区别：** 传统编程需要花数月记忆语法、逐行手写代码；而在 **Vibe Coding** 中，**你的创意、玩家体验和清晰意图才是最重要的**——你可以把**源代码视为由提示词生成的产物（Artifact）**，并用自动化命令（`make verify`）验证结果。
+- **边做边学工具与技术栈：** 本课程不会把 `git`、`make`、`agy`、TypeScript 或 React 当作枯燥的独立教材去教——你会在游玩、向 `agy` 提问和改游戏的过程中自然掌握它们。
+- **100% 离线运行或部署上线：** 克隆到本地后，所有游戏均可在浏览器 **100% 离线** 运行；你也可以随时发布到 **Cloudflare Workers**（或备选 **Vercel**）。
 
 ---
 
 ## 学习目标与成果
 完成第 1 天后，你将能够：
-1. 说明 AI 智能体如何帮助非技术背景的创作者完成策划、制作、美术与测试。
-2. 使用 `npm run dev` 在本地启动统一的 Gemini Games 游戏大厅。
+1. 说明为什么在 Vibe Coding 中创意与清晰意图比手写语法更重要（将源代码视为产物）。
+2. 克隆仓库并在本地 **100% 离线** 启动统一的 Gemini Games 游戏大厅（`make dev`）。
 3. 用自然语言让 `agy` 总结项目、介绍技术栈并讲解游戏功能。
 
 ---
 
 ## 分步指南
 
-### 1. 检查本地环境
+### 1. 体验在线演示并检查本地环境
+先访问 **[https://gemini-games.vuhung16plus.workers.dev/](https://gemini-games.vuhung16plus.workers.dev/)** 感受成品效果，然后检查本地工具：
 ```bash
 node -v   # 建议 Node.js 20+
 npm -v
 git --version
 ```
 
-### 2. 安装依赖并启动游戏大厅
+### 2. 克隆仓库
+```bash
+git clone https://github.com/vuhung16au/gemini-games.git
+cd gemini-games
+```
+
+### 3. 安装依赖并启动游戏大厅（100% 离线）
 在仓库根目录运行：
 ```bash
 npm install
-npm run dev
+make dev
 ```
 打开 Vite 输出的本地地址（例如 `http://localhost:5173`），尝试以下操作：
 - 按分类筛选（`益智`、`棋类`、`街机`、`模拟`、`卡牌`）。

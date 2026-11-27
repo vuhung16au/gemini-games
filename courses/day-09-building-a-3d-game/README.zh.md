@@ -37,13 +37,15 @@ git checkout -b day-09-3d-game
 ### 2. 使用 `/plan` 提示 `agy` 构建 3D 游戏
 使用下方示例提示词构建 **3D 弹珠迷宫 (Marble Maze 3D)**（或 **3D 叠方块**）。`agy` 会自动沿用 `SimCity 3D` 的 Three.js 与测试模式。
 
-### 3. 验证并上线部署至 Cloudflare
+### 3. 验证并上线部署（Cloudflare Workers 或 Vercel）
+你可以让游戏大厅在本地 **100% 离线** 运行，也可以把静态 `dist/` 构建产物发布到 **Cloudflare Workers**（就像在线演示 **[https://gemini-games.vuhung16plus.workers.dev/](https://gemini-games.vuhung16plus.workers.dev/)**），或备选部署到 **Vercel**：
 ```bash
 make verify GAME=marble-maze
 make test-all
 make verify
 make deploy-dry-run
-make deploy
+make deploy           # 部署到 Cloudflare Workers（默认）
+# 或将静态 dist/ 部署到 Vercel：npx vercel --prod dist
 ```
 
 ---

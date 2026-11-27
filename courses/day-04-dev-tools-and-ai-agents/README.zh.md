@@ -29,13 +29,14 @@ flowchart LR
 
 ## 分步指南
 
-### 1. 日常 `make` 快捷命令
+### 1. 日常 `make` 快捷命令（边做边学）
+无需提前死记 `make`、`git` 或 `agy` 手册——需要时运行以下快捷命令即可：
 ```bash
 make help             # 查看全部快捷命令
-make dev              # 启动本地游戏大厅
+make dev              # 启动 100% 离线本地游戏大厅
 make test             # 运行单元测试与覆盖率检查
 make verify           # 运行全部质量与合规检查
-make deploy-dry-run   # 预演 Cloudflare 打包（不实际发布）
+make deploy-dry-run   # 预演打包静态 dist/（可用于 Cloudflare 或 Vercel），不实际发布
 ```
 
 ### 2. 用 Git 分支安全实验
