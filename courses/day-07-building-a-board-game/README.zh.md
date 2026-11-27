@@ -50,12 +50,16 @@ make verify
 
 **规划与实现提示词：**
 ```text
-/plan Create a new board game "Tic Tac Toe" in games/tic-tac-toe/ following AGENTS.md completely:
+/plan Create a new board game "Tic Tac Toe" in games/tic-tac-toe/ following
+AGENTS.md completely:
 - Modes: vs AI (Easy + Unbeatable) and 2-Player Local
 - Crisp X & O board matching the Gemini Games purple/ivory theme
-- Sound effects + Mute toggle, How to Play modal, 3-step Tutorial, smart Hint, and saved scores
-- Original icons, HD/Full-HD covers, full docs (including English, Chinese, and Vietnamese READMEs)
-- Automated unit tests (>=70% coverage) + Playwright browser tests, registered on the Hub
+- Sound effects + Mute toggle, How to Play modal, 3-step Tutorial, smart Hint,
+  and saved scores
+- Original icons, HD/Full-HD covers, full docs (including English, Chinese,
+  and Vietnamese READMEs)
+- Automated unit tests (>=70% coverage) + Playwright browser tests, registered
+  on the Hub
 ```
 
 ---
@@ -72,21 +76,29 @@ make verify
 
 1. **深入理解项目：** 让 `agy` 用通俗语言解释“无敌 AI”是如何思考每一步落子的。
    ```text
-   Explain in plain English how the Unbeatable AI in Tic Tac Toe (or Checkers) thinks ahead to never lose a match.
+   Explain in plain English how the Unbeatable AI in Tic Tac Toe (or Checkers)
+   thinks ahead to never lose a match.
    ```
 2. **改进现有功能：** 让 `agy` 为三连胜线添加平滑动画与提示高亮。
    ```text
-   Improve Tic Tac Toe by animating the winning 3-in-a-row line and gently highlighting the suggested Hint square. Verify with make verify GAME=tic-tac-toe.
+   Improve Tic Tac Toe by animating the winning 3-in-a-row line and gently
+   highlighting the suggested Hint square. Verify with make verify
+   GAME=tic-tac-toe.
    ```
 3. **实现新功能：** 让 `agy` 为井字棋增加 **五局三胜 (Best-of-5)** 记分牌。
    ```text
-   /plan Add a Best-of-5 Series scoreboard (X wins, O wins, Draws, and Match Winner banner) to Tic Tac Toe that saves automatically. Verify with make verify GAME=tic-tac-toe.
+   /plan Add a Best-of-5 Series scoreboard (X wins, O wins, Draws, and Match
+   Winner banner) to Tic Tac Toe that saves automatically. Verify with make
+   verify GAME=tic-tac-toe.
    ```
 4. **完善测试 / 文档：** 让 `agy` 补充自动化测试，证明无敌 AI 在所有开局下都不会落败。
    ```text
-   Add an automated unit test for Tic Tac Toe that tests every possible opening move against Unbeatable AI to prove it never loses, keeping coverage >=70%.
+   Add an automated unit test for Tic Tac Toe that tests every possible opening
+   move against Unbeatable AI to prove it never loses, keeping coverage >=70%.
    ```
 5. **创建新游戏：** 让 `agy` 创建一款类似的策略棋盘游戏 **四子棋 (Connect Four)**。
    ```text
-   /plan Create "Connect Four" following AGENTS.md, with a 7x6 drop-disc board, vs AI + 2-Player Local, How to Play, Tutorial, Hint, and automated unit + browser tests.
+   /plan Create "Connect Four" following AGENTS.md, with a 7x6 drop-disc board,
+   vs AI + 2-Player Local, How to Play, Tutorial, Hint, and automated unit +
+   browser tests.
    ```

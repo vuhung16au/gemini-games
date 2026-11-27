@@ -38,10 +38,13 @@ Sau Ngày 5, bạn sẽ có thể:
 
 ## Câu lệnh mẫu cho `agy`
 ```text
-Introduce the tech stack used in this project in plain English (or Vietnamese), and explain when I should ask for CSS/SVG vs. Canvas 2D vs. Three.js when creating a new game.
+Introduce the tech stack used in this project in plain English (or
+Vietnamese), and explain when I should ask for CSS/SVG vs. Canvas 2D vs.
+Three.js when creating a new game.
 ```
 ```text
-Explain why Gemini Games keeps zero external CDN links and generates sound effects mathematically instead of downloading MP3 files.
+Explain why Gemini Games keeps zero external CDN links and generates sound
+effects mathematically instead of downloading MP3 files.
 ```
 
 ---
@@ -58,21 +61,29 @@ Sử dụng các câu lệnh mẫu bên dưới với Google `agy`—không cầ
 
 1. **Hiểu Dự án Sâu hơn:** Nhờ `agy` giải thích cách bộ quy chuẩn giao diện giữ màu sắc và nút bấm đồng nhất trên cả 16 game.
    ```text
-   Explain in plain English how the shared style guide keeps colors, buttons, and Light/Dark themes consistent across the Hub and all 16 games.
+   Explain in plain English how the shared style guide keeps colors, buttons, and
+   Light/Dark themes consistent across the Hub and all 16 games.
    ```
 2. **Cải tiến Tính năng:** Nhờ `agy` tăng độ tương phản viền của khối bóng mờ (Ghost) trong `Tetris`.
    ```text
-   Improve the contrast of Tetris's Ghost piece outline so players can clearly see where the block will land, and verify with make verify GAME=tetris.
+   Improve the contrast of Tetris's Ghost piece outline so players can clearly
+   see where the block will land, and verify with make verify GAME=tetris.
    ```
 3. **Triển khai Tính năng Mới:** Nhờ `agy` thêm nút **"Chế độ Tương phản cao"** cho `Sudoku`.
    ```text
-   /plan Add a High-Contrast Mode toggle to Sudoku (saved with player settings) that makes selected cells and mistake highlights extra clear. Verify with make verify GAME=sudoku.
+   /plan Add a High-Contrast Mode toggle to Sudoku (saved with player settings)
+   that makes selected cells and mistake highlights extra clear. Verify with make
+   verify GAME=sudoku.
    ```
 4. **Cải thiện Kiểm thử / Tài liệu:** Nhờ `agy` thêm kiểm thử trình duyệt trên màn hình điện thoại cho `Minesweeper`.
    ```text
-   Add a Playwright browser test for Minesweeper confirming the Easy 9x9 board fits cleanly on a mobile phone screen (390x844) with no horizontal scrolling. Run make test-e2e GAME=minesweeper.
+   Add a Playwright browser test for Minesweeper confirming the Easy 9x9 board
+   fits cleanly on a mobile phone screen (390x844) with no horizontal scrolling.
+   Run make test-e2e GAME=minesweeper.
    ```
 5. **Tạo Game Mới:** Nhờ `agy` xây dựng game **"Lật Thẻ Trí Nhớ (Memory Match)"** với biểu tượng SVG sắc nét.
    ```text
-   /plan Create a "Memory Match" card-flipping puzzle game following AGENTS.md, with a 4x4 grid, custom SVG card icons, move counter, How to Play, Tutorial, Hint, and automated tests.
+   /plan Create a "Memory Match" card-flipping puzzle game following AGENTS.md,
+   with a 4x4 grid, custom SVG card icons, move counter, How to Play, Tutorial,
+   Hint, and automated tests.
    ```

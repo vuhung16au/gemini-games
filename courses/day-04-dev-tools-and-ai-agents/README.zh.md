@@ -55,10 +55,12 @@ git checkout main
 
 ## 示例 `agy` 提示词
 ```text
-How can I deploy this project to Cloudflare, and how do I set up Cloudflare from scratch (account, Wrangler login, and dry-run)?
+How can I deploy this project to Cloudflare, and how do I set up Cloudflare
+from scratch (account, Wrangler login, and dry-run)?
 ```
 ```text
-/plan Review Dino Run and suggest 3 fun gameplay improvements we could try safely on a new Git branch.
+/plan Review Dino Run and suggest 3 fun gameplay improvements we could try
+safely on a new Git branch.
 ```
 
 ---
@@ -75,21 +77,28 @@ How can I deploy this project to Cloudflare, and how do I set up Cloudflare from
 
 1. **深入理解项目：** 让 `agy` 解释 `make verify` 都检查什么，以及为什么不启用 GitHub Actions。
    ```text
-   Explain in plain English what each step in make verify checks, and why this project keeps GitHub Actions blank and runs checks locally instead.
+   Explain in plain English what each step in make verify checks, and why this
+   project keeps GitHub Actions blank and runs checks locally instead.
    ```
 2. **改进现有功能：** 让 `agy` 将 `make help` 输出按类别（开发、测试、验证、部署）分组。
    ```text
-   Improve the make help command output so targets are grouped under Dev, Testing, Verification, and Deployment headings. Verify with make help.
+   Improve the make help command output so targets are grouped under Dev,
+   Testing, Verification, and Deployment headings. Verify with make help.
    ```
 3. **实现新功能：** 让 `agy` 新增 `make status` 命令，显示当前 Git 分支、游戏数量与构建状态。
    ```text
-   /plan Add a "make status" shortcut that prints the current Git branch, total number of games, and whether the production build folder is ready. Verify with make status.
+   /plan Add a "make status" shortcut that prints the current Git branch, total
+   number of games, and whether the production build folder is ready. Verify with
+   make status.
    ```
 4. **完善测试 / 文档：** 让 `agy` 为 `QUICKSTART.md` 添加新手友好的“Cloudflare 配置与排查”章节。
    ```text
-   Add a short, beginner-friendly Cloudflare setup and troubleshooting section to QUICKSTART.md covering Wrangler login, dry-run, and port conflicts.
+   Add a short, beginner-friendly Cloudflare setup and troubleshooting section to
+   QUICKSTART.md covering Wrangler login, dry-run, and port conflicts.
    ```
 5. **创建新游戏：** 让 `agy` 在新 Git 分支上使用 `/plan` 创建 **“反应速度测试 (Reaction Timer)”** 游戏。
    ```text
-   /plan Create a "Reaction Timer" game on a new Git branch following AGENTS.md, measuring millisecond reaction time across 5 rounds with best-average saving, How to Play, Tutorial, and automated tests.
+   /plan Create a "Reaction Timer" game on a new Git branch following AGENTS.md,
+   measuring millisecond reaction time across 5 rounds with best-average saving,
+   How to Play, Tutorial, and automated tests.
    ```

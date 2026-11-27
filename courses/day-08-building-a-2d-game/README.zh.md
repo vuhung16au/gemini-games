@@ -44,11 +44,16 @@ make verify
 ## 示例 `agy` 提示词
 
 ```text
-/plan Build a new 2D arcade game "Breakout" in games/breakout/ following AGENTS.md completely:
-- Smooth paddle & bouncing ball physics, 5 brick layouts, power-ups (Wide Paddle & Multi-Ball), lives, and combo scoring
-- Crisp 2D Canvas graphics matching the Gemini Games theme, plus retro Web Audio SFX & Mute toggle
-- Works with Keyboard (Arrows/A-D/Space) and mouse/touch drag, and auto-pauses when switching tabs
-- How to Play modal, 3-step Tutorial, live Hint tip, original icons & covers, multilingual READMEs, and >=70% test coverage
+/plan Build a new 2D arcade game "Breakout" in games/breakout/ following
+AGENTS.md completely:
+- Smooth paddle & bouncing ball physics, 5 brick layouts, power-ups (Wide
+  Paddle & Multi-Ball), lives, and combo scoring
+- Crisp 2D Canvas graphics matching the Gemini Games theme, plus retro Web
+  Audio SFX & Mute toggle
+- Works with Keyboard (Arrows/A-D/Space) and mouse/touch drag, and auto-pauses
+  when switching tabs
+- How to Play modal, 3-step Tutorial, live Hint tip, original icons & covers,
+  multilingual READMEs, and >=70% test coverage
 ```
 
 ---
@@ -65,21 +70,31 @@ make verify
 
 1. **深入理解项目：** 让 `agy` 用大白话解释像 `Battle City` 或 `Breakout` 这类 2D 游戏是如何保持 60fps 流畅的。
    ```text
-   Explain in plain English how 2D Canvas games in this project keep movement smooth at 60fps and handle keyboard + touch controls without scrolling the page.
+   Explain in plain English how 2D Canvas games in this project keep movement
+   smooth at 60fps and handle keyboard + touch controls without scrolling the
+   page.
    ```
 2. **改进现有功能：** 让 `agy` 优化挡板边缘反弹角度并让连击音效随连击数升高音调。
    ```text
-   In Breakout, refine paddle edge-hit bounce angles so corner shots feel snappier, and raise the Web Audio chime pitch as the player's brick-break combo grows. Verify with make verify GAME=breakout.
+   In Breakout, refine paddle edge-hit bounce angles so corner shots feel
+   snappier, and raise the Web Audio chime pitch as the player's brick-break
+   combo grows. Verify with make verify GAME=breakout.
    ```
 3. **实现新功能：** 让 `agy` 添加一个需要击中 3 次且逐级裂开的 **Boss 砖块**。
    ```text
-   /plan Add a "Boss Brick" (takes 3 hits, shows visual cracks after each hit, awards bonus points) to Breakout with automated unit tests. Verify with make verify GAME=breakout.
+   /plan Add a "Boss Brick" (takes 3 hits, shows visual cracks after each hit,
+   awards bonus points) to Breakout with automated unit tests. Verify with make
+   verify GAME=breakout.
    ```
 4. **完善测试 / 文档：** 让 `agy` 补充移动端触控拖拽浏览器测试并更新用户指南。
    ```text
-   Add a Playwright browser test confirming Breakout's paddle responds to touch/pointer dragging on mobile viewports, and document mobile controls in Breakout's user guide.
+   Add a Playwright browser test confirming Breakout's paddle responds to
+   touch/pointer dragging on mobile viewports, and document mobile controls in
+   Breakout's user guide.
    ```
 5. **创建新游戏：** 让 `agy` 打造另一款经典 2D 街机游戏 **贪吃蛇 (Classic Snake)**。
    ```text
-   /plan Create "Classic Snake" following AGENTS.md, with wall-wrap toggle, speed levels, food combos, How to Play, Tutorial, Hint, and automated unit + browser tests.
+   /plan Create "Classic Snake" following AGENTS.md, with wall-wrap toggle, speed
+   levels, food combos, How to Play, Tutorial, Hint, and automated unit + browser
+   tests.
    ```

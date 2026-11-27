@@ -55,10 +55,12 @@ git checkout main
 
 ## Sample `agy` Prompts
 ```text
-How can I deploy this project to Cloudflare, and how do I set up Cloudflare from scratch (account, Wrangler login, and dry-run)?
+How can I deploy this project to Cloudflare, and how do I set up Cloudflare
+from scratch (account, Wrangler login, and dry-run)?
 ```
 ```text
-/plan Review Dino Run and suggest 3 fun gameplay improvements we could try safely on a new Git branch.
+/plan Review Dino Run and suggest 3 fun gameplay improvements we could try
+safely on a new Git branch.
 ```
 
 ---
@@ -75,21 +77,28 @@ Use Google `agy` with the sample prompts below—no manual coding required:
 
 1. **Understand the Project:** Ask `agy` to explain what `make verify` checks and why GitHub Actions is kept blank.
    ```text
-   Explain in plain English what each step in make verify checks, and why this project keeps GitHub Actions blank and runs checks locally instead.
+   Explain in plain English what each step in make verify checks, and why this
+   project keeps GitHub Actions blank and runs checks locally instead.
    ```
 2. **Improve a Feature:** Ask `agy` to group `make help` output into neat categories (`Dev`, `Test`, `Deploy`, `Clean`).
    ```text
-   Improve the make help command output so targets are grouped under Dev, Testing, Verification, and Deployment headings. Verify with make help.
+   Improve the make help command output so targets are grouped under Dev,
+   Testing, Verification, and Deployment headings. Verify with make help.
    ```
 3. **Implement a New Feature:** Ask `agy` to add a `make status` command showing the current Git branch, total games, and whether a build exists.
    ```text
-   /plan Add a "make status" shortcut that prints the current Git branch, total number of games, and whether the production build folder is ready. Verify with make status.
+   /plan Add a "make status" shortcut that prints the current Git branch, total
+   number of games, and whether the production build folder is ready. Verify with
+   make status.
    ```
 4. **Improve Tests / Docs:** Ask `agy` to add a beginner-friendly "Cloudflare Setup & Troubleshooting" section to `QUICKSTART.md`.
    ```text
-   Add a short, beginner-friendly Cloudflare setup and troubleshooting section to QUICKSTART.md covering Wrangler login, dry-run, and port conflicts.
+   Add a short, beginner-friendly Cloudflare setup and troubleshooting section to
+   QUICKSTART.md covering Wrangler login, dry-run, and port conflicts.
    ```
 5. **Create a New Game:** Ask `agy` to `/plan` and build a **"Reaction Timer"** game on a new Git branch.
    ```text
-   /plan Create a "Reaction Timer" game on a new Git branch following AGENTS.md, measuring millisecond reaction time across 5 rounds with best-average saving, How to Play, Tutorial, and automated tests.
+   /plan Create a "Reaction Timer" game on a new Git branch following AGENTS.md,
+   measuring millisecond reaction time across 5 rounds with best-average saving,
+   How to Play, Tutorial, and automated tests.
    ```

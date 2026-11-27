@@ -48,10 +48,13 @@ make test-e2e GAME=dino-run   # 启动真实 Chromium 自动试玩并校验
 
 ## 示例 `agy` 提示词
 ```text
-Explain the features in the game "Dino Run" in plain English (or Chinese), including both game modes, controls, hints, and tutorial mode.
+Explain the features in the game "Dino Run" in plain English (or Chinese),
+including both game modes, controls, hints, and tutorial mode.
 ```
 ```text
-How are the tests implemented in this project? Explain in simple terms what unit tests and browser E2E tests check for Dino Run, and what >=70% test coverage means.
+How are the tests implemented in this project? Explain in simple terms what
+unit tests and browser E2E tests check for Dino Run, and what >=70% test
+coverage means.
 ```
 
 ---
@@ -68,21 +71,29 @@ How are the tests implemented in this project? Explain in simple terms what unit
 
 1. **深入理解项目：** 让 `agy` 用通俗语言解释本项目的测试是如何实现的。
    ```text
-   How are the tests implemented across this project? Explain the difference between make test, make test-e2e, and make test-all for a non-technical learner.
+   How are the tests implemented across this project? Explain the difference
+   between make test, make test-e2e, and make test-all for a non-technical
+   learner.
    ```
 2. **改进现有功能：** 让 `agy` 优化 `Minesweeper` 的提示信息，使其对新手更友好。
    ```text
-   Improve Minesweeper's in-game hint messages so they explain in plain, friendly language why a suggested tile is safe or a mine. Verify with make test GAME=minesweeper.
+   Improve Minesweeper's in-game hint messages so they explain in plain, friendly
+   language why a suggested tile is safe or a mine. Verify with make test
+   GAME=minesweeper.
    ```
 3. **实现新功能：** 让 `agy` 为 `Checkers` 添加一个步数计数器。
    ```text
-   /plan Add a visible move counter to Checkers that resets on New Game and saves with the game state. Verify everything with make verify GAME=checkers.
+   /plan Add a visible move counter to Checkers that resets on New Game and saves
+   with the game state. Verify everything with make verify GAME=checkers.
    ```
 4. **完善测试 / 文档：** 让 `agy` 检查并增强 `1024` 游戏的自动化测试覆盖率。
    ```text
-   Check the test coverage report for the 1024 game and add edge-case unit tests for any untested game rules so coverage is even stronger.
+   Check the test coverage report for the 1024 game and add edge-case unit tests
+   for any untested game rules so coverage is even stronger.
    ```
 5. **创建新游戏：** 让 `agy` 从零构建一款五局三胜制的 **“石头剪刀布 (Rock-Paper-Scissors)”** 并配齐自动化测试。
    ```text
-   /plan Create "Rock-Paper-Scissors" following AGENTS.md, with Best-of-5 rounds, win-streak tracking, How to Play, Tutorial, Hint, and automated unit + browser tests.
+   /plan Create "Rock-Paper-Scissors" following AGENTS.md, with Best-of-5 rounds,
+   win-streak tracking, How to Play, Tutorial, Hint, and automated unit + browser
+   tests.
    ```

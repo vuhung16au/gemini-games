@@ -42,10 +42,13 @@ Open [`docs/architecture.md`](../../docs/architecture.md) to see the high-level 
 
 ## Sample `agy` Prompts
 ```text
-Summarise how this project is organized in plain English. How does the main Hub know about all 16 games, and why can each game run both standalone and inside the Hub?
+Summarise how this project is organized in plain English. How does the main
+Hub know about all 16 games, and why can each game run both standalone and
+inside the Hub?
 ```
 ```text
-Explain the building blocks of "Dino Run" (rules, visuals, sound effects, help modal, and saving high scores) without showing raw code.
+Explain the building blocks of "Dino Run" (rules, visuals, sound effects, help
+modal, and saving high scores) without showing raw code.
 ```
 
 ---
@@ -62,21 +65,30 @@ Use Google `agy` with the sample prompts below—no manual coding required:
 
 1. **Understand the Project:** Ask `agy` to explain how the Hub shares styles, themes, and languages across the project.
    ```text
-   Explain in simple terms how Light/Dark themes, purple/ivory colors, and English/Chinese/Vietnamese translations work across the Gemini Games Hub.
+   Explain in simple terms how Light/Dark themes, purple/ivory colors, and
+   English/Chinese/Vietnamese translations work across the Gemini Games Hub.
    ```
 2. **Improve a Feature:** Ask `agy` to add helpful keyboard shortcut tooltips to the Hub's game player bar.
    ```text
-   Improve the Hub's game-player top bar by adding clear tooltips on the Reload and Fullscreen buttons in English, Chinese, and Vietnamese. Verify with make test and make lint.
+   Improve the Hub's game-player top bar by adding clear tooltips on the Reload
+   and Fullscreen buttons in English, Chinese, and Vietnamese. Verify with make
+   test and make lint.
    ```
 3. **Implement a New Feature:** Ask `agy` to add a **"Games Played"** counter to `Dino Run`'s Game Over screen.
    ```text
-   /plan Add a "Games Played" counter to Dino Run that saves automatically in the browser and shows on the Game Over screen. Verify with make verify GAME=dino-run.
+   /plan Add a "Games Played" counter to Dino Run that saves automatically in the
+   browser and shows on the Game Over screen. Verify with make verify
+   GAME=dino-run.
    ```
 4. **Improve Tests / Docs:** Ask `agy` to add a plain-English summary of how high scores are saved locally.
    ```text
-   Summarise how all 16 games save high scores and mute settings locally in the browser (without any backend server), and add a short note about this to the project architecture docs.
+   Summarise how all 16 games save high scores and mute settings locally in the
+   browser (without any backend server), and add a short note about this to the
+   project architecture docs.
    ```
 5. **Create a New Game:** Ask `agy` to build a lightweight **"Coin Flipper"** game and register it in the Hub.
    ```text
-   /plan Build a "Coin Flipper" game following AGENTS.md, with streak tracking, crisp SVG coin flip animation, How to Play, Tutorial, Hint, and automated tests.
+   /plan Build a "Coin Flipper" game following AGENTS.md, with streak tracking,
+   crisp SVG coin flip animation, How to Play, Tutorial, Hint, and automated
+   tests.
    ```

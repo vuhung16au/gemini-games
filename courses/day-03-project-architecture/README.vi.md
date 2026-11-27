@@ -42,10 +42,13 @@ Mở [`docs/architecture.md`](../../docs/architecture.md) để xem các sơ đ�
 
 ## Câu lệnh mẫu cho `agy`
 ```text
-Summarise how this project is organized in plain English (or Vietnamese). How does the main Hub know about all 16 games, and why can each game run both standalone and inside the Hub?
+Summarise how this project is organized in plain English (or Vietnamese). How
+does the main Hub know about all 16 games, and why can each game run both
+standalone and inside the Hub?
 ```
 ```text
-Explain the building blocks of "Dino Run" (rules, visuals, sound effects, help modal, and saving high scores) without showing raw code.
+Explain the building blocks of "Dino Run" (rules, visuals, sound effects, help
+modal, and saving high scores) without showing raw code.
 ```
 
 ---
@@ -62,21 +65,30 @@ Sử dụng các câu lệnh mẫu bên dưới với Google `agy`—không cầ
 
 1. **Hiểu Dự án Sâu hơn:** Nhờ `agy` giải thích cách Hub quản lý giao diện Sáng/Tối và 3 ngôn ngữ.
    ```text
-   Explain in simple terms how Light/Dark themes, purple/ivory colors, and English/Chinese/Vietnamese translations work across the Gemini Games Hub.
+   Explain in simple terms how Light/Dark themes, purple/ivory colors, and
+   English/Chinese/Vietnamese translations work across the Gemini Games Hub.
    ```
 2. **Cải tiến Tính năng:** Nhờ `agy` thêm chú thích phím tắt thân thiện cho thanh điều khiển trình phát game.
    ```text
-   Improve the Hub's game-player top bar by adding clear tooltips on the Reload and Fullscreen buttons in English, Chinese, and Vietnamese. Verify with make test and make lint.
+   Improve the Hub's game-player top bar by adding clear tooltips on the Reload
+   and Fullscreen buttons in English, Chinese, and Vietnamese. Verify with make
+   test and make lint.
    ```
 3. **Triển khai Tính năng Mới:** Nhờ `agy` thêm bộ đếm **"Số lượt đã chơi"** vào màn hình kết thúc của `Dino Run`.
    ```text
-   /plan Add a "Games Played" counter to Dino Run that saves automatically in the browser and shows on the Game Over screen. Verify with make verify GAME=dino-run.
+   /plan Add a "Games Played" counter to Dino Run that saves automatically in the
+   browser and shows on the Game Over screen. Verify with make verify
+   GAME=dino-run.
    ```
 4. **Cải thiện Kiểm thử / Tài liệu:** Nhờ `agy` tóm tắt cách các game lưu điểm cao và cài đặt âm thanh ngay trên trình duyệt.
    ```text
-   Summarise how all 16 games save high scores and mute settings locally in the browser (without any backend server), and add a short note about this to the project architecture docs.
+   Summarise how all 16 games save high scores and mute settings locally in the
+   browser (without any backend server), and add a short note about this to the
+   project architecture docs.
    ```
 5. **Tạo Game Mới:** Nhờ `agy` xây dựng mini-game **"Tung Đồng Xu (Coin Flipper)"** và đăng ký vào Hub.
    ```text
-   /plan Build a "Coin Flipper" game following AGENTS.md, with streak tracking, crisp SVG coin flip animation, How to Play, Tutorial, Hint, and automated tests.
+   /plan Build a "Coin Flipper" game following AGENTS.md, with streak tracking,
+   crisp SVG coin flip animation, How to Play, Tutorial, Hint, and automated
+   tests.
    ```

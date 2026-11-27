@@ -53,10 +53,14 @@ make deploy           # Triển khai lên Cloudflare Workers (mặc định)
 ## Câu lệnh mẫu cho `agy`
 
 ```text
-/plan Build a new 3D game "Marble Maze 3D" in games/marble-maze/ using Three.js following AGENTS.md and SimCity 3D's patterns:
-- 3D wooden maze with tilting physics, wall bumps, hazards, goal hole, 5 levels, timer, and saved best times
-- Low-poly 3D visuals with shadows, smooth camera follow, and WebGL browser tests
-- Sound effects + Mute, How to Play modal, 3-step Tutorial, live Hint, original icons/covers, and multilingual docs
+/plan Build a new 3D game "Marble Maze 3D" in games/marble-maze/ using
+Three.js following AGENTS.md and SimCity 3D's patterns:
+- 3D wooden maze with tilting physics, wall bumps, hazards, goal hole, 5
+  levels, timer, and saved best times
+- Low-poly 3D visuals with shadows, smooth camera follow, and WebGL browser
+  tests
+- Sound effects + Mute, How to Play modal, 3-step Tutorial, live Hint,
+  original icons/covers, and multilingual docs
 ```
 
 ---
@@ -73,21 +77,29 @@ Sử dụng các câu lệnh mẫu bên dưới với Google `agy`—không cầ
 
 1. **Hiểu Dự án Sâu hơn:** Nhờ `agy` giải thích cách `SimCity 3D` dựng thế giới 3D trên trình duyệt và cách kiểm thử 3D tự động không cần GPU rời.
    ```text
-   Explain in plain English how SimCity 3D creates 3D buildings, day/night lighting, and shadows in the browser, and how Playwright tests 3D graphics automatically.
+   Explain in plain English how SimCity 3D creates 3D buildings, day/night
+   lighting, and shadows in the browser, and how Playwright tests 3D graphics
+   automatically.
    ```
 2. **Cải tiến Tính năng:** Nhờ `agy` làm mượt camera theo bóng và làm rõ bóng đổ trong game 3D.
    ```text
-   Improve Marble Maze 3D so the camera follows the rolling marble smoothly and the marble casts a crisp shadow on the wooden board. Verify with make verify GAME=marble-maze.
+   Improve Marble Maze 3D so the camera follows the rolling marble smoothly and
+   the marble casts a crisp shadow on the wooden board. Verify with make verify
+   GAME=marble-maze.
    ```
 3. **Triển khai Tính năng Mới:** Nhờ `agy` thêm nút **Chuyển đổi ánh sáng Ngày / Đêm** lấy cảm hứng từ `SimCity 3D`.
    ```text
-   /plan Add a Day / Night lighting toggle to Marble Maze 3D (saved with player settings) that smoothly shifts the scene lighting. Verify with make verify GAME=marble-maze.
+   /plan Add a Day / Night lighting toggle to Marble Maze 3D (saved with player
+   settings) that smoothly shifts the scene lighting. Verify with make verify
+   GAME=marble-maze.
    ```
 4. **Cải thiện Kiểm thử / Tài liệu:** Nhờ `agy` chạy toàn bộ cổng chất lượng & tuân thủ trước khi triển khai lên mạng.
    ```text
-   Run make test-all, make verify, and make deploy-dry-run, and help me resolve any coverage or documentation issues before deploying live.
+   Run make test-all, make verify, and make deploy-dry-run, and help me resolve
+   any coverage or documentation issues before deploying live.
    ```
 5. **Tạo Game Mới:** Nhờ `agy` xây dựng thêm một game 3D (**Block Stacker 3D**) và hướng dẫn triển khai lên Cloudflare Workers.
    ```text
-   /plan Create "Block Stacker 3D" using Three.js following AGENTS.md, then run make verify and guide me through make deploy to Cloudflare Workers.
+   /plan Create "Block Stacker 3D" using Three.js following AGENTS.md, then run
+   make verify and guide me through make deploy to Cloudflare Workers.
    ```

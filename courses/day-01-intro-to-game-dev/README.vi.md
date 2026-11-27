@@ -59,10 +59,12 @@ Bạn không cần đọc tệp mã nguồn—chỉ cần hỏi `agy` bằng cá
 ## Câu lệnh mẫu cho `agy`
 Thử hỏi AI agent của bạn:
 ```text
-Summarise this project in plain English (or Vietnamese) for a non-technical learner, including what all 16 games are and how the Hub brings them together.
+Summarise this project in plain English (or Vietnamese) for a non-technical
+learner, including what all 16 games are and how the Hub brings them together.
 ```
 ```text
-Introduce the tech stack used in this project and explain what each tool does in simple, everyday language.
+Introduce the tech stack used in this project and explain what each tool does
+in simple, everyday language.
 ```
 
 ---
@@ -79,21 +81,29 @@ Sử dụng các câu lệnh mẫu bên dưới với Google `agy`—không cầ
 
 1. **Hiểu Dự án Sâu hơn:** Nhờ `agy` tóm tắt toàn bộ 16 game theo thể loại và phong cách đồ họa.
    ```text
-   Summarise the project and group all 16 games by category (Puzzle, Board, Arcade, Simulation, Card) and visual style (2D, 3D, or Board/Card).
+   Summarise the project and group all 16 games by category (Puzzle, Board,
+   Arcade, Simulation, Card) and visual style (2D, 3D, or Board/Card).
    ```
 2. **Cải tiến Tính năng:** Nhờ `agy` làm thông báo khi tìm kiếm không thấy game trở nên thân thiện hơn trên cả 3 ngôn ngữ.
    ```text
-   Improve the Hub's empty-search message so it gently reminds players they can press "/" to search or click Reset Filters, in English, Chinese, and Vietnamese. Verify everything passes.
+   Improve the Hub's empty-search message so it gently reminds players they can
+   press "/" to search or click Reset Filters, in English, Chinese, and
+   Vietnamese. Verify everything passes.
    ```
 3. **Triển khai Tính năng Mới:** Nhờ `agy` thêm nút **"🎲 Chơi Ngẫu Nhiên"** trên Dashboard.
    ```text
-   /plan Add a "Surprise Me" button to the Hub header (with English, Chinese, and Vietnamese labels) that picks and opens a random game from the visible list, and verify with automated tests.
+   /plan Add a "Surprise Me" button to the Hub header (with English, Chinese, and
+   Vietnamese labels) that picks and opens a random game from the visible list,
+   and verify with automated tests.
    ```
 4. **Cải thiện Kiểm thử / Tài liệu:** Nhờ `agy` đối chiếu danh sách 16 game trong `README` 3 ngôn ngữ.
    ```text
-   Check that the root README files in English, Chinese, and Vietnamese list all 16 games accurately, and run the project's documentation compliance check.
+   Check that the root README files in English, Chinese, and Vietnamese list all
+   16 games accurately, and run the project's documentation compliance check.
    ```
 5. **Tạo Game Mới:** Nhờ `agy` tạo mini-game **"Đoán Số (Guess the Number)"** tuân thủ `AGENTS.md`.
    ```text
-   /plan Create a simple "Guess the Number" puzzle game following the project's AGENTS.md rules, with a 1-100 range, Higher/Lower hints, How to Play, Tutorial, and automated tests.
+   /plan Create a simple "Guess the Number" puzzle game following the project's
+   AGENTS.md rules, with a 1-100 range, Higher/Lower hints, How to Play,
+   Tutorial, and automated tests.
    ```

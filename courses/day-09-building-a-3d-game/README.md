@@ -53,10 +53,14 @@ make deploy           # Deploy to Cloudflare Workers (default)
 ## Sample `agy` Prompts
 
 ```text
-/plan Build a new 3D game "Marble Maze 3D" in games/marble-maze/ using Three.js following AGENTS.md and SimCity 3D's patterns:
-- 3D wooden maze with tilting physics, wall bumps, hazards, goal hole, 5 levels, timer, and saved best times
-- Low-poly 3D visuals with shadows, smooth camera follow, and WebGL browser tests
-- Sound effects + Mute, How to Play modal, 3-step Tutorial, live Hint, original icons/covers, and multilingual docs
+/plan Build a new 3D game "Marble Maze 3D" in games/marble-maze/ using
+Three.js following AGENTS.md and SimCity 3D's patterns:
+- 3D wooden maze with tilting physics, wall bumps, hazards, goal hole, 5
+  levels, timer, and saved best times
+- Low-poly 3D visuals with shadows, smooth camera follow, and WebGL browser
+  tests
+- Sound effects + Mute, How to Play modal, 3-step Tutorial, live Hint,
+  original icons/covers, and multilingual docs
 ```
 
 ---
@@ -73,21 +77,29 @@ Use Google `agy` with the sample prompts below—no manual coding required:
 
 1. **Understand the Project:** Ask `agy` how `SimCity 3D` renders a 3D world in the browser and how 3D tests run without a physical GPU.
    ```text
-   Explain in plain English how SimCity 3D creates 3D buildings, day/night lighting, and shadows in the browser, and how Playwright tests 3D graphics automatically.
+   Explain in plain English how SimCity 3D creates 3D buildings, day/night
+   lighting, and shadows in the browser, and how Playwright tests 3D graphics
+   automatically.
    ```
 2. **Improve a Feature:** Ask `agy` to smooth the camera follow and shadow clarity in your 3D game.
    ```text
-   Improve Marble Maze 3D so the camera follows the rolling marble smoothly and the marble casts a crisp shadow on the wooden board. Verify with make verify GAME=marble-maze.
+   Improve Marble Maze 3D so the camera follows the rolling marble smoothly and
+   the marble casts a crisp shadow on the wooden board. Verify with make verify
+   GAME=marble-maze.
    ```
 3. **Implement a New Feature:** Ask `agy` to add a **Day / Night lighting toggle** inspired by `SimCity 3D`.
    ```text
-   /plan Add a Day / Night lighting toggle to Marble Maze 3D (saved with player settings) that smoothly shifts the scene lighting. Verify with make verify GAME=marble-maze.
+   /plan Add a Day / Night lighting toggle to Marble Maze 3D (saved with player
+   settings) that smoothly shifts the scene lighting. Verify with make verify
+   GAME=marble-maze.
    ```
 4. **Improve Tests / Docs:** Ask `agy` to run all monorepo quality & compliance gates and fix any gaps before deployment.
    ```text
-   Run make test-all, make verify, and make deploy-dry-run, and help me resolve any coverage or documentation issues before deploying live.
+   Run make test-all, make verify, and make deploy-dry-run, and help me resolve
+   any coverage or documentation issues before deploying live.
    ```
 5. **Create a New Game:** Ask `agy` to build another 3D game (**Block Stacker 3D**) and deploy your collection live.
    ```text
-   /plan Create "Block Stacker 3D" using Three.js following AGENTS.md, then run make verify and guide me through make deploy to Cloudflare Workers.
+   /plan Create "Block Stacker 3D" using Three.js following AGENTS.md, then run
+   make verify and guide me through make deploy to Cloudflare Workers.
    ```

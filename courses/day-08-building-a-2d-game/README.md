@@ -44,11 +44,16 @@ make verify
 ## Sample `agy` Prompts
 
 ```text
-/plan Build a new 2D arcade game "Breakout" in games/breakout/ following AGENTS.md completely:
-- Smooth paddle & bouncing ball physics, 5 brick layouts, power-ups (Wide Paddle & Multi-Ball), lives, and combo scoring
-- Crisp 2D Canvas graphics matching the Gemini Games theme, plus retro Web Audio SFX & Mute toggle
-- Works with Keyboard (Arrows/A-D/Space) and mouse/touch drag, and auto-pauses when switching tabs
-- How to Play modal, 3-step Tutorial, live Hint tip, original icons & covers, multilingual READMEs, and >=70% test coverage
+/plan Build a new 2D arcade game "Breakout" in games/breakout/ following
+AGENTS.md completely:
+- Smooth paddle & bouncing ball physics, 5 brick layouts, power-ups (Wide
+  Paddle & Multi-Ball), lives, and combo scoring
+- Crisp 2D Canvas graphics matching the Gemini Games theme, plus retro Web
+  Audio SFX & Mute toggle
+- Works with Keyboard (Arrows/A-D/Space) and mouse/touch drag, and auto-pauses
+  when switching tabs
+- How to Play modal, 3-step Tutorial, live Hint tip, original icons & covers,
+  multilingual READMEs, and >=70% test coverage
 ```
 
 ---
@@ -65,21 +70,31 @@ Use Google `agy` with the sample prompts below—no manual coding required:
 
 1. **Understand the Project:** Ask `agy` to explain how 2D arcade games like `Battle City` or `Breakout` stay smooth at 60fps.
    ```text
-   Explain in plain English how 2D Canvas games in this project keep movement smooth at 60fps and handle keyboard + touch controls without scrolling the page.
+   Explain in plain English how 2D Canvas games in this project keep movement
+   smooth at 60fps and handle keyboard + touch controls without scrolling the
+   page.
    ```
 2. **Improve a Feature:** Ask `agy` to tune paddle bounce angles and add escalating combo sound pitches.
    ```text
-   In Breakout, refine paddle edge-hit bounce angles so corner shots feel snappier, and raise the Web Audio chime pitch as the player's brick-break combo grows. Verify with make verify GAME=breakout.
+   In Breakout, refine paddle edge-hit bounce angles so corner shots feel
+   snappier, and raise the Web Audio chime pitch as the player's brick-break
+   combo grows. Verify with make verify GAME=breakout.
    ```
 3. **Implement a New Feature:** Ask `agy` to add a **3-Hit Boss Brick** that shows cracks after each hit.
    ```text
-   /plan Add a "Boss Brick" (takes 3 hits, shows visual cracks after each hit, awards bonus points) to Breakout with automated unit tests. Verify with make verify GAME=breakout.
+   /plan Add a "Boss Brick" (takes 3 hits, shows visual cracks after each hit,
+   awards bonus points) to Breakout with automated unit tests. Verify with make
+   verify GAME=breakout.
    ```
 4. **Improve Tests / Docs:** Ask `agy` to add mobile touch-drag browser tests and update `Breakout`'s user guide.
    ```text
-   Add a Playwright browser test confirming Breakout's paddle responds to touch/pointer dragging on mobile viewports, and document mobile controls in Breakout's user guide.
+   Add a Playwright browser test confirming Breakout's paddle responds to
+   touch/pointer dragging on mobile viewports, and document mobile controls in
+   Breakout's user guide.
    ```
 5. **Create a New Game:** Ask `agy` to build another classic 2D Canvas arcade game: **Classic Snake** or **Neon Pong**.
    ```text
-   /plan Create "Classic Snake" following AGENTS.md, with wall-wrap toggle, speed levels, food combos, How to Play, Tutorial, Hint, and automated unit + browser tests.
+   /plan Create "Classic Snake" following AGENTS.md, with wall-wrap toggle, speed
+   levels, food combos, How to Play, Tutorial, Hint, and automated unit + browser
+   tests.
    ```

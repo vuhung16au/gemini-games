@@ -42,10 +42,13 @@ flowchart TD
 
 ## 示例 `agy` 提示词
 ```text
-Summarise how this project is organized in plain English (or Chinese). How does the main Hub know about all 16 games, and why can each game run both standalone and inside the Hub?
+Summarise how this project is organized in plain English (or Chinese). How
+does the main Hub know about all 16 games, and why can each game run both
+standalone and inside the Hub?
 ```
 ```text
-Explain the building blocks of "Dino Run" (rules, visuals, sound effects, help modal, and saving high scores) without showing raw code.
+Explain the building blocks of "Dino Run" (rules, visuals, sound effects, help
+modal, and saving high scores) without showing raw code.
 ```
 
 ---
@@ -62,21 +65,30 @@ Explain the building blocks of "Dino Run" (rules, visuals, sound effects, help m
 
 1. **深入理解项目：** 让 `agy` 用通俗语言解释大厅如何管理浅色/深色主题与三语切换。
    ```text
-   Explain in simple terms how Light/Dark themes, purple/ivory colors, and English/Chinese/Vietnamese translations work across the Gemini Games Hub.
+   Explain in simple terms how Light/Dark themes, purple/ivory colors, and
+   English/Chinese/Vietnamese translations work across the Gemini Games Hub.
    ```
 2. **改进现有功能：** 让 `agy` 为大厅游戏播放器顶部栏按钮添加多语言提示信息。
    ```text
-   Improve the Hub's game-player top bar by adding clear tooltips on the Reload and Fullscreen buttons in English, Chinese, and Vietnamese. Verify with make test and make lint.
+   Improve the Hub's game-player top bar by adding clear tooltips on the Reload
+   and Fullscreen buttons in English, Chinese, and Vietnamese. Verify with make
+   test and make lint.
    ```
 3. **实现新功能：** 让 `agy` 为 `Dino Run` 的结束界面添加“累计游玩局数”统计。
    ```text
-   /plan Add a "Games Played" counter to Dino Run that saves automatically in the browser and shows on the Game Over screen. Verify with make verify GAME=dino-run.
+   /plan Add a "Games Played" counter to Dino Run that saves automatically in the
+   browser and shows on the Game Over screen. Verify with make verify
+   GAME=dino-run.
    ```
 4. **完善测试 / 文档：** 让 `agy` 总结所有游戏如何在浏览器本地保存最高分与静音设置。
    ```text
-   Summarise how all 16 games save high scores and mute settings locally in the browser (without any backend server), and add a short note about this to the project architecture docs.
+   Summarise how all 16 games save high scores and mute settings locally in the
+   browser (without any backend server), and add a short note about this to the
+   project architecture docs.
    ```
 5. **创建新游戏：** 让 `agy` 构建一个轻量级的 **“抛硬币连胜 (Coin Flipper)”** 小游戏并注册到大厅。
    ```text
-   /plan Build a "Coin Flipper" game following AGENTS.md, with streak tracking, crisp SVG coin flip animation, How to Play, Tutorial, Hint, and automated tests.
+   /plan Build a "Coin Flipper" game following AGENTS.md, with streak tracking,
+   crisp SVG coin flip animation, How to Play, Tutorial, Hint, and automated
+   tests.
    ```

@@ -53,10 +53,14 @@ make deploy           # 部署到 Cloudflare Workers（默认）
 ## 示例 `agy` 提示词
 
 ```text
-/plan Build a new 3D game "Marble Maze 3D" in games/marble-maze/ using Three.js following AGENTS.md and SimCity 3D's patterns:
-- 3D wooden maze with tilting physics, wall bumps, hazards, goal hole, 5 levels, timer, and saved best times
-- Low-poly 3D visuals with shadows, smooth camera follow, and WebGL browser tests
-- Sound effects + Mute, How to Play modal, 3-step Tutorial, live Hint, original icons/covers, and multilingual docs
+/plan Build a new 3D game "Marble Maze 3D" in games/marble-maze/ using
+Three.js following AGENTS.md and SimCity 3D's patterns:
+- 3D wooden maze with tilting physics, wall bumps, hazards, goal hole, 5
+  levels, timer, and saved best times
+- Low-poly 3D visuals with shadows, smooth camera follow, and WebGL browser
+  tests
+- Sound effects + Mute, How to Play modal, 3-step Tutorial, live Hint,
+  original icons/covers, and multilingual docs
 ```
 
 ---
@@ -73,21 +77,29 @@ make deploy           # 部署到 Cloudflare Workers（默认）
 
 1. **深入理解项目：** 让 `agy` 用大白话讲解 `SimCity 3D` 如何在浏览器里绘制 3D 世界，以及如何在没有独立显卡时自动测试 3D 画面。
    ```text
-   Explain in plain English how SimCity 3D creates 3D buildings, day/night lighting, and shadows in the browser, and how Playwright tests 3D graphics automatically.
+   Explain in plain English how SimCity 3D creates 3D buildings, day/night
+   lighting, and shadows in the browser, and how Playwright tests 3D graphics
+   automatically.
    ```
 2. **改进现有功能：** 让 `agy` 优化 3D 游戏中的相机跟随平滑度与阴影清晰度。
    ```text
-   Improve Marble Maze 3D so the camera follows the rolling marble smoothly and the marble casts a crisp shadow on the wooden board. Verify with make verify GAME=marble-maze.
+   Improve Marble Maze 3D so the camera follows the rolling marble smoothly and
+   the marble casts a crisp shadow on the wooden board. Verify with make verify
+   GAME=marble-maze.
    ```
 3. **实现新功能：** 让 `agy` 为 3D 游戏添加受 `SimCity 3D` 启发的 **昼夜光照切换** 开关。
    ```text
-   /plan Add a Day / Night lighting toggle to Marble Maze 3D (saved with player settings) that smoothly shifts the scene lighting. Verify with make verify GAME=marble-maze.
+   /plan Add a Day / Night lighting toggle to Marble Maze 3D (saved with player
+   settings) that smoothly shifts the scene lighting. Verify with make verify
+   GAME=marble-maze.
    ```
 4. **完善测试 / 文档：** 让 `agy` 在上线前运行全仓库质量与合规检查，并修复所有发现的问题。
    ```text
-   Run make test-all, make verify, and make deploy-dry-run, and help me resolve any coverage or documentation issues before deploying live.
+   Run make test-all, make verify, and make deploy-dry-run, and help me resolve
+   any coverage or documentation issues before deploying live.
    ```
 5. **创建新游戏：** 让 `agy` 使用 Three.js 再构建一款 3D 游戏（**Block Stacker 3D**）并上线部署。
    ```text
-   /plan Create "Block Stacker 3D" using Three.js following AGENTS.md, then run make verify and guide me through make deploy to Cloudflare Workers.
+   /plan Create "Block Stacker 3D" using Three.js following AGENTS.md, then run
+   make verify and guide me through make deploy to Cloudflare Workers.
    ```

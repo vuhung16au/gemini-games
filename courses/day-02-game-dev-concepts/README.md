@@ -48,10 +48,13 @@ Try the sample prompts below so `agy` explains how the game features and tests w
 
 ## Sample `agy` Prompts
 ```text
-Explain the features in the game "Dino Run" in plain English, including both game modes, controls, hints, and tutorial mode.
+Explain the features in the game "Dino Run" in plain English, including both
+game modes, controls, hints, and tutorial mode.
 ```
 ```text
-How are the tests implemented in this project? Explain in simple terms what unit tests and browser E2E tests check for Dino Run, and what >=70% test coverage means.
+How are the tests implemented in this project? Explain in simple terms what
+unit tests and browser E2E tests check for Dino Run, and what >=70% test
+coverage means.
 ```
 
 ---
@@ -68,21 +71,29 @@ Use Google `agy` with the sample prompts below—no manual coding required:
 
 1. **Understand the Project:** Ask `agy` how tests are implemented across the project in plain English.
    ```text
-   How are the tests implemented across this project? Explain the difference between make test, make test-e2e, and make test-all for a non-technical learner.
+   How are the tests implemented across this project? Explain the difference
+   between make test, make test-e2e, and make test-all for a non-technical
+   learner.
    ```
 2. **Improve a Feature:** Ask `agy` to make `Minesweeper`'s in-game hint messages easier for beginners to understand.
    ```text
-   Improve Minesweeper's in-game hint messages so they explain in plain, friendly language why a suggested tile is safe or a mine. Verify with make test GAME=minesweeper.
+   Improve Minesweeper's in-game hint messages so they explain in plain, friendly
+   language why a suggested tile is safe or a mine. Verify with make test
+   GAME=minesweeper.
    ```
 3. **Implement a New Feature:** Ask `agy` to add a simple move counter to `Checkers`.
    ```text
-   /plan Add a visible move counter to Checkers that resets on New Game and saves with the game state. Verify everything with make verify GAME=checkers.
+   /plan Add a visible move counter to Checkers that resets on New Game and saves
+   with the game state. Verify everything with make verify GAME=checkers.
    ```
 4. **Improve Tests / Docs:** Ask `agy` to strengthen automated test coverage for `1024`.
    ```text
-   Check the test coverage report for the 1024 game and ask agy to add edge-case unit tests for any untested game rules so coverage is even stronger.
+   Check the test coverage report for the 1024 game and ask agy to add edge-case
+   unit tests for any untested game rules so coverage is even stronger.
    ```
 5. **Create a New Game:** Ask `agy` to build a **"Rock-Paper-Scissors"** game with Best-of-5 rounds and full tests.
    ```text
-   /plan Create "Rock-Paper-Scissors" following AGENTS.md, with Best-of-5 rounds, win-streak tracking, How to Play, Tutorial, Hint, and automated unit + browser tests.
+   /plan Create "Rock-Paper-Scissors" following AGENTS.md, with Best-of-5 rounds,
+   win-streak tracking, How to Play, Tutorial, Hint, and automated unit + browser
+   tests.
    ```

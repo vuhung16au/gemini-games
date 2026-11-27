@@ -48,10 +48,13 @@ Thử các câu lệnh mẫu bên dưới để `agy` giải thích rõ ràng m�
 
 ## Câu lệnh mẫu cho `agy`
 ```text
-Explain the features in the game "Dino Run" in plain English (or Vietnamese), including both game modes, controls, hints, and tutorial mode.
+Explain the features in the game "Dino Run" in plain English (or Vietnamese),
+including both game modes, controls, hints, and tutorial mode.
 ```
 ```text
-How are the tests implemented in this project? Explain in simple terms what unit tests and browser E2E tests check for Dino Run, and what >=70% test coverage means.
+How are the tests implemented in this project? Explain in simple terms what
+unit tests and browser E2E tests check for Dino Run, and what >=70% test
+coverage means.
 ```
 
 ---
@@ -68,21 +71,29 @@ Sử dụng các câu lệnh mẫu bên dưới với Google `agy`—không cầ
 
 1. **Hiểu Dự án Sâu hơn:** Nhờ `agy` giải thích cách các bài kiểm thử được triển khai trong dự án.
    ```text
-   How are the tests implemented across this project? Explain the difference between make test, make test-e2e, and make test-all for a non-technical learner.
+   How are the tests implemented across this project? Explain the difference
+   between make test, make test-e2e, and make test-all for a non-technical
+   learner.
    ```
 2. **Cải tiến Tính năng:** Nhờ `agy` làm thông điệp gợi ý trong `Minesweeper` dễ hiểu hơn cho người mới.
    ```text
-   Improve Minesweeper's in-game hint messages so they explain in plain, friendly language why a suggested tile is safe or a mine. Verify with make test GAME=minesweeper.
+   Improve Minesweeper's in-game hint messages so they explain in plain, friendly
+   language why a suggested tile is safe or a mine. Verify with make test
+   GAME=minesweeper.
    ```
 3. **Triển khai Tính năng Mới:** Nhờ `agy` thêm bộ đếm số nước đi cho `Checkers`.
    ```text
-   /plan Add a visible move counter to Checkers that resets on New Game and saves with the game state. Verify everything with make verify GAME=checkers.
+   /plan Add a visible move counter to Checkers that resets on New Game and saves
+   with the game state. Verify everything with make verify GAME=checkers.
    ```
 4. **Cải thiện Kiểm thử / Tài liệu:** Nhờ `agy` tăng độ phủ kiểm thử cho game `1024`.
    ```text
-   Check the test coverage report for the 1024 game and add edge-case unit tests for any untested game rules so coverage is even stronger.
+   Check the test coverage report for the 1024 game and add edge-case unit tests
+   for any untested game rules so coverage is even stronger.
    ```
 5. **Tạo Game Mới:** Nhờ `agy` xây dựng game **"Kéo-Búa-Bao (Rock-Paper-Scissors)"** thể thức Best-of-5 kèm đầy đủ kiểm thử.
    ```text
-   /plan Create "Rock-Paper-Scissors" following AGENTS.md, with Best-of-5 rounds, win-streak tracking, How to Play, Tutorial, Hint, and automated unit + browser tests.
+   /plan Create "Rock-Paper-Scissors" following AGENTS.md, with Best-of-5 rounds,
+   win-streak tracking, How to Play, Tutorial, Hint, and automated unit + browser
+   tests.
    ```

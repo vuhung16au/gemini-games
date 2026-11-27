@@ -50,12 +50,16 @@ make verify
 
 **Planning & Implementation Prompt:**
 ```text
-/plan Create a new board game "Tic Tac Toe" in games/tic-tac-toe/ following AGENTS.md completely:
+/plan Create a new board game "Tic Tac Toe" in games/tic-tac-toe/ following
+AGENTS.md completely:
 - Modes: vs AI (Easy + Unbeatable) and 2-Player Local
 - Crisp X & O board matching the Gemini Games purple/ivory theme
-- Sound effects + Mute toggle, How to Play modal, 3-step Tutorial, smart Hint, and saved scores
-- Original icons, HD/Full-HD covers, full docs (including English, Chinese, and Vietnamese READMEs)
-- Automated unit tests (>=70% coverage) + Playwright browser tests, registered on the Hub
+- Sound effects + Mute toggle, How to Play modal, 3-step Tutorial, smart Hint,
+  and saved scores
+- Original icons, HD/Full-HD covers, full docs (including English, Chinese,
+  and Vietnamese READMEs)
+- Automated unit tests (>=70% coverage) + Playwright browser tests, registered
+  on the Hub
 ```
 
 ---
@@ -72,21 +76,29 @@ Use Google `agy` with the sample prompts below—no manual coding required:
 
 1. **Understand the Project:** Ask `agy` to explain how the Unbeatable AI decides its moves in plain English.
    ```text
-   Explain in plain English how the Unbeatable AI in Tic Tac Toe (or Checkers) thinks ahead to never lose a match.
+   Explain in plain English how the Unbeatable AI in Tic Tac Toe (or Checkers)
+   thinks ahead to never lose a match.
    ```
 2. **Improve a Feature:** Ask `agy` to animate the winning 3-in-a-row line and highlight the Hint cell.
    ```text
-   Improve Tic Tac Toe by animating the winning 3-in-a-row line and gently highlighting the suggested Hint square. Verify with make verify GAME=tic-tac-toe.
+   Improve Tic Tac Toe by animating the winning 3-in-a-row line and gently
+   highlighting the suggested Hint square. Verify with make verify
+   GAME=tic-tac-toe.
    ```
 3. **Implement a New Feature:** Ask `agy` to add a **Best-of-5 Series Scoreboard** or **4×4 Grid Mode**.
    ```text
-   /plan Add a Best-of-5 Series scoreboard (X wins, O wins, Draws, and Match Winner banner) to Tic Tac Toe that saves automatically. Verify with make verify GAME=tic-tac-toe.
+   /plan Add a Best-of-5 Series scoreboard (X wins, O wins, Draws, and Match
+   Winner banner) to Tic Tac Toe that saves automatically. Verify with make
+   verify GAME=tic-tac-toe.
    ```
 4. **Improve Tests / Docs:** Ask `agy` to verify that Unbeatable AI never loses across all opening moves.
    ```text
-   Add an automated unit test for Tic Tac Toe that tests every possible opening move against Unbeatable AI to prove it never loses, keeping coverage >=70%.
+   Add an automated unit test for Tic Tac Toe that tests every possible opening
+   move against Unbeatable AI to prove it never loses, keeping coverage >=70%.
    ```
 5. **Create a New Game:** Ask `agy` to build a similar strategy board game: **Connect Four (`4-in-a-Row`)**.
    ```text
-   /plan Create "Connect Four" following AGENTS.md, with a 7x6 drop-disc board, vs AI + 2-Player Local, How to Play, Tutorial, Hint, and automated unit + browser tests.
+   /plan Create "Connect Four" following AGENTS.md, with a 7x6 drop-disc board,
+   vs AI + 2-Player Local, How to Play, Tutorial, Hint, and automated unit +
+   browser tests.
    ```

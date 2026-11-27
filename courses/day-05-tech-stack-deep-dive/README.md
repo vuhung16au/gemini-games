@@ -38,10 +38,13 @@ By the end of Day 5, you will be able to:
 
 ## Sample `agy` Prompts
 ```text
-Introduce the tech stack used in this project in plain English, and explain when I should ask for CSS/SVG vs. Canvas 2D vs. Three.js when creating a new game.
+Introduce the tech stack used in this project in plain English, and explain
+when I should ask for CSS/SVG vs. Canvas 2D vs. Three.js when creating a new
+game.
 ```
 ```text
-Explain why Gemini Games keeps zero external CDN links and generates sound effects mathematically instead of downloading MP3 files.
+Explain why Gemini Games keeps zero external CDN links and generates sound
+effects mathematically instead of downloading MP3 files.
 ```
 
 ---
@@ -58,21 +61,29 @@ Use Google `agy` with the sample prompts below—no manual coding required:
 
 1. **Understand the Project:** Ask `agy` to explain how shared colors and fonts stay consistent across all 16 games.
    ```text
-   Explain in plain English how the shared style guide keeps colors, buttons, and Light/Dark themes consistent across the Hub and all 16 games.
+   Explain in plain English how the shared style guide keeps colors, buttons, and
+   Light/Dark themes consistent across the Hub and all 16 games.
    ```
 2. **Improve a Feature:** Ask `agy` to make `Tetris`'s Ghost piece preview easier to see against both light and dark backgrounds.
    ```text
-   Improve the contrast of Tetris's Ghost piece outline so players can clearly see where the block will land, and verify with make verify GAME=tetris.
+   Improve the contrast of Tetris's Ghost piece outline so players can clearly
+   see where the block will land, and verify with make verify GAME=tetris.
    ```
 3. **Implement a New Feature:** Ask `agy` to add a **"High-Contrast Mode"** toggle to `Sudoku`.
    ```text
-   /plan Add a High-Contrast Mode toggle to Sudoku (saved with player settings) that makes selected cells and mistake highlights extra clear. Verify with make verify GAME=sudoku.
+   /plan Add a High-Contrast Mode toggle to Sudoku (saved with player settings)
+   that makes selected cells and mistake highlights extra clear. Verify with make
+   verify GAME=sudoku.
    ```
 4. **Improve Tests / Docs:** Ask `agy` to add a mobile-screen browser test for `Minesweeper`.
    ```text
-   Add a Playwright browser test for Minesweeper confirming the Easy 9x9 board fits cleanly on a mobile phone screen (390x844) with no horizontal scrolling. Run make test-e2e GAME=minesweeper.
+   Add a Playwright browser test for Minesweeper confirming the Easy 9x9 board
+   fits cleanly on a mobile phone screen (390x844) with no horizontal scrolling.
+   Run make test-e2e GAME=minesweeper.
    ```
 5. **Create a New Game:** Ask `agy` to build a **"Memory Card Match"** game using crisp SVG cards.
    ```text
-   /plan Create a "Memory Match" card-flipping puzzle game following AGENTS.md, with a 4x4 grid, custom SVG card icons, move counter, How to Play, Tutorial, Hint, and automated tests.
+   /plan Create a "Memory Match" card-flipping puzzle game following AGENTS.md,
+   with a 4x4 grid, custom SVG card icons, move counter, How to Play, Tutorial,
+   Hint, and automated tests.
    ```

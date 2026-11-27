@@ -43,17 +43,22 @@ make verify GAME=dino-run
 
 **提示词 1 — 修改背景色：**
 ```text
-Change Dino Run's Classic Desert daytime sky to a warm sunset peach (#fce7d6) while keeping strong contrast for the dinosaur and score text. Verify that tests and build pass.
+Change Dino Run's Classic Desert daytime sky to a warm sunset peach (#fce7d6)
+while keeping strong contrast for the dinosaur and score text. Verify that
+tests and build pass.
 ```
 
 **提示词 2 — 提升游戏节奏：**
 ```text
-Make Dino Run start slightly faster and speed up a bit quicker so the action feels snappier, then run Dino Run's unit tests to confirm everything passes.
+Make Dino Run start slightly faster and speed up a bit quicker so the action
+feels snappier, then run Dino Run's unit tests to confirm everything passes.
 ```
 
 **提示词 3 — 添加新障碍物：**
 ```text
-/plan Add a new rolling "desert boulder" obstacle to Classic mode in Dino Run that rolls slightly faster than cacti, and add automated unit tests for boulder collisions.
+/plan Add a new rolling "desert boulder" obstacle to Classic mode in Dino Run
+that rolls slightly faster than cacti, and add automated unit tests for
+boulder collisions.
 ```
 
 ---
@@ -70,21 +75,30 @@ Make Dino Run start slightly faster and speed up a bit quicker so the action fee
 
 1. **深入理解项目：** 让 `agy` 用大白话讲解 `Dino Run` 的所有玩法特性与难度节奏。
    ```text
-   Explain the features in the game "Dino Run", including how the game gets harder over time, how Day/Night cycles work, and what the Tutorial and Hint markers do.
+   Explain the features in the game "Dino Run", including how the game gets
+   harder over time, how Day/Night cycles work, and what the Tutorial and Hint
+   markers do.
    ```
 2. **改进现有功能：** 让 `agy` 把昼夜切换改为平滑渐变过渡。
    ```text
-   Improve Dino Run's Classic mode so the sky smoothly blends between Day and Night every 700 points instead of switching abruptly. Verify with make verify GAME=dino-run.
+   Improve Dino Run's Classic mode so the sky smoothly blends between Day and
+   Night every 700 points instead of switching abruptly. Verify with make verify
+   GAME=dino-run.
    ```
 3. **实现新功能：** 让 `agy` 在分支上为 `Dino Run` 添加 **二段跳 (Double-Jump)** 机制。
    ```text
-   /plan Add an optional Double-Jump mechanic to Dino Run Classic mode with a small jump-charge indicator on the screen. Verify with make verify GAME=dino-run.
+   /plan Add an optional Double-Jump mechanic to Dino Run Classic mode with a
+   small jump-charge indicator on the screen. Verify with make verify
+   GAME=dino-run.
    ```
 4. **完善测试 / 文档：** 让 `agy` 为新功能补充浏览器测试并更新 `Dino Run` 的用户指南。
    ```text
-   Add a Playwright browser test confirming the new Double-Jump feature works in Dino Run, and document it in Dino Run's user guide.
+   Add a Playwright browser test confirming the new Double-Jump feature works in
+   Dino Run, and document it in Dino Run's user guide.
    ```
 5. **创建新游戏：** 让 `agy` 打造一款类似的横版跑酷游戏 **“太空宇航员跑酷 (Space Astro Runner)”**。
    ```text
-   /plan Create a similar endless runner "Space Astro Runner" following AGENTS.md, where an astronaut dodges asteroids and laser drones with gravity-flip controls, How to Play, Tutorial, Hint, and automated tests.
+   /plan Create a similar endless runner "Space Astro Runner" following
+   AGENTS.md, where an astronaut dodges asteroids and laser drones with
+   gravity-flip controls, How to Play, Tutorial, Hint, and automated tests.
    ```

@@ -55,10 +55,12 @@ git checkout main
 
 ## Câu lệnh mẫu cho `agy`
 ```text
-How can I deploy this project to Cloudflare, and how do I set up Cloudflare from scratch (account, Wrangler login, and dry-run)?
+How can I deploy this project to Cloudflare, and how do I set up Cloudflare
+from scratch (account, Wrangler login, and dry-run)?
 ```
 ```text
-/plan Review Dino Run and suggest 3 fun gameplay improvements we could try safely on a new Git branch.
+/plan Review Dino Run and suggest 3 fun gameplay improvements we could try
+safely on a new Git branch.
 ```
 
 ---
@@ -75,21 +77,28 @@ Sử dụng các câu lệnh mẫu bên dưới với Google `agy`—không cầ
 
 1. **Hiểu Dự án Sâu hơn:** Nhờ `agy` giải thích `make verify` kiểm tra những gì và vì sao tắt GitHub Actions.
    ```text
-   Explain in plain English what each step in make verify checks, and why this project keeps GitHub Actions blank and runs checks locally instead.
+   Explain in plain English what each step in make verify checks, and why this
+   project keeps GitHub Actions blank and runs checks locally instead.
    ```
 2. **Cải tiến Tính năng:** Nhờ `agy` sắp xếp kết quả `make help` theo nhóm (`Dev`, `Testing`, `Verification`, `Deployment`).
    ```text
-   Improve the make help command output so targets are grouped under Dev, Testing, Verification, and Deployment headings. Verify with make help.
+   Improve the make help command output so targets are grouped under Dev,
+   Testing, Verification, and Deployment headings. Verify with make help.
    ```
 3. **Triển khai Tính năng Mới:** Nhờ `agy` thêm lệnh `make status` hiển thị nhánh Git, số lượng game và trạng thái build.
    ```text
-   /plan Add a "make status" shortcut that prints the current Git branch, total number of games, and whether the production build folder is ready. Verify with make status.
+   /plan Add a "make status" shortcut that prints the current Git branch, total
+   number of games, and whether the production build folder is ready. Verify with
+   make status.
    ```
 4. **Cải thiện Kiểm thử / Tài liệu:** Nhờ `agy` thêm mục "Cài đặt Cloudflare & Xử lý sự cố" thân thiện vào `QUICKSTART.md`.
    ```text
-   Add a short, beginner-friendly Cloudflare setup and troubleshooting section to QUICKSTART.md covering Wrangler login, dry-run, and port conflicts.
+   Add a short, beginner-friendly Cloudflare setup and troubleshooting section to
+   QUICKSTART.md covering Wrangler login, dry-run, and port conflicts.
    ```
 5. **Tạo Game Mới:** Nhờ `agy` dùng `/plan` xây dựng game **"Đo Phản Xạ (Reaction Timer)"** trên một nhánh Git mới.
    ```text
-   /plan Create a "Reaction Timer" game on a new Git branch following AGENTS.md, measuring millisecond reaction time across 5 rounds with best-average saving, How to Play, Tutorial, and automated tests.
+   /plan Create a "Reaction Timer" game on a new Git branch following AGENTS.md,
+   measuring millisecond reaction time across 5 rounds with best-average saving,
+   How to Play, Tutorial, and automated tests.
    ```

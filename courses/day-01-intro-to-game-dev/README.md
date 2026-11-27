@@ -59,10 +59,12 @@ You don't need to read code files—just ask `agy` to explain the big picture us
 ## Sample `agy` Prompts
 Try asking your AI agent:
 ```text
-Summarise this project in plain English for a non-technical learner, including what all 16 games are and how the Hub brings them together.
+Summarise this project in plain English for a non-technical learner, including
+what all 16 games are and how the Hub brings them together.
 ```
 ```text
-Introduce the tech stack used in this project and explain what each tool does in simple, everyday language.
+Introduce the tech stack used in this project and explain what each tool does
+in simple, everyday language.
 ```
 
 ---
@@ -79,21 +81,29 @@ Use Google `agy` with the sample prompts below—no manual coding required:
 
 1. **Understand the Project:** Ask `agy` to summarize all 16 games grouped by genre and visual style.
    ```text
-   Summarise the project and group all 16 games by category (Puzzle, Board, Arcade, Simulation, Card) and visual style (2D, 3D, or Board/Card).
+   Summarise the project and group all 16 games by category (Puzzle, Board,
+   Arcade, Simulation, Card) and visual style (2D, 3D, or Board/Card).
    ```
 2. **Improve a Feature:** Ask `agy` to make the Hub's empty-search message friendlier across all 3 languages.
    ```text
-   Improve the Hub's empty-search message so it gently reminds players they can press "/" to search or click Reset Filters, in English, Chinese, and Vietnamese. Verify everything passes.
+   Improve the Hub's empty-search message so it gently reminds players they can
+   press "/" to search or click Reset Filters, in English, Chinese, and
+   Vietnamese. Verify everything passes.
    ```
 3. **Implement a New Feature:** Ask `agy` to add a **"🎲 Surprise Me"** button that launches a random game.
    ```text
-   /plan Add a "Surprise Me" button to the Hub header (with English, Chinese, and Vietnamese labels) that picks and opens a random game from the visible list, and verify with automated tests.
+   /plan Add a "Surprise Me" button to the Hub header (with English, Chinese, and
+   Vietnamese labels) that picks and opens a random game from the visible list,
+   and verify with automated tests.
    ```
 4. **Improve Tests / Docs:** Ask `agy` to verify that the root `README` game list is complete in all 3 languages.
    ```text
-   Check that the root README files in English, Chinese, and Vietnamese list all 16 games accurately, and run the project's documentation compliance check.
+   Check that the root README files in English, Chinese, and Vietnamese list all
+   16 games accurately, and run the project's documentation compliance check.
    ```
 5. **Create a New Game:** Ask `agy` to build a simple **"Guess the Number"** mini-game.
    ```text
-   /plan Create a simple "Guess the Number" puzzle game following the project's AGENTS.md rules, with a 1-100 range, Higher/Lower hints, How to Play, Tutorial, and automated tests.
+   /plan Create a simple "Guess the Number" puzzle game following the project's
+   AGENTS.md rules, with a 1-100 range, Higher/Lower hints, How to Play,
+   Tutorial, and automated tests.
    ```

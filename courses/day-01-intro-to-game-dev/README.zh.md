@@ -59,10 +59,12 @@ make dev
 ## 示例 `agy` 提示词
 尝试向你的 AI 智能体提问：
 ```text
-Summarise this project in plain English (or Chinese) for a non-technical learner, including what all 16 games are and how the Hub brings them together.
+Summarise this project in plain English (or Chinese) for a non-technical
+learner, including what all 16 games are and how the Hub brings them together.
 ```
 ```text
-Introduce the tech stack used in this project and explain what each tool does in simple, everyday language.
+Introduce the tech stack used in this project and explain what each tool does
+in simple, everyday language.
 ```
 
 ---
@@ -79,21 +81,29 @@ Introduce the tech stack used in this project and explain what each tool does in
 
 1. **深入理解项目：** 让 `agy` 按类型与画面风格汇总全部 16 款游戏。
    ```text
-   Summarise the project and group all 16 games by category (Puzzle, Board, Arcade, Simulation, Card) and visual style (2D, 3D, or Board/Card).
+   Summarise the project and group all 16 games by category (Puzzle, Board,
+   Arcade, Simulation, Card) and visual style (2D, 3D, or Board/Card).
    ```
 2. **改进现有功能：** 让 `agy` 优化三语空搜索提示文案。
    ```text
-   Improve the Hub's empty-search message so it gently reminds players they can press "/" to search or click Reset Filters, in English, Chinese, and Vietnamese. Verify everything passes.
+   Improve the Hub's empty-search message so it gently reminds players they can
+   press "/" to search or click Reset Filters, in English, Chinese, and
+   Vietnamese. Verify everything passes.
    ```
 3. **实现新功能：** 让 `agy` 在大厅添加一个 **“🎲 随机畅玩”** 按钮。
    ```text
-   /plan Add a "Surprise Me" button to the Hub header (with English, Chinese, and Vietnamese labels) that picks and opens a random game from the visible list, and verify with automated tests.
+   /plan Add a "Surprise Me" button to the Hub header (with English, Chinese, and
+   Vietnamese labels) that picks and opens a random game from the visible list,
+   and verify with automated tests.
    ```
 4. **完善测试 / 文档：** 让 `agy` 核对三语根 `README` 是否完整列出全部 16 款游戏。
    ```text
-   Check that the root README files in English, Chinese, and Vietnamese list all 16 games accurately, and run the project's documentation compliance check.
+   Check that the root README files in English, Chinese, and Vietnamese list all
+   16 games accurately, and run the project's documentation compliance check.
    ```
 5. **创建新游戏：** 让 `agy` 从零搭建一个极简的 **“猜数字 (Guess the Number)”** 益智小游戏。
    ```text
-   /plan Create a simple "Guess the Number" puzzle game following the project's AGENTS.md rules, with a 1-100 range, Higher/Lower hints, How to Play, Tutorial, and automated tests.
+   /plan Create a simple "Guess the Number" puzzle game following the project's
+   AGENTS.md rules, with a 1-100 range, Higher/Lower hints, How to Play,
+   Tutorial, and automated tests.
    ```
