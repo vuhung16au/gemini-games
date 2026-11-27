@@ -35,9 +35,10 @@ npm -v
 git --version
 ```
 
-### 2. Clone the Repository
+### 2. Fork & Clone Your Own Repository
+Click **Fork** on `https://github.com/vuhung16au/gemini-games` so you have your own GitHub copy to commit and push to, then clone your fork:
 ```bash
-git clone https://github.com/vuhung16au/gemini-games.git
+git clone https://github.com/<your-username>/gemini-games.git
 cd gemini-games
 ```
 

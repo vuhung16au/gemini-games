@@ -37,14 +37,18 @@ Welcome to the **Gemini Games 9-Day Game Development Course**! Starting from a *
 
 ---
 
-## Before You Start: Clone the Repository
+## Before You Start: Fork & Clone Your Own Repository
+
+To save and `git push` your own customized games to GitHub, **fork** `https://github.com/vuhung16au/gemini-games` to your own GitHub account first (click **Fork** on GitHub), then clone **your fork**:
 
 ```bash
-git clone https://github.com/vuhung16au/gemini-games.git
+git clone https://github.com/<your-username>/gemini-games.git
 cd gemini-games
 npm install
 make dev
 ```
+
+> **Tip:** If you cloned the original repo directly, you can still play and edit 100% offline—and whenever you want to push to GitHub, just ask `agy`: *"Create my own GitHub repository for this project and push my changes there."*
 
 ---
 

@@ -37,14 +37,18 @@ Chào mừng đến với **Khóa học Phát triển Game 9 Ngày cùng Gemini 
 
 ---
 
-## Trước Khi Bắt Đầu: Clone Kho Mã Nguồn
+## Trước Khi Bắt Đầu: Fork & Clone Kho Mã Nguồn Riêng Của Bạn
+
+Để lưu và `git push` các game bạn tự tùy chỉnh lên GitHub, hãy nhấn **Fork** tại `https://github.com/vuhung16au/gemini-games` về tài khoản GitHub của bạn trước, sau đó clone **bản fork của chính bạn**:
 
 ```bash
-git clone https://github.com/vuhung16au/gemini-games.git
+git clone https://github.com/<your-username>/gemini-games.git
 cd gemini-games
 npm install
 make dev
 ```
+
+> **Mẹo:** Nếu bạn đã clone trực tiếp repo gốc, bạn vẫn chơi và chỉnh sửa **100% ngoại tuyến** bình thường—khi muốn đẩy lên GitHub riêng, chỉ cần nói với `agy`: *"Tạo kho GitHub riêng cho dự án này và push các thay đổi của tôi lên đó."*
 
 ---
 

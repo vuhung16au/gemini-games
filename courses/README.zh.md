@@ -37,14 +37,18 @@
 
 ---
 
-## 开始之前：克隆代码仓库
+## 开始之前：Fork 并克隆你自己的代码仓库
+
+为了把你自己修改和创作的游戏 `git push` 保存到 GitHub，请先在 GitHub 上点击 **Fork** 将 `https://github.com/vuhung16au/gemini-games` 复制到你自己的账号下，再克隆**你自己的仓库**：
 
 ```bash
-git clone https://github.com/vuhung16au/gemini-games.git
+git clone https://github.com/<your-username>/gemini-games.git
 cd gemini-games
 npm install
 make dev
 ```
+
+> **提示：** 如果你直接克隆了原仓库，依然可以 **100% 离线** 游玩和修改；想推送到自己的 GitHub 时，只需对 `agy` 说：*“为这个项目创建一个属于我自己的 GitHub 仓库并推送我的修改。”*
 
 ---
 

@@ -35,9 +35,10 @@ npm -v
 git --version
 ```
 
-### 2. 克隆仓库
+### 2. Fork 并克隆你自己的仓库
+先在 `https://github.com/vuhung16au/gemini-games` 点击 **Fork**，创建一个属于你自己的 GitHub 仓库以便随时提交和推送，然后克隆你的仓库：
 ```bash
-git clone https://github.com/vuhung16au/gemini-games.git
+git clone https://github.com/<your-username>/gemini-games.git
 cd gemini-games
 ```
 

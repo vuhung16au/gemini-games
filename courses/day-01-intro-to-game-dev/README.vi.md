@@ -35,9 +35,10 @@ npm -v
 git --version
 ```
 
-### 2. Clone kho mã nguồn
+### 2. Fork & Clone Kho Mã Nguồn Riêng Của Bạn
+Nhấn **Fork** tại `https://github.com/vuhung16au/gemini-games` để có bản sao GitHub riêng giúp bạn thoải mái commit và push, sau đó clone bản fork của bạn:
 ```bash
-git clone https://github.com/vuhung16au/gemini-games.git
+git clone https://github.com/<your-username>/gemini-games.git
 cd gemini-games
 ```
 
