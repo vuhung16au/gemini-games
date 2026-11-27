@@ -8,7 +8,9 @@ Trung tâm trò chơi web thống nhất có thể chạy **100% ngoại tuyến
 - **Hướng dẫn nhanh:** [QUICKSTART.vi.md](./QUICKSTART.vi.md) (`git clone`, `make dev`, `make verify`, `make deploy`)
 - **Khóa học & Hướng dẫn Vibe Coding 9 Ngày:** [courses/](./courses/README.vi.md) — Khóa học thực hành bằng prompt dành cho người không chuyên CNTT để hiểu tech stack, tùy chỉnh game có sẵn và tự tạo game 2D/3D mới cùng AI agent.
 
-[![Demo trực tuyến Gemini Games](./docs/demo-screenshot.png)](https://gemini-games.vuhung16plus.workers.dev/)
+Dưới đây là ảnh chụp màn hình của trung tâm trò chơi:
+
+[![Demo trực tuyến Gemini Games](./images/demo-screenshot.png)](https://gemini-games.vuhung16plus.workers.dev/)
 
 ## Điểm nổi bật
 - **Bảng điều khiển 4 cột thống nhất:** Lọc theo danh mục (`Tất cả`, `Giải đố`, `Cờ`, `Arcade`, `Mô phỏng`, `Đánh bài`), tìm kiếm trực tiếp (`/`), **Yêu thích**, **Chơi gần đây**, **Giao diện Sáng/Tối**, **Hỗ trợ đa ngôn ngữ (`English`, `中文`, `Tiếng Việt`)** và điều hướng bàn phím đầy đủ (`Phím mũi tên`, `Enter`, `Esc`).

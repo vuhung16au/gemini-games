@@ -8,7 +8,9 @@
 - **快速开始：** [QUICKSTART.zh.md](./QUICKSTART.zh.md)（`git clone`、`make dev`、`make verify`、`make deploy`）
 - **9 天 Vibe Coding 实战教程：** [courses/](./courses/README.zh.md) — 面向非 IT/非技术学习者的提示词驱动实战课程，边玩边理解技术栈、改造现有游戏并从零构建新的 2D/3D 游戏。
 
-[![Gemini Games 在线演示](./docs/demo-screenshot.png)](https://gemini-games.vuhung16plus.workers.dev/)
+下面是我们游戏大厅的界面截图：
+
+[![Gemini Games 在线演示](./images/demo-screenshot.png)](https://gemini-games.vuhung16plus.workers.dev/)
 
 ## 核心亮点
 - **统一 4 列游戏大厅：** 支持分类筛选（`全部`、`益智`、`棋类`、`街机`、`模拟`、`卡牌`）、实时搜索（`/`）、**收藏夹**、**最近游玩**、**浅色/深色主题**、**多语言界面（English、中文、Tiếng Việt）** 以及完整键盘导航（`方向键`、`Enter`、`Esc`）。
