@@ -1,17 +1,17 @@
 [English](./README.md) | [中文](./README.zh.md) | **Tiếng Việt**
 
-# Xếp Hình (Tetris) — Game Arcade Cổ Điển
+# Tetris — Xếp Gạch Arcade Huyền Thoại
 
-Trò chơi **Tetris** chuẩn Guideline mô phỏng theo `freetetris.org`, xây dựng với **React 18 + TypeScript + Vite + HTML5 Canvas 2D**, bộ token `styles/` dùng chung, **xoay SRS kèm đá tường**, **bộ chia 7-bag**, **Giữ gạch (Hold)**, **Bóng mờ (Ghost)**, **Gợi ý Thông minh**, **Chế độ Hướng dẫn** và âm thanh Web Audio API.
+Phiên bản **Tetris** chuẩn Guideline lấy cảm hứng từ `freetetris.org`, được build bằng **React 18 + TypeScript + Vite + HTML5 Canvas 2D**. Dùng chung `styles/` token của hub, tích hợp đầy đủ **xoay SRS có wall kick**, **túi gạch 7-bag**, **Hold**, **Ghost piece**, **Hints**, **Tutorial** và **SFX** từ Web Audio API.
 
-## Tính năng
-- **Cơ chế Chuẩn Guideline:** Bàn 10×20, bộ sinh ngẫu nhiên 7-bag, hàng chờ 3 khối Next, ô Hold (1 lần mỗi lượt rơi), bóng mờ vị trí đáp, xoay SRS kèm đá tường và độ trễ khóa 450 ms.
-- **Công cụ Học & Hỗ trợ:** Hộp thoại **Hướng dẫn chơi**, **Tutorial** tương tác 3 bước và lớp phủ **Gợi ý Đặt khối Thông minh**.
-- **Không tài nguyên ngoài:** Khối Canvas 2D HiDPI, xem trước SVG nội tuyến, âm thanh Web Audio API và lưu `localStorage` an toàn (`tetris_v1`).
+## Có gì hay?
+- **Cơ chế chuẩn Guideline:** Lưới 10×20, chia gạch công bằng theo túi 7-bag, xem trước 3 khối Next, ô Hold (1 lần mỗi lượt rơi), bóng mờ Ghost chỉ điểm đáp, xoay SRS kèm wall kick và lock delay 450 ms.
+- **Học nhanh, leo rank lẹ:** Có sẵn hộp thoại **How to Play**, **Tutorial** tương tác 3 bước và lớp phủ **Hints** gợi ý chỗ đặt gạch tối ưu.
+- **100% offline, gọn nhẹ:** Vẽ khối bằng **Canvas 2D** nét căng trên màn hình HiDPI, xem trước bằng SVG nội tuyến, Web Audio **SFX** (có nút **Mute**) và lưu kỷ lục vào `localStorage` (`tetris_v1`).
 
-## Danh mục tài liệu
-- [QUICKSTART.md](./QUICKSTART.md) — Cài đặt, máy chủ dev, kiểm thử và lệnh build cục bộ
-- [architecture.md](./architecture.md) — Cấu trúc mô-đun, vòng lặp bước cố định, đá tường SRS và gợi ý
-- [techstack.md](./techstack.md) — Ngôn ngữ, framework, kết xuất, kiểm thử và triển khai
-- [user-guide.md](./user-guide.md) — Điều khiển, tính điểm, hướng dẫn và cài đặt
-- [developer-guide.md](./developer-guide.md) — Mở rộng/tinh chỉnh Tetris, chạy Vitest & Playwright và build
+## Tài liệu chi tiết
+- [QUICKSTART.md](./QUICKSTART.md) — Cài đặt, chạy dev server, test và build local
+- [architecture.md](./architecture.md) — Cấu trúc module, fixed-timestep loop, xoay SRS và hệ thống Hints
+- [techstack.md](./techstack.md) — Ngôn ngữ, framework, renderer **Canvas 2D**, testing và deploy
+- [user-guide.md](./user-guide.md) — Phím điều khiển, cách tính điểm, hướng dẫn và settings
+- [developer-guide.md](./developer-guide.md) — Tùy biến Tetris, chạy Vitest & Playwright và quy trình build

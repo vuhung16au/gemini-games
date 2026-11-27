@@ -1,60 +1,59 @@
 [English](./README.md) | [中文](./README.zh.md) | **Tiếng Việt**
 
-# Ngày 6 — Chỉnh Sửa Game Đầu Tiên (`Dino Run`)
+# Ngày 6 — "Độ" Lại Game Đầu Tiên (`Dino Run`)
 
 **Thời lượng ước tính:** 1 Giờ · **Trước:** [Ngày 5](../day-05-tech-stack-deep-dive/README.vi.md) · **Tiếp theo:** [Ngày 7](../day-07-building-a-board-game/README.vi.md)
 
 ---
 
-## Tổng quan & Khái niệm chính
-Trước khi làm game từ đầu, cách nhanh nhất để nắm vững vibe coding là **tùy biến một game đang chạy tốt** bằng câu lệnh đời thường. Hôm nay bạn sẽ tùy biến **Dino Run**: đổi màu nền bầu trời, chỉnh tốc độ chạy và thêm một chướng ngại vật mới—tất cả được kiểm tra tự động bằng `make`!
+## Bức tranh toàn cảnh
+Trước khi tự dựng game từ số 0, cách nhanh nhất để "lên tay" vibe coding là **độ lại một game đang chạy ngon lành** bằng câu lệnh đời thường. Hôm nay bạn sẽ cầm lái **Dino Run**: đổi màu bầu trời, tinh chỉnh tốc độ chạy và thả thêm chướng ngại vật mới—làm xong tới đâu có `make` kiểm tra tự động tới đó cho chắc kèo!
 
 ---
 
-## Mục tiêu & Kết quả học tập
-Sau Ngày 6, bạn sẽ có thể:
-1. Tạo nhánh Git thực hành an toàn trước khi chỉnh sửa game.
-2. Nhờ Google `agy` đổi màu sắc, tốc độ và thêm chướng ngại vật bằng ngôn ngữ tự nhiên—không cần tự sửa code.
-3. Xác minh mọi thay đổi với `make dev GAME=dino-run` và `make verify GAME=dino-run`.
+## Học xong hôm nay bạn làm được gì?
+1. Biết tạo một **Git branch** riêng để vọc vạch an toàn, không sợ làm hỏng bản gốc.
+2. Sai Google `agy` đổi màu sắc, tốc độ và thêm chướng ngại vật bằng ngôn ngữ tự nhiên—không đụng tay vào code.
+3. Chạy `make dev GAME=dino-run` để ngắm thành quả trực tiếp và chốt hạ bằng `make verify GAME=dino-run`.
 
 ---
 
-## Hướng dẫn từng bước
+## Từng bước thực hành
 
-### 1. Tạo nhánh Git thực hành
+### 1. Tạo một branch mới để vọc cho an toàn
 ```bash
 git checkout -b day-06-dino-mod
 ```
 
-### 2. Xem trước `Dino Run` trực tiếp
+### 2. Mở `Dino Run` lên xem trước
 ```bash
 make dev GAME=dino-run
 ```
 
-### 3. Nhờ `agy` tùy biến Màu sắc, Tốc độ & Chướng ngại vật
-Dùng từng câu lệnh mẫu bên dưới, xem thay đổi trực tiếp trên trình duyệt và chạy kiểm tra tự động:
+### 3. Nhờ `agy` "độ" Màu sắc, Tốc độ & Chướng ngại vật
+Thử lần lượt từng **prompt** bên dưới, ngó trình duyệt xem game đổi ra sao rồi chạy lệnh verify:
 ```bash
 make verify GAME=dino-run
 ```
 
 ---
 
-## Câu lệnh mẫu cho `agy`
+## Bộ prompt mẫu cho `agy`
 
-**Câu lệnh 1 — Đổi màu nền:**
+**Prompt 1 — Đổi màu bầu trời:**
 ```text
 Change Dino Run's Classic Desert daytime sky to a warm sunset peach (#fce7d6)
 while keeping strong contrast for the dinosaur and score text. Verify that
 tests and build pass.
 ```
 
-**Câu lệnh 2 — Tăng nhịp độ trò chơi:**
+**Prompt 2 — Tăng tốc cho đã tay:**
 ```text
 Make Dino Run start slightly faster and speed up a bit quicker so the action
 feels snappier, then run Dino Run's unit tests to confirm everything passes.
 ```
 
-**Câu lệnh 3 — Thêm chướng ngại vật mới:**
+**Prompt 3 — Thêm chướng ngại vật mới:**
 ```text
 /plan Add a new rolling "desert boulder" obstacle to Classic mode in Dino Run
 that rolls slightly faster than cacti, and add automated unit tests for
@@ -63,40 +62,40 @@ boulder collisions.
 
 ---
 
-## Điểm cốt lõi
-- Câu lệnh ngắn gọn, tự nhiên + kiểm tra ngay bằng `make verify GAME=dino-run` giúp vibe coding nhanh và an toàn.
-- Bạn không cần biết tốc độ hay màu sắc nằm ở tệp code nào—chỉ cần mô tả điều bạn muốn!
+## Chốt lại cho nhớ
+- **Prompt** gọn gàng, nói rõ ý + chạy ngay `make verify GAME=dino-run` là công thức vibe coding vừa nhanh vừa an toàn.
+- Bạn chẳng cần biết biến tốc độ hay mã màu nằm ở file nào—chỉ cần mô tả đúng trải nghiệm bạn muốn!
 
 ---
 
-## Bài tập & Thử thách (Vibe Coding Chỉ Dùng Câu Lệnh)
+## Bài tập thực hành (Vibe Coding thuần bằng Prompt)
 
-Sử dụng các câu lệnh mẫu bên dưới với Google `agy`—không cần tự viết code thủ công:
+Cứ copy các prompt bên dưới giao cho Google `agy` xử lý—không cần gõ dòng code nào:
 
-1. **Hiểu Dự án Sâu hơn:** Nhờ `agy` giải thích các tính năng và độ khó tăng dần của `Dino Run`.
+1. **Hiểu sâu game hơn:** Nhờ `agy` giải thích cơ chế của `Dino Run` (từ cách tăng độ khó đến chu kỳ Ngày/Đêm).
    ```text
    Explain the features in the game "Dino Run", including how the game gets
    harder over time, how Day/Night cycles work, and what the Tutorial and Hint
    markers do.
    ```
-2. **Cải tiến Tính năng:** Nhờ `agy` làm hiệu ứng chuyển Ngày/Đêm mượt mà thay vì đổi đột ngột.
+2. **Nâng cấp hiệu ứng:** Nhờ `agy` làm cảnh chuyển Ngày/Đêm mượt mà thay vì chớp cái bụp.
    ```text
    Improve Dino Run's Classic mode so the sky smoothly blends between Day and
    Night every 700 points instead of switching abruptly. Verify with make verify
    GAME=dino-run.
    ```
-3. **Triển khai Tính năng Mới:** Nhờ `agy` thêm cơ chế **Nhảy Đúp (Double-Jump)** trên nhánh thực hành.
+3. **Thêm cơ chế mới:** Nhờ `agy` gắn thêm tính năng **Nhảy Đúp (Double-Jump)** trên branch thực hành.
    ```text
    /plan Add an optional Double-Jump mechanic to Dino Run Classic mode with a
    small jump-charge indicator on the screen. Verify with make verify
    GAME=dino-run.
    ```
-4. **Cải thiện Kiểm thử / Tài liệu:** Nhờ `agy` thêm kiểm thử trình duyệt cho tính năng mới và cập nhật hướng dẫn người chơi.
+4. **Bổ sung E2E test & docs:** Nhờ `agy` viết **Playwright test** cho pha nhảy đúp vừa làm và cập nhật luôn hướng dẫn chơi.
    ```text
    Add a Playwright browser test confirming the new Double-Jump feature works in
    Dino Run, and document it in Dino Run's user guide.
    ```
-5. **Tạo Game Mới:** Nhờ `agy` xây dựng một game chạy vô tận tương tự mang tên **"Space Astro Runner"**.
+5. **Tạo game mới toanh:** Nhờ `agy` dựng một game chạy vô tận phiên bản vũ trụ mang tên **"Space Astro Runner"**.
    ```text
    /plan Create a similar endless runner "Space Astro Runner" following
    AGENTS.md, where an astronaut dodges asteroids and laser drones with

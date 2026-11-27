@@ -1,64 +1,64 @@
 [English](./README.md) | [中文](./README.zh.md) | **Tiếng Việt**
 
-# Ngày 4 — Công Cụ Lập Trình & AI Coding Agents
+# Ngày 4 — Bộ Đồ Nghề Dev & AI Coding Agents
 
 **Thời lượng ước tính:** 1 Giờ · **Trước:** [Ngày 3](../day-03-project-architecture/README.vi.md) · **Tiếp theo:** [Ngày 5](../day-05-tech-stack-deep-dive/README.vi.md)
 
 ---
 
-## Tổng quan & Khái niệm chính
-Quy trình làm game vibe coding hiện đại kết hợp 4 công cụ đơn giản: **Node.js & `make`** (chạy & kiểm tra), **Git & GitHub** (lưu phiên bản an toàn), **Cloudflare Workers** (xuất bản trực tuyến) và **Google `agy`** (trợ lý AI của bạn).
+## Tổng quan & Ý chính
+Workflow làm game vibe coding hiện đại gói gọn trong 4 món đồ nghề rất dễ xài: **Node.js & `make`** (chạy & check lỗi), **Git & GitHub** (lưu phiên bản cho an toàn), **Cloudflare Workers** (deploy lên mạng cho mọi người chơi) và **Google `agy`** (trợ lý AI của bạn).
 
 ```mermaid
 flowchart LR
-  Dev["Bạn + Google agy (/plan -> Xây dựng -> Xác minh)"] --> Local["Node.js & make (chạy, kiểm thử, đóng gói)"]
-  Local --> Git["Git & GitHub (Sao lưu & Nhánh an toàn)"]
-  Local --> CF["Cloudflare Workers (Đưa game lên mạng)"]
+  Dev["Bạn + Google agy (/plan -> Build -> Verify)"] --> Local["Node.js & make (chạy, test, đóng gói)"]
+  Local --> Git["Git & GitHub (Backup & Branch an toàn)"]
+  Local --> CF["Cloudflare Workers (Deploy lên mạng)"]
 ```
 
 ---
 
-## Mục tiêu & Kết quả học tập
-Sau Ngày 4, bạn sẽ có thể:
-1. Dùng các lệnh tắt `make` hằng ngày (`make dev`, `make test`, `make verify`, `make deploy-dry-run`).
-2. Dùng nhánh Git để thử ý tưởng mới an toàn mà không ảnh hưởng bản chính.
-3. Hỏi `agy` cách thiết lập Cloudflare và triển khai game lên mạng từng bước.
-4. Dùng `/plan` với `agy` để thống nhất kế hoạch trước khi thay đổi lớn.
+## Mục tiêu & Kết quả sau Ngày 4
+Xong Ngày 4, bạn sẽ làm chủ được:
+1. Xài thành thạo mấy lệnh tắt `make` hằng ngày (`make dev`, `make test`, `make verify`, `make deploy-dry-run`).
+2. Tạo `branch` mới trên Git để thử nghiệm ý tưởng tẹt ga mà không sợ hư bản chính.
+3. Hỏi `agy` từng bước cách setup Cloudflare và deploy game lên mạng.
+4. Dùng `/plan` với `agy` để chốt kế hoạch trước khi sửa lớn.
 
 ---
 
 ## Hướng dẫn từng bước
 
-### 1. Các Lệnh Tắt `make` Hằng Ngày (Học qua thực hành)
-Bạn không cần học thuộc lòng tài liệu `make`, `git` hay `agy` từ đầu—chỉ cần dùng các lệnh tắt này khi cần:
+### 1. Mấy Lệnh Tắt `make` Dùng Hằng Ngày (Học tới đâu xài tới đó)
+Khỏi cần học vẹt tài liệu `make`, `git` hay `agy` làm gì—cứ nhớ mấy lệnh tắt này khi cần là gõ:
 ```bash
-make help             # Xem toàn bộ lệnh tắt
-make dev              # Chạy hub trò chơi 100% ngoại tuyến tại máy
-make test             # Chạy unit test + kiểm tra độ phủ
-make verify           # Chạy toàn bộ cổng chất lượng & tuân thủ
-make deploy-dry-run   # Đóng gói thử bản tĩnh dist/ cho Cloudflare (hoặc Vercel), chưa xuất bản
+make help             # Xem toàn bộ danh sách lệnh tắt
+make dev              # Chạy game hub 100% offline trên máy
+make test             # Chạy unit test + kiểm tra coverage
+make verify           # Chạy full cổng verify (lint, typecheck, test, build, E2E)
+make deploy-dry-run   # Build thử bản tĩnh dist/ cho Cloudflare (hoặc Vercel), chưa đẩy thật
 ```
 
-### 2. Thử Nghiệm An Toàn với Nhánh Git
-Trong vibe coding, việc dùng `git` được **khuyến nghị mạnh mẽ**: commit thường xuyên giúp lưu giữ lịch sử dự án để bạn luôn quay lại được một điểm mốc (checkpoint) an toàn, đồng thời giúp AI agent dễ dàng kiểm tra thay đổi và quản lý dự án tốt hơn.
+### 2. Thử Nghiệm An Toàn Với Git Branch
+Trong vibe coding, dùng `git` là **cực kỳ nên làm**: commit đều tay giúp bạn luôn có một điểm checkpoint an toàn để quay xe khi cần, đồng thời giúp AI agent soi lại thay đổi và quản lý dự án chuẩn chỉnh hơn.
 
-Trước khi thử ý tưởng lớn cùng `agy`, hãy tạo nhánh thực hành:
+Trước khi bày trò gì lớn với `agy`, cứ tách ra một nhánh thực hành cho yên tâm:
 ```bash
 git checkout -b practice-day-4
-# ...thử nghiệm thoải mái, quay lại bất cứ lúc nào:
+# ...tha hồ thử nghiệm, muốn quay về bản gốc lúc nào cũng được:
 git checkout main
 ```
 
-### 3. Làm Chủ Lệnh Nâng Cao của Google `agy` (`/plan`, `/goal`, `/teamwork`)
-- **Miễn phí + Google AI Pro (mô hình `orchestrator`):** `agy` **miễn phí** để sử dụng, nhưng **khuyến nghị Google AI Pro** để mở khóa mô hình **`orchestrator`** trong `agy`—rất phù hợp cho lập kế hoạch phức tạp, `/goal` và `/teamwork`.
-- **`/plan` (Từ khóa Kinh điển Đa nền tảng):** Mở đầu câu lệnh bằng `/plan` khi muốn AI suy nghĩ, phân tích và trình bày kế hoạch để bạn duyệt trước khi sửa tệp. `/plan` là từ khóa kinh điển hoạt động không chỉ trong **`agy`**, mà còn trên **GitHub Copilot, Claude / Claude Code, ChatGPT / Codex và Cursor**.
-- **`/goal` (100% Tự động, 100% Không cần canh):** Dùng `/goal` khi bạn muốn `agy` thực hiện **trọn vẹn từ đầu đến cuối một cách tự động 100%, không cần giám sát** (ví dụ: tự làm game hoàn chỉnh, đồ họa, kiểm thử, tài liệu và tự sửa cho đến khi `make verify` đạt).
-- **`/teamwork` (Đa tác tử Song song):** Dùng `/teamwork` khi bạn muốn `agy` **khởi chạy nhiều agent cùng lúc**—ví dụ: **tạo nhiều hơn một game cùng lúc** (như làm song song *Snake* và *Breakout*), hoặc chia nhóm agent lo logic, đồ họa, kiểm thử và dịch thuật.
-- **Mô tả kết quả, không cần mô tả code:** Chỉ nói cho `agy` *người chơi sẽ trải nghiệm gì*, để `agy` tự lo tệp tin và kiểm thử.
+### 3. Làm Chủ Tuyệt Chiêu Của Google `agy` (`/plan`, `/goal`, `/teamwork`)
+- **Miễn phí + Google AI Pro (model `orchestrator`):** `agy` **miễn phí** để bắt đầu, nhưng **khuyên dùng Google AI Pro** để mở khóa model **`orchestrator`** trong `agy`—cực kỳ lợi hại cho mấy pha lên kế hoạch dài hơi, `/goal` và `/teamwork`.
+- **`/plan` (Từ khóa Quốc dân Đa nền tảng):** Mở đầu prompt bằng `/plan` khi bạn muốn AI suy nghĩ kỹ, phân tích rồi trình bày kế hoạch để bạn gật đầu trước khi nó sửa file. `/plan` chạy ngon không chỉ trong **`agy`**, mà cả trên **GitHub Copilot, Claude / Claude Code, ChatGPT / Codex và Cursor**.
+- **`/goal` (Tự động 100%, Khỏi cần ngồi canh):** Xài `/goal` khi bạn muốn `agy` tự làm **trọn gói từ đầu đến cuối không cần giám sát** (ví dụ: tự làm game hoàn chỉnh, vẽ icon/cover, viết test, viết docs rồi tự fix bug cho tới khi `make verify` pass hết).
+- **`/teamwork` (Gọi cả đội Agent làm song song):** Xài `/teamwork` khi muốn `agy` **tung nhiều agent chạy cùng lúc**—ví dụ: **làm nhiều hơn một game một lúc** (như làm song song *Snake* và *Breakout*), hoặc chia team mỗi agent lo một mảng: logic, đồ họa, test và dịch thuật.
+- **Mô tả trải nghiệm, đừng mô tả code:** Cứ nói cho `agy` biết *người chơi sẽ thấy gì và bấm ra sao*, chuyện file nào sửa ra sao để `agy` tự lo.
 
 ---
 
-## Câu lệnh mẫu cho `agy`
+## Prompt mẫu cho `agy`
 ```text
 How can I deploy this project to Cloudflare, and how do I set up Cloudflare
 from scratch (account, Wrangler login, and dry-run)?
@@ -80,38 +80,38 @@ verify.
 
 ---
 
-## Điểm cốt lõi
-- `make verify` là nút kiểm tra an toàn một chạm trước khi lưu hoặc phát hành.
-- `/plan` + câu lệnh ngôn ngữ tự nhiên giúp người không chuyên IT điều phối AI tự tin.
+## Chốt lại ý chính
+- `make verify` là nút check an toàn "một phát ăn ngay" trước khi lưu hay deploy.
+- `/plan` + prompt tiếng người tự nhiên giúp người không chuyên IT vẫn chỉ huy AI cực tự tin.
 
 ---
 
-## Bài tập & Thử thách (Vibe Coding Chỉ Dùng Câu Lệnh)
+## Bài tập & Thử thách (Vibe Coding Thuần Prompt)
 
-Sử dụng các câu lệnh mẫu bên dưới với Google `agy`—không cần tự viết code thủ công:
+Dùng mấy prompt gợi ý bên dưới với Google `agy`—không cần tự gõ code:
 
-1. **Hiểu Dự án Sâu hơn:** Nhờ `agy` giải thích `make verify` kiểm tra những gì và vì sao tắt GitHub Actions.
+1. **Hiểu Dự án Sâu hơn:** Nhờ `agy` giải thích `make verify` kiểm tra những gì và tại sao repo lại để trống GitHub Actions.
    ```text
    Explain in plain English what each step in make verify checks, and why this
    project keeps GitHub Actions blank and runs checks locally instead.
    ```
-2. **Cải tiến Tính năng:** Nhờ `agy` sắp xếp kết quả `make help` theo nhóm (`Dev`, `Testing`, `Verification`, `Deployment`).
+2. **Cải tiến Tính năng:** Nhờ `agy` gom lại output của `make help` theo nhóm (`Dev`, `Testing`, `Verification`, `Deployment`) cho dễ nhìn.
    ```text
    Improve the make help command output so targets are grouped under Dev,
    Testing, Verification, and Deployment headings. Verify with make help.
    ```
-3. **Triển khai Tính năng Mới:** Nhờ `agy` thêm lệnh `make status` hiển thị nhánh Git, số lượng game và trạng thái build.
+3. **Thêm Tính năng Mới:** Nhờ `agy` thêm lệnh tắt `make status` in ra branch Git hiện tại, tổng số game và tình trạng thư mục build.
    ```text
    /plan Add a "make status" shortcut that prints the current Git branch, total
    number of games, and whether the production build folder is ready. Verify with
    make status.
    ```
-4. **Cải thiện Kiểm thử / Tài liệu:** Nhờ `agy` thêm mục "Cài đặt Cloudflare & Xử lý sự cố" thân thiện vào `QUICKSTART.md`.
+4. **Cải thiện Tài liệu:** Nhờ `agy` bổ sung mục "Cài đặt Cloudflare & Xử lý sự cố" thân thiện cho người mới vào `QUICKSTART.md`.
    ```text
    Add a short, beginner-friendly Cloudflare setup and troubleshooting section to
    QUICKSTART.md covering Wrangler login, dry-run, and port conflicts.
    ```
-5. **Tạo Game Mới:** Nhờ `agy` dùng `/plan` xây dựng game **"Đo Phản Xạ (Reaction Timer)"** trên một nhánh Git mới.
+5. **Tạo Game Mới:** Nhờ `agy` dùng `/plan` làm game **"Đo Phản Xạ (Reaction Timer)"** trên một Git branch mới.
    ```text
    /plan Create a "Reaction Timer" game on a new Git branch following AGENTS.md,
    measuring millisecond reaction time across 5 rounds with best-average saving,

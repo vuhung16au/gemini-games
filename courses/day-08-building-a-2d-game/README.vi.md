@@ -1,39 +1,38 @@
 [English](./README.md) | [中文](./README.zh.md) | **Tiếng Việt**
 
-# Ngày 8 — Xây Dựng Game Arcade 2D Đầu Tiên Từ Đầu
+# Ngày 8 — Tự Tay Dựng Game Arcade 2D Đầu Tiên Từ Số 0
 
 **Thời lượng ước tính:** 1 Giờ · **Trước:** [Ngày 7](../day-07-building-a-board-game/README.vi.md) · **Tiếp theo:** [Ngày 9](../day-09-building-a-3d-game/README.vi.md)
 
 ---
 
-## Tổng quan & Khái niệm chính
-Hôm nay bạn sẽ bước từ bàn cờ theo lượt lên **game arcade 2D Canvas thời gian thực 60fps** từ con số 0 (như **Breakout** hoặc **Snake**).
+## Bức tranh toàn cảnh
+Hôm nay mình sẽ "lên đời" từ game bàn cờ theo lượt sang **game arcade 2D Canvas chạy 60fps theo thời gian thực** từ số 0 (như **Breakout** hoặc **Snake**).
 
-Những trải nghiệm 2D bạn sẽ nhờ `agy` lo trọn gói:
-- **Chuyển động Mượt & Tự Tạm Dừng:** Game chạy mượt 60 khung hình/giây và tự tạm dừng khi bạn chuyển tab trình duyệt.
-- **Nảy Bóng & Va Chạm:** Bóng nảy thực tế khỏi gạch và thanh đỡ tùy theo vị trí chạm.
-- **Điều khiển Máy tính + Cảm ứng:** Chơi mượt cả bằng bàn phím (`Mũi tên`/`WASD`/`Space`) lẫn kéo chuột/cảm ứng.
-
----
-
-## Mục tiêu & Kết quả học tập
-Sau Ngày 8, bạn sẽ có thể:
-1. Mô tả một game arcade 2D thời gian thực (màn chơi, vật phẩm, điều khiển, âm thanh) bằng ngôn ngữ tự nhiên cho `agy`.
-2. Xác minh cả luật vật lý (`make test GAME=breakout`) lẫn chơi thử trên trình duyệt thật (`make test-e2e GAME=breakout`).
+Những món "ăn chơi" 2D mà `agy` sẽ lo trọn gói cho bạn:
+- **Mượt 60fps & Biết tự Pause:** Chuyển động trơn tru 60 khung hình/giây và tự động tạm dừng mỗi khi bạn lỡ chuyển sang tab khác.
+- **Vật lý Nảy Bóng & Va Chạm:** Bóng nảy khỏi gạch và thanh đỡ tự nhiên tùy góc chạm, đánh mép là bay xiên cực gắt.
+- **Chơi ngon cả Máy tính lẫn Mobile:** Điều khiển mượt từ bàn phím (`Mũi tên`/`WASD`/`Space`) đến kéo chuột hay vuốt cảm ứng.
 
 ---
 
-## Hướng dẫn từng bước
+## Học xong hôm nay bạn làm được gì?
+1. Biết cách mô tả một game arcade 2D thời gian thực (màn chơi, vật phẩm, điều khiển, âm thanh) cho `agy` hiểu ngay ý đồ.
+2. Kiểm tra mượt mà cả logic vật lý (`make test GAME=breakout`) lẫn trải nghiệm chơi thật trên trình duyệt (`make test-e2e GAME=breakout`).
 
-### 1. Tạo nhánh tính năng
+---
+
+## Từng bước thực hành
+
+### 1. Tạo một feature branch mới
 ```bash
 git checkout -b day-08-2d-breakout
 ```
 
-### 2. Dùng `/plan` với `agy` để xây dựng Game Arcade 2D
-Dán câu lệnh mẫu bên dưới, xem xét kế hoạch của `agy` rồi phê duyệt thực thi.
+### 2. Dùng `/plan` để `agy` dựng Game Arcade 2D
+Dán **prompt** mẫu bên dưới vào, duyệt kế hoạch của `agy` rồi chờ em nó triển khai.
 
-### 3. Xác minh Độc lập & Hub Hợp nhất
+### 3. Chạy verify cả game lẻ lẫn toàn Hub
 ```bash
 make verify GAME=breakout
 make verify
@@ -41,7 +40,7 @@ make verify
 
 ---
 
-## Câu lệnh mẫu cho `agy`
+## Prompt mẫu cho `agy`
 
 ```text
 /plan Build a new 2D arcade game "Breakout" in games/breakout/ following
@@ -58,41 +57,41 @@ AGENTS.md completely:
 
 ---
 
-## Điểm cốt lõi
-- Bạn chỉ cần mô tả *cảm giác chơi arcade* (combo, vật phẩm, cảm ứng/bàn phím), `agy` sẽ tự áp dụng các mẫu Canvas 2D chuẩn của repo.
-- `make verify GAME=<slug>` đảm bảo vật lý, giao diện, tài liệu và kiểm thử trình duyệt đều đạt.
+## Chốt lại cho nhớ
+- Bạn chỉ việc mô tả *cảm giác chơi* (combo, power-up, vuốt chạm/bàn phím), còn chuyện áp dụng các mẫu **Canvas 2D** chuẩn chỉnh của repo cứ để `agy` tự lo.
+- Một lệnh `make verify GAME=<slug>` sẽ đảm bảo từ vật lý, UI, **lint/typecheck**, docs đến **E2E test** đều qua ải gọn gàng.
 
 ---
 
-## Bài tập & Thử thách (Vibe Coding Chỉ Dùng Câu Lệnh)
+## Bài tập thực hành (Vibe Coding thuần bằng Prompt)
 
-Sử dụng các câu lệnh mẫu bên dưới với Google `agy`—không cần tự viết code thủ công:
+Cứ copy các prompt bên dưới giao cho Google `agy` xử lý—không cần gõ dòng code nào:
 
-1. **Hiểu Dự án Sâu hơn:** Nhờ `agy` giải thích cách các game 2D như `Battle City` hay `Breakout` giữ chuyển động mượt 60fps.
+1. **Hiểu sâu kỹ thuật:** Nhờ `agy` giải thích cách các game 2D như `Battle City 1985` hay `Breakout` giữ được 60fps và bắt phím/touch mà không làm cuộn trang web.
    ```text
    Explain in plain English how 2D Canvas games in this project keep movement
    smooth at 60fps and handle keyboard + touch controls without scrolling the
    page.
    ```
-2. **Cải tiến Tính năng:** Nhờ `agy` tinh chỉnh góc nảy mép thanh đỡ và tăng cao độ âm thanh combo.
+2. **Tinh chỉnh cảm giác chơi:** Nhờ `agy` gọt lại góc nảy ở mép thanh đỡ cho bén hơn và tăng cao độ âm thanh mỗi khi lên combo.
    ```text
    In Breakout, refine paddle edge-hit bounce angles so corner shots feel
    snappier, and raise the Web Audio chime pitch as the player's brick-break
    combo grows. Verify with make verify GAME=breakout.
    ```
-3. **Triển khai Tính năng Mới:** Nhờ `agy` thêm **Gạch Trùm (Boss Brick)** 3 máu nứt dần sau mỗi lần chạm.
+3. **Thêm thử thách mới:** Nhờ `agy` tạo thêm **Boss Brick** (gạch trùm) 3 máu, nứt dần sau mỗi cú va chạm.
    ```text
    /plan Add a "Boss Brick" (takes 3 hits, shows visual cracks after each hit,
    awards bonus points) to Breakout with automated unit tests. Verify with make
    verify GAME=breakout.
    ```
-4. **Cải thiện Kiểm thử / Tài liệu:** Nhờ `agy` thêm kiểm thử kéo cảm ứng trên di động và cập nhật hướng dẫn người chơi.
+4. **Test cảm ứng & cập nhật docs:** Nhờ `agy` viết thêm **Playwright E2E test** kiểm tra thao tác kéo trên màn hình điện thoại và ghi chú vào hướng dẫn chơi.
    ```text
    Add a Playwright browser test confirming Breakout's paddle responds to
    touch/pointer dragging on mobile viewports, and document mobile controls in
    Breakout's user guide.
    ```
-5. **Tạo Game Mới (Thử thách `/teamwork` Đa tác tử):** Nhờ `agy` (dùng mô hình `orchestrator` trên Google AI Pro) khởi chạy nhiều agent song song để **tạo 2 game 2D cùng lúc**: **Classic Snake** và **Neon Pong**.
+5. **Tạo game mới (Thử thách `/teamwork` Đa tác tử):** Nhờ `agy` (dùng model `orchestrator` trên Google AI Pro) gọi nhiều agent chạy song song để **đẻ 2 game 2D cùng một lúc**: **Classic Snake** và **Neon Pong**.
    ```text
    /teamwork Create two 2D Canvas arcade games at the same time in parallel:
    "Classic Snake" and "Neon Pong", each following AGENTS.md (with How to Play,

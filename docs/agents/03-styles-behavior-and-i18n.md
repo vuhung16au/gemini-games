@@ -14,6 +14,13 @@ Follow [STYLE_GUIDE.md](../../styles/STYLE_GUIDE.md):
 - **All `README.md` files** (the root `README.md`, `courses/README.md`, `courses/day-*/README.md`, and every `games/<game-name>/docs/README.md`) must support all 3 languages via `README.md` (English), `README.zh.md` (中文), and `README.vi.md` (Tiếng Việt), with a language switcher at the top of each file.
 - **Webapp Interface:** The Gemini Games Hub (`src/`) and game interfaces must support switching between English (`en`), Chinese (`zh`), and Vietnamese (`vi`) with `localStorage` persistence.
 
+### Vietnamese Writing Style (NHP Standard)
+All `.vi.md` documentation must follow the **NHP Style**—natural, casual, friendly, witty, and genuinely Vietnamese (zero word-by-word AI-slop):
+- **Voice & Tone:** Write like a Vietnamese developer chatting with a friend—warm, relatable, lightly humorous, and easy to read (*"nha"*, *"hen"*, *"ngon lành"*, *"mượt mà"*), while keeping public documentation clean and welcoming.
+- **English-Vietnamese Code-Switching:** Keep standard dev, testing, and gaming terms in English directly (`build`, `deploy`, `coverage`, `unit test`, `E2E`, `lint`, `typecheck`, `localStorage`, `hub`, `prompt`, `render`, `canvas`, `state`, `vibe coding`, `artifact`, `CDN`, `Mute`, `How to Play`, `Tutorial`, `Hints`). Never force stiff literal translations (e.g., avoid *"bộ kiểm thử đơn vị"*, *"trình vẽ"*, *"tệp mã nguồn"*, *"trung tâm trò chơi web thống nhất"*).
+- **Game Titles:** Keep iconic English game titles intact (`Dino Run`, `Cozy Town Tycoon`, `Battle City 1985`, `Flappy Bird`, `Super Mario Bros. 1985`, `Tetris`, `Solitaire`, `Sudoku`, `1024`, `SimCity 3D`); use natural Vietnamese names where culturally standard (`Cờ Đam (Checkers)`, `Dò Mìn (Minesweeper)`, `Tá Lả (Phỏm)`, `Tấn Đỡ (Bài Tấn)`, `Tiến Lên Miền Bắc`, `Tiến Lên Miền Nam`).
+- **Structural Invariants:** Always preserve the line-1 language switcher, all relative links, `<= 78`-character line wrapping inside ````text` prompt blocks in `courses/`, and 5 exercises per day in `courses/day-*/`.
+
 ## Courses (`courses/`) Curriculum Rules
 - All course index and daily lesson folders (`courses/README.md` and `courses/day-*/`) must support all 3 languages (`README.md`, `README.zh.md`, `README.vi.md`).
 - **Course Philosophy & Audience:** Our `courses/` curriculum is **hands-on focused**, **vibe coding (prompt-driven)**—never asking students to write code manually—and **tailored for non-IT, non-tech learners** who want to understand the **tech stack behind vibe coding** in plain, practical language.

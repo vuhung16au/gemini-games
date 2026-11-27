@@ -1,18 +1,18 @@
 [English](./README.md) | [中文](./README.zh.md) | **Tiếng Việt**
 
-# Bài Solitaire — Trò Chơi Bài Klondike Cổ Điển
+# Solitaire — Xếp Bài Klondike Huyền Thoại
 
-Trò chơi **Klondike Solitaire** gọn gàng, tương thích đa màn hình mô phỏng theo `solitaired.com`, xây dựng với **React 18 + TypeScript + Vite**, bộ **lá bài SVG** sắc nét, token `styles/` dùng chung, **Gợi ý Thông minh**, **Chế độ Hướng dẫn**, **Tự động Hoàn thành** và âm thanh Web Audio API.
+Phiên bản **Klondike Solitaire** gọn nhẹ, mượt mà lấy cảm hứng từ `solitaired.com`, code bằng **React 18 + TypeScript + Vite**. Giao diện dùng bộ lá bài SVG nét căng, share chung `styles/` token của hub, có sẵn **Hints** thông minh, **Tutorial** cho người mới, **Auto-Complete** gom bài tự động và **SFX** từ Web Audio API.
 
-## Tính năng
-- **Chế độ Lật 1 & Lật 3 Lá:** Chuyển đổi giữa Rút 1 lá và Rút 3 lá (xòe bài thải) với vòng lặp bộ bài đầy đủ.
-- **Điều khiển Mượt mà:** Nhấp để di chuyển, nhấp đúp (hoặc nhấp lần 2) để gửi nhanh lên ô Gốc, kéo-thả HTML5 và phím tắt (`D`, `H`, `Z`, `P`).
-- **Học chơi Có hướng dẫn:** Hộp thoại **Hướng dẫn chơi**, **Tutorial** tương tác 3 bước và **Gợi ý Thông minh**.
-- **Không tài nguyên ngoài:** Chất/mặt sau SVG nội tuyến, âm thanh Web Audio API và lưu `localStorage` an toàn (`solitaire_v1`).
+## Có gì hay?
+- **Rút 1 lá hoặc 3 lá:** Đổi qua lại thoải mái giữa chế độ Draw 1 và Draw 3 (xòe bài đẹp mắt) và xoay vòng bộ bài không giới hạn.
+- **Điều khiển sướng tay:** Click để đi bài, double-click (hoặc click lần 2) để phi thẳng lên ô Foundation, hỗ trợ kéo-thả HTML5 lẫn phím tắt (`D`, `H`, `Z`, `P`).
+- **Tập chơi siêu nhanh:** Có hộp thoại **How to Play**, **Tutorial** 3 bước cầm tay chỉ việc và **Hints** gợi ý nước đi thông minh.
+- **100% offline, không rác ngoài:** Lá bài SVG vẽ sẵn nội tuyến, **SFX** tự tổng hợp bằng Web Audio (có nút **Mute**) và lưu tiến độ an toàn vào `localStorage` (`solitaire_v1`).
 
-## Danh mục tài liệu
-- [QUICKSTART.md](./QUICKSTART.md) — Cài đặt, máy chủ dev, kiểm thử và lệnh build cục bộ
-- [architecture.md](./architecture.md) — Cấu trúc mô-đun, máy trạng thái Klondike, gợi ý và hướng dẫn
-- [techstack.md](./techstack.md) — Ngôn ngữ, framework, đồ họa SVG, kiểm thử và triển khai
-- [user-guide.md](./user-guide.md) — Luật chơi, điều khiển, tính điểm Lật 1/3 lá, hướng dẫn và cài đặt
-- [developer-guide.md](./developer-guide.md) — Mở rộng/tinh chỉnh luật, chạy Vitest & Playwright và build
+## Tài liệu chi tiết
+- [QUICKSTART.md](./QUICKSTART.md) — Cài đặt, bật dev server, chạy test và build local
+- [architecture.md](./architecture.md) — Kiến trúc module, state machine của Klondike, hệ thống Hints và Tutorial
+- [techstack.md](./techstack.md) — Ngôn ngữ, framework, đồ họa SVG, testing và deploy
+- [user-guide.md](./user-guide.md) — Luật chơi, điều khiển, cách tính điểm Draw 1/3, hướng dẫn và settings
+- [developer-guide.md](./developer-guide.md) — Cách mở rộng/tinh chỉnh luật, chạy Vitest & Playwright và build

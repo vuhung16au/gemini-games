@@ -1,45 +1,45 @@
 [English](./README.md) | [中文](./README.zh.md) | **Tiếng Việt**
 
-# Phát Triển Game với Vibe Coding & AI Agents (Khóa Học 9 Ngày)
+# Làm Game Với Vibe Coding & AI Agents (Khóa Học 9 Ngày)
 
-Chào mừng đến với **Khóa học Phát triển Game 9 Ngày cùng Gemini Games**! Bắt đầu từ một **dự án hoàn chỉnh đang chạy tốt với 16 trò chơi web 2D & 3D**, bạn sẽ học **vibe coding** qua thực hành trực tiếp—chơi thử, hiểu cấu trúc, làm chủ công cụ và tech stack, cải tiến các game có sẵn và tự tay tạo game mới cùng **Google `agy` (Antigravity)**.
+Chào mừng bạn tới với **Khóa học làm game 9 ngày cùng Gemini Games**! Thay vì phải ngồi nhìn màn hình trắng rồi gõ code từ con số 0, bạn sẽ bắt đầu từ một **web game hub đang chạy ngon lành với 16 tựa game 2D & 3D**. Từ đó, bạn sẽ học **vibe coding** theo kiểu thực chiến: chơi thử, hiểu cấu trúc, làm chủ bộ đồ nghề và tech stack, độ lại game có sẵn, rồi tự tay "sai" **Google `agy` (Antigravity)** làm game mới toanh.
 
-- **Bản Demo Trực tuyến:** Chơi ngay cả 16 game tại **https://gemini-games.vuhung16plus.workers.dev/**
-- **Coding Agent (Khuyến nghị `agy` · Miễn phí + Google AI Pro):** Khóa học này và toàn bộ 16 trò chơi được tạo bằng **Google `agy` (Antigravity)**. **`agy` miễn phí** để bắt đầu, nhưng **khuyến nghị dùng Google AI Pro** để truy cập mô hình **`orchestrator`** trong `agy` cho các tác vụ tự động đầu-cuối (`/goal`) và đa tác tử (`/teamwork`). Các câu lệnh cũng hoạt động tốt với **Codex / ChatGPT, Claude Code, GitHub Copilot và Cursor**.
-- **Chạy 100% Ngoại tuyến hoặc Đưa lên Cloud:** Chạy **100% offline** trên máy của bạn, hoặc triển khai tĩnh lên **Cloudflare Workers** (mặc định) hay **Vercel**.
-- **Thời lượng:** 9 Ngày · 1 Mô-đun mỗi ngày · ~1 Giờ mỗi mô-đun
-- **Yêu cầu đầu vào:** Biết sử dụng máy tính cơ bản, Node.js 20+, Git và terminal (không cần kinh nghiệm lập trình, 3D hay game engine)
+- **Chơi thử bản Live Demo:** Vào quẩy thử cả 16 game ngay tại **[https://gemini-games.vuhung16plus.workers.dev/](https://gemini-games.vuhung16plus.workers.dev/)**
+- **Coding Agent (Khuyến nghị `agy` · Miễn phí + Google AI Pro):** Toàn bộ khóa học và 16 game này đều được làm bằng **Google `agy` (Antigravity)**. **`agy` miễn phí** để bạn bắt đầu, nhưng nếu có **Google AI Pro** thì càng xịn vì mở khóa được model **`orchestrator`** trong `agy`—chuyên trị mấy pha chạy tự động từ A-Z (`/goal`) hay gọi cả đội agent (`/teamwork`). Mấy prompt trong bài cũng chạy mượt trên **Codex / ChatGPT, Claude Code, GitHub Copilot và Cursor** nha.
+- **Chạy 100% Offline hoặc Đẩy Lên Cloud:** Thích thì chạy **100% offline** trên máy, lúc nào muốn khoe bạn bè thì deploy tĩnh lên **Cloudflare Workers** (mặc định) hoặc **Vercel**.
+- **Thời lượng:** 9 Ngày · Mỗi ngày 1 bài · ~1 tiếng mỗi ngày
+- **Đầu vào:** Biết xài máy tính cơ bản, có sẵn Node.js 20+, Git và terminal (không cần biết code, 3D hay game engine gì hết nha)
 
 ---
 
-## Khóa Học Này Dành Cho Ai (Và Không Dạy Gì)
+## Khóa Học Này Dành Cho Ai (Và Không Dạy Gì?)
 
-- **Dành cho:** **Người học không chuyên CNTT (non-IT, non-tech)**, người sáng tạo nội dung, giáo viên và người mới tò mò muốn tự tạo, tùy biến và xuất bản game web thật bằng **vibe coding**, đồng thời hiểu bức tranh tech stack phía sau.
+- **Dành cho:** **Người không chuyên IT (non-IT, non-tech)**, creator, giáo viên hay bất kỳ ai tò mò muốn tự tay tạo, độ lại và xuất bản game web thật bằng **vibe coding**, đồng thời hiểu rõ tech stack đằng sau chạy thế nào.
 - **Khóa học KHÔNG phải là:**
-  - **Không** phải lớp dạy lập trình truyền thống—chúng tôi **không** dạy cú pháp cơ bản như HTML, CSS, TypeScript hay React từ đầu.
-  - **Không** phải giáo trình dạy công cụ khô khan—chúng tôi **không** dạy riêng lẻ `git`, `gh`, `make` hay `agy`. Thay vào đó, **bạn sẽ học công cụ và tech stack một cách tự nhiên ngay trong quá trình làm game!**
+  - **Không** phải lớp dạy code truyền thống—mình **không** bắt bạn ngồi học thuộc cú pháp HTML, CSS, TypeScript hay React từ đầu.
+  - **Không** phải giáo trình dạy tool khô khan—mình **không** dạy riêng lẻ từng lệnh `git`, `gh`, `make` hay `agy`. Thay vào đó, **bạn sẽ quen tay với tool và tech stack một cách tự nhiên ngay trong lúc làm game!**
 
 ---
 
-## Triết Lý Giảng Dạy: Vibe Coding vs. Lập Trình Truyền Thống
+## Triết Lý Học: Vibe Coding vs. Code Truyền Thống
 
-- **Bắt đầu từ Dự án Đang Chạy:** Thay vì nhìn vào màn hình trắng, bạn bắt đầu với một Hub 16 game hoàn chỉnh—chơi thử, hiểu cách vận hành, làm chủ công cụ & tech stack, nâng cấp game cũ và tạo game mới.
-- **Ý tưởng & Mục tiêu > Tự viết Code:** Lập trình truyền thống tập trung vào việc gõ từng dòng cú pháp. Trong **vibe coding**, **ý tưởng, trải nghiệm người chơi và mục tiêu rõ ràng của bạn** mới là quan trọng nhất—**mã nguồn chỉ là sản phẩm phụ (artifact) được tạo ra từ câu lệnh (prompt)**, và các bài kiểm tra tự động (`make verify`) giúp bạn đảm bảo sản phẩm chạy chuẩn xác.
-
----
-
-## Cách Triển Khai Khóa Học (Vòng Lặp Vibe Coding 4 Bước)
-
-1. **Chơi & Khám phá:** Mở một trò chơi trong Hub (trên máy hoặc trên bản demo trực tuyến) và trải nghiệm như người chơi.
-2. **Hỏi `agy` bằng Ngôn ngữ Tự nhiên:** Đặt câu hỏi tổng quan (*"Tóm tắt dự án"*, *"Giải thích các tính năng trong Dino Run"*, *"Giới thiệu tech stack của dự án"*).
-3. **Ra lệnh cho `agy` Cải tiến hoặc Tạo mới:** Mô tả điều bạn muốn bằng lời nói đời thường—bắt đầu với **`/plan`** (từ khóa kinh điển hoạt động trên cả **GitHub Copilot, Claude, ChatGPT và Cursor**) để duyệt kế hoạch trước, hoặc dùng **`/goal`** (100% tự động không cần canh) và **`/teamwork`** (nhiều agent song song) trong `agy`.
-4. **Xác minh Tự động:** Chạy một lệnh `make` (`make test`, `make verify`) để kiểm thử tự động xác nhận mọi thứ hoạt động tốt.
+- **Bắt đầu từ dự án đang chạy ngon:** Khỏi phải sợ trang giấy trắng, bạn nhảy thẳng vào một Hub 16 game hoàn chỉnh—chơi thử, ngó cách nó vận hành, nắm tool & tech stack, nâng cấp game cũ rồi đẻ game mới.
+- **Ý tưởng & Trải nghiệm > Gõ code:** Code truyền thống đòi hỏi ngồi gõ từng dấu chấm phẩy. Trong **vibe coding**, **ý tưởng, cảm giác chơi và mục tiêu rõ ràng của bạn** mới là nhân vật chính—còn **source code chỉ là một artifact sinh ra từ prompt**, kèm dàn test tự động (`make verify`) đứng sau gác cổng cho chắc kèo.
 
 ---
 
-## Trước Khi Bắt Đầu: Fork & Clone Kho Mã Nguồn Riêng Của Bạn
+## Cách Học Mỗi Ngày (Vòng Lặp Vibe Coding 4 Bước)
 
-Để lưu và `git push` các game bạn tự tùy chỉnh lên GitHub, hãy nhấn **Fork** tại `https://github.com/vuhung16au/gemini-games` về tài khoản GitHub của bạn trước, sau đó clone **bản fork của chính bạn**:
+1. **Chơi & Soi:** Mở một game trong Hub (trên máy hoặc trên bản Live Demo) và chơi thử như một game thủ thực thụ.
+2. **Hỏi `agy` bằng tiếng người:** Hỏi mấy câu tổng quan (*"Tóm tắt dự án"*, *"Giải thích các tính năng trong Dino Run"*, *"Giới thiệu tech stack của dự án"*).
+3. **Ra lệnh cho `agy` độ lại hoặc làm mới:** Mô tả thứ bạn muốn bằng lời nói bình thường—bắt đầu với **`/plan`** (từ khóa quốc dân chạy ngon trên cả **GitHub Copilot, Claude, ChatGPT lẫn Cursor**) để duyệt kế hoạch trước, hoặc bung lụa với **`/goal`** (chạy tự động 100% khỏi cần canh) và **`/teamwork`** (cho nhiều agent làm song song) trong `agy`.
+4. **Chốt hạ bằng test tự động:** Gõ một lệnh `make` (`make test`, `make verify`) để máy tự kiểm tra xem mọi thứ còn chạy mượt không.
+
+---
+
+## Trước Khi Bắt Đầu: Fork & Clone Repo Riêng Của Bạn
+
+Để thoải mái lưu và `git push` mấy game bạn tự độ lên GitHub, hãy bấm **Fork** tại `https://github.com/vuhung16au/gemini-games` về tài khoản GitHub của bạn trước, rồi clone **bản fork của chính bạn** về máy:
 
 ```bash
 git clone https://github.com/<your-username>/gemini-games.git
@@ -48,58 +48,57 @@ npm install
 make dev
 ```
 
-> **Mẹo:** Nếu bạn đã clone trực tiếp repo gốc, bạn vẫn chơi và chỉnh sửa **100% ngoại tuyến** bình thường—khi muốn đẩy lên GitHub riêng, chỉ cần nói với `agy`: *"Tạo kho GitHub riêng cho dự án này và push các thay đổi của tôi lên đó."*
+> **Mẹo nhỏ:** Lỡ clone nhầm repo gốc rồi thì cũng không sao, bạn vẫn chơi và sửa **100% offline** bình thường—lúc nào muốn đẩy lên GitHub riêng thì nhắn `agy`: *"Tạo repo GitHub riêng cho dự án này và push các thay đổi của tôi lên đó."*
 >
-> **Vì sao Rất Khuyến nghị Dùng `git`:** Dùng `git` để lưu lịch sử giúp bạn luôn có thể quay lại một điểm mốc (checkpoint) an toàn khi cần—đồng thời giúp các AI agent (như `agy`) theo dõi, đối chiếu và quản lý thay đổi trong dự án chính xác hơn.
+> **Sao lại khuyên dùng `git`?** Có `git` lưu lịch sử giúp bạn luôn có một điểm checkpoint an toàn để quay xe nếu lỡ tay, đồng thời giúp các AI agent (như `agy`) soi thay đổi và quản lý dự án chuẩn hơn nhiều.
 
 ---
 
-## Lộ Trình Học 9 Ngày
+## Lộ Trình 9 Ngày
 
 ```mermaid
 flowchart LR
-  D1["Ngày 1: Nhập môn & Cài đặt"] --> D2["Ngày 2: Khái niệm & Kiểm thử"]
+  D1["Ngày 1: Nhập môn & Cài đặt"] --> D2["Ngày 2: Khái niệm & Test"]
   D2 --> D3["Ngày 3: Kiến trúc dự án"]
-  D3 --> D4["Ngày 4: Công cụ & Google agy"]
+  D3 --> D4["Ngày 4: Tool & Google agy"]
   D4 --> D5["Ngày 5: Tech Stack chuyên sâu"]
-  D5 --> D6["Ngày 6: Tùy biến Dino Run"]
-  D6 --> D7["Ngày 7: Làm game Bàn cờ"]
+  D5 --> D6["Ngày 6: Độ lại Dino Run"]
+  D6 --> D7["Ngày 7: Làm game Cờ/Bàn"]
   D7 --> D8["Ngày 8: Làm game 2D"]
   D8 --> D9["Ngày 9: Làm game 3D & Deploy"]
 ```
 
 ---
 
-## Giáo Trình Theo Ngày
+## Giáo Trình Chi Tiết Từng Ngày
 
-| Ngày | Mô-đun | Trọng tâm | Hướng dẫn |
+| Ngày | Chủ đề | Trọng tâm | Tài liệu |
 | :--- | :--- | :--- | :--- |
-| **Ngày 1** | Nhập môn Phát triển Game | Vibe coding vs truyền thống, demo trực tuyến, `git clone`, chạy offline | [Hướng dẫn Ngày 1](./day-01-intro-to-game-dev/README.vi.md) |
-| **Ngày 2** | Khái niệm Phát triển Game | Luật chơi vs hiển thị, kiểm thử đơn vị & trình duyệt tự động | [Hướng dẫn Ngày 2](./day-02-game-dev-concepts/README.vi.md) |
-| **Ngày 3** | Kiến trúc Dự án | Cách Hub & 16 game độc lập kết nối với nhau | [Hướng dẫn Ngày 3](./day-03-project-architecture/README.vi.md) |
-| **Ngày 4** | Công cụ & AI Agents | Học `make`, `git`, `agy` & Cloudflare / Vercel ngay khi thực hành | [Hướng dẫn Ngày 4](./day-04-dev-tools-and-ai-agents/README.vi.md) |
-| **Ngày 5** | Tech Stack Chuyên sâu | Khi nào dùng CSS/SVG, Canvas 2D hay Three.js + TS/Vite/React | [Hướng dẫn Ngày 5](./day-05-tech-stack-deep-dive/README.vi.md) |
-| **Ngày 6** | Chỉnh sửa Game Đầu tiên | Tùy biến màu sắc, tốc độ & chướng ngại vật `Dino Run` bằng prompt | [Hướng dẫn Ngày 6](./day-06-modifying-dino-run/README.vi.md) |
-| **Ngày 7** | Xây dựng Game Bàn cờ | Làm Tic Tac Toe từ đầu + chuẩn `AGENTS.md` | [Hướng dẫn Ngày 7](./day-07-building-a-board-game/README.vi.md) |
-| **Ngày 8** | Xây dựng Game 2D | Làm game arcade 2D Canvas từ đầu | [Hướng dẫn Ngày 8](./day-08-building-a-2d-game/README.vi.md) |
-| **Ngày 9** | Xây dựng Game 3D & Deploy | Làm game 3D Three.js & deploy lên Cloudflare / Vercel | [Hướng dẫn Ngày 9](./day-09-building-a-3d-game/README.vi.md) |
+| **Ngày 1** | Nhập môn Làm Game | Vibe coding vs truyền thống, demo online, `git clone`, chạy offline | [Hướng dẫn Ngày 1](./day-01-intro-to-game-dev/README.vi.md) |
+| **Ngày 2** | Khái niệm Làm Game | Luật chơi vs hiển thị, unit test & E2E test trên trình duyệt | [Hướng dẫn Ngày 2](./day-02-game-dev-concepts/README.vi.md) |
+| **Ngày 3** | Kiến trúc Dự án | Cách Hub & 16 game độc lập bắt tay nhau dưới một mái nhà | [Hướng dẫn Ngày 3](./day-03-project-architecture/README.vi.md) |
+| **Ngày 4** | Tool & AI Agents | Quen tay `make`, `git`, `agy` & Cloudflare / Vercel qua thực hành | [Hướng dẫn Ngày 4](./day-04-dev-tools-and-ai-agents/README.vi.md) |
+| **Ngày 5** | Tech Stack Chuyên sâu | Khi nào xài CSS/SVG, Canvas 2D hay Three.js + TS/Vite/React | [Hướng dẫn Ngày 5](./day-05-tech-stack-deep-dive/README.vi.md) |
+| **Ngày 6** | Độ Game Đầu Tiên | Chỉnh màu, tốc độ & chướng ngại vật `Dino Run` bằng prompt | [Hướng dẫn Ngày 6](./day-06-modifying-dino-run/README.vi.md) |
+| **Ngày 7** | Làm Game Bàn Cờ | Tự tạo Tic Tac Toe từ đầu + chuẩn `AGENTS.md` | [Hướng dẫn Ngày 7](./day-07-building-a-board-game/README.vi.md) |
+| **Ngày 8** | Làm Game 2D | Làm game arcade 2D Canvas từ con số 0 | [Hướng dẫn Ngày 8](./day-08-building-a-2d-game/README.vi.md) |
+| **Ngày 9** | Làm Game 3D & Deploy | Làm game 3D Three.js & deploy lên Cloudflare / Vercel | [Hướng dẫn Ngày 9](./day-09-building-a-3d-game/README.vi.md) |
 
 ---
 
-## Tài Liệu Tham Khảo Trong Kho Mã Nguồn
-- [Tổng quan Kho mã nguồn](../README.vi.md) & [Bắt đầu nhanh](../QUICKSTART.md)
-- [AGENTS.md](../AGENTS.md) — Tiêu chuẩn game bắt buộc (tài liệu, icon/cover, kiểm thử, đa ngôn ngữ, đăng ký hub)
-- [Kiến trúc](../docs/architecture.md) · [Tech Stack](../docs/techstack.md) · [Hướng dẫn Lập trình viên](../docs/developer-guide.md)
-- [Hướng dẫn Giao diện Dùng chung](../styles/STYLE_GUIDE.md)
-
+## Tài Liệu Tham Khảo Trong Repo
+- [Tổng quan Repo](../README.vi.md) & [Chạy lẹ trên máy](../QUICKSTART.md)
+- [AGENTS.md](../AGENTS.md) — Bộ luật bắt buộc cho mọi game (docs, icon/cover, test, đa ngôn ngữ, đăng ký hub)
+- [Kiến trúc](../docs/architecture.md) · [Tech Stack](../docs/techstack.md) · [Hướng dẫn Dev](../docs/developer-guide.md)
+- [Style Guide Dùng Chung](../styles/STYLE_GUIDE.md)
 
 ---
 
-## Lời Kết: Vượt Ra Ngoài Phạm Vi Làm Game
+## Lời Kết: Đi Xa Hơn Chuyện Làm Game
 
-Cảm ơn bạn đã đồng hành học tập cùng tôi, và hy vọng bạn đã có những giờ phút thú vị với khóa học 9 ngày này! Khi hoàn thành các mô-đun trên, bạn đã nắm được nền tảng thực hành về **AI coding agent**, **cách viết prompt hiệu quả** (`/plan`, `/goal`, `/teamwork`), và **tự tay phát triển trò chơi**.
+Cảm ơn bạn đã đồng hành tới đây, hy vọng 9 ngày vừa rồi mang lại cho bạn nhiều giờ phút vừa học vừa chơi thật vui! Xong xuôi khóa này là bạn đã có nền tảng thực chiến ngon lành về **AI coding agent**, **cách viết prompt cho ra việc** (`/plan`, `/goal`, `/teamwork`), và **tự tay làm ra game chạy thật**.
 
-Hãy luôn nhớ:
-- **Game & Tech Stack Này Chỉ Là Một Ví Dụ:** `"Game"`, `"webapp"`, `"TypeScript"`, `"React"`, hay `"Three.js"` ở đây chỉ là một ví dụ về bài toán và bộ công nghệ. Khi đã làm chủ cách viết prompt rõ ràng và phối hợp với AI, bạn có thể tự tin khám phá **bất kỳ tech stack và bài toán nào khác** (tự động hóa, dashboard dữ liệu, ứng dụng di động, API, công cụ sáng tạo, v.v.).
-- **Quy Trình Nghiêm Ngặt Giúp Bạn An Toàn:** Quy trình SDLC, các điểm lưu `git`, kiểm thử tự động và `make verify` trong dự án này thoạt nhìn có thể hơi nặng nề—nhưng chúng là **hàng rào bảo vệ giúp bạn không tự bắn vào chân mình** khi AI tạo mã nguồn với tốc độ cao.
-- **Tùy Biến Nhẹ Nhàng Khi Đã Tự Tin:** Khi đã vững tay và hiểu rõ rủi ro, **bạn hoàn toàn có thể tinh giản quy trình này cho nhẹ nhàng hơn** để phù hợp với tốc độ và phong cách của riêng mình.
+Nhớ vài điều nhỏ này hen:
+- **Game & Tech Stack Này Chỉ Là Ví Dụ:** `"Game"`, `"webapp"`, `"TypeScript"`, `"React"`, hay `"Three.js"` ở đây chỉ là một bài toán mẫu để bạn thực hành. Một khi đã nắm cách đặt đề bài rõ ràng và phối hợp nhịp nhàng với AI, bạn hoàn toàn có thể tự tin nhảy sang **bất kỳ tech stack hay bài toán nào khác** (automation, dashboard dữ liệu, app mobile, API, tool sáng tạo, v.v.).
+- **Quy Trình Chặt Chẽ Là Để Bảo Vệ Bạn:** Mấy bước SDLC, checkpoint `git`, test tự động và `make verify` trong repo này mới nhìn có vẻ hơi kỹ tính—nhưng tụi nó chính là **hàng rào an toàn giúp bạn khỏi tự bắn vào chân mình** khi AI đẻ code với tốc độ ánh sáng.
+- **Cứng Tay Rồi Thì Cứ Tinh Giản:** Khi đã quen việc và hiểu rõ rủi ro, **bạn cứ thoải mái lược bớt quy trình cho nhẹ nhàng** sao cho hợp với gu và tốc độ của mình nhất.

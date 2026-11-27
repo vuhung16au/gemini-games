@@ -1,90 +1,90 @@
 [English](./QUICKSTART.md) | [中文](./QUICKSTART.zh.md) | **Tiếng Việt**
 
-# Gemini Games — Hướng dẫn nhanh
+# Gemini Games — Chạy nhanh trong 1 nốt nhạc
 
-Bạn có thể chơi thử trực tuyến cả **16 trò chơi** tại **[https://gemini-games.vuhung16plus.workers.dev/](https://gemini-games.vuhung16plus.workers.dev/)**, hoặc clone về máy để chạy **100% ngoại tuyến**.
+Muốn chơi thử ngay cả **16 game** thì ghé thẳng bản live tại **[https://gemini-games.vuhung16plus.workers.dev/](https://gemini-games.vuhung16plus.workers.dev/)**, còn thích vọc vạch thì clone repo về máy chạy **100% offline** luôn cho máu!
 
-## Yêu cầu hệ thống
+## Chuẩn bị đồ nghề
 - **Node.js** 20+ và **npm**
-- **Git** (để clone kho mã nguồn)
-- **Wrangler CLI** (đã cài sẵn trong devDependencies; chỉ cần chạy `npx wrangler login` khi muốn triển khai lên Cloudflare)
+- **Git** (để clone repo về máy)
+- **Wrangler CLI** (đã cài sẵn trong devDependencies; chừng nào muốn deploy lên Cloudflare thì chạy `npx wrangler login` phát là xong)
 
 ---
 
-## 1. Clone, Cài đặt & Chạy tại máy (100% Ngoại tuyến)
+## 1. Clone, Cài đặt & Chạy local (100% Offline)
 
 ```bash
 git clone https://github.com/vuhung16au/gemini-games.git
 cd gemini-games
 npm install
 
-# Khởi chạy máy chủ phát triển cho Hub thống nhất (Bảng điều khiển + cả 16 game)
+# Bật dev server cho Hub chính (Dashboard + cả 16 game)
 make dev
 # Hoặc: npm run dev
 ```
 
-Để chạy riêng lẻ một trò chơi:
+Muốn mở riêng lẻ đúng 1 game cho nhẹ nhàng:
 
 ```bash
 make dev GAME=<game-slug>
 # Hoặc: cd games/<game-slug> && npm install && npm run dev
 ```
 
-Xem danh sách đầy đủ 16 game bằng lệnh `make list-games`.
+Gõ `make list-games` để xem danh sách đầy đủ cả 16 game nha.
 
 ---
 
-## 2. Kiểm thử, Kiểm tra mã & Xác minh
+## 2. Test, Lint & Verify cho chắc kèo
 
 ```bash
-# Chạy unit test cho Hub gốc (Vitest + độ phủ >=70%)
+# Chạy unit test cho Hub chính (Vitest + coverage >=70%)
 make test
 
-# Chạy unit test cho cả Hub gốc + toàn bộ 16 trò chơi
+# Chạy unit test cho cả Hub chính + toàn bộ 16 game
 make test-all
 
-# Chạy kiểm thử trình duyệt E2E cho Hub gốc (Playwright)
+# Chạy E2E test trên trình duyệt cho Hub chính (Playwright)
 make test-e2e
 
-# Chạy ESLint và kiểm tra TypeScript nghiêm ngặt
+# Check ESLint và TypeScript strict mode
 make lint
 make typecheck
 
-# Chạy toàn bộ cổng xác minh của dự án (lint, typecheck, test, build, test-e2e, check-docs)
+# Chạy full combo verify của repo (lint, typecheck, test, build, test-e2e, check-docs)
 make verify
 ```
 
-Mọi lệnh `make` đều hỗ trợ `GAME=<game-slug>` (ví dụ: `make verify GAME=minesweeper`).
+Mọi lệnh `make` đều nhận `GAME=<game-slug>` luôn nhé (ví dụ: `make verify GAME=minesweeper`).
 
 ---
 
-## 3. Build & Xem trước bản Production
+## 3. Build & Preview bản Production
 
 ```bash
-# Kiểm tra kiểu và đóng gói Hub gốc + cả 16 game vào thư mục tĩnh dist/
+# Typecheck rồi build Hub chính + cả 16 game ra thư mục tĩnh dist/
 make build
 
-# Xem trước bản build tĩnh dist/ tại máy (100% ngoại tuyến)
+# Xem thử bản build tĩnh dist/ ngay tại máy (100% offline)
 make preview
 ```
 
 ---
 
-## 4. Triển khai (Cloudflare Workers hoặc Vercel)
+## 4. Deploy lên mây (Cloudflare Workers hoặc Vercel)
 
 ### Cách A: Cloudflare Workers Static Assets (Mặc định)
-Được cấu hình trong [wrangler.jsonc](./wrangler.jsonc):
+Cấu hình sẵn trong [wrangler.jsonc](./wrangler.jsonc) rồi:
 
 ```bash
-# Kiểm tra đóng gói thử nghiệm mà chưa phát hành
+# Chạy thử dry-run để check gói build trước khi lên sóng
 make deploy-dry-run
 
-# Build dist/ và triển khai lên Cloudflare Workers
+# Build dist/ và deploy thẳng lên Cloudflare Workers
 make deploy
 ```
 
-### Cách B: Vercel (Thay thế)
-Vì `dist/` là gói tĩnh hoàn toàn, bạn cũng có thể triển khai lên Vercel:
+### Cách B: Vercel (Phương án dự phòng)
+Vì `dist/` là static bundle hoàn toàn nên đẩy lên Vercel cũng mượt luôn:
 
 ```bash
 make build
@@ -93,5 +93,5 @@ npx vercel --prod dist
 
 ---
 
-## 5. Học Vibe Coding cùng dự án này
-Mới làm quen với dự án? Hãy bắt đầu khóa học thực hành 9 ngày tại [courses/README.vi.md](./courses/README.vi.md).
+## 5. Học Vibe Coding cùng repo này
+Mới nhập môn vibe coding? Nhảy ngay vào khóa học thực hành 9 ngày tại [courses/README.vi.md](./courses/README.vi.md) nha!
