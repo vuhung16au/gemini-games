@@ -54,7 +54,7 @@ describe('AI, Hints, and 3-step Tutorial', () => {
   });
 
   it('progresses through the 3-step tutorial (Draw/Eat -> Discard -> Form Phỏm)', () => {
-    let state = createTutorialGame();
+    const state = createTutorialGame();
     expect(state.tutorialStep).toBe(1);
 
     // Step 1: Draw from Nọc (or Eat)

@@ -64,7 +64,7 @@ describe('Dino Run Engine', () => {
   });
 
   it('tracks tutorial steps, hints, and safe localStorage persistence', () => {
-    let tut = createDinoState({ isTutorial: true });
+    const tut = createDinoState({ isTutorial: true });
     expect(getTutorialProgress(tut).stepIndex).toBe(0);
     expect(getDinoHint(tut).title.length).toBeGreaterThan(0);
 

@@ -135,7 +135,7 @@ describe('Tiến Lên Miền Bắc Engine, Hints, AI, Tutorial & Storage', () =>
   });
 
   it('runs the 3-step Tutorial deterministically', () => {
-    let tut = createTutorialState();
+    const tut = createTutorialState();
     expect(tut.tutorialStep).toBe(0);
 
     const step1 = applyTutorialStepPlay(tut, ['spades-3']);

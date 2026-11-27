@@ -67,10 +67,10 @@ export function createGameState(
     p.hand.some((c) => c.id === 'spades-3'),
   );
 
-  let startingIndex = 0;
+  let startingIndex: number;
   let mustIncludeCardId: string | null = null;
   let isFirstTurnOfMatch = false;
-  let eventBanner: GameState['eventBanner'] = null;
+  let eventBanner: GameState['eventBanner'];
 
   if (threeSpadesIdx !== -1) {
     startingIndex = threeSpadesIdx;

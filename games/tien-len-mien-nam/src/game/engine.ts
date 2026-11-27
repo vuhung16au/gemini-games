@@ -212,7 +212,7 @@ export function createNewGame(options: CreateGameOptions = {}): GameState {
   }
 
   // Determine starting player and whether lowest card (3♠) is required
-  let startingPlayer = 0;
+  let startingPlayer: number;
   let mustIncludeCardId: string | null = null;
   let initialBanner: string;
 

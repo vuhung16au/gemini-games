@@ -71,7 +71,7 @@ describe('Sudoku generator & engine', () => {
   });
 
   it('places correct digit, clears peer notes, and wins on final cell', () => {
-    let state = makeNearSolvedState();
+    const state = makeNearSolvedState();
     // Add note "5" to a peer in same row and same box
     state.board[0][1].notes = [5];
     state.board[1][1].notes = [5];

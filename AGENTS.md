@@ -91,9 +91,10 @@ Every game project (`games/<game-name>/`) **must** include both automated test s
 - **E2E Tests (Playwright):** Cover real browser gameplay and UI flows—clean page load with zero console/page errors, primary input controls (keyboard/pointer), HUD/score updates, state transitions (start/play/end/restart), mute toggle, and persistence across reloads (`npm run test:e2e` / `npx playwright test`).
 
 Before considering any game implementation or update complete, run and pass:
-1. `npm test` (Vitest unit tests)
-2. `npm run test:e2e` (Playwright E2E tests)
-3. `npx tsc --noEmit` (strict TypeScript compilation)
-4. `npm run build` (clean Vite production build)
-5. Verify `games/<game-name>/docs/` contains all 6 required files (`README.md`, `QUICKSTART.md`, `architecture.md`, `techstack.md`, `user-guide.md`, `developer-guide.md`) plus multilingual READMEs (`README.zh.md`, `README.vi.md`).
-6. Verify `games/<game-name>/public/` contains `manifest.webmanifest`, `icons/*` (`favicon.ico`, `icon-32.png`, `apple-touch-icon.png`, `icon-192.png`, `icon-512.png`), and `graphics/*` (`cover-hd.png`, `cover-fullhd.png`), all wired into `index.html`.
+1. `npm run lint` (ESLint code quality & React Hooks check)
+2. `npm test` (Vitest unit tests)
+3. `npm run test:e2e` (Playwright E2E tests)
+4. `npx tsc --noEmit` (strict TypeScript compilation)
+5. `npm run build` (clean Vite production build)
+6. Verify `games/<game-name>/docs/` contains all 6 required files (`README.md`, `QUICKSTART.md`, `architecture.md`, `techstack.md`, `user-guide.md`, `developer-guide.md`) plus multilingual READMEs (`README.zh.md`, `README.vi.md`).
+7. Verify `games/<game-name>/public/` contains `manifest.webmanifest`, `icons/*` (`favicon.ico`, `icon-32.png`, `apple-touch-icon.png`, `icon-192.png`, `icon-512.png`), and `graphics/*` (`cover-hd.png`, `cover-fullhd.png`), all wired into `index.html`.

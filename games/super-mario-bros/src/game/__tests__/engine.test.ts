@@ -76,7 +76,7 @@ describe('Super Mario Bros (1985) Engine', () => {
   });
 
   it('tracks tutorial steps, hints, and safe localStorage persistence', () => {
-    let tut = createTutorialMarioState();
+    const tut = createTutorialMarioState();
     expect(getTutorialProgress(tut).stepIndex).toBe(0);
     expect(getMarioHint(tut).title.length).toBeGreaterThan(0);
 

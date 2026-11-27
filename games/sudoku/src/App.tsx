@@ -16,7 +16,7 @@ import {
   toggleNotesMode,
   togglePause,
   undoMove,
-  useHint,
+  useHint as applyHint,
 } from './game/engine';
 import { loadSaveData, saveSaveData } from './game/storage';
 import {
@@ -115,7 +115,7 @@ export const App: React.FC = () => {
   const handleHint = useCallback(() => {
     soundRef.current.unlock();
     setGameState((prev) => {
-      const res = useHint(prev);
+      const res = applyHint(prev);
       if (!res.changed) return prev;
       if (res.wonNow) {
         handleWon(res.state.difficulty, res.state.elapsedSeconds);

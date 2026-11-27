@@ -135,7 +135,7 @@ describe('Battle City (1985) Engine', () => {
   });
 
   it('tracks tutorial progression, hints, and safe localStorage persistence', () => {
-    let tut = createTutorialBattleState();
+    const tut = createTutorialBattleState();
     expect(getTutorialProgress(tut).stepIndex).toBe(0);
     expect(getBattleHint(tut).title.length).toBeGreaterThan(0);
 

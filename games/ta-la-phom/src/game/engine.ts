@@ -540,7 +540,7 @@ function finishByPoints(state: TaLaState): TaLaState {
     sorted.slice(1).reduce((s, e) => s + e.deadwoodPoints, 0) / Math.max(1, sorted.length - 1);
 
   const results: PlayerResult[] = sorted.map((item, idx) => {
-    let delta = 0;
+    let delta: number;
     if (idx === 0) {
       delta = Math.max(100, Math.round(100 + Math.max(0, avgOppDeadwood - item.deadwoodPoints) * 2));
     } else if (item.isMom) {
