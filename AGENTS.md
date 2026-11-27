@@ -1,106 +1,23 @@
-# AGENTS.md — Gemini Games Repository Guidelines
+# AGENTS.md — Gemini Games Repository Master Policy
 
-This file defines the mandatory structure, documentation, tech stack, and style/behavior conventions for all game projects in `games/*`.
+This file is the **master policy index** for all AI coding agents (`agy`, Codex, Claude Code, Cursor, GitHub Copilot) working in this repository.
 
----
-
-## 1. Mandatory `docs/` Folder per Game
-
-Every game project/folder (`games/<game-name>/`) **must** include a `docs/` folder containing the following documentation files:
-
-```text
-games/<game-name>/
-├── docs/
-│   ├── README.md           # Overview, features, controls summary, and doc index
-│   ├── QUICKSTART.md       # Local setup, dev server, test, and build commands
-│   ├── architecture.md     # Module structure, game loop/state machine, rendering & persistence
-│   ├── techstack.md        # Stack & dependencies used, aligned with /techstacks/techstack.md
-│   ├── user-guide.md       # Rules, desktop/mobile controls, scoring/progression, settings
-│   └── developer-guide.md  # Project layout, tuning/extending mechanics, testing & build workflow
-└── ...
-```
-
-### Required Contents
-- **`docs/README.md`**: High-level summary of the game, key features, and links to all documents in `docs/`.
-- **`docs/QUICKSTART.md`**: Exact commands to run locally (`npm install`, `npm run dev`, `npm test`, `npm run build`, `npm run preview`).
-- **`docs/architecture.md`**: Separation between pure simulation (`src/game/`), renderer/audio/storage, and React UI overlays (`src/components/`), plus state transitions and data flow.
-- **`docs/techstack.md`**: Explicit list of languages, frameworks, rendering/physics libraries, audio, and test tools used, referencing [techstack.md](file:///Users/vuhung/Desktop/gemini-games/techstacks/techstack.md).
-- **`docs/user-guide.md`**: Player-facing instructions—objective, keyboard/mouse/touch controls, scoring/win/loss rules, and mute/persistence behavior.
-- **`docs/developer-guide.md`**: How to modify constants/tuning parameters, run and write Vitest unit tests and Playwright E2E tests, type-check (`tsc --noEmit`), and produce a static `vite build` (`dist/`).
+> **Mandatory Rule:** Before creating or modifying any game, Hub component, or course module, read and follow all **5 modular policy files** in `docs/agents/`:
 
 ---
 
-## 2. Tech Stack & Deployment Policy
+## Policy Index
 
-Follow [techstack.md](file:///Users/vuhung/Desktop/gemini-games/techstacks/techstack.md):
-- **Shared Foundation:** TypeScript + Vite + React (UI/HUD overlays) + Vitest (unit tests) + Playwright (E2E browser tests).
-- **2D Games:** HTML5 Canvas 2D (simple arcade/sim), Phaser 3, or PixiJS v8.
-- **3D Games:** Three.js (Vanilla Three.js + TypeScript or React Three Fiber + `@react-three/drei`) + Rapier 3D.
-- **Local-First Now, Cloudflare Later:** Games are developed, tested, and played locally (`vite dev` / `vite preview`). Do **not** configure or deploy to Cloudflare yet, but keep `vite.config.ts` (`base: './'`) and client code as a clean static `vite build` so publishing to Cloudflare later is drop-in.
-
----
-
-## 3. Shared Styles & Behavior
-
-Follow [STYLE_GUIDE.md](file:///Users/vuhung/Desktop/gemini-games/styles/STYLE_GUIDE.md):
-- Import [tokens.css](file:///Users/vuhung/Desktop/gemini-games/styles/tokens.css) and [game-ui.css](file:///Users/vuhung/Desktop/gemini-games/styles/game-ui.css) in `src/main.tsx` before local styles, and use [theme.ts](file:///Users/vuhung/Desktop/gemini-games/styles/theme.ts) for Canvas/3D colors (`softivory`, `deepcharcoal`, `bookpurple`, `lawpurple`, `bookred`, `warmstone`).
-- Keep zero external network/CDN calls or external image/audio files unless explicitly requested (local static brand icons and covers in `public/icons/` and `public/graphics/` are required).
-- Ensure keyboard (`preventDefault` on `Space`/`Arrow*`, ignore `e.repeat` and modifier keys), touch/pointer (`touch-action`, `user-select: none`), `visibilitychange` handling, accessible Mute toggle (`e.stopPropagation()`), and safe `localStorage` persistence (`<game_name>_v1`).
-- **In-Game "How to Play", Tutorial Mode & Hints:**
-  - Every game must provide an in-game **"How to Play"** modal/panel so players can read the rules, controls, and scoring directly inside the UI.
-  - Each game should also include a **"Tutorial"** mode (guided walkthrough or practice step) and **"Hints"** (suggested move/action or contextual tip) whenever feasible for the game's mechanics.
-- **Multilingual Support (`en`, `zh`, `vi`):**
-  - This project supports **English (`en`)**, **Chinese (`zh`)**, and **Vietnamese (`vi`)**.
-  - **All `README.md` files** (the root `README.md`, `courses/README.md`, `courses/day-*/README.md`, and every `games/<game-name>/docs/README.md`) must support all 3 languages via `README.md` (English), `README.zh.md` (中文), and `README.vi.md` (Tiếng Việt), with a language switcher at the top of each file.
-  - **Webapp Interface:** The Gemini Games Hub (`src/`) and game interfaces must support switching between English (`en`), Chinese (`zh`), and Vietnamese (`vi`) with `localStorage` persistence.
-  - **Courses (`courses/`):**
-    - All course index and daily lesson folders (`courses/README.md` and `courses/day-*/`) must support all 3 languages (`README.md`, `README.zh.md`, `README.vi.md`).
-    - **Course Philosophy & Audience:** Our `courses/` curriculum is **hands-on focused**, **vibe coding (prompt-driven)**—never asking students to write code manually—and **tailored for non-IT, non-tech learners** who want to understand the **tech stack behind vibe coding** in plain, practical language.
-    - **Plain-Language, High-Level Prompts Only:** Never ask learners to read, trace, or explain low-level code files (e.g., never write *"Read `games/dino-run/src/game/engine.ts`..."*). Keep every sample prompt, walkthrough, and exercise in high-level, everyday English/Chinese/Vietnamese focused on features, user experience, testing concepts, Cloudflare setup/deployment, and the overall tech stack (letting `agy` locate internal files automatically).
-    - **Course Delivery Loop:** Every lesson follows a simple 4-step vibe-coding flow: **Play / Explore -> Ask `agy` in plain language -> Prompt `agy` to improve or build -> Verify with `make`**.
-    - **Daily Exercises & Challenges:** Each daily lesson must include **exactly 5** prompt-only exercises (with sample prompts) covering: understanding the project, improving a feature, implementing a new feature, improving tests/docs, and creating a new/similar game.
+| # | Policy | Scope & Summary | Document |
+| :---: | :--- | :--- | :--- |
+| **1** | **Mandatory `docs/` Folder per Game** | Every `games/<slug>/docs/` must contain `README.md` (+ `README.zh.md`, `README.vi.md`), `QUICKSTART.md`, `architecture.md`, `techstack.md`, `user-guide.md`, and `developer-guide.md`. | [01-docs-structure.md](./docs/agents/01-docs-structure.md) |
+| **2** | **Tech Stack & Deployment Policy** | Shared TypeScript + Vite + React + Vitest + Playwright; 2D Canvas/Phaser/PixiJS or 3D Three.js/Rapier; 100% offline local-first with clean static `dist/` (`base: './'`) for Cloudflare Workers or Vercel. | [02-tech-stack-and-deployment.md](./docs/agents/02-tech-stack-and-deployment.md) |
+| **3** | **Shared Styles, Behavior, i18n & Courses** | Shared `tokens.css` / `game-ui.css` / `theme.ts`, zero external CDNs, input/visibility/mute/`localStorage` rules, How to Play + Tutorial + Hints, `en`/`zh`/`vi` i18n, and plain-language `courses/` rules (5 exercises/day, wrapped prompts). | [03-styles-behavior-and-i18n.md](./docs/agents/03-styles-behavior-and-i18n.md) |
+| **4** | **Game Title, Icons, Graphics & Hub** | Original `manifest.webmanifest`, `public/icons/*` (`favicon.ico`, `32`, `180`, `192`, `512`), `public/graphics/` (`cover-hd.png`, `cover-fullhd.png`), `index.html` tags, in-game emblem, and [games.ts](./src/registry/games.ts) registration. | [04-assets-and-hub-registration.md](./docs/agents/04-assets-and-hub-registration.md) |
+| **5** | **Testing (Unit + E2E) & Verification Gate** | Vitest (`>= 70%` statements, branches, functions, lines) + Playwright E2E + `make lint`, `make typecheck`, `make test`, `make build`, `make test-e2e`, and root `make verify`. | [05-testing-and-verification.md](./docs/agents/05-testing-and-verification.md) |
 
 ---
 
-## 4. Mandatory Game Title, Icons & Graphics Assets
+## Mandatory AI Agent Completion Rule
 
-Every game project (`games/<game-name>/`) **must** have its own distinct **game title**, **multi-size icons**, and **HD / Full-HD graphics** inside `public/`:
-
-```text
-games/<game-name>/public/
-├── manifest.webmanifest
-├── icons/
-│   ├── favicon.ico            # 32x32 ICO browser favicon
-│   ├── icon-32.png            # 32x32 PNG favicon
-│   ├── apple-touch-icon.png   # 180x180 iOS home screen icon
-│   ├── icon-192.png           # 192x192 PWA icon
-│   └── icon-512.png           # 512x512 PWA / store icon
-└── graphics/
-    ├── cover-hd.png           # 1280x720 (HD 16:9)
-    └── cover-fullhd.png       # 1920x1080 (Full HD 16:9)
-```
-
-- **`index.html`:** Include a distinct `<title>`, `<meta name="description">`, `<meta name="theme-color" content="#3c1053" />`, `<link rel="icon" href="./icons/favicon.ico" sizes="any" />`, `<link rel="icon" type="image/png" sizes="32x32" href="./icons/icon-32.png" />`, `<link rel="apple-touch-icon" sizes="180x180" href="./icons/apple-touch-icon.png" />`, `<link rel="manifest" href="./manifest.webmanifest" />`, and Open Graph tags (`og:title`, `og:description`, `og:image: ./graphics/cover-hd.png`).
-- **In-Game Emblem:** Display `./icons/icon-192.png` as a clean rounded emblem beside or above the game title in the header or start screen.
-- **Creating Original Graphics:** Always create our own original game graphics (never download or hotlink third-party assets):
-  - **Prefer `.svg` format** for crisp, lightweight, scalable vector icons, sprites, and UI graphics whenever suitable.
-  - **Ask `agy` (Antigravity / `image-generator`)** to generate custom raster images or cover artwork when rich illustrated graphics are needed, then derive the required `icons/` and `graphics/` sizes (`favicon.ico`, `icon-32.png`, `apple-touch-icon.png`, `icon-192.png`, `icon-512.png`, `cover-hd.png`, `cover-fullhd.png`).
-- **Unified Hub Registration:** Use relative `<script type="module" src="./src/main.tsx"></script>` in `games/<game-name>/index.html` and add the game entry to [games.ts](file:///Users/vuhung/Desktop/gemini-games/src/registry/games.ts) so it is served automatically in the root 4-column Dashboard (`npm run dev` at the repository root).
-
----
-
-## 5. Mandatory Testing (Unit + E2E) & Verification Gate
-
-Every game project (`games/<game-name>/`) **must** include both automated test suites:
-- **Unit Tests (Vitest):** Cover pure simulation logic, physics/collision/economy rules, state transitions, and safe `localStorage` persistence (`npm test`).
-- **E2E Tests (Playwright):** Cover real browser gameplay and UI flows—clean page load with zero console/page errors, primary input controls (keyboard/pointer), HUD/score updates, state transitions (start/play/end/restart), mute toggle, and persistence across reloads (`npm run test:e2e` / `npx playwright test`).
-
-Before considering any game implementation or update complete, run and pass:
-1. `make lint GAME=<slug>` (ESLint code quality & React Hooks check)
-2. `make typecheck GAME=<slug>` (strict TypeScript compilation `tsc --noEmit`)
-3. `make test GAME=<slug>` (Vitest unit tests with `>= 70%` statements, branches, functions, and lines coverage)
-4. `make build GAME=<slug>` (clean Vite production build)
-5. `make test-e2e GAME=<slug>` (Playwright E2E tests)
-6. `make verify` at the repository root (runs `lint`, `typecheck`, `test` with `>= 70%` coverage, `build`, `test-e2e`, and `check-docs` / `scripts/check-compliance.mjs` across all games, docs, multilingual READMEs, icons/covers, `index.html`, `games.ts`, `translations.ts`, unique Playwright ports, zero external CDNs, and blank `.github/workflows/`).
-
-> **Mandatory AI Agent Rule:** Never report a game creation or modification task as complete until the commands above exit `0` after the **final** edit, and always cite the exact observed test counts and coverage percentages from the final run.
+> Never report a game creation or modification task as complete until `make lint GAME=<slug>`, `make typecheck GAME=<slug>`, `make test GAME=<slug>`, `make build GAME=<slug>`, `make test-e2e GAME=<slug>`, and root `make verify` exit `0` after the **final** edit. Always cite the exact observed test counts and coverage percentages from the final run.
