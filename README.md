@@ -28,6 +28,9 @@ A local-first unified web game hub featuring **15 playable 2D & 3D browser games
 
 ## Key Project Files
 - [QUICKSTART.md](./QUICKSTART.md) — Build, run, test, and deploy commands
+- [docs/architecture.md](./docs/architecture.md) — Hub, per-game module, and multi-entry build architecture (with Mermaid diagrams)
+- [docs/developer-guide.md](./docs/developer-guide.md) — Developer workflow, `AGENTS.md` checklist, and verification gates
+- [docs/techstack.md](./docs/techstack.md) — Core foundation, 2D/3D rendering layers, testing, and Cloudflare hosting
 - [AGENTS.md](./AGENTS.md) — Mandatory per-game structure, assets, docs, and verification standards
 - [techstacks/techstack.md](./techstacks/techstack.md) — 2D & 3D web game tech stack guidelines
 - [styles/STYLE_GUIDE.md](./styles/STYLE_GUIDE.md) — Shared palette, viewport, input, and persistence rules
