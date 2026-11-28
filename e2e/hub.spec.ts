@@ -49,6 +49,30 @@ test.describe('Unified Gemini Games Hub E2E', () => {
     await expect(cards).toHaveCount(1);
     await page.getByLabel('Search games').fill('');
 
+    // Verify footer external links
+    const footer = page.getByTestId('hub-footer');
+    await expect(footer).toBeVisible();
+    await expect(page.getByTestId('link-project-github')).toHaveAttribute(
+      'href',
+      'https://github.com/vuhung16au/gemini-games/',
+    );
+    await expect(page.getByTestId('link-project-github')).toHaveAttribute(
+      'target',
+      '_blank',
+    );
+    await expect(page.getByTestId('link-author-github')).toHaveAttribute(
+      'href',
+      'https://github.com/vuhung16au/',
+    );
+    await expect(page.getByTestId('link-linkedin')).toHaveAttribute(
+      'href',
+      'https://www.linkedin.com/in/nguyenvuhung/',
+    );
+    await expect(page.getByTestId('link-substack')).toHaveAttribute(
+      'href',
+      'https://vuhung16.substack.com/',
+    );
+
     expect(errors).toEqual([]);
   });
 

@@ -109,4 +109,47 @@ describe('Dashboard component', () => {
       expect.objectContaining({ slug: '1024' }),
     );
   });
+
+  it('renders external project and author links with localized labels', () => {
+    setup({ locale: 'en' });
+
+    const expectedLinks = [
+      {
+        testId: 'link-project-github',
+        href: 'https://github.com/vuhung16au/gemini-games/',
+        label: 'Project GitHub',
+      },
+      {
+        testId: 'link-author-github',
+        href: 'https://github.com/vuhung16au/',
+        label: 'GitHub (@vuhung16au)',
+      },
+      {
+        testId: 'link-linkedin',
+        href: 'https://www.linkedin.com/in/nguyenvuhung/',
+        label: 'LinkedIn',
+      },
+      {
+        testId: 'link-substack',
+        href: 'https://vuhung16.substack.com/',
+        label: 'Substack',
+      },
+    ];
+
+    for (const item of expectedLinks) {
+      const link = screen.getByTestId(item.testId) as HTMLAnchorElement;
+      expect(link.getAttribute('href')).toBe(item.href);
+      expect(link.getAttribute('target')).toBe('_blank');
+      expect(link.getAttribute('rel')).toBe('noopener noreferrer');
+      expect(link.textContent).toContain(item.label);
+    }
+
+    cleanup();
+    setup({ locale: 'zh' });
+    expect(screen.getByTestId('link-project-github').textContent).toContain('项目 GitHub');
+
+    cleanup();
+    setup({ locale: 'vi' });
+    expect(screen.getByTestId('link-project-github').textContent).toContain('GitHub dự án');
+  });
 });

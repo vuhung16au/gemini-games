@@ -46,6 +46,13 @@ export interface HubTranslations {
   allGamesBack: string;
   reloadGame: string;
   fullscreen: string;
+  footerAriaLabel: string;
+  footerLinks: {
+    projectRepo: string;
+    authorGithub: string;
+    linkedin: string;
+    substack: string;
+  };
   categories: Record<HubTabFilter, string>;
 }
 
@@ -80,6 +87,13 @@ export const HUB_TRANSLATIONS: Record<Locale, HubTranslations> = {
     allGamesBack: '← All Games',
     reloadGame: '↻ Reload',
     fullscreen: '⛶ Fullscreen',
+    footerAriaLabel: 'Project and author links',
+    footerLinks: {
+      projectRepo: 'Project GitHub',
+      authorGithub: 'GitHub (@vuhung16au)',
+      linkedin: 'LinkedIn',
+      substack: 'Substack',
+    },
     categories: {
       All: 'All',
       Favorites: 'Favorites',
@@ -119,6 +133,13 @@ export const HUB_TRANSLATIONS: Record<Locale, HubTranslations> = {
     allGamesBack: '← 全部游戏',
     reloadGame: '↻ 重新加载',
     fullscreen: '⛶ 全屏',
+    footerAriaLabel: '项目与作者链接',
+    footerLinks: {
+      projectRepo: '项目 GitHub',
+      authorGithub: 'GitHub (@vuhung16au)',
+      linkedin: 'LinkedIn',
+      substack: 'Substack',
+    },
     categories: {
       All: '全部',
       Favorites: '收藏',
@@ -159,6 +180,13 @@ export const HUB_TRANSLATIONS: Record<Locale, HubTranslations> = {
     allGamesBack: '← Tất cả trò chơi',
     reloadGame: '↻ Tải lại',
     fullscreen: '⛶ Toàn màn hình',
+    footerAriaLabel: 'Liên kết dự án và tác giả',
+    footerLinks: {
+      projectRepo: 'GitHub dự án',
+      authorGithub: 'GitHub (@vuhung16au)',
+      linkedin: 'LinkedIn',
+      substack: 'Substack',
+    },
     categories: {
       All: 'Tất cả',
       Favorites: 'Yêu thích',

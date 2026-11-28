@@ -24,6 +24,11 @@ describe('hub translations', () => {
       expect(t.categories.Arcade.length).toBeGreaterThan(0);
       expect(t.categories.Simulation.length).toBeGreaterThan(0);
       expect(t.categories.Card.length).toBeGreaterThan(0);
+      expect(t.footerAriaLabel.length).toBeGreaterThan(0);
+      expect(t.footerLinks.projectRepo.length).toBeGreaterThan(0);
+      expect(t.footerLinks.authorGithub.length).toBeGreaterThan(0);
+      expect(t.footerLinks.linkedin.length).toBeGreaterThan(0);
+      expect(t.footerLinks.substack.length).toBeGreaterThan(0);
     }
   });
 
