@@ -72,6 +72,10 @@ test.describe('Unified Gemini Games Hub E2E', () => {
       'href',
       'https://vuhung16.substack.com/',
     );
+    await expect(page.getByTestId('link-vumaths')).toHaveAttribute(
+      'href',
+      'https://vumaths.com/',
+    );
 
     expect(errors).toEqual([]);
   });

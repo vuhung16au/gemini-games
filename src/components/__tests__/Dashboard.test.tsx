@@ -134,6 +134,11 @@ describe('Dashboard component', () => {
         href: 'https://vuhung16.substack.com/',
         label: 'Substack',
       },
+      {
+        testId: 'link-vumaths',
+        href: 'https://vumaths.com/',
+        label: 'VuMaths',
+      },
     ];
 
     for (const item of expectedLinks) {

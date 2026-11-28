@@ -22,7 +22,7 @@ const FILTER_TABS: readonly HubTabFilter[] = [
   ...GAME_CATEGORIES.slice(1),
 ];
 
-type FooterIconKind = 'repo' | 'github' | 'linkedin' | 'substack';
+type FooterIconKind = 'repo' | 'github' | 'linkedin' | 'substack' | 'vumaths';
 
 interface ExternalLinkItem {
   key: keyof HubTranslations['footerLinks'];
@@ -55,6 +55,12 @@ const HUB_EXTERNAL_LINKS: readonly ExternalLinkItem[] = [
     href: 'https://vuhung16.substack.com/',
     testId: 'link-substack',
     icon: 'substack',
+  },
+  {
+    key: 'vumaths',
+    href: 'https://vumaths.com/',
+    testId: 'link-vumaths',
+    icon: 'vumaths',
   },
 ];
 
@@ -110,6 +116,19 @@ const FooterLinkIcon: React.FC<{ kind: FooterIconKind }> = ({ kind }) => {
           aria-hidden="true"
         >
           <path d="M15 3.604H1v1.891h14v-1.89ZM1 7.208V16l7-3.926L15 16V7.208ZM15 0H1v1.89h14Z" />
+        </svg>
+      );
+    case 'vumaths':
+      return (
+        <svg
+          className="hub-footer-icon"
+          width={16}
+          height={16}
+          viewBox="0 0 16 16"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <path d="M2 1.75C2 .784 2.784 0 3.75 0h8.5C13.216 0 14 .784 14 1.75v12.5A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V1.75a.25.25 0 0 0-.25-.25Zm1.5 2.25A.75.75 0 0 1 6 3h4a.75.75 0 0 1 0 1.5H6a.75.75 0 0 1-.75-.75ZM5 7.25a.75.75 0 0 1 .75-.75h.5a.75.75 0 0 1 0 1.5h-.5A.75.75 0 0 1 5 7.25Zm3 0A.75.75 0 0 1 8.75 6.5h1.5a.75.75 0 0 1 0 1.5h-1.5A.75.75 0 0 1 8 7.25Zm-3 3a.75.75 0 0 1 .75-.75h.5a.75.75 0 0 1 0 1.5h-.5A.75.75 0 0 1 5 10.25Zm3 0a.75.75 0 0 1 .75-.75h1.5a.75.75 0 0 1 0 1.5h-1.5A.75.75 0 0 1 8 10.25Z" />
         </svg>
       );
   }

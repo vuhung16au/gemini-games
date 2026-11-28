@@ -52,6 +52,7 @@ export interface HubTranslations {
     authorGithub: string;
     linkedin: string;
     substack: string;
+    vumaths: string;
   };
   categories: Record<HubTabFilter, string>;
 }
@@ -93,6 +94,7 @@ export const HUB_TRANSLATIONS: Record<Locale, HubTranslations> = {
       authorGithub: 'GitHub (@vuhung16au)',
       linkedin: 'LinkedIn',
       substack: 'Substack',
+      vumaths: 'VuMaths',
     },
     categories: {
       All: 'All',
@@ -139,6 +141,7 @@ export const HUB_TRANSLATIONS: Record<Locale, HubTranslations> = {
       authorGithub: 'GitHub (@vuhung16au)',
       linkedin: 'LinkedIn',
       substack: 'Substack',
+      vumaths: 'VuMaths',
     },
     categories: {
       All: '全部',
@@ -186,6 +189,7 @@ export const HUB_TRANSLATIONS: Record<Locale, HubTranslations> = {
       authorGithub: 'GitHub (@vuhung16au)',
       linkedin: 'LinkedIn',
       substack: 'Substack',
+      vumaths: 'VuMaths',
     },
     categories: {
       All: 'Tất cả',

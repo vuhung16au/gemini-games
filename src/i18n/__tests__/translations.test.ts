@@ -29,6 +29,7 @@ describe('hub translations', () => {
       expect(t.footerLinks.authorGithub.length).toBeGreaterThan(0);
       expect(t.footerLinks.linkedin.length).toBeGreaterThan(0);
       expect(t.footerLinks.substack.length).toBeGreaterThan(0);
+      expect(t.footerLinks.vumaths.length).toBeGreaterThan(0);
     }
   });
 
